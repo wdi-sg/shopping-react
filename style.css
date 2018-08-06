@@ -1,0 +1,24 @@
+#walmart-logo {
+    width: 300px;
+    margin: 0;
+}
+
+#search-col {
+    border: 1px solid black;
+}
+#product-col {
+    border: 1px solid black;
+}
+#cart-col {
+    border: 1px solid black;
+}
+
+.row {
+    background-color: white;
+}
+
+label {
+	display: inline;
+	text-align: left;
+	vertical-align: middle;
+}

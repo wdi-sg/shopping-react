@@ -1,86 +1,71 @@
 import React from 'react';
 import {hot} from 'react-hot-loader';
 
-import Counter from './components/counter/counter';
-import Form from './components/form/form';
+import Product from './components/product/product';
+import Search from './components/search/search';
 import Cart from './components/cart/cart';
 
+/*---------------------------------------------------------------- */
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      message: 'hello',
-      filterText: '',
-      results: [], //gets you walmart api of the search items
-      textArea: []
-    };
-  }
-
-  componentDidMount(){
-
-    var thisReact = this;
-
-    // what to do when we recieve the request
-    var responseHandler = function() {
-      // console.log("response text", this.responseText);
-      console.log("status text", this.statusText);
-      console.log("status code", this.status);
-      var response = JSON.parse(this.responseText);
-
-      thisReact.setState({results: response})
+      search: {
+        input: '',
+        results:[]
+      }
     };
 
-    // make a new request
-    var request = new XMLHttpRequest();
-
-    // listen for the request response
-    request.addEventListener("load", responseHandler);
-
-    // ready the system by calling open, and specifying the url
-    request.open("GET", '/api/query?search=peanut');  //how do we do a query search ?
-
-    // send the request
-    request.send();
+    this.formSubmit = this.formSubmit.bind(this);
+    this.handleFormInput = this.handleFormInput.bind(this);
 
   }
 
-  filterUpdate(value){
+  formSubmit() {
+    const searchQuery = this.state.search.input;
+    console.log('Query made ',  searchQuery)
+    const URL = '/api/query?search=' + searchQuery;
+   
+
+    fetch(URL).then( (response) => {
+      response.json().then( (data) => {
+        this.setState({
+          search: {
+            input: '',
+            results: data.items
+          }
+        })
+      })
+    })
+  }
+
+  handleFormInput(event) {
+    const formInput = event.target.value;
+    console.log('Word key in', formInput)
     this.setState({
-        filterText: value
+      search: {
+        ...this.state.search,
+        input: formInput
+      }
     });
   }
 
-  submitHandler(){
-    // newTextArr= this.state.textArea.splice()
-    // newTextArr.push(this.state.filterText )
-    // this.setState({
-    //   textArr: newTextArea,
-    //   filterText: ''
-    // })
-    console.log('activated from submitHandler from App.jsx')
-  }
-
-  showResults(results){
-    console.log('From showResults from App.jsx', results)
-  }
-  
   render() {
-    console.log('Results from App.jsx', this.state.filterText)
     return (
       <div class='row'>
         <div class="col s4">
           <h4>Search</h4>
-          <Form 
-            filterUpdate={this.filterUpdate.bind(this)}
-            submitHandler={this.submitHandler.bind(this)} //does this refers to to the event happening on this page or back in the form?
+          <Search
+            search={this.state.search}
+            formSubmit={this.formSubmit}
+            handleFormInput={this.handleFormInput}
           />
         </div>
         <div class="col s4">
           <h4>Product</h4>
-          <Counter 
-            message={this.state.message}
-            searchProduct={this.state.results} 
+          <Product 
+            allProduct={this.state.search.results}
           />
         </div>
         <div class="col s4">

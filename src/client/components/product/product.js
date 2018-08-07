@@ -12,7 +12,7 @@ class Product extends React.Component {
         <p>
           {this.props.product.salePrice}
         </p>
-        <button type="button">Add To Card</button>
+        <button type="button" onClick={() => this.props.addToCart(this.props.product)}>Add To Cart</button>
       </div>
     )
   }

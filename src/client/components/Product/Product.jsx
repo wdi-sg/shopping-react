@@ -1,31 +1,33 @@
 import React from 'react';
 
-import styles from './style.scss';
+import PropTypes from 'prop-types';
+
+// import styles from './style.scss';
 
 class Product extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      products: ['hello', 'heyho']
-    };
-  }
-
-  componentDidMount = async () => {
-    const response = await fetch('http://localhost:3000/api/query?search=' + this.props.query);
-    const data = await response.json();
-    this.setState({products: data});
-  };
-
   render() {
-    let {products} = this.state;
-    products = products.map((product) => <div>{product}</div>);
+    const {selectedProduct, addToCart} = this.props;
 
     return (
       <div>
-        <div>{products}</div>
+        <div>
+          <img src={selectedProduct.mediumImage} />
+        </div>
+        <br />
+        <div>Description:</div>
+        <div>{selectedProduct.shortDescription}</div>
+        <br />
+        <div>Price:</div>
+        <div>{selectedProduct.salePrice}</div>
+        <button onClick={() => addToCart(selectedProduct.index)}>Add To Cart</button>
       </div>
     );
   }
 }
+
+Product.propTypes = {
+  selectedProduct: PropTypes.object.isRequired,
+  addToCart: PropTypes.func.isRequired
+};
 
 export default Product;

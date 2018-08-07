@@ -12,7 +12,9 @@ class App extends React.Component {
     super();
     this.state = {
       query: '',
-      hasSearched: false
+      products: [],
+      selectedProduct: null,
+      cart: []
     };
   }
 
@@ -20,9 +22,52 @@ class App extends React.Component {
     this.setState({query: event.target.value});
   };
 
-  clickHandler = () => {
-    this.setState(({hasSearched}) => {
-      return {hasSearched: !hasSearched};
+  clickHandler = async () => {
+    const response = await fetch(`/api/query?search=${this.props.query}`);
+    const data = await response.json();
+    this.setState({products: data.items});
+  };
+
+  displayProduct = (index) => {
+    this.setState(({products}) => {
+      const selectedProduct = products[index];
+      selectedProduct['index'] = index;
+      return {selectedProduct};
+    });
+  };
+
+  addToCart = (index) => {
+    this.setState(({products, cart}) => {
+      let addedProduct = products[index];
+      const productIDs = cart.map((product) => product.itemId);
+      const addedProductId = productIDs.indexOf(addedProduct.itemId);
+      if (addedProductId > -1) {
+        cart[addedProductId].count++;
+      } else {
+        addedProduct['count'] = 1;
+        cart.push(addedProduct);
+      }
+      return {cart};
+    });
+  };
+
+  removeFromCart = (index) => {
+    this.setState(({cart}) => {
+      if (cart[index].count === 1) {
+        cart.splice(index, 1);
+      } else {
+        cart[index].count--;
+      }
+      return {cart};
+    });
+  };
+
+  addFromCart = (index) => {
+    this.setState(({cart}) => {
+      if (cart[index].count >= 1) {
+        cart[index].count++;
+      }
+      return {cart};
     });
   };
 
@@ -31,15 +76,22 @@ class App extends React.Component {
       <div className={styles['app-container']}>
         <div className={styles['search-container']}>
           Search
-          <Search onChange={this.changeHandler} onClick={this.clickHandler} />
+          <Search
+            selectClick={this.displayProduct}
+            onChange={this.changeHandler}
+            onClick={this.clickHandler}
+            products={this.state.products}
+          />
         </div>
-        <div className={styles['product-container']}>
-          Product
-          <Product query={this.state.query} onClick={this.clickHandler} />
-        </div>
+        {this.state.selectedProduct && (
+          <div className={styles['product-container']}>
+            Product
+            <Product selectedProduct={this.state.selectedProduct} addToCart={this.addToCart} />
+          </div>
+        )}
         <div className={styles['cart-container']}>
           Cart
-          <Cart />
+          <Cart cart={this.state.cart} removeFromCart={this.removeFromCart} addFromCart={this.addFromCart} />
         </div>
       </div>
     );

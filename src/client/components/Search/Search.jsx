@@ -1,27 +1,32 @@
 import React from 'react';
 
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 // import styles from './style.scss';
 
 class Search extends React.Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
-
   render() {
+    const {products} = this.props;
+    const productNames = products.map((product, index) => (
+      <button onClick={() => this.props.selectClick(index)} key={product.itemId}>
+        {product.name}
+      </button>
+    ));
+
     return (
       <div>
         <input onChange={this.props.onChange} />
         <button onClick={this.props.onClick}>search</button>
+        <div>{productNames}</div>
       </div>
     );
   }
 }
 
-// Search.propTypes = {
-// message: PropTypes.string.isRequired
-// };
+Search.propTypes = {
+  onChange: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
+  products: PropTypes.arrayOf(PropTypes.object).isRequired
+};
 
 export default Search;

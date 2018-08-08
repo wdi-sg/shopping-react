@@ -7,17 +7,36 @@ import Form from './components/form/form';
 class App extends React.Component {
   constructor() {
     super();
+    this.changeHandler = this.changeHandler.bind(this);
+    this.clickHandler = this.clickHandler.bind(this);
+
     this.state = {
-      message: 'hello'
+      message: 'hello',
+      input: '',
+      query: ''
     };
   }
 
+  changeHandler(event){
+    this.setState({
+      input: event.target.value
+    });
+  }
+
+  clickHandler(){
+    this.setState({
+
+    })
+  }
+
   render() {
+
+
     return (
       <div>
-        <Form />
         Welcome.
         <Counter message={this.state.message} />
+        {results}
       </div>
     );
   }

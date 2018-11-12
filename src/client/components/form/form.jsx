@@ -20,4 +20,11 @@ class Form extends React.Component {
   }
 }
 
+ReactDOM.render(
+    <div>
+    <Form />
+    </div>,
+    document.getElementById("app")
+    )
+
 export default Form;

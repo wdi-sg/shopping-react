@@ -1,0 +1,10 @@
+.container {
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid grey;
+}
+
+.container:hover {
+  background-color: rgba(240, 240, 240, 0.5);
+  cursor: pointer;
+}

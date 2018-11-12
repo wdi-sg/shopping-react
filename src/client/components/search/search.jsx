@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 
 import Form from '../form/form';
+import Item from '../item/Item';
+
+import styles from './style.scss';
 
 class Search extends Component {
   constructor() {
@@ -34,11 +37,14 @@ class Search extends Component {
   }
 
   render() {
-    const {searchQuery} = this.state;
+    const {searchQuery, queryData} = this.state;
 
     return (
-      <div>
+      <div className={styles.container}>
+        <h2>Search</h2>
         <Form onChange={this.handleChange} onSearch={this.handleSearch} value={searchQuery} />
+        {Object.keys(queryData).length !== 0 &&
+          queryData.items.map((item) => <Item key={item.itemId} name={item.name} />)}
       </div>
     );
   }

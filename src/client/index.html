@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="author" content="Anton Fisher">
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     <title>React + Express</title>
 </head>
 <body>
@@ -13,6 +17,9 @@
     <strong>JavaScript has been disabled on your browser</strong>,
     please <strong>enable JS</strong> to make this app work.
 </noscript>
-<div id="app"></div>
+<div id="app">
+    <App />
+
+</div>
 </body>
 </html>

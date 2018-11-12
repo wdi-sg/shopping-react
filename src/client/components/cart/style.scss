@@ -1,0 +1,18 @@
+.cart {
+	width: 349px;
+	height: 100%;
+	padding: 20px 10px;
+	border-left: 1px solid black; 
+	justify-content: center;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	right: 0;
+	overflow-x: hidden;
+	background-color: rgba(225,225,225,1);
+
+	.item {
+		font-size: 0.75rem;
+		padding: 2px;
+	}
+}

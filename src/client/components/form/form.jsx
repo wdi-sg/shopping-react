@@ -1,23 +1,19 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './style.scss';
 
-class Form extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      monkey: 'haha'
-    };
-  }
+const Form = ({value, onChange, onSearch}) => (
+  <div>
+    <input className={styles.name} onChange={(e) => onChange(e.currentTarget.value)} value={value} />
+    <button onClick={onSearch}>Search</button>
+  </div>
+);
 
-  render() {
-    return (
-      <div>
-        <p>{this.state.monkey}</p>
-        <input className={styles.name} />
-      </div>
-    );
-  }
-}
+Form.propTypes = {
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onSearch: PropTypes.func.isRequired
+};
 
 export default Form;

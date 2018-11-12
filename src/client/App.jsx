@@ -1,10 +1,7 @@
 import React from 'react';
 import {hot} from 'react-hot-loader';
 
-import Counter from './components/counter/counter';
-import Search from './components/search/search';
-
-import styles from './style.scss';
+import Main from './components/main/main';
 
 class App extends React.Component {
   constructor() {
@@ -14,8 +11,8 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className={styles.container}>
-        <Search />
+      <div>
+        <Main />
       </div>
     );
   }

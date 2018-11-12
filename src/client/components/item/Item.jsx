@@ -3,14 +3,16 @@ import PropTypes from 'prop-types';
 
 import styles from './style.scss';
 
-const Item = ({name}) => (
-  <div className={styles.container}>
+const Item = ({itemId, name, onSelect}) => (
+  <div className={styles.container} onClick={() => onSelect(itemId)}>
     <p>{name}</p>
   </div>
 );
 
 Item.propTypes = {
-  name: PropTypes.string.isRequired
+  itemId: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  onSelect: PropTypes.func.isRequired
 };
 
 export default Item;

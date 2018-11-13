@@ -16,24 +16,32 @@ class Form extends React.Component {
 
     let listItems;
 
-    let products = this.props.output;
-
     if(this.props.output) {
+        let products = this.props.output;
         listItems = products.map((item, index) => {
-            return(<li key={index}>{item.name}<br />
-                <img src={item.mediumImage} /></li>);
-        })
+            return(<div className="prod-list" onClick={(e) => this.props.selected(e)} ><li key={index} value={index}>{item.name}<br />
+                <img src={item.mediumImage} /></li></div>);
+        });
     };
 
-    console.log('query', this.state.query);
+   ;
     console.log('output', this.props.output);
     return (
       <div>
         <p>Search for your item</p>
-        <form onSubmit={this.props.request}>
+        <form className="search-results" onSubmit={this.props.request}>
             <input className={styles.name} onChange={(event) => this.props.input(event)} value={this.state.query} />
             <button type="submit" disabled={this.state.button} >Search</button>
         </form>
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">sort by
+            <span class="caret"></span></button>
+            <ul class="dropdown-menu">
+                <li><button onClick={(e) => this.props.sort(e)} value="name">Name</button></li>
+                <li><button onClick={(e) => this.props.sort(e)} value="price">Price: from cheapest</button></li>
+                <li><button onClick={(e) => this.props.sort(e)} value="ratings">Customer Ratings</button></li>
+            </ul>
+        </div>
         <ul>{listItems}</ul>
       </div>
     );

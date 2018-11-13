@@ -11,6 +11,7 @@ class Main extends Component {
     super();
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+    this.handleSort = this.handleSort.bind(this);
     this.handleItemSelect = this.handleItemSelect.bind(this);
     this.handleAddToCart = this.handleAddToCart.bind(this);
 
@@ -36,13 +37,35 @@ class Main extends Component {
 
     const oReq = new XMLHttpRequest();
     oReq.addEventListener('load', function reqListener() {
-      console.log(this.responseText);
       const {items} = JSON.parse(this.responseText);
       reactThis.setState({items});
     });
 
     oReq.open('GET', `http://localhost:3000/api/query?search=${searchQuery}`);
     oReq.send();
+  }
+
+  handleSort(sortBy) {
+    const items = [...this.state.items];
+    if (sortBy === 'price') {
+      items.sort((a, b) => a.salePrice - b.salePrice);
+    } else if (sortBy === 'name') {
+      items.sort((a, b) => {
+        const nameA = a.name.toUpperCase();
+        const nameB = b.name.toUpperCase();
+        if (nameA < nameB) {
+          return -1;
+        }
+
+        if (nameA > nameB) {
+          return 1;
+        }
+
+        return 0;
+      });
+    }
+
+    this.setState({items});
   }
 
   handleItemSelect(itemId) {
@@ -58,9 +81,9 @@ class Main extends Component {
     let {subtotal, shipping, total} = this.state;
     subtotal += cartItem.salePrice;
     shipping += cartItem.salePrice * cartItem.standardShipRate;
-    total += subtotal * (1 + this.state.gst);
+    total = (subtotal * (1 + this.state.gst)).toFixed(2);
 
-    this.setState({cartItems, subtotal, shipping, total: total.toFixed(2)});
+    this.setState({cartItems, subtotal, shipping, total});
   }
 
   render() {
@@ -74,6 +97,7 @@ class Main extends Component {
           onChange={this.handleChange}
           onSearch={this.handleSearch}
           onSelect={this.handleItemSelect}
+          onSort={this.handleSort}
         />
         <Product
           itemId={selectedItem.itemId}

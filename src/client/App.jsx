@@ -8,15 +8,15 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      message: 'hello'
-    };
-  }
+        message: 'hello'
+        };
+    }
 
   render() {
     return (
       <div>
         <Form />
-        Welcome.
+        Search Result:
         <Counter message={this.state.message} />
       </div>
     );

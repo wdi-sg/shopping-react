@@ -8,9 +8,11 @@ class Counter extends React.Component {
   constructor() {
     super();
     this.state = {
-      banana: 'sneakers'
+    banana: 'sneakers'
     };
   }
+
+
 
   render() {
     return (

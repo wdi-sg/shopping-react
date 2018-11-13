@@ -60,7 +60,7 @@ class Main extends Component {
     shipping += cartItem.salePrice * cartItem.standardShipRate;
     total += subtotal * (1 + this.state.gst);
 
-    this.setState({cartItems, subtotal, shipping, total});
+    this.setState({cartItems, subtotal, shipping, total: total.toFixed(2)});
   }
 
   render() {

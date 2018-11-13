@@ -1,5 +1,7 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import Item from '../item/item';
 
 import styles from './style.scss';
@@ -20,5 +22,14 @@ const Search = ({searchQuery, items, onChange, onSearch, onSelect, onSort}) => (
       items.map((item) => <Item key={item.itemId} itemId={item.itemId} name={item.name} onSelect={onSelect} />)}
   </div>
 );
+
+Search.propTypes = {
+  searchQuery: PropTypes.string.isRequired,
+  items: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onChange: PropTypes.func.isRequired,
+  onSearch: PropTypes.func.isRequired,
+  onSelect: PropTypes.func.isRequired,
+  onSort: PropTypes.func.isRequired
+};
 
 export default Search;

@@ -5,6 +5,7 @@ import Product from '../product/product';
 import Cart from '../cart/cart';
 
 import styles from './style.scss';
+import {Object} from 'es6-shim';
 
 class Main extends Component {
   constructor() {
@@ -43,6 +44,7 @@ class Main extends Component {
 
     oReq.open('GET', `http://localhost:3000/api/query?search=${searchQuery}`);
     oReq.send();
+    this.setState({items: [], selectedItem: {}, cartItems: [], subtotal: 0, shipping: 0, total: 0});
   }
 
   handleSort(sortBy) {
@@ -81,7 +83,7 @@ class Main extends Component {
     let {subtotal, shipping, total} = this.state;
     subtotal += cartItem.salePrice;
     shipping += cartItem.salePrice * cartItem.standardShipRate;
-    total = (subtotal * (1 + this.state.gst)).toFixed(2);
+    total = parseFloat((subtotal * (1 + this.state.gst)).toFixed(2));
 
     this.setState({cartItems, subtotal, shipping, total});
   }
@@ -99,21 +101,25 @@ class Main extends Component {
           onSelect={this.handleItemSelect}
           onSort={this.handleSort}
         />
-        <Product
-          itemId={selectedItem.itemId}
-          imageUrl={selectedItem.thumbnailImage}
-          description={selectedItem.shortDescription}
-          price={selectedItem.salePrice}
-          onAddToCart={this.handleAddToCart}
-        />
-        <Cart
-          cartItems={cartItems}
-          onSelect={this.handleItemSelect}
-          subtotal={subtotal}
-          shipping={shipping}
-          gst={gst}
-          total={total}
-        />
+        {Object.keys(selectedItem).length !== 0 && (
+          <Product
+            itemId={selectedItem.itemId}
+            imageUrl={selectedItem.thumbnailImage}
+            description={selectedItem.shortDescription}
+            price={selectedItem.salePrice}
+            onAddToCart={this.handleAddToCart}
+          />
+        )}
+        {cartItems.length !== 0 && (
+          <Cart
+            cartItems={cartItems}
+            onSelect={this.handleItemSelect}
+            subtotal={subtotal}
+            shipping={shipping}
+            gst={gst}
+            total={total}
+          />
+        )}
       </main>
     );
   }

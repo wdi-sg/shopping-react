@@ -8,3 +8,8 @@
   background-color: rgba(240, 240, 240, 0.5);
   cursor: pointer;
 }
+
+.container:focus {
+  background-color: rgba(240, 240, 240, 0.8);
+  outline: rgba(240, 240, 240, 0.8);
+}

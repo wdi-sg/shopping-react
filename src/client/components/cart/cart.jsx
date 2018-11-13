@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Item from '../item/item';
 
 const Cart = ({cartItems, onSelect, subtotal, shipping, gst, total}) => (
@@ -23,5 +25,14 @@ const Cart = ({cartItems, onSelect, subtotal, shipping, gst, total}) => (
     </p>
   </div>
 );
+
+Cart.propTypes = {
+  cartItems: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onSelect: PropTypes.func.isRequired,
+  subtotal: PropTypes.number.isRequired,
+  shipping: PropTypes.number.isRequired,
+  gst: PropTypes.number.isRequired,
+  total: PropTypes.number.isRequired
+};
 
 export default Cart;

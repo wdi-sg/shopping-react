@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './style.scss';
 
@@ -11,5 +12,13 @@ const Product = ({itemId, imageUrl, description, price, onAddToCart}) => (
     <button onClick={() => onAddToCart(itemId)}>Add to cart</button>
   </div>
 );
+
+Product.propTypes = {
+  itemId: PropTypes.number.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  onAddToCart: PropTypes.func.isRequired
+};
 
 export default Product;

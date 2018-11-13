@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import styles from './style.scss';
 
 const Item = ({itemId, name, onSelect}) => (
-  <div className={styles.container} onClick={() => onSelect(itemId)}>
+  <button className={styles.container} onClick={() => onSelect(itemId)}>
     <p>{name}</p>
-  </div>
+  </button>
 );
 
 Item.propTypes = {

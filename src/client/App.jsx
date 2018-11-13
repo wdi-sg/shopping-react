@@ -98,8 +98,10 @@ class App extends React.Component {
     // console.log("SEARCH APPPPPPPPPP RESULTS: ", this.state.result);
     return (
       <div>
-        Welcome to Shopping React
-        <Search search={this.searchHandler} sort={this.sortFunc} items={this.getItem} result={this.state.result}/>
+        <h1>Welcome to Walmart.</h1>
+        <div className={styles.flex1}>
+            <Search search={this.searchHandler} sort={this.sortFunc} items={this.getItem} result={this.state.result}/>
+        </div>
       </div>
     );
   }

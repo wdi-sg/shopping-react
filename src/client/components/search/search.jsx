@@ -20,7 +20,7 @@ class Search extends React.Component {
     })
     return (
       <div>
-        <h3>Search</h3>
+        <h3>Search Items:</h3>
         <input className={styles.name} onChange={this.props.items}/>
         <br/>
         <button onClick={this.props.search}>search</button>

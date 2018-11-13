@@ -18,7 +18,11 @@ class Main extends Component {
       searchQuery: '',
       items: [],
       selectedItem: {},
-      cartItems: []
+      cartItems: [],
+      subtotal: 0,
+      shipping: 0,
+      gst: 0.07,
+      total: 0
     };
   }
 
@@ -50,11 +54,17 @@ class Main extends Component {
     const cartItem = this.state.items.find((item) => item.itemId === itemId);
     const cartItems = [...this.state.cartItems];
     cartItems.push(cartItem);
-    this.setState({cartItems});
+
+    let {subtotal, shipping, total} = this.state;
+    subtotal += cartItem.salePrice;
+    shipping += cartItem.salePrice * cartItem.standardShipRate;
+    total += subtotal * (1 + this.state.gst);
+
+    this.setState({cartItems, subtotal, shipping, total});
   }
 
   render() {
-    const {searchQuery, items, selectedItem, cartItems} = this.state;
+    const {searchQuery, items, selectedItem, cartItems, subtotal, shipping, gst, total} = this.state;
 
     return (
       <main className={styles.container}>
@@ -72,7 +82,14 @@ class Main extends Component {
           price={selectedItem.salePrice}
           onAddToCart={this.handleAddToCart}
         />
-        <Cart cartItems={cartItems} onSelect={this.handleItemSelect} />
+        <Cart
+          cartItems={cartItems}
+          onSelect={this.handleItemSelect}
+          subtotal={subtotal}
+          shipping={shipping}
+          gst={gst}
+          total={total}
+        />
       </main>
     );
   }

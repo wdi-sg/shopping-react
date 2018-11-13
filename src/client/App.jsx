@@ -1,7 +1,8 @@
 import React from 'react';
 import {hot} from 'react-hot-loader';
 
-//import Counter from './components/counter/counter';
+import Product from './components/product/product';
+
 import Form from './components/form/form';
 
 class App extends React.Component {
@@ -9,10 +10,13 @@ class App extends React.Component {
     super();
     this.getItem = this.getItem.bind( this );
     this.submit = this.submit.bind( this );
+    this.showProduct = this.showProduct.bind( this );
     this.state = {
       query: '',
+      item: null,
+      index: '',
       result: [],
-    }
+      }
 
     }
     getItem(event){
@@ -48,6 +52,12 @@ class App extends React.Component {
 
     };
 
+    showProduct(singleitem, index){
+        console.log("singleitem",singleitem)
+        console.log("index", index)
+        this.setState({item: singleitem});
+    }
+
 
 
 
@@ -56,7 +66,13 @@ class App extends React.Component {
     return (
       <div>
 
-        <Form getItem={this.getItem} submit={this.submit} query={this.state.query} result={this.state.result} />
+        <Form getItem={this.getItem}
+              submit={this.submit}
+              query={this.state.query}
+              result={this.state.result}
+              showProduct={this.showProduct} />
+
+        <Product displayProduct={this.state.item} />
     </div>
     );
   }

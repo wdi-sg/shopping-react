@@ -17,7 +17,7 @@ class Form extends React.Component {
     const resultItems = this.props.result.map((item,index)=>{
         console.log("form result", {item});
         return <div className={styles.showproduct} key={index}>
-               <p>{item.name}</p>
+               <p onClick={()=>this.props.showProduct(item,index)}>{item.name}</p>
                </div>
     });
 

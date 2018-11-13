@@ -6,13 +6,20 @@
 .searchform{
 	width:30%;
 	height:100%;
+	text-align: center;
 	background-color: Silver;
 }
 
 .showproduct{
-	width: 400px;
+	width: 100%;
 	background: pink;
 	font-size: 14px;
 	word-break:break-all;
 
+}
+
+.showproduct p{
+	padding: 8px;
+	text-align: left;
+	margin-top: -10px;
 }

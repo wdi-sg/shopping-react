@@ -15,6 +15,7 @@ class App extends React.Component {
     };
     this.searchHandler = this.searchHandler.bind( this );
     this.getItem = this.getItem.bind( this );
+    this.sortFunc = this.sortFunc.bind( this );
   }
 
   searchHandler(event){
@@ -24,7 +25,7 @@ class App extends React.Component {
     var reactThis = this;
     function reqListener(){
         // console.log("SOMETHING RESPONSE: ", this.responseText);
-        console.log("WHAT IS THIS! ",this);
+        // console.log("WHAT IS THIS! ",this);
 
         //transform the response to real js objects
         const search = JSON.parse( this.responseText );
@@ -48,17 +49,57 @@ class App extends React.Component {
   getItem(event){
     this.setState({searchInput: event.target.value});
   }
+
+  sortFunc(sortby){
+    if(sortby === "ascendPrice"){
+        let sortedArray = this.state.result.sort(function compare(a,b){
+            if(a.salePrice > b.salePrice){
+                return 1;
+            }
+            if(a.salePrice < b.salePrice){
+                return -1;
+            }
+            return 0;
+        })
+        this.setState({result: sortedArray});
+    }
+    else if(sortby === "descendPrice"){
+        let sortedArray = this.state.result.sort(function compare(a,b){
+            if(a.salePrice > b.salePrice){
+                return -1;
+            }
+            if(a.salePrice < b.salePrice){
+                return 1;
+            }
+            return 0;
+        })
+        this.setState({result: sortedArray});
+    }
+    else if(sortby === "reviews"){
+        let sortedArray = this.state.result.sort(function compare(a,b){
+            if(a.numReviews > b.numReviews){
+                return 1;
+            }
+            if(a.numReviews < b.numReviews){
+                return -1;
+            }
+            return 0;
+        })
+        this.setState({result: sortedArray});
+    }
+  }
+
   render() {
     //<Counter message={this.state.message} />
     //<Search search={this.searchHandler} value={input}/>
     //<Search search={this.searchHandler} items={this.getItem} />
 
     const {input} = this.state;
-    console.log("SEARCH APPPPPPPPPP RESULTS: ", this.state.result);
+    // console.log("SEARCH APPPPPPPPPP RESULTS: ", this.state.result);
     return (
       <div>
-        Welcome.
-        <Search search={this.searchHandler} items={this.getItem} result={this.state.result}/>
+        Welcome to Shopping React
+        <Search search={this.searchHandler} sort={this.sortFunc} items={this.getItem} result={this.state.result}/>
       </div>
     );
   }

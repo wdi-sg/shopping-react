@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
+import {Object} from 'es6-shim';
 
 import Search from '../search/search';
 import Product from '../product/product';
 import Cart from '../cart/cart';
 
 import styles from './style.scss';
-import {Object} from 'es6-shim';
 
 class Main extends Component {
   constructor() {

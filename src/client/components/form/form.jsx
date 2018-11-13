@@ -13,11 +13,17 @@ class Form extends React.Component {
 
 
   render() {
+
+    let listItems;
+
     let products = this.props.output;
 
-    let listItems = products.items.map((item, index) => {
-        return(<ListItem key={index} prod={item} />);
-    });
+    if(this.props.output) {
+        listItems = products.map((item, index) => {
+            return(<li key={index}>{item.name}<br />
+                <img src={item.mediumImage} /></li>);
+        })
+    };
 
     console.log('query', this.state.query);
     console.log('output', this.props.output);
@@ -29,22 +35,6 @@ class Form extends React.Component {
             <button type="submit" disabled={this.state.button} >Search</button>
         </form>
         <ul>{listItems}</ul>
-      </div>
-    );
-  }
-}
-
-class ListItem extends React.Component {
-  constructor(props) {
-    super(props);
-  };
-
-
-  render() {
-
-    return (
-      <div>
-        <li>{this.props.prod}</li>
       </div>
     );
   }

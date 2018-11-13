@@ -27,7 +27,7 @@ class App extends React.Component {
         const reqListener = function () {
             let results = JSON.parse(this.responseText);
 
-            reactThis.setState({results: results});
+            reactThis.setState({results: results.items});
         }
 
         let request = new XMLHttpRequest();

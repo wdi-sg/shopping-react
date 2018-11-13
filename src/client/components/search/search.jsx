@@ -14,9 +14,9 @@ class Search extends React.Component {
   }
 
   render() {
-    console.log("THIS.PROPS IN SEARCH IS: ", this.props.result);
+    // console.log("THIS.PROPS IN SEARCH IS: ", this.props.result);
     let mappedResult = this.props.result.map((result, index) => {
-        return <li key={index}>{result.name} ---- {result.salePrice} ---- {result.numReviews}</li>
+        return <div key={index} onClick={this.props.click} data-value={index}>{result.name}</div>
     })
     return (
       <div>
@@ -24,13 +24,14 @@ class Search extends React.Component {
         <input className={styles.name} onChange={this.props.items}/>
         <br/>
         <button onClick={this.props.search}>search</button>
+        <h4>Sort results by</h4>
         <select onChange={this.sort}>
             <option>Sort by...</option>
             <option value="ascendPrice">Price(Ascending)</option>
             <option value="descendPrice">Price (Descending)</option>
             <option value="reviews">Number of reviews</option>
         </select>
-        <h5>Search Results: </h5>
+        <h5>Displaying Results: </h5>
         <ol>
             {mappedResult}
         </ol>
@@ -44,7 +45,8 @@ Search.propTypes = {
   sort: PropTypes.func.isRequired,
   // value: PropTypes.string.isRequired
   items: PropTypes.func.isRequired,
-  result: PropTypes.array.isRequired
+  result: PropTypes.array.isRequired,
+  click: PropTypes.func.isRequired
 };
 
 export default Search;

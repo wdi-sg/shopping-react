@@ -3,6 +3,7 @@ import {hot} from 'react-hot-loader';
 
 import Counter from './components/counter/counter';
 import Search from './components/search/search';
+import Product from './components/product/product';
 import styles from './style.scss';
 
 
@@ -11,11 +12,14 @@ class App extends React.Component {
     super();
     this.state = {
       searchInput: '',
-      result: []
+      result: [],
+      product: '',
+      requiredProduct: ''
     };
     this.searchHandler = this.searchHandler.bind( this );
     this.getItem = this.getItem.bind( this );
     this.sortFunc = this.sortFunc.bind( this );
+    this.clickhandler = this.clickhandler.bind( this );
   }
 
   searchHandler(event){
@@ -89,6 +93,20 @@ class App extends React.Component {
     }
   }
 
+  clickhandler(event){
+    console.log("CLICKING WORKS!");
+    this.state.product = event.target.dataset.value
+    this.state.requiredProduct = this.state.result[this.state.product];
+    this.setState({
+        product: this.state.product,
+        requiredProduct: this.state.requiredProduct
+    });
+    console.log("PRODUCT STATE: ", this.state.product);
+    console.log("REQUIRED PRODUCT STATE: ", this.state.requiredProduct);
+
+
+  }
+
   render() {
     //<Counter message={this.state.message} />
     //<Search search={this.searchHandler} value={input}/>
@@ -99,8 +117,13 @@ class App extends React.Component {
     return (
       <div>
         <h1>Welcome to Walmart.</h1>
-        <div className={styles.flex1}>
-            <Search search={this.searchHandler} sort={this.sortFunc} items={this.getItem} result={this.state.result}/>
+        <div className={styles.container}>
+            <div className={styles.flex1}>
+                <Search search={this.searchHandler} sort={this.sortFunc} items={this.getItem} result={this.state.result} click={this.clickhandler}/>
+            </div>
+            <div className={styles.flex2}>
+                <Product requiredProduct={this.state.requiredProduct}/>
+            </div>
         </div>
       </div>
     );

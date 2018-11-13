@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import Search from '../search/search';
 import Product from '../product/product';
+import Cart from '../cart/cart';
 
 import styles from './style.scss';
 
@@ -11,11 +12,13 @@ class Main extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
     this.handleItemSelect = this.handleItemSelect.bind(this);
+    this.handleAddToCart = this.handleAddToCart.bind(this);
 
     this.state = {
       searchQuery: '',
       items: [],
-      selectedItem: {}
+      selectedItem: {},
+      cartItems: []
     };
   }
 
@@ -43,8 +46,15 @@ class Main extends Component {
     this.setState({selectedItem});
   }
 
+  handleAddToCart(itemId) {
+    const cartItem = this.state.items.find((item) => item.itemId === itemId);
+    const cartItems = [...this.state.cartItems];
+    cartItems.push(cartItem);
+    this.setState({cartItems});
+  }
+
   render() {
-    const {searchQuery, items, selectedItem} = this.state;
+    const {searchQuery, items, selectedItem, cartItems} = this.state;
 
     return (
       <main className={styles.container}>
@@ -56,10 +66,13 @@ class Main extends Component {
           onSelect={this.handleItemSelect}
         />
         <Product
+          itemId={selectedItem.itemId}
           imageUrl={selectedItem.thumbnailImage}
           description={selectedItem.shortDescription}
           price={selectedItem.salePrice}
+          onAddToCart={this.handleAddToCart}
         />
+        <Cart cartItems={cartItems} onSelect={this.handleItemSelect} />
       </main>
     );
   }

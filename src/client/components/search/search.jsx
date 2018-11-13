@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Item from '../item/Item';
+import Item from '../item/item';
 
 import styles from './style.scss';
 

@@ -12,7 +12,8 @@ class Product extends React.Component {
     return(
         <div>
             <h3>Product description</h3>
-            <p>Item: {this.props.requiredProduct.name}</p>
+            <img src={this.props.requiredProduct.mediumImage} />
+            <p>Description: {this.props.requiredProduct.name}</p>
             <p>Price: {this.props.requiredProduct.salePrice}</p>
         </div>
     )

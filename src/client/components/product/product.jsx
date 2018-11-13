@@ -8,17 +8,15 @@ class Product extends React.Component {
 
   };
 
-
   render() {
-
-    console.log('product', this.props.info)
+    console.log('product', this.props.info);
 
     return (
-      <div>
+      <div className={styles.prod}>
         <h2>{this.props.info.name}</h2>
-          <img src={this.props.info.largeImage} />
+          <img src={this.props.info.largeImage} className={styles.image} />
         <div className="short-des">
-          {this.props.info.longDescription}
+          {this.props.info.shortDescription}
         </div>
       </div>
     );

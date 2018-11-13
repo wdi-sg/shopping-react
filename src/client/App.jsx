@@ -79,8 +79,10 @@ class App extends React.Component {
     return (
       <div>
         <h1>Walmart</h1>
-        <Form input={this.getInput} request={this.getQuery} sort={this.sortItems} output={this.state.results} selected={this.selectedProd}/>
-        <Product info={this.state.show} />
+        <div className="children">
+            <Form input={this.getInput} request={this.getQuery} sort={this.sortItems} output={this.state.results} selected={this.selectedProd}/>
+            <Product info={this.state.show} />
+        </div>
         <Counter message={this.state.message} />
       </div>
     );

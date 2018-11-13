@@ -27,16 +27,16 @@ class Form extends React.Component {
    ;
     console.log('output', this.props.output);
     return (
-      <div>
+      <div className={styles.form}>
         <p>Search for your item</p>
         <form className="search-results" onSubmit={this.props.request}>
             <input className={styles.name} onChange={(event) => this.props.input(event)} value={this.state.query} />
             <button type="submit" disabled={this.state.button} >Search</button>
         </form>
-        <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">sort by
-            <span class="caret"></span></button>
-            <ul class="dropdown-menu">
+        <div className="dropdown">
+            <button className="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">sort by
+            <span className="caret"></span></button>
+            <ul className="dropdown-menu">
                 <li><button onClick={(e) => this.props.sort(e)} value="name">Name</button></li>
                 <li><button onClick={(e) => this.props.sort(e)} value="price">Price: from cheapest</button></li>
                 <li><button onClick={(e) => this.props.sort(e)} value="ratings">Customer Ratings</button></li>

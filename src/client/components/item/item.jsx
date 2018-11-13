@@ -8,12 +8,29 @@ class Item extends React.Component {
   }
 
   render() {
-    return (
-        <p>
-      {this.props.item.name}
-      </p>
-    );
-  }
+    let item = this.props.item;
+        if (item) {
+            return (
+                <div>
+                    <h3>{item.name}</h3>
+                      <p>
+                      About:<br/>
+                      {item.shortDescription}
+                      </p>
+
+                      <p>
+                        Price:<br/>
+                        ${item.salePrice}
+                      </p>
+                      <button onClick={() => this.props.addToCart(item)}>Add to cart</button>
+                </div>
+            )
+        }
+        else {
+            return <span/>
+
+        }
+    }
 }
 
 export default Item;

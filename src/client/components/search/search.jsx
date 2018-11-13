@@ -5,16 +5,12 @@ import PropTypes from 'prop-types';
 import styles from './style.scss';
 
 class Results extends React.Component{
-    constructor(){
-        super();
-    }
-
 
     render(){
         return(
             <ul>
             {this.props.item.map((item, i) => (
-                <li key={i} onClick={() => this.props.here(item)} >
+                <li key={i} onClick={() => this.props.display(item)} >
                 {item.name}
                 </li>
           ))}
@@ -70,7 +66,7 @@ class Search extends React.Component {
         <div>
             <input onChange={this.changeHandler} value={this.state.queryData} />
             <button onClick={this.makeQuery}>Search</button>
-            <Results item={this.state.queryResult} here={this.props.display}/>
+            <Results item={this.state.queryResult} display={this.props.display}/>
         </div>
         );
     }

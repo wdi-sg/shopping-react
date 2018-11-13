@@ -1,23 +1,20 @@
 import React from 'react';
 import {hot} from 'react-hot-loader';
-
-import Counter from './components/counter/counter';
 import Form from './components/form/form';
+import styles from './styles/default.scss';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      message: 'hello'
+      message: 'Search Result(s)'
     };
   }
 
   render() {
     return (
-      <div>
-        <Form />
-        Welcome.
-        <Counter message={this.state.message} />
+      <div className={styles.appcontainer}>
+        <Form message={this.state.message}/>
       </div>
     );
   }

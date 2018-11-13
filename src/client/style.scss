@@ -3,6 +3,17 @@ html, body {
   min-width: 700px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-body{
+body {
   padding:20px;
+}
+
+#app {
+	width: 100%;
+
+}
+
+ .children {
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: row;
 }

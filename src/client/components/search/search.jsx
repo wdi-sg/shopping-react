@@ -5,19 +5,13 @@ import styles from './style.scss';
 class Search extends React.Component {
   constructor() {
     super();
-    this.state = {
-      monkey: "hello",
-      input: ''
-    };
-
   }
   render() {
-    // console.log("THIS IN SEARCH IS: ", this.props);
-    // console.log("RESPONSE TEXTTTTTTT: ", this.responseText);
+    console.log("THIS.PROPS IN SEARCH IS: ", this.props.result);
     return (
       <div>
-        <p>{this.state.monkey}</p>
-        <input className={styles.name}/>
+        <h3>THIS.PROPS.TESTING!</h3>
+        <input className={styles.name} onChange={this.props.items}/>
         <button onClick={this.props.search}>search</button>
       </div>
     );
@@ -27,6 +21,8 @@ class Search extends React.Component {
 Search.propTypes = {
   search: PropTypes.func.isRequired,
   // value: PropTypes.string.isRequired
+  items: PropTypes.func.isRequired,
+  result: PropTypes.array.isRequired
 };
 
 export default Search;

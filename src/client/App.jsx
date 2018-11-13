@@ -28,7 +28,7 @@ class App extends React.Component {
 
         //transform the response to real js objects
         const search = JSON.parse( this.responseText );
-        console.log("SOMETHING SEARCHING: ", search.items);
+        // console.log("SOMETHING SEARCHING: ", search.items);
 
 
         // here, we can't do this.setState
@@ -51,16 +51,14 @@ class App extends React.Component {
   render() {
     //<Counter message={this.state.message} />
     //<Search search={this.searchHandler} value={input}/>
+    //<Search search={this.searchHandler} items={this.getItem} />
+
     const {input} = this.state;
-    console.log("SEARCH APPPPPPPPPP: ", this.searchHandler);
+    console.log("SEARCH APPPPPPPPPP RESULTS: ", this.state.result);
     return (
       <div>
-        <form onSubmit={this.searchHandler}>
-            <input className={styles.name} value={this.state.searchInput} onChange={this.getItem}/>
-            <button>search</button>
-        </form>
         Welcome.
-
+        <Search search={this.searchHandler} items={this.getItem} result={this.state.result}/>
       </div>
     );
   }

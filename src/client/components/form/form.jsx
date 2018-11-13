@@ -6,14 +6,14 @@ class Form extends React.Component {
   constructor() {
     super();
     this.state = {
-      monkey: 'haha'
+      shop: 'Walmart'
     };
   }
 
   render() {
     return (
       <div>
-        <p>{this.state.monkey}</p>
+        <p>{this.state.shop}</p>
         <input className={styles.name} />
       </div>
     );

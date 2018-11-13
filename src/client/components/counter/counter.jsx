@@ -8,14 +8,14 @@ class Counter extends React.Component {
   constructor() {
     super();
     this.state = {
-      banana: 'sneakers'
+      items: 'sneakers'
     };
   }
 
   render() {
     return (
       <p className={styles.desc}>
-        {this.props.message} : {this.state.banana}
+        {this.props.message} : {this.state.items}
       </p>
     );
   }

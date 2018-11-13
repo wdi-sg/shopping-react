@@ -15,6 +15,7 @@ class Counter extends React.Component {
 
 
   render() {
+    console.log("counter", this.props.items[0])
     return (
       <p className={styles.desc}>
         {this.props.message} : {this.state.banana}

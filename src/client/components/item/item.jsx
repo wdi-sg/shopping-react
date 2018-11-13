@@ -20,7 +20,7 @@ class Item extends React.Component {
 
                       <p>
                         Price:<br/>
-                        ${item.salePrice}
+                        ${item.msrp}
                       </p>
                       <button onClick={() => this.props.addToCart(item)}>Add to cart</button>
                 </div>

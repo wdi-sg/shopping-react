@@ -12,7 +12,8 @@ class App extends React.Component {
     super();
     this.state = {
      item: '',
-     cart: []
+     cart: [],
+     cost: 0
     };
 
     this.displayItem = this.displayItem.bind(this);
@@ -28,8 +29,14 @@ class App extends React.Component {
     let cartarr = [...this.state.cart];
     cartarr.push(item);
 
-    this.setState({cart: cartarr});
+    let currentTotal = parseInt(this.state.cost);
+    currentTotal += item.msrp;
+
+    this.setState({cart: cartarr, cost: currentTotal});
+
   }
+
+
 
   render() {
     return (
@@ -37,7 +44,7 @@ class App extends React.Component {
         Welcome.
         <Search display={this.displayItem} />
         <Item item={this.state.item} addToCart={this.addToCart} />
-        <Cart cartItems={this.state.cart} />
+        <Cart cartItems={this.state.cart} amt={this.state.cost} />
       </div>
     );
   }

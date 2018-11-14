@@ -14,12 +14,14 @@ class App extends React.Component {
       searchInput: '',
       result: [],
       product: '',
-      requiredProduct: ''
+      requiredProduct: '',
+      addToCartProduct: []
     };
     this.searchHandler = this.searchHandler.bind( this );
     this.getItem = this.getItem.bind( this );
     this.sortFunc = this.sortFunc.bind( this );
     this.clickhandler = this.clickhandler.bind( this );
+    this.onClickAddCart = this.onClickAddCart.bind( this );
   }
 
   searchHandler(event){
@@ -94,17 +96,23 @@ class App extends React.Component {
   }
 
   clickhandler(event){
-    console.log("CLICKING WORKS!");
-    this.state.product = event.target.dataset.value
+    // console.log("CLICKING WORKS!");
+    this.state.product = event.target.dataset.value;
     this.state.requiredProduct = this.state.result[this.state.product];
     this.setState({
         product: this.state.product,
         requiredProduct: this.state.requiredProduct
     });
-    console.log("PRODUCT STATE: ", this.state.product);
-    console.log("REQUIRED PRODUCT STATE: ", this.state.requiredProduct);
+    // console.log("PRODUCT STATE: ", this.state.product);
+    // console.log("REQUIRED PRODUCT STATE: ", this.state.requiredProduct);
+  }
 
-
+  onClickAddCart(item){
+    console.log("CLICKING ADD CART EVENT: ", item);
+    let addToCartProduct = [...this.state.addToCartProduct];
+    addToCartProduct.push(item)
+    this.setState({addToCartProduct});
+    // console.log("ADD TO CART PRODUCTS: ", this.state.addToCartProduct);
   }
 
   render() {
@@ -122,7 +130,10 @@ class App extends React.Component {
                 <Search search={this.searchHandler} sort={this.sortFunc} items={this.getItem} result={this.state.result} click={this.clickhandler}/>
             </div>
             <div className={styles.flex2}>
-                <Product requiredProduct={this.state.requiredProduct}/>
+                <Product requiredProduct={this.state.requiredProduct} clickAddCart={this.onClickAddCart}/>
+            </div>
+            <div className={styles.flex3}>
+                <Counter addToCartProduct={this.state.addToCartProduct}/>
             </div>
         </div>
       </div>

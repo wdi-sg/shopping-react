@@ -1,16 +1,19 @@
 .showproduct{
 	width: 25%;
-	float: left;
+	float: right;
 	font-size: 12px;
 }
 
 .nobullet {
 	padding-left: 0;
-	height: 20px;
+	list-style-type: none;
+}
+
+.cartlist {
+	padding-left: 0;
 	diplay: block;
 	list-style-type: none;
-	font-size: .8em;
-	word-break:break-all;
-	margin-top: 5px;
+	font-size: .9em;
+	margin-top: 25px;
 
 }

@@ -11,10 +11,20 @@ class Product extends React.Component {
     }
 
     render() {
-        console.log("Product at JSX",this.props.displayProduct)
+        // console.log("FUNC: ", this.props.cartItem);
+        console.log("Product at JSX",this.props.displayProduct);
+        //console.log("Product id",itemId); {Object.keys(myproduct).length !== 0 && (
+        let myproduct = this.props.displayProduct;
+
         return(
-            <div>
-            <h4>show product </h4>
+            <div className={styles.displayProduct}>
+                <div>
+                <h4>{myproduct.name}</h4>
+                <img src={myproduct.largeImage} />
+                <p>{myproduct.shortDescription}</p>
+                <p>Sales Price: ${myproduct.salePrice} | Original Price: ${myproduct.msrp}</p>
+                <button onClick={()=>this.props.cartItem(myproduct)}>add to cart</button>
+                </div>
             </div>
 
             )

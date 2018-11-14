@@ -2,13 +2,24 @@ import React from 'react';
 
 import styles from './style.scss';
 
+import Slider from "react-slick";
+
+
 class Item extends React.Component {
   constructor() {
     super();
   }
 
   render() {
+    var settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    };
     let item = this.props.item;
+
         if (item) {
             return (
                 <div>
@@ -17,6 +28,16 @@ class Item extends React.Component {
                       About:<br/>
                       {item.shortDescription}
                       </p>
+
+                    <Slider {...settings}>
+
+                      {item.imageEntities.map((pic, i) => (
+                             <div key={i}>
+                             <img src={pic.mediumImage}/>
+                            </div>
+                      ))}
+                    </Slider>
+
 
                       <p>
                         Price:<br/>

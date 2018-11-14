@@ -11,7 +11,8 @@ class Results extends React.Component{
             <ul>
             {this.props.item.map((item, i) => (
                 <li key={i} onClick={() => this.props.display(item)} >
-                {item.name}
+                {item.name}<br/>
+                ${item.msrp}
                 </li>
           ))}
             </ul>
@@ -99,6 +100,7 @@ class Search extends React.Component {
 
         else if (event.target.value === 'price'){
             let sorted = list.sort(function(a,b) {
+
                 if (a.msrp < b.msrp) {
                     return -1;
                   }

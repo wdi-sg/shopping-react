@@ -8,6 +8,7 @@ class Cart extends React.Component {
   render() {
     return(
       <div>
+      Cart:
        <ul>
             {this.props.cartItems.map((item, i) => (
                 <li key={i} >

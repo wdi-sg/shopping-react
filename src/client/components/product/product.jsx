@@ -2,22 +2,21 @@ import React from 'react';
 
 import styles from './style.scss';
 
-class Form extends React.Component {
+class Product extends React.Component {
   constructor() {
     super();
     this.state = {
-      monkey: 'haha'
+      
     };
   }
 
   render() {
     return (
-      <div>
-        <p>{this.state.monkey}</p>
-        <input className={styles.name} />
+      <div className = {styles.name}>
+        <h1>Product</h1>
       </div>
     );
   }
 }
 
-export default Form;
+export default Product;

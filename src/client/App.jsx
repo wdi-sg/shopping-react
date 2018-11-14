@@ -65,7 +65,7 @@ class App extends React.Component {
     addCart(additem){
         console.log("cart item", additem);
         this.state.additem = additem;
-        this.setState({cartitem: [...this.state.cartitem, this.state.additem]});
+        this.setState({cartitem: [...this.state.cartitem, this.state.additem],allowDisplay: true });
         // console.log("cart Array", this.state.cartitem);
     }
 
@@ -84,7 +84,9 @@ class App extends React.Component {
         {this.state.allowDisplay &&
             <Product cartItem={this.addCart} displayProduct={this.state.item} />
         }
+        {this.state.allowDisplay &&
         <Cart cartItem={this.state.cartitem} />
+        }
     </div>
     );
   }

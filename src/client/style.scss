@@ -6,3 +6,25 @@ html, body {
 body{
   padding:20px;
 }
+
+h1{
+	color: #2875ef;
+}
+
+.container{
+	display: flex;
+	flex-direction: row;
+}
+.flex1{
+	order: 1;
+}
+
+.flex2{
+	margin-left: 30px;
+	order: 2;
+}
+
+.flex3{
+	margin-left: 30px;
+	order: 3;
+}

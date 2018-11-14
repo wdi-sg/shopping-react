@@ -18,6 +18,9 @@ class Item extends React.Component {
       slidesToShow: 1,
       slidesToScroll: 1
     };
+
+    //if item has been selected/ state.item is not null, return description.
+
     let item = this.props.item;
 
         if (item) {
@@ -30,14 +33,12 @@ class Item extends React.Component {
                       </p>
 
                     <Slider {...settings}>
-
                       {item.imageEntities.map((pic, i) => (
                              <div key={i}>
                              <img src={pic.mediumImage}/>
                             </div>
                       ))}
                     </Slider>
-
 
                       <p>
                         Price:<br/>

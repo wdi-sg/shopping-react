@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import styles from './style.scss';
 
+//print out search results, item on click reveals more info
 class Results extends React.Component{
 
     render(){
@@ -18,9 +19,9 @@ class Results extends React.Component{
             </ul>
         )
     }
-
 }
 
+//drop down menu to sort by
 class Sort extends React.Component{
     render(){
         return(
@@ -34,6 +35,7 @@ class Sort extends React.Component{
     }
 }
 
+//search form
 class Search extends React.Component {
     constructor() {
         super();
@@ -54,6 +56,7 @@ class Search extends React.Component {
         console.log("change", event.target.value);
     }
 
+    //sends ajax
     makeQuery() {
         var reactThis = this;
         console.log(this.state.queryData);
@@ -77,6 +80,7 @@ class Search extends React.Component {
 
     }
 
+    //function for onclick to sort results
     sort(event){
         this.setState({ sorted: event.target.value });
         let list = this.state.queryResult;

@@ -31,11 +31,11 @@ class App extends React.Component {
 
     let currentTotal = parseInt(this.state.cost);
     currentTotal += item.msrp;
+    currentTotal = currentTotal.toFixed(2)
 
     this.setState({cart: cartarr, cost: currentTotal});
 
   }
-
 
 
   render() {

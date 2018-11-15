@@ -13,24 +13,17 @@ class Cart extends React.Component {
     };
   }
 
-  // add(a, b){
-  //   a + b
-  // }
-
   render() {
     console.log("CART ITEM: ",this.props.cartItem);
-
 
     let total = this.props.cartItem
 
     const addItems = this.props.cartItem.map((item,index)=>{
         //console.log("form result", {item});
-
         //const total = item.salePrice.reduce();
-
         //console.log("total",total)
 
-        return <li className={styles.cartlist}key={index}>{item.name}</li>
+        return <li className={styles.cartlist}key={index}>{item.name}<p onClick={()=>this.props.remove(item, index)} className={styles.itemdelete}>X</p></li>
     });
 
 

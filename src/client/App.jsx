@@ -12,6 +12,7 @@ class App extends React.Component {
     this.submit = this.submit.bind( this );
     this.showProduct = this.showProduct.bind( this );
     this.addCart = this.addCart.bind( this );
+    this.removeAddCart = this.removeAddCart.bind( this );
     this.state = {
       query: '',
       item: {},
@@ -68,6 +69,18 @@ class App extends React.Component {
         this.setState({cartitem: [...this.state.cartitem, additem],allowDisplay: true });
     }
 
+    removeAddCart(item, index){
+        console.log("removeAddCart",item,index);
+        var list = this.state.cartitem;
+        for(var i = 0; i< list.length; i++){
+            console.log("i",i)
+            if( index == i){
+            list.splice(i, 1);
+            console.log()
+            this.setState({cartitem: list})
+            }
+        }
+     }
 
 
   render() {
@@ -84,7 +97,7 @@ class App extends React.Component {
             <Product cartItem={this.addCart} displayProduct={this.state.item} />
         }
         {this.state.allowDisplay &&
-        <Cart cartItem={this.state.cartitem} />
+        <Cart cartItem={this.state.cartitem} remove={this.removeAddCart} />
         }
     </div>
     );

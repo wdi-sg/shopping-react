@@ -1,6 +1,7 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 import Form from './components/form/form';
+import Results from './components/results/results';
 const axios = require('axios');
 
 class App extends React.Component {
@@ -13,7 +14,12 @@ class App extends React.Component {
     }
 
     search(searchKey){
-        axios.get('/query', searchKey)
+        console.log('searchKey', searchKey)
+        axios.get('/query', {
+            params: {
+                searchKey: searchKey
+            }
+        })
         .then(response => {
             console.log(response);
         })
@@ -32,6 +38,7 @@ class App extends React.Component {
                         <Form
                             search={ this.search }
                         />
+                        <Results/>
                     </div>
                     <div className="col-4 border border-dark">
                         One of three columns

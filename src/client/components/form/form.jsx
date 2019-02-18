@@ -18,7 +18,6 @@ class Form extends React.Component {
     }
 
     render() {
-        console.log(this.state.searchKey)
         return (
             <div className="m-auto text-center">
                 <input 

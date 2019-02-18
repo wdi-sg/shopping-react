@@ -9,25 +9,23 @@ class App extends React.Component {
         super();
         this.search = this.search.bind(this);
         this.state = {
-            message: 'hello',
+            results: ''
         };
     }
 
     search(searchKey){
-        console.log('searchKey', searchKey)
         axios.get('/query', {
             params: {
                 searchKey: searchKey
             }
         })
-        .then(response => {
-            console.log(response);
+        .then(results => {
+            this.setState({
+                results: results
+            });
         })
         .catch(error => {
-            console.log(error)
-        })
-        .then(() => {
-            console.log('done')
+            return error;
         })
     }
 
@@ -38,7 +36,9 @@ class App extends React.Component {
                         <Form
                             search={ this.search }
                         />
-                        <Results/>
+                        <Results
+                            results={ this.state.results }
+                        />
                     </div>
                     <div className="col-4 border border-dark">
                         One of three columns

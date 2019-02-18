@@ -5,19 +5,25 @@ import Counter from './components/counter/counter';
 import Form from './components/form/form';
 
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      message: 'hello',
+      selectedProduct: {},
     };
+
+    this.productData = this.productData.bind(this);
+  }
+
+  productData(data) {
+    this.setState({ selectedProduct: data });
+    console.log(this.state.selectedProduct)
   }
 
   render() {
     return (
-      <div>
-        <Form />
-        Welcome.
-        <Counter message={this.state.message} />
+      <div className="row">
+        <Form onChange={this.productData}/>
+        <Counter product={this.state.selectedProduct} />
       </div>
     );
   }

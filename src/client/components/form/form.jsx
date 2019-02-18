@@ -6,7 +6,7 @@ class Form extends React.Component {
   constructor() {
     super();
     this.state = {
-      monkey: 'haha',
+      monkey: 'this.state.money',
     };
   }
 
@@ -14,7 +14,7 @@ class Form extends React.Component {
     return (
       <div>
         <p>{this.state.monkey}</p>
-        <input className={styles.name} />
+        <input className={styles.name}/>
       </div>
     );
   }

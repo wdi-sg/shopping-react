@@ -19,7 +19,7 @@ class Form extends React.Component {
 
     render() {
         return (
-            <React.Fragment>
+            <div className="m-auto text-center">
                 <input 
                     className = { styles.name }
                     id = "searchKey"
@@ -31,7 +31,7 @@ class Form extends React.Component {
                 >
                     Search
                 </button>
-            </React.Fragment> 
+            </div> 
 
         );
     }

@@ -27,9 +27,20 @@ class App extends React.Component {
 
     render() {
         return ( 
-            <Form
-                search={ this.search }
-            />
+                <div className="row w-100 m-0">
+                    <div className="col-4 border border-dark">
+                        <Form
+                            search={ this.search }
+                        />
+                    </div>
+                    <div className="col-4 border border-dark">
+                        One of three columns
+                    </div>
+                    <div className="col-4 border border-dark">
+                        One of three columns
+                    </div>
+                </div>
+
         );
     }
 }

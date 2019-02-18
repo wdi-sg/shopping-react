@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchResults from './SearchResults';
+import ShowResult from './ShowResult';
 
 class Search extends React.Component {
 
@@ -8,10 +9,12 @@ class Search extends React.Component {
 
 		this.inputHandler = this.inputHandler.bind(this);
 		this.makeSearch = this.makeSearch.bind(this);
+		this.showItem = this.showItem.bind(this);
 
 		this.state = {
 			search: "",
 			results: [],
+			show: [],
 		};
 	}
 
@@ -19,7 +22,7 @@ class Search extends React.Component {
 	    this.setState({search: event.target.value});
 	 }
 
-	 makeSearch() {
+	makeSearch() {
 
 	 	const here = this;
 	 	const {search} = this.state;
@@ -39,18 +42,31 @@ class Search extends React.Component {
 	 	newXReq.open("GET", reqURL);
 	 	newXReq.send();
 
-	 }
+	}
+
+	showItem(event) {
+		const {results} = this.state;
+		// console.log(this.state.results[event.target.value]);
+		let showCase = [];
+		showCase.push(results[event.target.value])
+		// console.log(showCase);
+		this.setState({show: showCase});
+	}
 
 	render() {
 
-		const {results} = this.state;
+		const {results, show} = this.state;
 
 		return (
 			<React.Fragment>
 				<h1>SEARCH!</h1>
 				<input onChange={this.inputHandler} />
 				<button onClick={this.makeSearch}>Search</button>
-				<SearchResults results = {results}/>
+				<SearchResults 
+					results = {results}
+					showItem = {this.showItem}
+				/>
+				<ShowResult showcase = {show}/>
 			</React.Fragment>
 		)
 	}

@@ -6,7 +6,13 @@ class SearchResults extends React.Component {
 		let Results = this.props.results.map ( (result, index) => {
 			return(
 				<React.Fragment>
-	                <p>{result.name}</p>
+	                <button 
+	                	key = {index}
+	                	value = {index}
+	                	onClick = {this.props.showItem}
+	                >
+	                	{result.name}
+	                </button>
 	            </React.Fragment>
 			)
 		})

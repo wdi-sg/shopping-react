@@ -6,6 +6,7 @@ class Search extends React.Component {
 		super();
 
 		this.inputHandler = this.inputHandler.bind(this);
+		this.makeSearch = this.makeSearch.bind(this);
 
 		this.state = {
 			search: "",
@@ -13,8 +14,31 @@ class Search extends React.Component {
 	}
 
 	inputHandler(event){
-		console.log(event.target.value);
+		// console.log(event.target.value);
 	    this.setState({search: event.target.value});
+	 }
+
+	 makeSearch() {
+
+	 	const here = this;
+	 	const {search} = this.state;
+
+	 	const jsonParseResult = () => {
+	 		console.log(this.responseText);
+	 		let result = JSON.parse(this.responseText);
+	 		console.log("result:", result);
+	 	}
+
+	 	const newXReq = new XMLHttpRequest();
+
+	 	const reqURL = "http://localhost:3000/api/query?search=" + search;
+
+	 	console.log("Request URL", reqURL);
+
+	 	newXReq.addEventListener("load", jsonParseResult);
+	 	newXReq.open("GET", reqURL);
+	 	newXReq.send();
+
 	 }
 
 	render() {
@@ -22,6 +46,7 @@ class Search extends React.Component {
 			<React.Fragment>
 				<h1>SEARCH!</h1>
 				<input onChange={this.inputHandler} />
+				<button onClick={this.makeSearch}>Search</button>
 			</React.Fragment>
 		)
 	}

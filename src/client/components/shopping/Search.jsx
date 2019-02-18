@@ -1,4 +1,5 @@
 import React from 'react';
+import SearchResults from './SearchResults';
 
 class Search extends React.Component {
 
@@ -10,11 +11,11 @@ class Search extends React.Component {
 
 		this.state = {
 			search: "",
+			results: [],
 		};
 	}
 
 	inputHandler(event){
-		// console.log(event.target.value);
 	    this.setState({search: event.target.value});
 	 }
 
@@ -24,8 +25,8 @@ class Search extends React.Component {
 	 	const {search} = this.state;
 
 	 	const jsonParseResult = function() {
-	 		let result = JSON.parse(this.responseText);
-	 		console.log("result:", result);
+	 		let result = JSON.parse(this.responseText).items;
+	 		here.setState({results: result});
 	 	}
 
 	 	const newXReq = new XMLHttpRequest();
@@ -41,11 +42,15 @@ class Search extends React.Component {
 	 }
 
 	render() {
+
+		const {results} = this.state;
+
 		return (
 			<React.Fragment>
 				<h1>SEARCH!</h1>
 				<input onChange={this.inputHandler} />
 				<button onClick={this.makeSearch}>Search</button>
+				<SearchResults results = {results}/>
 			</React.Fragment>
 		)
 	}

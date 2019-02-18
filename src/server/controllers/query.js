@@ -17,7 +17,7 @@ module.exports = (db) => {
     request(url, function (error, queryResponse, body) {
           console.log('error:', error); // Print the error if one occurred and handle it
           console.log('statusCode:', queryResponse && queryResponse.statusCode); // Print the response status code if a response was received
-          // console.log(body);
+          console.log(body);
           res.send(body);
     });
    }

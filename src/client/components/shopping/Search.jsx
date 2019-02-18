@@ -23,8 +23,7 @@ class Search extends React.Component {
 	 	const here = this;
 	 	const {search} = this.state;
 
-	 	const jsonParseResult = () => {
-	 		console.log(this.responseText);
+	 	const jsonParseResult = function() {
 	 		let result = JSON.parse(this.responseText);
 	 		console.log("result:", result);
 	 	}

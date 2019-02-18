@@ -15,9 +15,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Form />
         Welcome.
-        <Counter message={this.state.message} />
+        <Form />
+
       </div>
     );
   }

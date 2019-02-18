@@ -26,10 +26,7 @@ class Counter extends React.Component {
   render() {
     return (
       <div>
-          <button onClick={this.handleClick}>click me</button>
-          <p className={styles.desc}>
-            {this.props.message} : {this.state.banana}
-          </p>
+          <button onClick={this.handleClick}>Search</button>
           {this.state.counters.map((counter)=>{ return <p>{counter}</p>})}
       </div>
     );

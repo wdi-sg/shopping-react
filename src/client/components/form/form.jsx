@@ -1,21 +1,42 @@
 import React from 'react';
-
 import styles from './style.scss';
+import ResultList from './resultList'
+
+const axios= require('axios');
+const url = `/query?search=`;
 
 class Form extends React.Component {
   constructor() {
     super();
+    this.keyListener = this.keyListener.bind(this);
     this.state = {
-      monkey: 'haha',
-    };
+      queryResults: []
+    }
+  }
+
+  keyListener(event){
+    if (event.keyCode === 13) {
+      console.log("hi", event.target.value);
+
+      axios.get(`${url}${event.target.value}`) 
+        .then(response => {
+          console.log(response.data);
+          this.setState({queryResults: response.data.items})
+        })
+        .catch(error => {
+          console.log("error", error);
+        });
+    }
   }
 
   render() {
     return (
-      <div>
-        <p>{this.state.monkey}</p>
-        <input className={styles.name} />
-      </div>
+      <React.Fragment>
+        Just Write Something: 
+        <input className={styles.name}  onKeyUp={this.keyListener}/>
+
+        <ResultList queryResults={this.state.queryResults}/>
+      </React.Fragment>
     );
   }
 }

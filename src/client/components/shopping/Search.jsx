@@ -21,33 +21,33 @@ class Search extends React.Component {
 		};
 	}
 
-	componentDidMount() {
-	  console.log( 
-	  	`component did mount \n 
-	  	getting derived state from props \n
-	  	rendering \n
-	  	React updates DOM and refs
-	  	`
-	  );
-	}
+	// componentDidMount() {
+	//   console.log( 
+	//   	`component did mount \n 
+	//   	getting derived state from props \n
+	//   	rendering \n
+	//   	React updates DOM and refs
+	//   	`
+	//   );
+	// }
 
-	componentDidUpdate( prevProps, prevState, snapshot ) {
-	  console.log( `
-	  	component did update \n 
-	  	getting derived state from props \n
-	  	should component update \n
-	  	render \n
-	  	get snapshot before update \n
-	  	react updates dom and refs
-	  	`);
-	  console.log( "prevProps", prevProps);
-	  console.log( "prevState", prevState);
-	  console.log( "snapshot from get snapshot before update: "+snapshot);
-	}
+	// componentDidUpdate( prevProps, prevState, snapshot ) {
+	//   console.log( `
+	//   	component did update \n 
+	//   	getting derived state from props \n
+	//   	should component update \n
+	//   	render \n
+	//   	get snapshot before update \n
+	//   	react updates dom and refs
+	//   	`);
+	//   console.log( "prevProps", prevProps);
+	//   console.log( "prevState", prevState);
+	//   console.log( "snapshot from get snapshot before update: "+snapshot);
+	// }
 
-	componentWillUnmount() {
-	  console.log( "component will unmount");
-	}
+	// componentWillUnmount() {
+	//   console.log( "component will unmount");
+	// }
 
 	inputHandler(event){
 	    this.setState({search: event.target.value});
@@ -85,19 +85,23 @@ class Search extends React.Component {
 	}
 
 	addToCartHandler(event) {
-		console.log("adding to cart");
-		if (event !== undefined)
-			console.log("addtocarthandler", event.target.value);
+		if (event !== undefined) {
+			let selectedItem = [ ...this.state.show];
+			let newCart = [ ...this.state.cart].concat(selectedItem);
+			// console.log(newCart);
+
+			this.setState({cart: [this.state.show,...this.state.cart]});
+			
+		}
 	}
 
 	findListIndex(results, show) {
-		// console.log("index", results.indexOf(show[0]))
 		if (results !== undefined && show !== undefined)
 			return results.indexOf(show[0]);
 	}
 
 	render() {
-
+		console.log("rendering cart", this.state.cart);
 		const {results, show} = this.state;
 
 		return (
@@ -110,8 +114,8 @@ class Search extends React.Component {
 					showItem = {this.showItem}
 				/>
 				<ShowResult 
-					showcase = {show}
-					onClick={this.addToCartHandler}
+					showcase={show}
+					addToCart={this.addToCartHandler}
 				/>
 			</React.Fragment>
 		)

@@ -7,6 +7,7 @@ class Form extends React.Component {
     super();
     this.changeHandler = this.changeHandler.bind( this );
     this.clickHandler = this.clickHandler.bind( this );
+    this.sortHandler = this.sortHandler.bind( this );
     this.state = {
         word : "",
         search : "",
@@ -48,6 +49,43 @@ clickHandler(event){
 
     }
 
+    sortHandler(event){
+        // console.log(event.target.value)
+        if(event.target.value == 1){
+            function compare(a,b) {
+              if (a.salePrice < b.salePrice)
+                return -1;
+              if (a.salePrice > b.salePrice)
+                return 1;
+              return 0;
+            }
+            var sort = this.state.list.sort(compare);
+            this.setState({list: sort});
+        }
+        else if(event.target.value == 2){
+            function compare(a,b) {
+              if (a.salePrice > b.salePrice)
+                return -1;
+              if (a.salePrice < b.salePrice)
+                return 1;
+              return 0;
+            }
+            var sort = this.state.list.sort(compare);
+            this.setState({list: sort});
+        }
+        else if(event.target.value == 3){
+            function compare(a,b) {
+              if (a.name < b.name)
+                return -1;
+              if (a.name > b.name)
+                return 1;
+              return 0;
+            }
+            var sort = this.state.list.sort(compare);
+            this.setState({list: sort});
+        }
+    }
+
     render() {
         // console.log(this.state.list)
         const items = this.state.list.map(item => {return <Item item={item}></Item>})
@@ -57,6 +95,12 @@ clickHandler(event){
               <button onClick={this.clickHandler} value={this.state.search}>search</button>
               <h3>List of search result related to {this.state.word}</h3>
               <ul>
+                <select className="custom-select" onChange={this.sortHandler}>
+                    <option selected>Sort Options</option>
+                    <option value="1">Price ascending</option>
+                    <option value="2">Price descending</option>
+                    <option value="3">Name ascending</option>
+                </select>
                 {items}
               </ul>
           </div>
@@ -66,7 +110,7 @@ clickHandler(event){
 
 class Item extends React.Component{
     render() {
-        // console.log(this.props.item)
+        // console.log(this.props.item.salePrice)
         if(this.props.item.stock == "Available"){
             return (
                 <div>
@@ -79,7 +123,7 @@ class Item extends React.Component{
                           <div className="card-body">
                             <h5 className="card-title">{this.props.item.name}</h5>
                             <p className="card-text">{this.props.item.shortDescription}</p>
-                            <p className="card-text"><small className="text-muted">Availability: {this.props.item.stock} <button onClick={this.props.add} value={this.props.item}>Add item to cart</button></small></p>
+                            <p className="card-text"><small className="text-muted">Price: ${this.props.item.salePrice} Availability: Available <button onClick={this.props.add} value={this.props.item}>Add item to cart</button></small></p>
                           </div>
                         </div>
                       </div>
@@ -101,7 +145,7 @@ class Item extends React.Component{
                       <div className="card-body">
                         <h5 className="card-title">{this.props.item.name}</h5>
                         <p className="card-text">{this.props.item.shortDescription}</p>
-                        <p className="card-text"><small className="text-muted">Availability: {this.props.item.stock}</small></p>
+                        <p className="card-text"><small className="text-muted">Price: ${this.props.item.salePrice} Availability: Not Available</small></p>
                       </div>
                     </div>
                   </div>

@@ -20,10 +20,15 @@ class SearchResults extends React.Component {
 		// console.log("render results",this.props.results);
 
 		return(
-			<React.Fragment>
-				<h1> Search Results </h1>
-				{ Results }
-			</React.Fragment>
+			<div>
+				{
+				this.props.results.length > 0 &&
+				<React.Fragment>
+					<h1> Search Results </h1>
+					{ Results }
+				</React.Fragment>
+				}
+		    </div>
 		)
 	}
 }

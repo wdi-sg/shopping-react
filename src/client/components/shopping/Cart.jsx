@@ -3,24 +3,28 @@ import React from 'react';
 const Cart = ({cart}) => {
 
 	let CartElements = cart.map( (element, index) => {
-		console.log(element[0].name);
+
 		return(
 			<React.Fragment>
-                <button 
-                	key = {index}
-                	value = {index}
-                >
-                	{element[0].name}
-                </button>
+                <div>
+                	<p> Name: { element[0]["name"] }</p>
+			    	<p> Price: { element[0]["salePrice"] }</p>
+			    	<img src={ element[0]["thumbnailImage"] } />
+                </div>
             </React.Fragment>
 		)
 	})
 
 	return(
-		<React.Fragment>
-			<h1>Your cart:</h1>
-			{ CartElements }
-		</React.Fragment>
+		<div>
+			{
+			cart.length > 0 &&
+			<React.Fragment>
+				<h1>Your cart:</h1>
+				{ CartElements }
+			</React.Fragment>
+			}
+	    </div>
 	)
 };
 

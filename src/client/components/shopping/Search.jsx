@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchResults from './SearchResults';
 import ShowResult from './ShowResult';
+import Cart from './Cart';
 
 class Search extends React.Component {
 
@@ -77,21 +78,14 @@ class Search extends React.Component {
 
 	showItem(event) {
 		const {results} = this.state;
-		// console.log(this.state.results[event.target.value]);
 		let showCase = [];
 		showCase.push(results[event.target.value])
-		// console.log(showCase);
 		this.setState({show: showCase});
 	}
 
 	addToCartHandler(event) {
 		if (event !== undefined) {
-			let selectedItem = [ ...this.state.show];
-			let newCart = [ ...this.state.cart].concat(selectedItem);
-			// console.log(newCart);
-
 			this.setState({cart: [this.state.show,...this.state.cart]});
-			
 		}
 	}
 
@@ -101,8 +95,7 @@ class Search extends React.Component {
 	}
 
 	render() {
-		console.log("rendering cart", this.state.cart);
-		const {results, show} = this.state;
+		const {results, show, cart} = this.state;
 
 		return (
 			<React.Fragment>
@@ -116,6 +109,9 @@ class Search extends React.Component {
 				<ShowResult 
 					showcase={show}
 					addToCart={this.addToCartHandler}
+				/>
+				<Cart
+					cart = {cart} 
 				/>
 			</React.Fragment>
 		)

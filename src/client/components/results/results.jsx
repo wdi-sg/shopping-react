@@ -35,7 +35,7 @@ class Results extends React.Component {
 
 class Result extends React.Component {
 
-    modifyShortDescription(){
+    getShortDescription(){
         if (!this.props.result.shortDescription){
             return
         }
@@ -44,6 +44,27 @@ class Result extends React.Component {
             return decode(this.props.result.shortDescription.substring(0,200)) + "...";
         }
         return decode(this.props.result.shortDescription);
+    }
+
+    getReviews(){
+        if (!this.props.result.numReviews){
+            return "No reviews"
+        } else {
+            return "Reviews: " + this.props.result.numReviews
+        }
+    }
+
+    getRating(){
+        if(!this.props.result.numReviews){
+            return 
+        } else {
+            return (
+                <React.Fragment>
+                    <img src={ this.props.result.customerRatingImage }/>
+                    <small>{ this.props.result.customerRating }</small>
+                </React.Fragment>
+            )
+        }
     }
 
     render() {
@@ -55,11 +76,10 @@ class Result extends React.Component {
                 <div>
                     <h5>{ this.props.result.name }</h5>
                     <div>
-                        <img src={ this.props.result.customerRatingImage }/>
-                        <small>{ this.props.result.customerRating }</small>
+                        { this.getRating() }
                     </div>
-                    <small>Reviews: { this.props.result.numReviews }</small>
-                    <p>{ this.modifyShortDescription() }</p>
+                    <small>{ this.getReviews() }</small>
+                    <p>{ this.getShortDescription() }</p>
                 </div>
             </div>
         )

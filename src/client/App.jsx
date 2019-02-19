@@ -20,6 +20,7 @@ class App extends React.Component {
             }
         })
         .then(results => {
+            console.log(results)
             this.setState({
                 results: results
             });

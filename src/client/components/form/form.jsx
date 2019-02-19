@@ -2,6 +2,8 @@ import React from 'react';
 
 import styles from './style.scss'
 
+import Slider from "react-slick";
+
 class Form extends React.Component {
   constructor() {
     super();
@@ -9,6 +11,7 @@ class Form extends React.Component {
     this.clickHandler = this.clickHandler.bind( this );
     this.sortHandler = this.sortHandler.bind( this );
     this.cartHandler = this.cartHandler.bind( this );
+    this.removeHandler = this.removeHandler.bind( this );
     this.state = {
         word : "",
         search : "",
@@ -113,18 +116,36 @@ class Form extends React.Component {
         this.setState({cart: [cart, ...this.state.cart], price: [amt, ...this.state.price]},function calculate(){
                 const sum = this.state.price.reduce((total, a) => total + a);
                 const tax = sum * 0.07;
-                const total = sum + tax + 10
+                const total = sum + tax + 7
                 this.setState({subTotal: sum.toFixed(2), gst: tax.toFixed(2), totalPrice: total.toFixed(2)});
             });
+    }
+
+    removeHandler(event){
+        for(let i = 0; i < this.state.cart.length; i++){
+            var element = this.state.cart.indexOf(event.target.value)
+            if(this.state.cart[i].name.includes(event.target.value) == true){
+                var newArray = this.state.cart.slice();
+                newArray.splice(element, 1);
+                this.setState({cart: newArray},function calculate(){
+                    const sum = this.state.price.reduce((total, a) => total + a);
+                    const tax = sum * 0.07;
+                    const total = sum + tax + 7
+                    this.setState({subTotal: sum.toFixed(2), gst: tax.toFixed(2), totalPrice: total.toFixed(2)});
+                });
+            }
+        }
     }
 
     render() {
         // console.log(this.state.list)
 
         const items = this.state.list.map(item => {return <Item item={item} add={this.cartHandler}></Item>})
-        const cartItems = this.state.cart.map(item => {return <Cart item={item}></Cart>})
+        const cartItems = this.state.cart.map(item => {return <Cart item={item} remove={this.removeHandler}></Cart>})
         return (
           <div>
+          <SimpleSlider/>
+          <br/>
               <input onChange={this.changeHandler} value={this.state.search} maxlength="10"/>
               <button onClick={this.clickHandler} value={this.state.search}>search</button>
                 <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal" ><i class="fas fa-shopping-cart"></i> Cart</button>
@@ -142,7 +163,7 @@ class Form extends React.Component {
                         {cartItems}
                         Sub total: ${this.state.subTotal}
                         <br/>
-                        Shipping Fee: $10
+                        Shipping Fee: $7
                         <br/>
                         GST: ${this.state.gst}(7%)
                         <br/>
@@ -172,12 +193,14 @@ class Form extends React.Component {
 
 class Cart extends React.Component{
     render(){
+        // console.log(this.props.item)
         return(
             <div>
                 <ul>
                     <strong>Name:</strong> {this.props.item.name}
                     <br/>
                     <strong>Price:</strong> ${this.props.item.price}
+                    <button onClick={this.props.remove} value={this.props.item.name}>remove item</button>
                 </ul>
             </div>
         );
@@ -232,6 +255,43 @@ class Item extends React.Component{
           );
         }
     }
+}
+
+class SimpleSlider extends React.Component {
+  render() {
+    var settings = {
+      dots: true,
+      infinite: true,
+      speed: 500,
+      autoplay: true,
+      autoplaySpeed: 3000,
+      cssEase: "linear",
+      slidesToShow: 1,
+      slidesToScroll: 1
+    };
+    return (
+      <Slider {...settings}>
+        <div>
+          <img src="https://www.animenewsnetwork.com/thumbnails/crop600x315/cms/news.2/135613/dororo.jpg" width="900px" height="450px"/>
+        </div>
+        <div>
+          <img src="https://cdn-images-1.medium.com/max/1600/1*EpBnwzNlVcbmPnPgjhQ-rw.jpeg" width="900px" height="450px"/>
+        </div>
+        <div>
+          <img src="https://images7.alphacoders.com/395/thumb-1920-395680.jpg" width="900px" height="450px"/>
+        </div>
+        <div>
+          <img src="https://i.ytimg.com/vi/4urGlcrltHo/maxresdefault.jpg" width="900px" height="450px"/>
+        </div>
+        <div>
+          <img src="https://media.comicbook.com/2018/08/sword-art-online-alicization-1129100-1280x0.jpeg" width="900px" height="450px"/>
+        </div>
+        <div>
+          <img src="http://wallpapersdsc.net/wp-content/uploads/2016/09/Dialga-Widescreen.jpg" width="900px" height="450px"/>
+        </div>
+      </Slider>
+    );
+  }
 }
 
 export default Form;

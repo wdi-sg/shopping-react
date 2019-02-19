@@ -15,7 +15,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        Welcome to Walmart
+        <h1>Welcome to Walmart! Anime Slider :D</h1>
         <Form />
 
       </div>

@@ -2,11 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class ShowSearchResults extends React.Component {
+    constructor(){
+        super();
+        this.onClick = this.onClick.bind(this);
+    }
+
+    onClick(event){
+        const userSelect = event.target.value;
+        this.props.selectSetState(userSelect);
+
+        let pdtObj = this.props.searchResults.find(pdt => pdt.itemId == userSelect);
+        this.props.selectedPdtSetState(pdtObj);
+    }
+
     render(){
         let results = this.props.searchResults.map( (result, index) => {
             return(
                 <div>
-                    <button key={index} value={index}>
+                    <button key={index} value={result.itemId} onClick={this.onClick}>
                         {result.name}
                     </button>
                 </div>
@@ -25,7 +38,10 @@ class ShowSearchResults extends React.Component {
 }
 
 ShowSearchResults.propTypes = {
-    searchResults: PropTypes.array.isRequired,
+    searchResults: PropTypes.array,
+    selectSetState: PropTypes.func,
+    selectClick: PropTypes.string,
+    selectedPdtSetState: PropTypes.func,
 };
 
 

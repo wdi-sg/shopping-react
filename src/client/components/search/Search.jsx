@@ -1,16 +1,21 @@
 import React from 'react';
 import SearchInput from './SearchInput';
 import ShowSearchResults from './ShowSearchResults';
+import ShowProduct from '../product/ShowProduct';
 
 class Search extends React.Component {
 
     constructor(){
         super();
         this.searchInputSetState = this.searchInputSetState.bind(this);
+        this.selectSetState = this.selectSetState.bind(this);
+        this.selectedPdtSetState = this.selectedPdtSetState.bind(this);
         this.onClick = this.onClick.bind(this);
         this.state = {
-            searchInput: 'test',
+            searchInput: '',
             searchResults: [],
+            selectClick: '',
+            selectedPdt: [''],
         }
     }
 
@@ -37,21 +42,39 @@ class Search extends React.Component {
     }
 
 
+    selectSetState(userSelect){
+        this.setState( {selectClick: userSelect} );
+    }
+
+    selectedPdtSetState(pdtObj){
+        let pdtData = [];
+        pdtData.push(pdtObj);
+        console.log(pdtData);
+        this.setState( {selectedPdt: pdtData} );
+    }
+
     render(){
+        // let selectedPdt = this.state.selectedPdt;
+
         return(
-            <div>
+                <div>
 
-                <SearchInput
-                    searchInputSetState={this.searchInputSetState}
-                />
+                    <SearchInput
+                        searchInputSetState={this.searchInputSetState}
+                    />
 
-                <button onClick={this.onClick}>Search</button>
+                    <button onClick={this.onClick}>Search</button>
 
-                <ShowSearchResults
-                    searchResults={this.state.searchResults}
-                />
+                    <ShowSearchResults
+                        searchResults={this.state.searchResults}
+                        selectSetState={this.selectSetState}
+                        selectedPdtSetState={this.selectedPdtSetState}
+                    />
+                    <ShowProduct
+                        selectedPdt={this.state.selectedPdt}
+                    />
+                </div>
 
-            </div>
         )
 
     }

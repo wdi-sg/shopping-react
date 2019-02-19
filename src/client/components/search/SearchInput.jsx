@@ -6,15 +6,10 @@ class SearchInput extends React.Component {
     constructor(){
         super();
         this.onChange = this.onChange.bind(this);
-        // this.state = {
-        //     searchInput: '',
-        // }
     }
 
     onChange(event){
         let userInput = event.target.value;
-        console.log('userInput',userInput);
-        // this.setState( {searchInput: userInput} );
         this.props.searchInputSetState(userInput);
     }
 

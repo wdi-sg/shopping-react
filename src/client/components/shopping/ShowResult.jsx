@@ -3,8 +3,7 @@ import React from 'react';
 class ShowResult extends React.Component {
 	render () {
 
-		const {showcase, index} = this.props;
-		console.log("showresult",index);
+		const {showcase, addToCartHandler} = this.props;
 
 		return(
 			<div>
@@ -18,6 +17,7 @@ class ShowResult extends React.Component {
 			    		<p> Description: { showcase[0]["shortDescription"] }</p>
 			    		<p> Customer Rating: { showcase[0]["customerRating"] }</p>
 			    		<p> Available: { showcase[0]["availableOnline"] }</p>
+			    		<button onClick= {addToCartHandler}> Add to cart </button>
 		          </React.Fragment>
 		        }
 	        </div>

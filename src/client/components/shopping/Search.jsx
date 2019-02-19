@@ -21,6 +21,34 @@ class Search extends React.Component {
 		};
 	}
 
+	componentDidMount() {
+	  console.log( 
+	  	`component did mount \n 
+	  	getting derived state from props \n
+	  	rendering \n
+	  	React updates DOM and refs
+	  	`
+	  );
+	}
+
+	componentDidUpdate( prevProps, prevState, snapshot ) {
+	  console.log( `
+	  	component did update \n 
+	  	getting derived state from props \n
+	  	should component update \n
+	  	render \n
+	  	get snapshot before update \n
+	  	react updates dom and refs
+	  	`);
+	  console.log( "prevProps", prevProps);
+	  console.log( "prevState", prevState);
+	  console.log( "snapshot from get snapshot before update: "+snapshot);
+	}
+
+	componentWillUnmount() {
+	  console.log( "component will unmount");
+	}
+
 	inputHandler(event){
 	    this.setState({search: event.target.value});
 	 }
@@ -57,6 +85,7 @@ class Search extends React.Component {
 	}
 
 	addToCartHandler(event) {
+		console.log("adding to cart");
 		if (event !== undefined)
 			console.log("addtocarthandler", event.target.value);
 	}
@@ -81,7 +110,6 @@ class Search extends React.Component {
 					showItem = {this.showItem}
 				/>
 				<ShowResult 
-					index = {this.findListIndex(results, show)}
 					showcase = {show}
 					onClick={this.addToCartHandler}
 				/>
@@ -91,3 +119,22 @@ class Search extends React.Component {
 }
 
 export default Search;
+
+	// static getDerivedStateFromProps( nextProps, prevState ){
+	//   console.log( "get derived state from props");
+	//   console.log( "nextProps", nextProps);
+	//   console.log( "prevState", prevState);
+	//   return null;
+	// }
+	// getSnapshotBeforeUpdate( prevProps, prevState ){
+	//   console.log("get snapshot before update");
+	//   console.log( "prevProps", prevProps);
+	//   console.log( "prevState", prevState);
+	//   return "***the snapshot***";
+	// }
+	// shouldComponentUpdate( nextProps, nextState ) {
+	//   console.log( "decide if component should update");
+	//   console.log( "nextProps", nextProps);
+	//   console.log( "nextState", nextState);
+	//   return true;
+	// }

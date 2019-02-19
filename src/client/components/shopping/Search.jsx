@@ -2,6 +2,7 @@ import React from 'react';
 import SearchResults from './SearchResults';
 import ShowResult from './ShowResult';
 import Cart from './Cart';
+import Clock from './Clock';
 
 class Search extends React.Component {
 
@@ -99,6 +100,7 @@ class Search extends React.Component {
 
 		return (
 			<React.Fragment>
+				<Clock />
 				<h1>SEARCH!</h1>
 				<input onChange={this.inputHandler} />
 				<button onClick={this.makeSearch}>Search</button>

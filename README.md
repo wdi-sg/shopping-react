@@ -40,7 +40,7 @@ Add a sorting function to the search page. (just sort the results you currently 
 When the add to cart button is clicked again, add another item to the cart.
 
 #### further
-Let the user take things back out of the cart
+Let the user take things back out of the cart.
 
 #### further
 Make each item in the cart a link. When the user clicks an item it opens in the product display tab.

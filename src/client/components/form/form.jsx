@@ -15,6 +15,8 @@ class Form extends React.Component {
         list : [],
         cart : [],
         price : [],
+        subTotal : 0,
+        gst : 0,
         totalPrice : 0,
         validation: false
     };
@@ -108,9 +110,12 @@ class Form extends React.Component {
             name: name,
             price: amt
         }
-        const sum = this.state.price.reduce((total, a) => total + a);
-        // console.log(sum)
-        this.setState({cart: [cart, ...this.state.cart], price: [amt, ...this.state.price], totalPrice: sum});
+        this.setState({cart: [cart, ...this.state.cart], price: [amt, ...this.state.price]},function calculate(){
+                const sum = this.state.price.reduce((total, a) => total + a);
+                const tax = sum * 0.07;
+                const total = sum + tax + 10
+                this.setState({subTotal: sum.toFixed(2), gst: tax.toFixed(2), totalPrice: total.toFixed(2)});
+            });
     }
 
     render() {
@@ -135,7 +140,13 @@ class Form extends React.Component {
                       </div>
                       <div class="modal-body">
                         {cartItems}
-                        <strong>Total Price: {this.state.totalPrice}</strong>
+                        Sub total: ${this.state.subTotal}
+                        <br/>
+                        Shipping Fee: $10
+                        <br/>
+                        GST: ${this.state.gst}(7%)
+                        <br/>
+                        <strong>Total Price: ${this.state.totalPrice}</strong>
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

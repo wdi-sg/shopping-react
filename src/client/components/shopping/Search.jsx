@@ -10,11 +10,14 @@ class Search extends React.Component {
 		this.inputHandler = this.inputHandler.bind(this);
 		this.makeSearch = this.makeSearch.bind(this);
 		this.showItem = this.showItem.bind(this);
+		this.addToCartHandler = this.addToCartHandler.bind(this);
+		this.findListIndex = this.findListIndex.bind(this);
 
 		this.state = {
 			search: "",
 			results: [],
 			show: [],
+			cart: [],
 		};
 	}
 
@@ -53,6 +56,17 @@ class Search extends React.Component {
 		this.setState({show: showCase});
 	}
 
+	addToCartHandler(event) {
+		if (event !== undefined)
+			console.log("addtocarthandler", event.target.value);
+	}
+
+	findListIndex(results, show) {
+		// console.log("index", results.indexOf(show[0]))
+		if (results !== undefined && show !== undefined)
+			return results.indexOf(show[0]);
+	}
+
 	render() {
 
 		const {results, show} = this.state;
@@ -66,7 +80,11 @@ class Search extends React.Component {
 					results = {results}
 					showItem = {this.showItem}
 				/>
-				<ShowResult showcase = {show}/>
+				<ShowResult 
+					index = {this.findListIndex(results, show)}
+					showcase = {show}
+					onClick={this.addToCartHandler}
+				/>
 			</React.Fragment>
 		)
 	}

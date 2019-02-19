@@ -3,8 +3,8 @@ import React from 'react';
 class ShowResult extends React.Component {
 	render () {
 
-		const {showcase} = this.props;
-		console.log(showcase[0]);
+		const {showcase, index} = this.props;
+		console.log("showresult",index);
 
 		return(
 			<div>

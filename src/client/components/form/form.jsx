@@ -8,44 +8,60 @@ class Form extends React.Component {
     this.changeHandler = this.changeHandler.bind( this );
     this.clickHandler = this.clickHandler.bind( this );
     this.sortHandler = this.sortHandler.bind( this );
+    this.cartHandler = this.cartHandler.bind( this );
     this.state = {
         word : "",
         search : "",
         list : [],
+        cart : [],
+        price : [],
+        totalPrice : 0,
+        validation: false
     };
 }
 
-changeHandler(event){
-    if(event.target.value.length > 9){
-        alert("WARNING ERROR!! INPUT TOO LONG!!!")
+    changeHandler(event){
+        if(event.target.value.length > 9){
+            alert("WARNING ERROR!! INPUT TOO LONG!!!")
+        }
+        else if(event.target.value.length < 0){
+            this.setState({validation: false});
+        }
+        else if(event.target.value.length > 0){
+            this.setState({validation: true});
+        }
+        this.setState({search: event.target.value});
     }
-    this.setState({search: event.target.value});
-}
 
-clickHandler(event){
-    // console.log(event.target.value)
-    var that = this;
-    that.setState({word: event.target.value});
+    clickHandler(event){
+        // console.log(event.target.value)
+        if(this.state.validation == true){
+            var that = this;
+            that.setState({word: event.target.value});
 
-        // what to do when we recieve the request
-        var responseHandler = function() {
-          const data = JSON.parse(this.responseText);
-          // console.log(data.items)
-          that.setState({search: "", list: data.items});
-          // console.log(this.responseText)
-      };
+            // what to do when we recieve the request
+            var responseHandler = function() {
+              const data = JSON.parse(this.responseText);
+              // console.log(data.items)
+              that.setState({search: "", list: data.items});
+              // console.log(this.responseText)
+            };
 
-        // make a new request
-        var request = new XMLHttpRequest();
+            // make a new request
+            var request = new XMLHttpRequest();
 
-        // listen for the request response
-        request.addEventListener("load", responseHandler);
+            // listen for the request response
+            request.addEventListener("load", responseHandler);
 
-        // ready the system by calling open, and specifying the url
-        request.open("GET", `http://127.0.0.1:3000/query?search=${event.target.value}`);
+            // ready the system by calling open, and specifying the url
+            request.open("GET", `http://127.0.0.1:3000/query?search=${event.target.value}`);
 
-        // send the request
-        request.send();
+            // send the request
+            request.send();
+        }
+        else if(this.state.validation == false){
+            alert("Input field empty!")
+        }
 
     }
 
@@ -86,13 +102,48 @@ clickHandler(event){
         }
     }
 
+    cartHandler(name, amt){
+        // console.log(name, amt)
+        var cart = {
+            name: name,
+            price: amt
+        }
+        const sum = this.state.price.reduce((total, a) => total + a);
+        // console.log(sum)
+        this.setState({cart: [cart, ...this.state.cart], price: [amt, ...this.state.price], totalPrice: sum});
+    }
+
     render() {
         // console.log(this.state.list)
-        const items = this.state.list.map(item => {return <Item item={item}></Item>})
+
+        const items = this.state.list.map(item => {return <Item item={item} add={this.cartHandler}></Item>})
+        const cartItems = this.state.cart.map(item => {return <Cart item={item}></Cart>})
         return (
           <div>
               <input onChange={this.changeHandler} value={this.state.search} maxlength="10"/>
               <button onClick={this.clickHandler} value={this.state.search}>search</button>
+                <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal" ><i class="fas fa-shopping-cart"></i> Cart</button>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Cart</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        {cartItems}
+                        <strong>Total Price: {this.state.totalPrice}</strong>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Procceed Checkout</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               <h3>List of search result related to {this.state.word}</h3>
               <ul>
                 <select className="custom-select" onChange={this.sortHandler}>
@@ -105,6 +156,20 @@ clickHandler(event){
               </ul>
           </div>
           );
+    }
+}
+
+class Cart extends React.Component{
+    render(){
+        return(
+            <div>
+                <ul>
+                    <strong>Name:</strong> {this.props.item.name}
+                    <br/>
+                    <strong>Price:</strong> ${this.props.item.price}
+                </ul>
+            </div>
+        );
     }
 }
 
@@ -123,7 +188,7 @@ class Item extends React.Component{
                           <div className="card-body">
                             <h5 className="card-title">{this.props.item.name}</h5>
                             <p className="card-text">{this.props.item.shortDescription}</p>
-                            <p className="card-text"><small className="text-muted">Price: ${this.props.item.salePrice} Availability: Available <button onClick={this.props.add} value={this.props.item}>Add item to cart</button></small></p>
+                            <p className="card-text"><small className="text-muted">Price: ${this.props.item.salePrice} Availability: Available <button onClick={() => {this.props.add(this.props.item.name, this.props.item.salePrice)}}>Add item to cart</button></small></p>
                           </div>
                         </div>
                       </div>

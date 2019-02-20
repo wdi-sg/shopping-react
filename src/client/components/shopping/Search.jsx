@@ -68,11 +68,11 @@ class Search extends React.Component {
 	 	const jsonParseResult = function() {
 	 		let result = JSON.parse(this.responseText).items;
 	 		// console.log(result);
-	 		let resultWithId = result.map( function(result) {
-				let updateResult = Object.assign({}, result);
-				updateResult.id = shortid.generate();
-				return updateResult;
-			})
+	 	// 	let resultWithId = result.map( function(result) {
+			// 	let updateResult = Object.assign({}, result);
+			// 	updateResult.id = shortid.generate();
+			// 	return updateResult;
+			// })
 			// console.log(resultWithId);
 	 		here.setState({results: result});
 	 	}
@@ -98,7 +98,14 @@ class Search extends React.Component {
 
 	addToCartHandler(event) {
 		if (event !== undefined) {
-			this.setState({cart: [this.state.show,...this.state.cart]});
+
+			let cartWithId = Object.assign({}, this.state.show[0]);
+			cartWithId.id = shortid.generate();
+
+			// console.log(cartWithId);
+			// console.log(cartWithId.id);
+			
+			this.setState({cart: [cartWithId,...this.state.cart]});
 		}
 	}
 

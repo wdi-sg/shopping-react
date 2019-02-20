@@ -6,7 +6,7 @@ class SearchResults extends React.Component {
 		let Results = this.props.results.map ( (result, index) => {
 			return(
 	                <button 
-	                	key = {result.name}
+	                	key = {result.itemId.toString()}
 	                	value = {index}
 	                	onClick = {this.props.showItem}
 	                >

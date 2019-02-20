@@ -5,10 +5,10 @@ const Cart = ({cart}) => {
 	let CartElements = cart.map( (element, index) => {
 
 		return(
-            <div key={ index } >
-            	<p> Name: { element[0]["name"] }</p>
-		    	<p> Price: { element[0]["salePrice"] }</p>
-		    	<img src={ element[0]["thumbnailImage"] } />
+            <div key = { element.id }>
+            	<p> Name: { element.name }</p>
+		    	<p> Price: { element.salePrice }</p>
+		    	<img src={ element.thumbnailImage } />
             </div>
 		)
 	})

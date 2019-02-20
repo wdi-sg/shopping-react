@@ -6,7 +6,8 @@ var decode = require('decode-html');
 class Results extends React.Component {
 
     mappedResults(){
-        if (this.props.results){
+        console.log(this.props.results)
+        if (this.props.results && this.props.results.data.items && this.props.results.data.items.length > 0){
             return this.props.results.data.items.map((result, index) => {
                 return (
                     <Result 
@@ -15,10 +16,17 @@ class Results extends React.Component {
                     />
                 )
             });
+        } else if(this.props.results) {
+            return (
+                <div>
+                    { this.props.results.data.message }
+                </div>
+            )
+            
         } else {
             return (
                 <div>
-                    No results
+                    No searches done yet
                 </div>
             )
         }
@@ -61,9 +69,25 @@ class Result extends React.Component {
             return (
                 <React.Fragment>
                     <img src={ this.props.result.customerRatingImage }/>
-                    <small>{ this.props.result.customerRating }</small>
+                    <small>{ parseFloat(this.props.result.customerRating).toFixed(2) }</small>
                 </React.Fragment>
             )
+        }
+    }
+
+    getPriceAndAvailability(){
+        if (!this.props.result.availableOnline){
+            return (
+                <p className="mb-0 text-danger">
+                    <strong>NOT AVAILABLE ONLINE</strong>
+                </p>
+            )
+        } else if(this.props.result.salePrice){
+            return (
+                <strong>{'$' + this.props.result.salePrice.toFixed(2)}</strong>
+            )
+        } else {
+            return
         }
     }
 
@@ -75,6 +99,7 @@ class Result extends React.Component {
                 </div>
                 <div>
                     <h5>{ this.props.result.name }</h5>
+                    { this.getPriceAndAvailability() }
                     <div>
                         { this.getRating() }
                     </div>

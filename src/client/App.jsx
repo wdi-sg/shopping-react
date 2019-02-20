@@ -13,14 +13,14 @@ class App extends React.Component {
         };
     }
 
-    search(searchKey){
+    search(searchKey, sortBy){
         axios.get('/query', {
             params: {
-                searchKey: searchKey
+                query: searchKey,
+                sort: sortBy
             }
         })
         .then(results => {
-            console.log(results)
             this.setState({
                 results: results
             });

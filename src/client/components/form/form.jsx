@@ -100,25 +100,27 @@ sortHandler(event){
 }
 
 
-    class ListItem extends React.Component {
-        render() {
-            return (
-                <ul className = "list-group">
-                    {this.props.counter.map((listitem , index)=>{
-                    return <li className = "list-group-item"> <img src = {listitem.mediumImage}/>
-                        <h6>
-                            {listitem.name}
-                        </h6>
-                        <p>
-                            {listitem.shortDescription}
-                        </p>
-                        <hr/>
-                        <small>${listitem.salePrice}</small>
-                    </li>
-                    })}
-                </ul>
-            );
-        }
+class ListItem extends React.Component {
+    render() {
+        return (
+            <ul className = "list-group">
+                {this.props.counter.map((listitem , index)=>{
+                return <li className = "list-group-item"> <img src = {listitem.mediumImage}/>
+                    <h6>
+                        {listitem.name}
+                    </h6>
+                    <p>
+                        {listitem.shortDescription}
+                    </p>
+                    <hr/>
+                    <small>${listitem.salePrice}</small>
+                </li>
+                })}
+            </ul>
+        );
     }
+}
+
+
 
 export default Form;

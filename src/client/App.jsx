@@ -69,18 +69,38 @@ class BuggyButton extends React.Component {
 class App extends React.Component {
   constructor() {
     super();
+
+    this.handleLogin = this.handleLogin.bind(this);
+
     this.state = {
       message: 'hello',
+      isLoggedIn: false,
     };
   }
 
+  handleLogin() {
+    console.log("Changing Login Status");
+    this.setState({
+      isLoggedIn: !this.state.isLoggedIn,
+    })
+  }
+
   render() {
+
+    const {isLoggedIn} = this.state;
+
     return (
       <div>
         <ErrorBoundary>
-          <BuggyButton /> 
+          <BuggyButton />
+          <button onClick={this.handleLogin}>Change Login Status</button>
           <h1>Welcome.</h1>
-          <Search />
+          {
+          isLoggedIn &&
+          <React.Fragment>
+            <Search />
+          </React.Fragment>
+          }
         </ErrorBoundary>
       </div>
     );

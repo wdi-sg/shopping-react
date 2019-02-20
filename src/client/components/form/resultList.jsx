@@ -3,33 +3,52 @@ import styles from './style.scss';
 import EachResult from './eachResult'
 
 class ResultList extends React.Component {
-    constructor(props){
+    constructor(){
         super();
         this.state = {
-            sorting: "",
-            resultList: props.queryResults
+            resultList: [], 
+            sorting: undefined
         }
-        this.setResultList = this.setResultList.bind(this);
         this.sortHandler = this.sortHandler.bind(this);
     }
 
-    setResultList(){
-        this.setState({resultList: this.props.queryResults})
-    }
-
     sortHandler() {
-        this.setState({sorting: event.target.value});
         if (this.props.queryResults.length > 0 ) {
-            let eachItem = [...this.state.resultList]
-            console.log(eachItem, this.props.queryResults);
+            let resultList = [...this.state.resultList]
+            
+            // sort by price ascending
+            if (event.target.value === "priceAsc"){
+                resultList = resultList.sort((a, b) => {
+                    return a.salePrice - b.salePrice
+                })
 
+            // sort by price descending
+            } else {
+                    resultList = resultList.sort((a, b) => {
+                        return b.salePrice - a.salePrice
+                    })
+            }
+            console.log(resultList)
+            this.setState({resultList: resultList, sorting: event.target.value})
         } 
     }
+    
+    static getDerivedStateFromProps( nextProps, prevState ){
+        if (!prevState.sorting && nextProps.queryResults !== prevState.resultList){
+            console.log(nextProps, prevState);
+            return {
+                resultList: nextProps.queryResults
+            }
+        } else {
+            return null;
+        }
+      }
 
     render(){
+
+        console.log("oi look here", this.state.resultList)
         return(
             <React.Fragment>
-            {/* {this.setResultList()} */}
             
             <h2>Results</h2>
             <select onChange={this.sortHandler}>
@@ -38,7 +57,7 @@ class ResultList extends React.Component {
                 <option value="priceDesc">Price Desc</option>
             </select>
             <div>
-                
+                <EachResult resultList={this.state.resultList}/>
             </div>
             </React.Fragment>
         )

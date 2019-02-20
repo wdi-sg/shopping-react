@@ -71,10 +71,15 @@ class App extends React.Component {
     super();
 
     this.handleLogin = this.handleLogin.bind(this);
+    this.handleChange = this.handleChange.bind(this);
 
     this.state = {
       message: 'hello',
       isLoggedIn: false,
+      name: '',
+      email: '',
+      number: '',
+      isSearching: '',
     };
   }
 
@@ -85,9 +90,21 @@ class App extends React.Component {
     })
   }
 
+  handleChange(event) {
+    const target = event.target;
+    const name = target.name;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    
+    this.setState({
+      [name]: value,
+    })
+
+    console.log(this.state);
+  }
+
   render() {
 
-    const {isLoggedIn} = this.state;
+    const {isLoggedIn, name, email, number, isSearching} = this.state;
 
     return (
       <div>
@@ -99,6 +116,33 @@ class App extends React.Component {
             <button onClick={this.handleLogin}>Login</button>
           }
           <h1>Welcome.</h1>
+          Name:<input 
+            name="name"
+            type="textfield"
+            value={name}
+            onChange={this.handleChange}
+          />
+          <br />
+          Email:<input 
+            name="email"
+            type="textfield"
+            value={email}
+            onChange={this.handleChange}
+          />
+          <br />
+          Number:<input 
+            name="number"
+            type="number"
+            value={number}
+            onChange={this.handleChange}
+          />
+          <br />
+          Searching?:<input 
+            name="isSearching"
+            type="checkbox"
+            value={isSearching}
+            onChange={this.handleChange}
+          />
           <p>You are currently { isLoggedIn ? "logged in" : "not logged in" }.</p>
           {
             isLoggedIn &&

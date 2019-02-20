@@ -2,6 +2,7 @@ import React from 'react';
 import { hot } from 'react-hot-loader';
 
 import { Search } from './components/shopping/';
+import Calculator from './components/calculate/Calculator'
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -116,6 +117,7 @@ class App extends React.Component {
             <button onClick={this.handleLogin}>Login</button>
           }
           <h1>Welcome.</h1>
+          <Calculator />
           Name:<input 
             name="name"
             type="textfield"

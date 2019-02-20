@@ -35,7 +35,7 @@ class Form extends React.Component {
             if (index === 0){
                 return (
                     <option 
-                        selected="selected"
+                        defaultValue={ option }
                         key={ index + option }
                     >
                         { option }

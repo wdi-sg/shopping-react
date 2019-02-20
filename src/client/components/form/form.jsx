@@ -146,7 +146,7 @@ class Form extends React.Component {
             }
         }
         else if(this.state.price.length < 2){
-            this.setState({subTotal: 0, gst: 0, totalPrice: 0});
+            this.setState({price: [], subTotal: 0, gst: 0, totalPrice: 0});
         }
     }
 

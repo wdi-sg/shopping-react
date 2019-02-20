@@ -10,5 +10,6 @@ import App from './App';
 
 // global styles
 import './style.scss';
+import 'bootstrap';
 
 ReactDOM.render(<App />, document.getElementById('app'));

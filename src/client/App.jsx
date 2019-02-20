@@ -15,9 +15,9 @@ class App extends React.Component {
   render() {
     return (
       <div>
+        <h1>Welcome to Walmart! Anime Slider :D</h1>
         <Form />
-        Welcome.
-        <Counter message={this.state.message} />
+
       </div>
     );
   }

@@ -1,10 +1,6 @@
 {
   "version": "2.2.0",
-  "author": {
-    "name": "Anton Fisher",
-    "email": "a.fschr@gmail.com",
-    "url": "http://antonfisher.com"
-  },
+  "author": "Anton Fisher <a.fschr@gmail.com> (http://antonfisher.com)",
   "description": "React boilerplate with ES2015, Express.js, and Webpack 3",
   "license": "MIT",
   "engines": {
@@ -12,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/antonfisher/react-express-webpack.git"
+    "url": "git+https://github.com/antonfisher/react-express-webpack.git"
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=development nodemon src/server",
@@ -34,7 +30,7 @@
     "@babel/preset-env": "^7.3.1",
     "babel-cli": ">=6.26.0",
     "babel-core": "^6.26.3",
-    "babel-eslint": ">=10.0.1",
+    "babel-eslint": "^7.2.3",
     "babel-loader": ">=8.0.5",
     "babel-preset-airbnb": ">=3.2.0",
     "babel-preset-react": ">=6.24.1",
@@ -47,12 +43,12 @@
     "eslint-import-resolver-webpack": ">=0.11.0",
     "eslint-loader": ">=2.1.2",
     "eslint-plugin-babel": ">=5.3.0",
-    "eslint-plugin-flowtype": ">=3.4.2",
+    "eslint-plugin-flowtype": "^2.50.3",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": ">=6.2.1",
     "eslint-plugin-prettier": ">=3.0.1",
     "eslint-plugin-react": "^7.12.4",
-    "eslint-plugin-relay": ">=1.0.0",
+    "eslint-plugin-relay": "0.0.28",
     "extract-text-webpack-plugin": ">=4.0.0-beta.0",
     "html-loader": ">=0.5.5",
     "html-webpack-harddisk-plugin": ">=1.0.1",
@@ -70,6 +66,7 @@
   },
   "dependencies": {
     "airbnb-browser-shims": ">=3.1.0",
+    "ajv": "^6.9.1",
     "babel-polyfill": ">=6.26.0",
     "body-parser": ">=1.18.3",
     "compression": ">=1.7.3",
@@ -91,5 +88,11 @@
     "webpack-dev-middleware": ">=3.5.2",
     "webpack-hot-middleware": ">=2.24.3",
     "winston": ">=3.2.1"
-  }
+  },
+  "name": "shopping-react",
+  "bugs": {
+    "url": "https://github.com/antonfisher/react-express-webpack/issues"
+  },
+  "homepage": "https://github.com/antonfisher/react-express-webpack#readme",
+  "main": "index.js"
 }

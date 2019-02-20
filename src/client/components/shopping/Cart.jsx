@@ -5,13 +5,11 @@ const Cart = ({cart}) => {
 	let CartElements = cart.map( (element, index) => {
 
 		return(
-			<React.Fragment>
-                <div>
-                	<p> Name: { element[0]["name"] }</p>
-			    	<p> Price: { element[0]["salePrice"] }</p>
-			    	<img src={ element[0]["thumbnailImage"] } />
-                </div>
-            </React.Fragment>
+            <div key={ index } >
+            	<p> Name: { element[0]["name"] }</p>
+		    	<p> Price: { element[0]["salePrice"] }</p>
+		    	<img src={ element[0]["thumbnailImage"] } />
+            </div>
 		)
 	})
 

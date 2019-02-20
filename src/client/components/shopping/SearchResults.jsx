@@ -5,15 +5,13 @@ class SearchResults extends React.Component {
 
 		let Results = this.props.results.map ( (result, index) => {
 			return(
-				<React.Fragment>
 	                <button 
-	                	key = {index}
+	                	key = {result.name}
 	                	value = {index}
 	                	onClick = {this.props.showItem}
 	                >
 	                	{result.name}
 	                </button>
-	            </React.Fragment>
 			)
 		})
 

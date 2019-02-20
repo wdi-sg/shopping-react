@@ -1,39 +1,44 @@
 import React from 'react';
 import styles from './style.scss';
+import EachResult from './eachResult'
 
 class ResultList extends React.Component {
-    constructor(){
+    constructor(props){
         super();
-        this.queryResult = this.queryResult.bind(this);
-    }
-
-    queryResult() {
-        console.log(this.props.queryResults);
-        if (this.props.queryResults.length > 0 ) {
-            return ( this.props.queryResults.map(eachItem => {
-                return (
-                <div className={styles.eachItem}>
-                    <h5>{eachItem.categoryPath}</h5>
-                    <img src={eachItem.largeImage}/>
-                    <h4>{eachItem.name} ( {eachItem.customerRating} / 5 &#9734; )</h4>
-                    <p>{eachItem.shortDescription}</p>
-                    <small>MSRP + Standard Shipping Rate</small><br/>
-                    <small>${eachItem.salePrice} + ${eachItem.standardShipRate} = ${eachItem.msrp + eachItem.standardShipRate} - {eachItem.stock}</small>
-                </div>
-
-                );
-            }))
-        } else {
-            return "No results found.";
+        this.state = {
+            sorting: "",
+            resultList: props.queryResults
         }
+        this.setResultList = this.setResultList.bind(this);
+        this.sortHandler = this.sortHandler.bind(this);
     }
-    render(){
 
+    setResultList(){
+        this.setState({resultList: this.props.queryResults})
+    }
+
+    sortHandler() {
+        this.setState({sorting: event.target.value});
+        if (this.props.queryResults.length > 0 ) {
+            let eachItem = [...this.state.resultList]
+            console.log(eachItem, this.props.queryResults);
+
+        } 
+    }
+
+    render(){
         return(
             <React.Fragment>
+            {/* {this.setResultList()} */}
+            
             <h2>Results</h2>
+            <select onChange={this.sortHandler}>
+                <option selected disabled>Sort</option>
+                <option value="priceAsc">Price Asc</option>
+                <option value="priceDesc">Price Desc</option>
+            </select>
             <div>
-                {this.queryResult()}
+                
             </div>
             </React.Fragment>
         )

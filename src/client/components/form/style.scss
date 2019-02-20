@@ -10,8 +10,12 @@
 }
 
 img {
-  display: block;
-  margin: 0 auto;
+  float: left;
+}
+
+div {
+  white-space: normal;
+  height: 100%;
 }
 
 p {

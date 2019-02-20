@@ -16,7 +16,12 @@ class App extends React.Component {
     return (
       <div>
         <h1>Fakemart :D</h1>
-        <Form />
+        <div className="row">
+          <div className="col-sm-4"><Form />  </div>
+             
+          <div className="col-sm-4">Hello</div>
+          <div className="col-sm-4">Hi</div>
+      </div>
         {/* <Counter message={this.state.message} /> */}
       </div>
     );

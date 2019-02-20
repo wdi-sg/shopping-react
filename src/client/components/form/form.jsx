@@ -121,19 +121,32 @@ class Form extends React.Component {
             });
     }
 
-    removeHandler(event){
+    removeHandler(name, amt){
+        // console.log(name, amt)
+        console.log(this.state.price.length)
         for(let i = 0; i < this.state.cart.length; i++){
-            var element = this.state.cart.indexOf(event.target.value)
-            if(this.state.cart[i].name.includes(event.target.value) == true){
-                var newArray = this.state.cart.slice();
-                newArray.splice(element, 1);
-                this.setState({cart: newArray},function calculate(){
-                    const sum = this.state.price.reduce((total, a) => total + a);
-                    const tax = sum * 0.07;
-                    const total = sum + tax + 7
-                    this.setState({subTotal: sum.toFixed(2), gst: tax.toFixed(2), totalPrice: total.toFixed(2)});
+            var elementName = this.state.cart.indexOf(name)
+            if(this.state.cart[i].name.includes(name) == true){
+                var cartArray = this.state.cart.slice();
+                cartArray.splice(elementName, 1);
+                this.setState({cart: cartArray});
+            }
+        }
+        if(this.state.price.length > 1){
+            for(let j = 0; j < this.state.price.length; j++){
+                var elementAmt = this.state.price.indexOf(amt)
+                var amtArray = this.state.price.slice();
+                amtArray.splice(elementAmt, 1);
+                this.setState({price: amtArray},function calculate(){
+                const sum = this.state.price.reduce((total, a) => total + a);
+                const tax = sum * 0.07;
+                const total = sum + tax + 7
+                this.setState({subTotal: sum.toFixed(2), gst: tax.toFixed(2), totalPrice: total.toFixed(2)});
                 });
             }
+        }
+        else if(this.state.price.length < 2){
+            this.setState({subTotal: 0, gst: 0, totalPrice: 0});
         }
     }
 
@@ -200,7 +213,7 @@ class Cart extends React.Component{
                     <strong>Name:</strong> {this.props.item.name}
                     <br/>
                     <strong>Price:</strong> ${this.props.item.price}
-                    <button onClick={this.props.remove} value={this.props.item.name}>remove item</button>
+                    <button onClick={() => {this.props.remove(this.props.item.name, this.props.item.price)}}>remove item</button>
                 </ul>
             </div>
         );
@@ -272,22 +285,22 @@ class SimpleSlider extends React.Component {
     return (
       <Slider {...settings}>
         <div>
-          <img src="https://www.animenewsnetwork.com/thumbnails/crop600x315/cms/news.2/135613/dororo.jpg" width="900px" height="450px"/>
+          <img src="https://www.animenewsnetwork.com/thumbnails/crop600x315/cms/news.2/135613/dororo.jpg" width="1400px" height="450px"/>
         </div>
         <div>
-          <img src="https://cdn-images-1.medium.com/max/1600/1*EpBnwzNlVcbmPnPgjhQ-rw.jpeg" width="900px" height="450px"/>
+          <img src="https://cdn-images-1.medium.com/max/1600/1*EpBnwzNlVcbmPnPgjhQ-rw.jpeg" width="1400px" height="450px"/>
         </div>
         <div>
-          <img src="https://images7.alphacoders.com/395/thumb-1920-395680.jpg" width="900px" height="450px"/>
+          <img src="https://images7.alphacoders.com/395/thumb-1920-395680.jpg" width="1400px" height="450px"/>
         </div>
         <div>
-          <img src="https://i.ytimg.com/vi/4urGlcrltHo/maxresdefault.jpg" width="900px" height="450px"/>
+          <img src="https://i.ytimg.com/vi/4urGlcrltHo/maxresdefault.jpg" width="1400px" height="450px"/>
         </div>
         <div>
-          <img src="https://media.comicbook.com/2018/08/sword-art-online-alicization-1129100-1280x0.jpeg" width="900px" height="450px"/>
+          <img src="https://media.comicbook.com/2018/08/sword-art-online-alicization-1129100-1280x0.jpeg" width="1400px" height="450px"/>
         </div>
         <div>
-          <img src="http://wallpapersdsc.net/wp-content/uploads/2016/09/Dialga-Widescreen.jpg" width="900px" height="450px"/>
+          <img src="http://wallpapersdsc.net/wp-content/uploads/2016/09/Dialga-Widescreen.jpg" width="1400px" height="450px"/>
         </div>
       </Slider>
     );

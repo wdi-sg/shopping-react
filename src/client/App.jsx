@@ -93,13 +93,18 @@ class App extends React.Component {
       <div>
         <ErrorBoundary>
           <BuggyButton />
-          <button onClick={this.handleLogin}>Change Login Status</button>
-          <h1>Welcome.</h1>
           {
-          isLoggedIn &&
-          <React.Fragment>
-            <Search />
-          </React.Fragment>
+            isLoggedIn &&
+            <button onClick={this.handleLogin}>Logout</button> ||
+            <button onClick={this.handleLogin}>Login</button>
+          }
+          <h1>Welcome.</h1>
+          <p>You are currently { isLoggedIn ? "logged in" : "not logged in" }.</p>
+          {
+            isLoggedIn &&
+            <React.Fragment>
+              <Search />
+            </React.Fragment>
           }
         </ErrorBoundary>
       </div>

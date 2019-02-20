@@ -4,11 +4,11 @@ module.exports = (db) => {
 
   let get = (req, res) => {
 
-    const apiKey = 'bsh6u8q5fdw95yrcy6wkvj75';
+    let apiKey = "bsh6u8q5fdw95yrcy6wkvj75";
 
-    const query = req.query.search;
+    let query = req.query.search;
 
-    const url = `http://api.walmartlabs.com/v1/search?apiKey=${apiKey}&query=${query}`;
+    let url = `http://api.walmartlabs.com/v1/search?apiKey=${apiKey}&query=${query}`
 
     request(url, function (error, queryResponse, body) {
           console.log('error:', error); // Print the error if one occurred and handle it
@@ -22,6 +22,3 @@ module.exports = (db) => {
     get:get
   };
 };
-
-
-//p6macs9emuek26apm32yp4g7

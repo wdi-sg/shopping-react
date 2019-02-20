@@ -1,4 +1,38 @@
-.name{
-  padding:5px;
-  margin:20px;
+.searchBar {
+	width: 349px;
+	height: 100%;
+	padding: 20px 10px;
+	border-right: 1px solid black; 
+	justify-content: center;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	overflow-x: hidden;
+	background-color: rgba(225,225,225,1);
+
+	.form {
+		display: flex;
+		height: 2.5rem;
+
+		input {
+			padding: 0 5px;
+			box-sizing: border-box;
+			background-color: white;
+			border: 1px solid grey;
+			border-right: 1px solid white;
+			width: 100%;
+		}
+
+		button {
+			width: 75px;
+			border: 1px solid grey;
+			background-color: orange;
+		}
+
+		button:active {
+			background-color: darkorange;
+			transition: 0.25s;
+		}
+	}
 }

@@ -1,8 +1,9 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
-
+import { BrowserRouter, Route, Switch, NavLink } from 'react-router-dom'
 import { Search } from './components/shopping/';
-import Calculator from './components/calculate/Calculator'
+import Calculator from './components/calculate/Calculator';
+import Chart from './components/Chart';
 
 class ErrorBoundary extends React.Component {
   constructor(props) {
@@ -67,6 +68,42 @@ class BuggyButton extends React.Component {
   }
 }
 
+const NewRoute = () => {
+  return(
+    <div> 
+      <p> New Route </p>
+    </div>
+  )
+}
+
+const Home = () => {
+  return(
+    <div> 
+      <p> Home </p>
+    </div>
+  )
+}
+
+const Unknown = () => {
+  return(
+    <div> 
+      <p> Unknown Page </p>
+    </div>
+  )
+}
+
+const Navigation = () => {
+  return(
+    <div> 
+      <p> Navigation Page </p>
+      <NavLink to="/">Home</NavLink>
+      <NavLink to="/calculator">Calculator</NavLink>
+      <NavLink to="/new">New</NavLink>
+      <NavLink to="/chart">Chart</NavLink>
+    </div>
+  )
+}
+
 class App extends React.Component {
   constructor() {
     super();
@@ -81,7 +118,37 @@ class App extends React.Component {
       email: '',
       number: '',
       isSearching: '',
+      chartData:{}
     };
+  }
+
+  componentWillMount() {
+    this.getChartData();
+  }
+
+  getChartData() {
+    //ajaxcalls here
+    this.setState({
+      chartData:{
+        labels:['BostonLol', 'Worcester', 'Springfield', 'Lowell', 'Cambridge', 'New Bedford'],
+        datasets:[{
+          label: 'Population',
+          data:[
+            617594,
+            181405,
+            153060,
+            106519,
+            105162,
+            95072
+          ],
+          backgroundColor:'green',
+          borderWith: 4,
+          borderColor: '#777',
+          hoverBorderWidth: 3,
+          hoverBorderColor: 'black',
+        }],
+      }
+    })
   }
 
   handleLogin() {
@@ -105,10 +172,24 @@ class App extends React.Component {
 
   render() {
 
-    const {isLoggedIn, name, email, number, isSearching} = this.state;
+    const {isLoggedIn, name, email, number, isSearching, chartData} = this.state;
 
     return (
       <div>
+      
+        <BrowserRouter>
+          <React.Fragment>
+          <Navigation/>
+          <Switch>
+            <Route path="/" component={Home} exact/>
+            <Route path="/new" component={NewRoute} />
+            <Route path="/calculator" component={Calculator} />
+            <Route path="/chart" render={ () => <Chart chartData={chartData}/> } />
+            <Route component={Unknown} />
+          </Switch>
+          </React.Fragment>
+        </BrowserRouter>
+
         <ErrorBoundary>
           <BuggyButton />
           {
@@ -117,7 +198,7 @@ class App extends React.Component {
             <button onClick={this.handleLogin}>Login</button>
           }
           <h1>Welcome.</h1>
-          <Calculator />
+          
           Name:<input 
             name="name"
             type="textfield"
@@ -153,6 +234,7 @@ class App extends React.Component {
             </React.Fragment>
           }
         </ErrorBoundary>
+      
       </div>
     );
   }

@@ -4,16 +4,20 @@ module.exports = (db) => {
 
   let get = (req, res) => {
 
-    let apiKey = "hello";
+    console.log("getting");
+
+    let apiKey = "bsh6u8q5fdw95yrcy6wkvj75";
 
     let query = req.query.search;
 
     let url = `http://api.walmartlabs.com/v1/search?apiKey=${apiKey}&query=${query}`
 
+    // console.log("db", url);
+
     request(url, function (error, queryResponse, body) {
           console.log('error:', error); // Print the error if one occurred and handle it
           console.log('statusCode:', queryResponse && queryResponse.statusCode); // Print the response status code if a response was received
-
+          // console.log(body);
           res.send(body);
     });
    }

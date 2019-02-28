@@ -71,7 +71,8 @@ class AllList extends React.Component {
             <img src={item.thumbnailImage} />
             <p>
             <small>Price: ${item.salePrice}</small> <br/>
-            <small> Shipping Price: ${item.standardShipRate}</small>
+            <small> Shipping Price: ${item.standardShipRate}</small><br/>
+            <small>Customer Rating: <img src={item.customerRatingImage}/></small>
             </p>
           </div>
 

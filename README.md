@@ -3,16 +3,16 @@
 
 ![wiref.png](wiref.png)
 
-Create a shopping app for walmart products.
+Create a shopping app for grocery products.
 
 There should be 3 main components:
 
 1. A search component
-  - search for a product and display the results
+  - search for a product and display the results (this should just get the entire list of products for now)
   - clicking on a product causes the product window to display/be filled
   
 2. Product display component
-  - displays information about the product
+  - displays information about the product (don't worry about the product image)
   - has a button to add to cart
   
 3. Cart component
@@ -22,9 +22,9 @@ There should be 3 main components:
 Add bootstrap to your app if you like.
 
 #### How to Start:
-You should begin your app with one single working component- begin with the search component on the left. The express server in the starter code has a pre-made pass-through route for you to query the walmart API. Use AJAX to make a query to this route and then use react to display the results. (see below for notes on react and `this` keyword in AJAX callbacks)
+You should begin your app with one single working component- begin with the search component on the left. The express server in the starter code has a pre-maderoute for you to query the DB.
 
-Sign up for an api key [here](https://developer.walmartlabs.com/) and put it in the query controller. 
+Use AJAX to make a query to this route and then use react to display the results. (see below for notes on react and `this` keyword in AJAX callbacks)
 
 When you have a working component that displays the search results, you can begin on the second component. Refactor your code to store the list of results in the parent of the search component. Then use the search result the user selected to populate the second component.
 
@@ -97,15 +97,10 @@ Just create a new variable that has the *react* `this` keyword value.
 
 ```
 
-### Express Server Proxy
-You are provided with an API proxy route to use. Look at what it does here: https://github.com/wdi-sg/shopping-react/blob/master/src/server/controllers/query.js
+### Express Server
+You are provided with an API route to use. Look at what it does here: https://github.com/wdi-sg/shopping-react/blob/master/src/server/controllers/products.js
 
-You would make a request to the server with a url that looks like this: `http://localhost:3000/api/query?search=bananas`
-
-You must fill in an API key.
-
-You can register for one here: https://developer.walmartlabs.com/member/register
-(you don't need a real website to register)
+You would make a request to the server with a url that looks like this: `http://localhost:3000/api/products`
 
 ## Usage
 
@@ -118,19 +113,6 @@ npm install -g nodemon
 ```bash
 # run development mode
 npm run dev
-
-# run production mode
-npm run build
-npm start
-
-# run prettier
-npm run prettier
-
-# run lint
-npm run lint
-
-# run on a different port
-HTTP_PORT=3001 npm run dev
 ```
 
 ## License

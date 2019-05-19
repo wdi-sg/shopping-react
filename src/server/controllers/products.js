@@ -1,19 +1,39 @@
 module.exports = (db) => {
-  let getAll = (request, response) => {
+
+  let getAll = (req, res) => {
 
     db.products.getAll((error, products) => {
       // queryResult contains pokemon data returned from the pokemon model
       if (error) {
         console.error('error getting pokemon', error);
-        response.status(500);
-        response.send('server error');
+        res.status(500);
+        res.send('server error');
       } else {
-        response.send({products: products});
+        res.send({products: products});
       }
     });
   };
 
+  let getItem = (req,res) =>{
+    console.log('IN SERVER SIDE Ggonna get stuff!');
+    console.log('inside CONTROLLER: ', req.params.item);
+    // const sheetFaced = (giveYouThis)=>{
+
+
+    //     db.products.getItem()
+    // }
+    db.products.getItem(req.params.item,(error, products) =>{
+        if(error) {
+            console.log('error stutterrringg', error);
+            res.status(500);
+            res.send('SERVER ERROR!!');
+        } else {
+            res.send( {products:products} );
+        }
+    });
+  }
   return {
-    getAll: getAll
+    getAll: getAll,
+    getItem: getItem
   };
 };

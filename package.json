@@ -1,9 +1,9 @@
 {
   "version": "2.2.0",
   "author": {
-    "name": "Anton Fisher",
-    "email": "a.fschr@gmail.com",
-    "url": "http://antonfisher.com"
+    "name": "Sour Dawhgh",
+    "email": "jamesandshiow@gmail.com",
+    "url": "http://jamesandshiow.com"
   },
   "description": "React boilerplate with ES2015, Express.js, and Webpack 3",
   "license": "MIT",
@@ -70,6 +70,7 @@
   },
   "dependencies": {
     "airbnb-browser-shims": ">=3.1.0",
+    "axios": "^0.18.0",
     "babel-polyfill": ">=6.26.0",
     "body-parser": ">=1.18.3",
     "compression": ">=1.7.3",

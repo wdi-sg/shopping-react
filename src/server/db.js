@@ -1,5 +1,4 @@
 const pg = require('pg');
-const products = require('./models/products');
 const url = require('url');
 
 var configs;
@@ -18,9 +17,9 @@ if (process.env.DATABASE_URL) {
   };
 } else {
   configs = {
-    user: 'akira',
+    user: 'shwj',
     host: '127.0.0.1',
-    database: 'testdb',
+    database: 'shopping-react',
     port: 5432
   };
 }
@@ -31,6 +30,32 @@ pool.on('error', function(err) {
   console.log('idle client error', err.message, err.stack);
 });
 
+/*
+ * ===================================================
+ * ===================================================
+ * ===================================================
+ * ===================================================
+ * ======        REQUIRE MODEL FILES         =========
+ * ===================================================
+ * ===================================================
+ * ===================================================
+ * ===================================================
+ */
+
+
+const products = require('./models/products');
+
+/*
+ * ===================================================
+ * ===================================================
+ * ===================================================
+ * ===================================================
+ * ======          MODULE EXPORTS            =========
+ * ===================================================
+ * ===================================================
+ * ===================================================
+ * ===================================================
+ */
 module.exports = {
   /*
    * ADD APP MODELS HERE
@@ -39,9 +64,14 @@ module.exports = {
 
   //make queries directly from here
   queryInterface: (text, params, callback) => {
+    console.log('THEN IM HERE:???? AT DB???')
     return pool.query(text, params, callback);
   },
 
   // get a reference to end the connection pool at server end
   pool: pool
+
+  /*
+   * ADD APP MODELS HERE
+   */
 };

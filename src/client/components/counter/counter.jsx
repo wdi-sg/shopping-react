@@ -9,7 +9,7 @@ class Counter extends React.Component {
   constructor() {
     super();
     this.state = {
-      banana: 'sneakers',
+      banana: 'Swing it',
       counters : []
     };
       this.handleClick = this.handleClick.bind(this);

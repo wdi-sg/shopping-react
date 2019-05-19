@@ -5,7 +5,8 @@ class SearchForm extends React.Component {
         return (
             <form className="form-inline my-2 my-lg-0" onSubmit={this.props.handleSubmit} autoComplete="off">
               <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search" value={this.props.searchProduct} onChange={this.props.handleChange} />
-              <button className="btn btn-outline-success my-2 my-sm-0" type="submit" onClick={this.props.makeAjaxCall} >Search</button>
+              <button className="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button>
+               <button className="btn btn-outline-success my-2 my-sm-0" type="button" onClick={this.props.makeAjaxCall} >Make Ajax</button>
             </form>
         )
     }

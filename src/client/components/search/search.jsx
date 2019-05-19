@@ -25,31 +25,38 @@ class Search extends React.Component {
         e.preventDefault();
     }
 
-     makeAjaxCall(){
-        //copy the value of this in order to refer to it in another way.
-        console.log( "set state function");
-        console.log( this.setState );
+    makeAjaxCall() {
 
-        // get a hold of component for react
-        var reactThis = this;
+        // //copy the value of this in order to refer to it in another way.
+        // var reactThis = this;
 
-        var reqListener = function(){
-          console.log(this.responseText);
+        // var reqListener = () => {
+        //     console.log(this.responseText);
 
-          const data = JSON.parse( this.responseText );
+        //     //transform the response to real js objects
+        //     const data = JSON.parse( this.responseText );
 
-          reactThis.setState({items:data.products})
+        //     // here, we can't do this.setState
 
-          // this keyword doesnt refer to component
-          //this.setState({items:this.responseText})
+        //     //refer to react state instead
+        //     //reactThis.setState({queryData:data.products});
+        // }
 
-        }
+        // var oReq = new XMLHttpRequest();
+        // oReq.addEventListener("load", reqListener);
+        // oReq.open("GET", "/products");
+        // oReq.send();
 
-        var oReq = new XMLHttpRequest();
-        oReq.addEventListener("load", reqListener);
-        oReq.open("GET", "/products");
-        oReq.send();
-      }
+        var req = new XMLHttpRequest();
+        req.open("GET", "/products", false);
+        req.send(null);
+
+        const data = JSON.parse(req.responseText);
+
+        this.setState({items: data.products})
+
+        console.log(this.state.items)
+    }
 
 
 

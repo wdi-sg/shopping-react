@@ -4,6 +4,9 @@ import { hot } from 'react-hot-loader';
 import Counter from './components/counter/counter';
 import Form from './components/form/form';
 
+import Navbar from './components/home/navbar';
+
+
 class App extends React.Component {
   constructor() {
     super();
@@ -15,9 +18,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Form />
-        Welcome.
-        <Counter message={this.state.message} />
+        <Navbar />
       </div>
     );
   }

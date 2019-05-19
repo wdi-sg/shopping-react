@@ -6,17 +6,15 @@
 module.exports = (dbPoolInstance) => {
   // `dbPoolInstance` is accessible within this function scope
 
-  let getAll = (callback) => {
+  let getAll = (callback, q) => {
+    const values = ["%" + q.query + "%"];
 
-    dbPoolInstance.query('SELECT * from products', (error, queryResult) => {
-      if (error) {
-        // invoke callback function with results after query has executed
-        callback(error, null);
-      } else {
-        // invoke callback function with results after query has executed
-
-        callback(null, queryResult.rows );
-      }
+    dbPoolInstance.query('SELECT * from products WHERE LOWER(name) LIKE ($1)', values, (error, queryResult) => {
+        if (error) {
+            callback(error, null);
+        } else {
+            callback(null, queryResult.rows );
+        }
     });
   };
 

@@ -7,7 +7,9 @@ module.exports = (dbPoolInstance) => {
   // `dbPoolInstance` is accessible within this function scope
 
   let getAll = (request, callback) => {
-    dbPoolInstance.query('SELECT * from products', (error, queryResult) => {
+    console.log(request.query.query);
+    let queryString = "SELECT * from products WHERE name ILIKE '%" + request.query.query + "%'";
+    dbPoolInstance.query(queryString, (error, queryResult) => {
       if (error) {
         // invoke callback function with results after query has executed
         callback(error, null);

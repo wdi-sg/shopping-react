@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import style from './style.scss';
+import style from './style.scss';
 
 
 class Search extends React.Component {
@@ -113,20 +113,15 @@ class Search extends React.Component {
 		})
 	}
 
-	handleClick (itemName,itemPrice,itemDescription) {
-		console.log("clicked");
-		// const.newProductToDisplay = {
-		// 	name: selectedProductName,
-		// 	price: selectedProductPrice,
-		// 	description: selectedProductDescription
-		// }
-		const newProductToDisplay = {
-			name: itemName,
-			price: itemPrice,
-			description: itemDescription,
-			imageUrl: "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fcdn-img.instyle.com%2Fsites%2Fdefault%2Ffiles%2Fstyles%2F684xflex%2Fpublic%2F1467911445%2F070716-secret-life-of-pets-lead.jpg%3Fitok%3DAgpqIvcY&q=85"
-		}
+	handleClick (item) {
+		console.log("Clicked! Displaying product");
+		const newProductToDisplay = item;
+		newProductToDisplay.imageUrl = "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fcdn-img.instyle.com%2Fsites%2Fdefault%2Ffiles%2Fstyles%2F684xflex%2Fpublic%2F1467911445%2F070716-secret-life-of-pets-lead.jpg%3Fitok%3DAgpqIvcY&q=85";
 		this.props.onClickOnSearchResult(newProductToDisplay);
+	}
+
+	viewCart = (viewCart) => {
+		viewCart();
 	}
 
 	render () {
@@ -140,7 +135,7 @@ class Search extends React.Component {
 
 		const tableBody = this.state.searchResultArray.map(item => {
 			return (
-				<tr id={item.id} key={"product"+item.id} onClick={()=>this.handleClick(item.name, item.price, item.description)}>
+				<tr id={item.id} key={"product"+item.id} onClick={()=>this.handleClick(item)}>
 					<td scope="row">{item.name}</td>
 					<td>{item.price}</td>
 					<td>{item.description}</td>
@@ -154,18 +149,21 @@ class Search extends React.Component {
 					<div>
 						<input className="form-control" type="text" onChange={(e)=>{this.handleSearchChange(e)}} value={this.state.searchInput} placeholder="Search" />
 					</div>
-					<div className="d-flex flex-wrap align-items-center justify-content-between">
-						<span>Sort By:&nbsp;</span>
-						<select className="btn btn-primary dropdown-toggle btn-sm" onChange={(e)=>this.handleSelectChange(e)}>
-							{/*<option value="default" selected>Select one</option>*/}
-							<option value="name" defaultValue>Name</option>
-							<option value="price">Price</option>
-						</select>
+					<div className="d-flex justify-content-between">
+						<div className="d-flex flex-wrap align-items-center justify-content-between">
+							<span>Sort By:&nbsp;</span>
+							<select className="btn btn-success dropdown-toggle btn-sm" onChange={(e)=>this.handleSelectChange(e)}>
+								<option value="name" defaultValue>Name</option>
+								<option value="price">Price</option>
+							</select>
+							<button className="btn btn-info btn-sm ml-3 py-1" onClick={()=>this.viewCart(this.props.viewCart)}>View/Hide Cart</button>
+						</div>
+						
 					</div>
 				</div>
-				<div className="table-responsive-xl my-3">
-					<table className="table table-sm table-bordered table-hover">
-						<thead className="bg-primary">
+				<div className="table-responsive my-3">
+					<table className="table table table-bordered table-hover">
+						<thead className="bg-info">
 							<tr className="text-white">
 								{tableHeaders}
 							</tr>
@@ -182,6 +180,7 @@ class Search extends React.Component {
 
 Search.propTypes = {
   onClickOnSearchResult: PropTypes.func.isRequired,
+  viewCart: PropTypes.func.isRequired,
 };
 
 export default Search;

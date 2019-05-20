@@ -1,7 +1,7 @@
 import React from 'react';
 import {hot} from 'react-hot-loader';
 
-import Counter from './components/counter/counter';
+import Cart from './components/cart/cart';
 import Form from './components/form/form';
 import Results from './components/results/results';
 import Product from './components/product/product';
@@ -61,7 +61,7 @@ class App extends React.Component {
           </div>
           <div className="col">
             3rd col
-            <Counter message={this.state.message} />
+            <Cart cart={this.state.cart} />
           </div>
         </div>
       </div>

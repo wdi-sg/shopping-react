@@ -12,10 +12,10 @@ class Form extends React.Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <p>{this.state.search}</p>
         <input className={styles.name} />
-      </div>
+      </React.Fragment>
     );
   }
 }

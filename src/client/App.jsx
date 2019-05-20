@@ -14,11 +14,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <Form />
         Welcome.
         <Counter message={this.state.message} />
-      </div>
+      </React.Fragment>
     );
   }
 }

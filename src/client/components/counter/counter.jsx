@@ -11,6 +11,11 @@ import main_styles from '../../style.scss';
 the presentational component. While presentational component will just deal
 with normal html */
 
+/* some more conventions (based off airbnb):
+Filename: Use PascalCase for filenames.
+Reference Naming: Use PascalCase for React components and camelCase for their instances.
+
+*/
 
 class Counter extends React.Component {
   constructor() {
@@ -30,13 +35,13 @@ class Counter extends React.Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
           <button onClick={this.handleClick}>click me</button>
           <p className={styles.desc}>
             {this.props.message} : {this.state.banana}
           </p>
           {this.state.counters.map((counter)=>{ return <p>{counter}</p>})}
-      </div>
+      </React.Fragment>
     );
   }
 }

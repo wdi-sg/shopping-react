@@ -1,12 +1,18 @@
 import React from 'react';
 
 import styles from './style.scss';
+import Cart from '../cart/cart';
 
 class Product extends React.Component {
 
-  viewItemHandler(event){
-    console.log("viewing", event.target.value)
-  }
+  // addToCartHandler(event){
+  //   console.log("viewing", event.target.value)
+  //   // let chosen = this.state.product.push(this.state.items[event.target.value])
+  //   this.state.product = []
+  //   this.state.product.push(this.state.items[event.target.value])
+  //   console.log([this.state.product])
+  //   this.setState({product: this.state.product })
+  // }
 
   render() {
     let display = <p>No item to display</p>
@@ -21,7 +27,10 @@ class Product extends React.Component {
                   Price: {item.price} <br/>
                   Description: {item.description}
                 </p>
-                <button>Cart this shit</button>
+                <button value={index}
+                        onClick={this.props.addItemToCartHandler}>
+                          Cart this shit
+                </button>
           </div>
         )
       })
@@ -30,6 +39,8 @@ class Product extends React.Component {
     return (
       <div>
         {display}
+        <Cart cart={this.props.cart}
+              removeItemFromCartHandler={this.props.removeItemFromCartHandler}/>
       </div>
     );
   }

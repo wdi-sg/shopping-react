@@ -10,11 +10,14 @@ class Form extends React.Component {
     this.submitHandler = this.submitHandler.bind(this);
     this.enterHandler = this.enterHandler.bind(this);
     this.viewItemHandler = this.viewItemHandler.bind(this);
+    this.addItemToCartHandler = this.addItemToCartHandler.bind(this);
+    this.removeItemFromCartHandler = this.removeItemFromCartHandler.bind(this);
     this.state = {
       items: [],
       search: '',
       submittedSearch: '',
       product: [],
+      cart: [],
     };
   }
 
@@ -74,6 +77,17 @@ class Form extends React.Component {
     this.setState({product: this.state.product })
   }
 
+  addItemToCartHandler(event) {
+    this.state.cart.push(this.state.product[0])
+    this.setState({cart: this.state.cart})
+  }
+
+  removeItemFromCartHandler(event) {
+    let index = event.target.value
+    this.state.cart.splice(index, 1)
+    this.setState({cart: this.state.cart})
+  }
+
   render() {
     let itemList = this.state.items.map((item, index)=>{
       // console.log(item.name)
@@ -95,12 +109,19 @@ class Form extends React.Component {
     })
     return (
       <div>
-        <input className={styles.name} placeholder="Search for items.." onChange={this.changeHandler} onKeyDown={this.enterHandler} value={this.state.search}/>
+        <input  className={styles.name}
+                placeholder="Search for items.."
+                onChange={this.changeHandler}
+                onKeyDown={this.enterHandler}
+                value={this.state.search}/>
         <button onClick={this.submitHandler}>Submit</button>
         <ul>
           {itemList}
         </ul>
-        <Product product={this.state.product}/>
+        <Product  product={this.state.product}
+                  addItemToCartHandler={this.addItemToCartHandler}
+                  removeItemFromCartHandler={this.removeItemFromCartHandler}
+                  cart={this.state.cart}/>
       </div>
     );
   }

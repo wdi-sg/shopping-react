@@ -10,16 +10,14 @@ class Counter extends React.Component {
     super();
     this.state = {
       banana: 'sneakers',
-      counters : []
+      counters : [],
     };
       this.handleClick = this.handleClick.bind(this);
   }
 
     handleClick(){
         let num = Math.random();
-
         const newArray = [num, ...this.state.counters];
-
         this.setState({ counters : newArray });
     }
 

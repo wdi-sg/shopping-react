@@ -2,7 +2,7 @@ import React from 'react';
 
 import PropTypes from 'prop-types';
 
-// import styles from './style.scss';
+import styles from './style.scss';
 
 class Cart extends React.Component {
   constructor() {
@@ -16,8 +16,8 @@ class Cart extends React.Component {
       total = total + parseFloat(product.price.split('$')[1]);
       return (
         <tr key={product.id}>
-          <td>{product.name}</td>
-          <td>{product.price}</td>
+          <td className={styles.price}>{product.name}</td>
+          <td className={styles.price}>{product.price}</td>
         </tr>
       );
     });

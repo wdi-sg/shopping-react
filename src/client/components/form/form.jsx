@@ -16,7 +16,7 @@ class Form extends React.Component {
     return (
       <div onChange={this.props.onChangeHandler}>
         <p>{this.state.monkey}</p>
-        <input className={styles.name} />
+        <input className={styles.name} onKeyPress={this.props.onClickHandler} />
         <div className="btn btn-primary" onClick={this.props.onClickHandler}>
           Search
         </div>

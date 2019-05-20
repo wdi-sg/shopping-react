@@ -152,11 +152,11 @@ class Search extends React.Component {
 					<div className="d-flex justify-content-between">
 						<div className="d-flex flex-wrap align-items-center justify-content-between">
 							<span>Sort By:&nbsp;</span>
-							<select className="btn btn-success dropdown-toggle" style={{height:"100%", fontSize:"14px"}}onChange={(e)=>this.handleSelectChange(e)}>
+							<select style={{height:"90%", fontSize:"14px"}}onChange={(e)=>this.handleSelectChange(e)}>
 								<option value="name" defaultValue>Name</option>
 								<option value="price">Price</option>
 							</select>
-							<button className="btn btn-info ml-3" style={{height:"100%"}} onClick={()=>this.viewCart(this.props.viewCart)}>View/Hide Cart</button>
+							<button className="btn btn-info ml-3" style={{height:"90%"}} onClick={()=>this.viewCart(this.props.viewCart)}>View/Hide Cart</button>
 						</div>
 						
 					</div>

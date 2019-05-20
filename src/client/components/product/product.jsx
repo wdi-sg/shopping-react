@@ -22,12 +22,16 @@ class Product extends React.Component {
         <div className="row">
           <div className="col">{product.description}</div>
         </div>
+        <div className="btn btn-danger" onClick={this.props.onClickHandler}>
+          Add to Cart
+        </div>
       </div>
     );
   }
 }
 Product.propTypes = {
-  product: PropTypes.object.isRequired
+  product: PropTypes.object.isRequired,
+  onClickHandler: PropTypes.func.isRequired
 };
 
 export default Product;

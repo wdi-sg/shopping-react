@@ -13,7 +13,8 @@ class App extends React.Component {
       message: 'hello world hehe?',
       query: '',
       products: [],
-      product: {}
+      product: {},
+      cart: []
     };
   }
   onSearchInputChange = (event) => {
@@ -37,8 +38,14 @@ class App extends React.Component {
   };
   onClickProduct = (event) => {
     let product = JSON.parse(event.target.attributes.value.value);
-    console.log(product);
+    // console.log(product);
     this.setState({product: product});
+  };
+  onClickCart = () => {
+    let product = this.state.product;
+    let cart = this.state.cart;
+    cart.push(product);
+    this.setState({cart: cart});
   };
 
   render() {
@@ -50,7 +57,7 @@ class App extends React.Component {
             <Results products={this.state.products} onClickProduct={this.onClickProduct} />
           </div>
           <div className="col">
-            <Product product={this.state.product} />
+            <Product product={this.state.product} onClickHandler={this.onClickCart} />
           </div>
           <div className="col">
             3rd col

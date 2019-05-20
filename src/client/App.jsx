@@ -3,16 +3,17 @@ import {hot} from 'react-hot-loader';
 
 import Counter from './components/counter/counter';
 import Form from './components/form/form';
-import jsonData from '../../example-result.json';
+import Results from './components/results/results';
+import Product from './components/product/product';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       message: 'hello world hehe?',
-      data: jsonData,
       query: '',
-      test: ''
+      products: [],
+      product: {}
     };
   }
   onSearchInputChange = (event) => {
@@ -23,21 +24,39 @@ class App extends React.Component {
   onSearchSubmit = () => {
     const query = this.state.query;
     const url = '/products?query=' + query;
+    let context = this;
     fetch(url)
       .then(function(response) {
         return response.json();
       })
       .then(function(myJson) {
         // console.log(JSON.stringify(myJson));
+        let products = myJson.products;
+        context.setState({products: products});
       });
+  };
+  onClickProduct = (event) => {
+    let product = JSON.parse(event.target.attributes.value.value);
+    console.log(product);
+    this.setState({product: product});
   };
 
   render() {
     return (
-      <div>
-        <Form onChangeHandler={this.onSearchInputChange} onClickHandler={this.onSearchSubmit} />
-        Welcome. boo?
-        <Counter message={this.state.message} />
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <Form onChangeHandler={this.onSearchInputChange} onClickHandler={this.onSearchSubmit} />
+            <Results products={this.state.products} onClickProduct={this.onClickProduct} />
+          </div>
+          <div className="col">
+            <Product product={this.state.product} />
+          </div>
+          <div className="col">
+            3rd col
+            <Counter message={this.state.message} />
+          </div>
+        </div>
       </div>
     );
   }

@@ -2,6 +2,8 @@ import React from 'react';
 
 import styles from './style.scss';
 
+import Product from '../product/product';
+
 class Search extends React.Component {
     constructor() {
         super();
@@ -36,17 +38,15 @@ class Search extends React.Component {
 
     getProductInfo(e) {
         let index = e.target.id;
-        let newItems = this.state.items;
-        let clickedItem = newItems[index];
+        let items = this.state.items;
+        let clickedItem = items[index];
+        let newCurrItem = [];
 
-        let newCurrItem = this.state.currItem;
         newCurrItem.push(clickedItem);
 
         this.setState({
             currItem: newCurrItem
         })
-
-
     }
 
     render() {
@@ -61,12 +61,38 @@ class Search extends React.Component {
                     </div>
         });
         return (
-            <div>
-                <h4>Search</h4>
-                <input className={styles.searchbox} placeholder="Search Input"/>
-                <button onClick={()=>{this.makeAjaxCall()}}>Search</button>
-                {items}
+            <div className="container">
+                <div className="row">
+
+                    <div className="col">
+                        <h4>Search</h4>
+                        <input className={styles.searchbox} placeholder="Search Input"/>
+                        <button type="button" className="btn btn-primary" onClick={()=>{this.makeAjaxCall()}}>
+                        Search</button>
+                    </div>
+
+                    <div className="col">
+                        <h4>Product</h4>
+                    </div>
+
+                </div>
+
+                <div className="row">
+
+                    <div className="col">
+                        {items}
+                    </div>
+
+                    <div className="col">
+                        <Product
+                            clickedItem={this.state.currItem}
+                        />
+                    </div>
+
+                </div>
+
             </div>
+
         );
     }
 }

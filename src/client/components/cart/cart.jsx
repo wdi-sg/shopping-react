@@ -1,10 +1,6 @@
 import React from 'react';
 
-import styles from './style.scss';
-
-import Cart from '../cart/cart';
-
-class Product extends React.Component {
+class Cart extends React.Component {
     constructor() {
         super();
         this.state = {};
@@ -27,10 +23,9 @@ class Product extends React.Component {
 
         return (
             <div>
-                {product}
             </div>
         );
     }
 }
 
-export default Product;
+export default Cart;

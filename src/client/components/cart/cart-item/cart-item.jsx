@@ -17,7 +17,7 @@ class CartItem extends React.Component {
 		displayProduct(item);
 	}
 
-	changeQuantity = (index,cart,addProductToCart,e) => {
+	changeQuantity = (index,cart,addProductToCart,totalAmount,e) => {
 		const quantity = e.target.value;
 		console.log("quantity",quantity);
 		console.log("index", index);
@@ -25,7 +25,11 @@ class CartItem extends React.Component {
 		console.log("cart",cart);
 		updatedCart[index].quantity = parseInt(quantity);
 		console.log("updatedCart",updatedCart);
-		addProductToCart(updatedCart);
+		let updatedTotalAmount = 0;
+		for (let i=0; i<updatedCart.length; i++) {
+			updatedTotalAmount = (updatedTotalAmount + updatedCart[i].quantity * parseFloat(updatedCart[i].price.slice(1,updatedCart[i].price.length)));
+		}
+		addProductToCart(updatedCart,updatedTotalAmount);
 	}
 
 	render () {
@@ -38,8 +42,8 @@ class CartItem extends React.Component {
 						<p className= "mb-0" style={{whiteSpace: "nowrap"}}>{this.props.item.price}</p>
 					</div>
 				</div>
-					<div>
-						<input style={{width:"50px"}} type="number" min="0" value={this.props.item.quantity} onChange={(e)=>this.changeQuantity(this.props.index,this.props.cart,this.props.addProductToCart,e)} />
+					<div className="d-flex align-items-center">
+						<input style={{width:"50px"}} type="number" min="0" value={this.props.item.quantity} onChange={(e)=>this.changeQuantity(this.props.index,this.props.cart,this.props.addProductToCart,this.props.totalAmount,e)} />
 						<button className="align-self-start" style={{border:"none", backgroundColor:"transparent"}} onClick={()=>this.handleDelete(this.props.index, this.props.cart, this.props.removeFromCart)}>❌</button>
 					</div>
 			</div>

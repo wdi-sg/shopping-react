@@ -12,7 +12,7 @@ class Cart extends React.Component {
 	render () {
 		const itemsInCart = this.props.cart.map((item,index) => {
 			return (
-				<CartItem key={"item"+index} item={item} index={index} cart={this.props.cart} removeFromCart={this.props.removeFromCart} displayProduct={this.props.displayProduct} addProductToCart={this.props.addProductToCart}/>
+				<CartItem key={"item"+index} item={item} index={index} cart={this.props.cart} removeFromCart={this.props.removeFromCart} displayProduct={this.props.displayProduct} addProductToCart={this.props.addProductToCart} totalAmount={this.props.totalAmount} />
 			);
 		})
 		return (
@@ -22,6 +22,10 @@ class Cart extends React.Component {
 					<button onClick={()=>this.hideCart(this.props.hideCart)} style={{border: "none", backgroundColor:"transparent"}}>Hide</button>
 				</div>
 				{itemsInCart}
+				<div className="d-flex justify-content-between border-top pt-2">
+					<h5 className="font-weight-bold">Total:</h5>
+					<h5 className="font-weight-bold">${this.props.totalAmount.toFixed(2)}</h5>
+				</div>
 			</div>
 		);
 	}
@@ -33,6 +37,7 @@ Cart.propTypes = {
 	displayProduct: PropTypes.func.isRequired,
 	addProductToCart: PropTypes.func.isRequired,
 	hideCart: PropTypes.func.isRequired,
+	totalAmount: PropTypes.number.isRequired,
 }
 
 export default Cart;

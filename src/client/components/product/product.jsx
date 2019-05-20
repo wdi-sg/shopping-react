@@ -31,8 +31,14 @@ class Product extends React.Component {
     // console.log("productToAdd",productToAdd);
     // console.log("cart before", this.props.cart)
     // const updatedCart = [...this.props.cart,productToAdd];
-    console.log("cart aft", updatedCart)
-		this.props.onClickOnAddToCart(updatedCart);
+    console.log("cart aft", updatedCart);
+    let updatedTotalAmount = 0;
+    for (let i=0; i<updatedCart.length; i++) {
+    	console.log("updatedCart[i]",updatedCart[i]);
+    	updatedTotalAmount = (updatedTotalAmount + updatedCart[i].quantity * parseFloat(updatedCart[i].price.slice(1,updatedCart[i].price.length)));
+    };
+    console.log("updatedTotalAmount", updatedTotalAmount);
+		this.props.onClickOnAddToCart(updatedCart,updatedTotalAmount);
 	}
 
 	render () {

@@ -26,6 +26,7 @@ class Form extends React.Component {
 
     return (
       <div>
+        <h4>🔍 Search</h4>
         <input className={styles.name} onChange={this.changeHandler} />
       </div>
     );

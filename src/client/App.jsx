@@ -16,7 +16,8 @@ class App extends React.Component {
       product: {name: '', price: '', description: '', id: ''},
       result: '',
       query: '',
-      cart: { items: [] }
+      cart: { items: [] },
+      cartest: []
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -56,23 +57,18 @@ class App extends React.Component {
   getCartproductId(id) {
 
     console.log("sending id from ADD TO CART to shopping ccard component " + id)
+
     var index = this.state.result.products.findIndex(p => p.id == id);
     let selectedProduct = this.state.result.products[index];
 
-    // ⚠️ WOULDN'T ADD NEW ITEM TO THE ARRAY!!!
+    // adding products into shopping cart
+    this.setState({ cart: {...this.state.cart, items: [...this.state.cart.items, {
+                            id: id,
+                            name: selectedProduct.name,
+                            price: selectedProduct.price,
+                            description: selectedProduct.description
+                }]} });
 
-
-    this.setState(prevState => ({
-        cart: {
-            ...prevState.cart,
-            items: [{
-                id: id,
-                name: selectedProduct.name,
-                price: selectedProduct.price,
-                description: selectedProduct.description
-            }]
-        }
-    }))
 
 
   }
@@ -83,7 +79,6 @@ class App extends React.Component {
       <div className="row">
         <div className="col-4">
             <Form onChange={this.handleChange}/>
-            <Counter message={this.state.message} />
             <Searchresult results={this.state.result} query={this.state.query} idCallback={this.getProductInfo}/>
         </div>
         <div className="col-4">

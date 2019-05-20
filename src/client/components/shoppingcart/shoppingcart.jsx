@@ -17,17 +17,17 @@ class ShoppingCart extends React.Component {
 
     componentDidUpdate(prevProps) {
 
-
         // ⚠️ THIS IS VERY JENKY...
-        if (prevProps.cartInfo.items[0] !== this.props.cartInfo.items[0]) {
+        if (prevProps.cartInfo.items.length !== this.props.cartInfo.items.length) {
 
-            let subtotalAmount = this.state.subtotal;
+            let subtotalAmount = 0;
+            console.log("this is the current subtotal " + subtotalAmount);
             this.props.cartInfo.items.map((item, i) => {
                 subtotalAmount = subtotalAmount + parseFloat(item.price.replace('$', ''));
             })
 
             let gstAmount = Math.round((subtotalAmount * 0.07) * 100) / 100;
-            let totalAmount = subtotalAmount + gstAmount;
+            let totalAmount = Math.round((subtotalAmount + gstAmount) * 100) / 100;
 
             this.setState({
                 subtotal: subtotalAmount,
@@ -49,7 +49,7 @@ class ShoppingCart extends React.Component {
     })
     return (
         <React.Fragment>
-              <h4>🛒 Shopping cart</h4>
+              <h4>🛒 Shopping Cart</h4>
 
               <ul>{cartItems}</ul>
 

@@ -21,7 +21,7 @@ class Product extends React.Component {
   render() {
     return (
       <div>
-        <h4>Product Information</h4>
+        <h4>🥕 Product Information</h4>
         <p>Name: {this.props.name}</p>
         <p>Price: {this.props.price}</p>
         <p>Description: {this.props.description}</p>

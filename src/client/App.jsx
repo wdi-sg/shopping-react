@@ -22,13 +22,13 @@ class App extends React.Component {
   };
   onSearchSubmit = () => {
     const query = this.state.query;
-    fetch('/products')
+    const url = '/products?query=' + query;
+    fetch(url)
       .then(function(response) {
         return response.json();
       })
       .then(function(myJson) {
-        console.log(myJson.products);
-        console.log(query);
+        console.log(JSON.stringify(myJson));
       });
   };
 

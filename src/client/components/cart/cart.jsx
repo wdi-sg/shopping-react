@@ -1,28 +1,34 @@
 import React from 'react';
 
+
 class Cart extends React.Component {
     constructor() {
         super();
         this.state = {};
     }
 
-    addToCart(e) {
-        console.log(Math.random());
+    removeItem(e) {
+        console.log('removeitem', Math.random());
+    }
+
+    clearCart(e) {
+        console.log('clearcart', Math.random());
     }
 
     render() {
-        let product = this.props.clickedItem.map((item, index) => {
+        console.log(this.props.cartItems);
+        let cart = this.props.cartItems.map((item, index) => {
 
             return  <div key={index}>
-                        <p>{item.name}</p>
-                        <p>{item.description}</p>
-                        <p>{item.price}</p>
-                        <button type="button" className="btn btn-outline-success" onClick={()=>{this.addToCart()}}>Add to cart</button>
+                        <span>{item[0].name} - {item[0].price}</span>
+                        <span><button type="button" className="btn btn-outline-danger btn-sm" onClick={()=>{this.removeItem()}}>Remove</button></span>
                     </div>
         });
 
         return (
             <div>
+                {cart}
+                <button type="button" className="btn btn-danger" onClick={()=>{this.clearCart()}}>Clear Cart</button>
             </div>
         );
     }

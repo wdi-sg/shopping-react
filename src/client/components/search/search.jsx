@@ -3,6 +3,7 @@ import React from 'react';
 import styles from './style.scss';
 
 import Product from '../product/product';
+import Cart from '../cart/cart';
 
 class Search extends React.Component {
     constructor() {
@@ -10,9 +11,11 @@ class Search extends React.Component {
         this.state = {
             items: [],
             currItem: [],
+            cartItems: [],
         };
         this.makeAjaxCall = this.makeAjaxCall.bind(this);
         this.getProductInfo = this.getProductInfo.bind(this);
+        this.addToCart = this.addToCart.bind(this);
     }
 
     makeAjaxCall() {
@@ -49,6 +52,18 @@ class Search extends React.Component {
         })
     }
 
+    addToCart() {
+        let currItem = this.state.currItem;
+        let newCartItems = this.state.cartItems;
+
+        newCartItems.push(currItem);
+        // console.log(newCartItems);
+
+        this.setState({
+            cartItems: newCartItems
+        })
+    }
+
     render() {
 
         const items = this.state.items.map((item, index) => {
@@ -75,6 +90,10 @@ class Search extends React.Component {
                         <h4>Product</h4>
                     </div>
 
+                    <div className="col">
+                        <h4>Cart</h4>
+                    </div>
+
                 </div>
 
                 <div className="row">
@@ -86,6 +105,13 @@ class Search extends React.Component {
                     <div className="col">
                         <Product
                             clickedItem={this.state.currItem}
+                            addToCart={(e) => {this.addToCart(e)}}
+                        />
+                    </div>
+
+                    <div className="col">
+                        <Cart
+                            cartItems={this.state.cartItems}
                         />
                     </div>
 

@@ -64,7 +64,7 @@ module.exports = {
 
   //make queries directly from here
   queryInterface: (text, params, callback) => {
-    console.log('THEN IM HERE:???? AT DB???')
+
     return pool.query(text, params, callback);
   },
 

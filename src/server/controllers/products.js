@@ -15,16 +15,20 @@ module.exports = (db) => {
   };
 
   let getItem = (req,res) =>{
-    console.log('IN SERVER SIDE Ggonna get stuff!');
-    console.log('inside CONTROLLER: ', req.params.item);
-    // const sheetFaced = (giveYouThis)=>{
 
+    console.log(req.params.item)
 
-    //     db.products.getItem()
-    // }
-    db.products.getItem(req.params.item,(error, products) =>{
+    capitalize =(str)=>{
+        return str.charAt(0).toUpperCase()+str.slice(1);
+    }
+
+    let string = capitalize(req.params.item);
+
+    console.log(string)
+    console.log('end of thing')
+    db.products.getItem(string,(error, products) =>{
         if(error) {
-            console.log('error stutterrringg', error);
+            console.log('error!', error);
             res.status(500);
             res.send('SERVER ERROR!!');
         } else {

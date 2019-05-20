@@ -20,8 +20,8 @@ module.exports = (dbPool) => {
     });
   };
   let getItem = (dataIn, callback) =>{
-    console.log('HELL AM I IN MODELSSSS')
-    console.log('DATTTTTAA', dataIn)
+    // console.log('HELL AM I IN MODELSSSS')
+    // console.log('DATTTTTAA', dataIn)
 
     let queryString = `SELECT * FROM products where name LIKE '%${dataIn}%'`;
     dbPool.query(queryString, (err, r) => {

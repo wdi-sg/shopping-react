@@ -9,9 +9,32 @@ class FormSearch extends React.Component{
     render(){
         return(
             <div>
-                <input onChange={(e)=>{this.props.searchForm(e)}} onKeyDown={(e)=>{this.props.searchForm(e)}}
-                    className={styles.search_box}/>
-                <h5>Press enter to search</h5>
+                <input
+                    onKeyDown={(e)=>{this.props.searchItem(e)}}
+                    className={styles.search_box}
+                    placeholder="Search for products"
+                    />
+            </div>
+        );
+    }
+}
+
+class Items extends React.Component{
+    constructor(){
+        super()
+    }
+    render(){
+        console.log(this.props)
+        const items = this.props.items.map((items,index)=>{
+            if(index<5){
+            return <div key={index} className={styles.search_item}>
+                        <p onClick={(e)=>{this.props.clickedItem(e)}}>{items.name} <ul hidden><li>{items.price}</li><li>{items.description}</li></ul></p>
+                    </div>
+            }
+        })
+        return(
+            <div>
+                {items}
             </div>
         );
     }
@@ -20,66 +43,52 @@ class FormSearch extends React.Component{
 class Search extends React.Component{
     constructor(){
         super()
-        this.searchForm = this.searchForm.bind(this);
+        this.searchItem = this.searchItem.bind(this);
         this.state = {
             items:[],
             searchWord:"",
-            test:"Bread",
         }
-
     }
 
-    searchItem(){
-
-        // ..get a hold of component for react
+    searchItem(e){
+        //need to find a way to clear the search result
+        //flag?
         var reactThis = this;
+        if(e.keyCode == 8){
 
-        console.log('at JSX REACT', this.state.searchWord)
-        fetch(`/slipperyfall/${this.state.searchWord}`,{
+            reactThis.setState( {items:[]} );
+        }else{
+            // ..get a hold of component for react
+
+        this.setState( {searchWord:e.target.value} );
+
+        //do ajax req to search
+        fetch(`/search/${this.state.searchWord}`,{
             headers:{
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
-                // 'body':{
-                //     search:`${this.state.test}`,
-                // },
             }
-        }).then(res=>{
-            return res.json();
-        }).then(dataOut=>{
-            console.log('at react comp stil...', dataOut)
-            reactThis.setState( {items: dataOut.products} )
-        })
-
-    }
-
-    searchForm(e){
-
-        //on user pressing enter
-        if(e.keyCode == 13){
-
-            this.setState( {searchWord:e.target.value} );
-            e.target.value = "";
-        }else{
-            this.setState( {searchWord:e.target.value} );
+            }).then(res=>{
+                return res.json();
+            }).then(dataOut=>{
+                console.log( dataOut )
+                reactThis.setState( {items: dataOut.products} )
+            })
         }
 
+        if(e.keyCode == 13){
+
+                e.target.value = "";
+        }
     }
 
     render(){
 
-        const items = this.state.items.map((items,index)=>{
-            return <div key={index}><p>{items.name}</p></div>
-        })
         return(
             <div>
                 <p>Main search list</p>
-                <p>Searching for......</p>
-                <h3>{this.state.searchWord}</h3>
-                <FormSearch searchForm={this.searchForm}/>
-                <button
-                className={styles.test_button}
-                onClick={()=>{this.searchItem()}}>Press this to make Ajax call</button>
-                {items}
+                <FormSearch searchItem={this.searchItem} />
+                <Items items={this.state.items} clickedItem={this.props.clickedItem}/>
             </div>
         );
     }

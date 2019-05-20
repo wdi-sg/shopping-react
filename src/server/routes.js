@@ -3,6 +3,6 @@ module.exports = (app, db) => {
 
   app.get('/pineapple', products.getAll);
 
-  app.get('/slipperyfall/:item', products.getItem);
+  app.get('/search/:item', products.getItem);
 
 };

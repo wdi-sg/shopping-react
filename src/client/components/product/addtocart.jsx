@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './style.scss';
-import main_styles from '../../style.scss';
 
 class AddToCart extends React.Component {
     constructor() {

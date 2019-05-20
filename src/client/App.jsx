@@ -16,18 +16,34 @@ class App extends React.Component {
       product: {name: '', price: '', description: '', id: ''},
       result: '',
       query: '',
-      cart: { items: [] },
-      cartest: []
+      cart: { items: [] }
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.getProductInfo = this.getProductInfo.bind(this);
     this.getCartproductId = this.getCartproductId.bind(this);
+    this.handleRemoval = this.handleRemoval.bind(this);
   }
 
   handleChange(query) {
     fetch("/products").then(res=>res.json().then(res=>this.setState({result:res})));
     this.setState({query: query})
+  }
+
+  // receiving id from shoppingcart to see which item needs to be removed
+  handleRemoval(id) {
+    console.log("about to remove this id " + id);
+    let cart = this.state.cart;
+    let newCart = {...cart};
+    console.log(newCart);
+    console.log(newCart.items);
+
+
+    // finding index in array of item we're removing
+    var index = newCart.items.findIndex(p => p.id == id);
+    newCart.items.splice(index, 1);
+    this.setState({cart: newCart});
+
   }
 
   getProductInfo(id) {
@@ -38,8 +54,6 @@ class App extends React.Component {
     //⚠️
 
     let selectedProduct = this.state.result.products[index];
-    console.log("this is the index " + index)
-
 
     this.setState(prevState => ({
     product: {
@@ -69,8 +83,6 @@ class App extends React.Component {
                             description: selectedProduct.description
                 }]} });
 
-
-
   }
 
   render() {
@@ -85,7 +97,7 @@ class App extends React.Component {
             <Product name={this.state.product.name} price={this.state.product.price} description={this.state.product.description} id={this.state.product.id} cartProductId={this.getCartproductId} />
         </div>
         <div className="col-4">
-            <ShoppingCart cartInfo={this.state.cart} />
+            <ShoppingCart cartInfo={this.state.cart} itemToRemove={this.handleRemoval} />
         </div>
       </div>
     );

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './style.scss';
-import main_styles from '../../style.scss';
 
 class Searchresult extends React.Component {
 
@@ -25,7 +24,7 @@ class Searchresult extends React.Component {
 
         if (this.props.results.products) {
             searchResults = this.props.results.products.map((prod) => {
-                return <li key={prod}>{prod.name} <button onClick={this.showProduct} id={prod.id}>🔍</button> </li>
+                return <li key={prod}>{prod.name} <button onClick={this.showProduct} id={prod.id}>👁</button> </li>
             })
         } else {
             searchResults = "";

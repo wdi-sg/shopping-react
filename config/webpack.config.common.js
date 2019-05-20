@@ -27,10 +27,18 @@ module.exports = {
         }
       },
       {
-        test: /\.(js|jsx)$/,
-        use: ['babel-loader'],
-        exclude: /node_modules/
-      },
+       test: /\.(js|jsx)$/,
+       exclude: /(node_modules|bower_components)/,
+       loader: 'babel-loader',
+       options: {
+         plugins: ['transform-class-properties']
+       }
+     },
+      // {
+      //   test: /\.(js|jsx)$/,
+      //   use: ['babel-loader'],
+      //   exclude: /node_modules/
+      // },
       {
         test: /\.html$/,
         loader: 'html-loader'

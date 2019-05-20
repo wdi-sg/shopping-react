@@ -11,4 +11,7 @@ import App from './App';
 // global styles
 import './style.scss';
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(
+    <App/>,
+    document.getElementById('app')
+);

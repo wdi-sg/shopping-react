@@ -1,12 +1,15 @@
 import React from 'react';
+import styles from './style.scss';
 
 class SearchForm extends React.Component {
+
     render() {
         return (
-            <form className="form-inline my-2 my-lg-0" onSubmit={this.props.handleSubmit} autoComplete="off">
-              <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search" value={this.props.searchProduct} onChange={this.props.handleChange} />
-              <button className="btn btn-outline-success my-2 my-sm-0" type="submit" >Search</button>
-               <button className="btn btn-outline-success my-2 my-sm-0" type="button" onClick={this.props.makeAjaxCall} >Make Ajax</button>
+           // autocomplete(document.getElementById("myInput"), this.props.allProducts);
+            <form className="form-inline" onSubmit={this.props.handleSubmit} autoComplete="off">
+              <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="search" value={this.props.searchWord} onChange={this.props.handleChange} />
+              <button className="btn btn-outline-success" type="button" onClick={this.props.searchProducts} id="searchButton" >Search</button>
+
             </form>
         )
     }

@@ -1,21 +1,29 @@
 import React from 'react';
 
 import SearchForm from './searchForm';
+import DisplaySearchProducts from '../product/displaySearchProducts';
+
+import styles from './style.scss';
 
 class Search extends React.Component {
     constructor() {
         super();
         this.state = {
-            searchProduct: "",
+            searchWord: "",
+            allProducts: [],
+            searchResults: [],
+            currentProduct: null,
         }
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.getAllProducts = this.getAllProducts.bind(this);
+        this.searchProducts = this.searchProducts.bind(this);
     }
 
     handleChange(e) {
-        this.setState({searchProduct: e.target.value})
-        //console.log(e.target.value)
+        this.setState({searchWord: e.target.value})
+        console.log(e.target.value)
     }
 
     handleSubmit(e) {
@@ -25,27 +33,29 @@ class Search extends React.Component {
         e.preventDefault();
     }
 
-    makeAjaxCall() {
+    getAllProducts() {
+        var req = new XMLHttpRequest();
+        req.open("GET", "/products", false);
+        req.send(null);
 
-        // //copy the value of this in order to refer to it in another way.
-        // var reactThis = this;
+        const data = JSON.parse(req.responseText);
 
-        // var reqListener = () => {
-        //     console.log(this.responseText);
+        this.setState({allProducts: data.products})
+        console.log(this.state.allProducts)
+        let allProducts = this.state.allProducts;
+        console.log(allProducts)
 
-        //     //transform the response to real js objects
-        //     const data = JSON.parse( this.responseText );
+        let allName = allProducts.map(obj => {
+            console.log(obj.name)
+        }) // end of map
+    }
 
-        //     // here, we can't do this.setState
-
-        //     //refer to react state instead
-        //     //reactThis.setState({queryData:data.products});
-        // }
-
-        // var oReq = new XMLHttpRequest();
-        // oReq.addEventListener("load", reqListener);
-        // oReq.open("GET", "/products");
-        // oReq.send();
+    searchProducts() {
+        // clear the list if its not empty
+        var searchList = document.getElementById("searchList");
+        if (searchList.innerText !== "") {
+            $( "#searchList" ).empty();
+        }
 
         var req = new XMLHttpRequest();
         req.open("GET", "/products", false);
@@ -53,16 +63,48 @@ class Search extends React.Component {
 
         const data = JSON.parse(req.responseText);
 
-        this.setState({items: data.products})
+        this.setState({allProducts: data.products})
+        let allProducts = this.state.allProducts;
+        let searchWord = this.state.searchWord;
 
-        console.log(this.state.items)
+        let searchResults = this.state.searchResults;
+
+        let reactThis = this;
+        let allName = allProducts.map(obj => {
+            if (obj.name.toLowerCase().includes(searchWord)) {
+                searchResults.push(obj);
+                // var li = document.createElement("li");
+                // var liText = document.createTextNode(obj.name);
+
+                // // when user click product name, put obj into currentProduct state
+                // li.onclick = function() {
+                //     reactThis.setState({currentProduct: obj})
+                // };
+
+                // // var a = document.createElement("a");
+                // // a.href = `/products/${obj.id}`;
+                // // a.text = obj.name;
+                // // a.id = obj.id;
+
+                // //li.appendChild(a);
+                // li.appendChild(liText);
+                // ul.appendChild(li);
+            }
+        }) // end of map
+        //div.appendChild(ul)
+        //body.appendChild(div);
     }
-
-
 
     render() {
         return (
-            <SearchForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} searchProduct={this.state.searchProduct} makeAjaxCall={this.makeAjaxCall} />
+            <div>
+                <SearchForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} searchWord={this.state.searchWord} searchProducts={this.searchProducts} />
+
+                <DisplaySearchProducts searchResults={this.state.searchResults} />
+
+            </div>
+
+
         )
     }
 }

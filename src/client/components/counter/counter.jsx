@@ -5,6 +5,13 @@ import PropTypes from 'prop-types';
 import styles from './style.scss';
 import main_styles from '../../style.scss';
 
+/* naming conventions: Capitalize first word of the jsx file, and camelCase */
+
+/* container component will always handle the logic and render (ReactDOM.render...)
+the presentational component. While presentational component will just deal
+with normal html */
+
+
 class Counter extends React.Component {
   constructor() {
     super();

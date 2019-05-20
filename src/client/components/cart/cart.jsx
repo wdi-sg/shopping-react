@@ -11,7 +11,9 @@ class Cart extends React.Component {
 
   render() {
     let products = this.props.cart;
+    let total = 0.0;
     let productsHTML = products.map((product) => {
+      total = total + parseFloat(product.price.split('$')[1]);
       return (
         <tr key={product.id}>
           <td>{product.name}</td>
@@ -20,15 +22,21 @@ class Cart extends React.Component {
       );
     });
     return (
-      <table className="table">
-        <thead>
-          <tr>
-            <th scope="col">Name</th>
-            <td scope="col">Price</td>
-          </tr>
-        </thead>
-        <tbody>{productsHTML}</tbody>
-      </table>
+      <div className="container">
+        <table className="table">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <td scope="col">Price</td>
+            </tr>
+          </thead>
+          <tbody>{productsHTML}</tbody>
+        </table>
+        <div className="row">
+          <div className="col">Total</div>
+          <div className="col">${total}</div>
+        </div>
+      </div>
     );
   }
 }

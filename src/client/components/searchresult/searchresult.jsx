@@ -17,19 +17,19 @@ class Searchresult extends React.Component {
         this.props.idCallback(productId);
     }
 
-  render() {
-    console.log("query" + this.props.query)
-    console.log(this.props.results)
+    render() {
+        console.log("query" + this.props.query)
+        console.log(this.props.results)
 
-    let searchResults;
+        let searchResults;
 
-    if (this.props.results.products) {
-        searchResults = this.props.results.products.map((prod) => {
-            return <li key={prod}>{prod.name} <button onClick={this.showProduct} id={prod.id}>🔍</button> </li>
-        })
-    } else {
-        searchResults = "";
-    }
+        if (this.props.results.products) {
+            searchResults = this.props.results.products.map((prod) => {
+                return <li key={prod}>{prod.name} <button onClick={this.showProduct} id={prod.id}>🔍</button> </li>
+            })
+        } else {
+            searchResults = "";
+        }
     return (
       <div>
         <h4>Results for {this.props.query}</h4>

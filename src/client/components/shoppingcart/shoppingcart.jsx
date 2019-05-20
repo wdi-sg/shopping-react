@@ -8,10 +8,35 @@ class ShoppingCart extends React.Component {
     constructor() {
         super();
         this.state = {
-            subtotal: '',
-            shipping: '',
-            gst: '',
-            total: ''
+            subtotal: 0,
+            shipping: 0,
+            gst: 0,
+            total: 0
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+
+
+        // ⚠️ THIS IS VERY JENKY...
+        if (prevProps.cartInfo.items[0] !== this.props.cartInfo.items[0]) {
+
+            let subtotalAmount = this.state.subtotal;
+            this.props.cartInfo.items.map((item, i) => {
+                subtotalAmount = subtotalAmount + parseFloat(item.price.replace('$', ''));
+            })
+
+            let gstAmount = Math.round((subtotalAmount * 0.07) * 100) / 100;
+            let totalAmount = subtotalAmount + gstAmount;
+
+            this.setState({
+                subtotal: subtotalAmount,
+                gst: gstAmount,
+                total: totalAmount
+            });
+            console.log("changes!");
+        } else {
+            console.log("no changes");
         }
     }
 
@@ -20,13 +45,13 @@ class ShoppingCart extends React.Component {
   render() {
 
     let cartItems = this.props.cartInfo.items.map((item, i) => {
-        return <li>{item.name}</li>
+        return <li key={item + "_" + i}>{item.name}</li>
     })
     return (
         <React.Fragment>
               <h4>🛒 Shopping cart</h4>
 
-              {cartItems}
+              <ul>{cartItems}</ul>
 
               <p> Subtotal: {this.state.subtotal} </p>
               <p> Shipping: {this.state.shipping} </p>

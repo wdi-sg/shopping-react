@@ -17,7 +17,6 @@ class App extends React.Component {
       result: '',
       query: '',
       cart: { items: [] }
-
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -55,12 +54,14 @@ class App extends React.Component {
   // receiving product id from "add to cart"
   // sending it to shoppingcart component
   getCartproductId(id) {
-    console.log("this is the cart id from apppp " + id)
 
+    console.log("sending id from ADD TO CART to shopping ccard component " + id)
     var index = this.state.result.products.findIndex(p => p.id == id);
     let selectedProduct = this.state.result.products[index];
 
     // ⚠️ WOULDN'T ADD NEW ITEM TO THE ARRAY!!!
+
+
     this.setState(prevState => ({
         cart: {
             ...prevState.cart,

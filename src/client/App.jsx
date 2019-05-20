@@ -12,12 +12,14 @@ class App extends React.Component {
     };
   }
 
+
+        // Welcome.
+        // <Counter message={this.state.message} />
+
   render() {
     return (
       <div>
         <Form />
-        Welcome.
-        <Counter message={this.state.message} />
       </div>
     );
   }

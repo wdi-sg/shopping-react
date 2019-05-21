@@ -10,6 +10,7 @@ class App extends React.Component {
         super();
 
         this.ajaxTimeout = null;
+
         this.state = {
             cart: [],
             products: [],
@@ -34,7 +35,7 @@ class App extends React.Component {
         this.setState({ products: data.products });
     }
 
-    sortProductByPriceHandler() {
+    sortProductByPriceAscHandler() {
         let newProducts = [...this.state.products];
 
         newProducts.sort((a, b) => {
@@ -42,6 +43,19 @@ class App extends React.Component {
             b = Number(b.price.replace("$", ''));
 
             return a - b;
+        });
+
+        this.setState({ products: newProducts });
+    }
+
+    sortProductByPriceDescHandler() {
+        let newProducts = [...this.state.products];
+
+        newProducts.sort((a, b) => {
+            a = Number(a.price.replace("$", ''));
+            b = Number(b.price.replace("$", ''));
+
+            return b - a;
         });
 
         this.setState({ products: newProducts });
@@ -78,7 +92,8 @@ class App extends React.Component {
                     <div className="col-4">
                         <Search
                             products= { this.state.products }
-                            sortProductByPriceHandler= { () => { this.sortProductByPriceHandler() } }
+                            sortProductByPriceAscHandler= { () => { this.sortProductByPriceAscHandler() } }
+                            sortProductByPriceDescHandler= { () => { this.sortProductByPriceDescHandler() } }
                             searchProductsHandler= { (e) => { this.searchProductsHandler(e.target.value) } }
                             selectProductHandler= { (e) => { this.selectProductHandler(e) } }
                         />

@@ -18,12 +18,14 @@ class Result extends React.Component {
       <div>
         <h4>Results:</h4>
         { elements }
-
         <br/>
-        <button
-            onClick= { () => { this.props.sortProductByPriceHandler() } }
-        >
+        <button onClick= { () => { this.props.sortProductByPriceAscHandler() } }>
             Sort Result by Price (Lowest to Highest)
+        </button>
+        <br/>
+        <br/>
+        <button onClick= { () => { this.props.sortProductByPriceDescHandler() } }>
+            Sort Result by Price (Highest to Lowest)
         </button>
       </div>
     );

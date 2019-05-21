@@ -2,7 +2,6 @@ import React from 'react';
 
 class Product extends React.Component {
   render() {
-
     if (this.props.selectedProduct !== null) {
         return (
           <div>
@@ -24,7 +23,6 @@ class Product extends React.Component {
           </div>
         );
     }
-
 
   }
 }

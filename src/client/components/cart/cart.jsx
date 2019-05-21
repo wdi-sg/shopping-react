@@ -50,7 +50,6 @@ class Cart extends React.Component {
                 </div>
             );
         } else {
-
             return (
                 <div>
                     <h4>Shopping Cart</h4>

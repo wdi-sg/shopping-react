@@ -1,11 +1,16 @@
 import React from 'react';
 
 class Result extends React.Component {
-
   render() {
-    let elements = this.props.products.map( (item) => {
+    const elements = this.props.products.map( (item, index) => {
         return (
-            <li>{ item.name }</li>
+            <div
+                key={ item.id }
+                id={ item.id }
+                onClick= { (e) => { this.props.selectProductHandler(e) } }
+            >
+                { item.name }
+            </div>
         );
     });
 

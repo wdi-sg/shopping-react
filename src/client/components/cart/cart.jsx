@@ -19,7 +19,7 @@ class Cart extends React.Component {
         console.log(this.props.cartItems);
         let cart = this.props.cartItems.map((item, index) => {
 
-            return  <div key={index}>
+            return  <div key={index} className="d-flex justify-content-between">
                         <span>{item[0].name} - {item[0].price}</span>
                         <span><button type="button" className="btn btn-outline-danger btn-sm" onClick={()=>{this.removeItem()}}>Remove</button></span>
                     </div>

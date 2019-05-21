@@ -9,10 +9,14 @@ class App extends React.Component {
         this.state = {};
     }
 
+    ajaxCall(searchString){
+        // fetch('/')
+    }
+
     render() {
         return (
             <div>
-                <Search />
+                <Search ajaxCall={this.ajaxCall}/>
             </div>
         );
     }

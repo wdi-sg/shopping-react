@@ -76,7 +76,7 @@ class Search extends React.Component {
                     </div>
         });
         return (
-            <div className="container">
+            <div className={styles.contain}>
                 <div className="row">
 
                     <div className="col">

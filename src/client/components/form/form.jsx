@@ -1,6 +1,5 @@
 import React from 'react';
 
-import styles from './style.scss';
 
 class Form extends React.Component {
   constructor() {
@@ -14,7 +13,7 @@ class Form extends React.Component {
     return (
       <div>
         <p>{this.state.monkey}</p>
-        <input className={styles.name} />
+        <input/>
       </div>
     );
   }

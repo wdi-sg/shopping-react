@@ -13,7 +13,21 @@ module.exports = (db) => {
     });
   };
 
+  let find = (request, response) => {
+
+    const doneWithQuery = (result) => {
+        response.send({products: result});
+    }
+
+    let data = "bread";
+
+    db.products.find(data, doneWithQuery);
+
+  }
+
+
   return {
-    getAll: getAll
+    getAll: getAll,
+    find: find
   };
 };

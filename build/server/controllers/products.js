@@ -2,8 +2,6 @@ module.exports = (db) => {
   let getAll = (request, response) => {
 
     db.products.getAll((error, products) => {
-
-      console.log("answering req to /products")
       // queryResult contains pokemon data returned from the pokemon model
       if (error) {
         console.error('error getting pokemon', error);
@@ -13,19 +11,9 @@ module.exports = (db) => {
         response.send({products: products});
       }
     });
-
-
   };
-  const getOne = (req,res)=> {
-    console.log("getting one")
-   // let steve = JSON.stringify(req)
 
-   let searchStr = req.body.data
-
-
-  }
   return {
-    getAll: getAll,
-    getOne:getOne
+    getAll: getAll
   };
 };

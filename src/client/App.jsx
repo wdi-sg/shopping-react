@@ -32,7 +32,7 @@ class App extends React.Component {
             case '1': {
                 //price
                 newSort = '1';
-                console.log('one selected');
+                // console.log('one selected');
                 newProducts = products.sort((a, b) => {
                     let priceA = parseFloat(a.price.split('$')[1]);
                     let priceB = parseFloat(b.price.split('$')[1]);
@@ -43,7 +43,7 @@ class App extends React.Component {
             case '2': {
                 //name
                 newSort = '2';
-                console.log('two selected');
+                // console.log('two selected');
                 let mapped = products.map((product, index) => {
                     return {index: index, value: product.name.toLowerCase()};
                 });
@@ -64,7 +64,7 @@ class App extends React.Component {
             case '3': {
                 //none
                 newSort = '3';
-                console.log('three selected');
+                // console.log('three selected');
                 this.setState({sort: newSort});
                 this.onSearchSubmit();
                 return;
@@ -109,6 +109,12 @@ class App extends React.Component {
         cart.push(product);
         this.setState({cart: cart});
     };
+    deleteCartItem = (event) => {
+        let indexToDelete = event.target.attributes.index.value;
+        let newCart = this.state.cart;
+        newCart.splice(indexToDelete, 1);
+        this.setState({cart: newCart});
+    };
 
     render() {
         return (
@@ -127,7 +133,7 @@ class App extends React.Component {
                 </div>
                 <div className="col-5">
                     3rd col
-                    <Cart cart={this.state.cart} />
+                    <Cart cart={this.state.cart} deleteCartItem={this.deleteCartItem} />
                 </div>
             </div>
         );

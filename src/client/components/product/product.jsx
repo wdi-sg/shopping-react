@@ -1,8 +1,6 @@
 import React from 'react';
 
-// import styles from './style.scss';
-
-class Form extends React.Component {
+class Product extends React.Component {
   constructor() {
     super();
     this.timeOut = null;
@@ -15,32 +13,7 @@ class Form extends React.Component {
   }
 
 
-  onChangeHandler(event){
-    this.timeOut ? clearTimeout(this.timeOut) : null;
-    this.setState({
-      searchForm: event.target.value
-    });
-    this.timeOut = setTimeout(()  => {
-      this.searchItemByName();
-    }, 1000);
-}
-
   onClickHandler() {
-  //copy the value of this in order to refer to it in another way.
-  // var reactThis = this;
-  // var reqListener = function(){
-  //  console.log(this.responseText);
-  //  //transform the response to real js objects
-  //  const queryData = JSON.parse( this.responseText );
-  //  // here, we can't do this.setState
-  //  //refer to react state instead
-  //  reactThis.setState({queryData: queryData});
-  // }
-  // var oReq = new XMLHttpRequest();
-  // oReq.addEventListener("load", reqListener);
-  // oReq.open("GET", "/products");
-  // oReq.send();
-  //   console.log(this.state.searchForm,"stuff is inside")
     this.searchItemByName();
   }
 
@@ -95,4 +68,4 @@ class ListItems extends React.Component {
     
 
 
-export default Form;
+export default Product;

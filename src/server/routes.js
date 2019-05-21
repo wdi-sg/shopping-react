@@ -3,6 +3,6 @@ module.exports = (app, db) => {
 
   app.get('/products', products.getAll);
   
-  app.post('/stuff', products.getOne)
+  app.get('/searchItems/:item', products.getOne);
 
 };

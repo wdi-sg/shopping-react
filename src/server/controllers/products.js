@@ -17,15 +17,20 @@ module.exports = (db) => {
 
   };
   const getOne = (req,res)=> {
-    console.log("getting one")
-   // let steve = JSON.stringify(req)
-
-   let searchStr = req.body.data
-
-
+    db.products.getOne(req.params.item, (err, results) => {
+      if (err){
+        console.log('Error', err);
+        res.status(500).send(err);
+      } else {
+        // the object below is the json object result that React receives
+        res.send({
+          product: results
+        })
+      }
+    })
   }
   return {
     getAll: getAll,
-    getOne:getOne
+    getOne: getOne
   };
 };

@@ -21,6 +21,10 @@ module.exports = (dbPoolInstance) => {
   };
 
   let find = (data, callback) => {
+    console.log("jadjashdjsahjdkhaskdhkasjhdkjashdjhasj");
+    console.log(data);
+    console.log("jadjashdjsahjdkhaskdhkasjhdkjashdjhasj");
+
 
     dbPoolInstance.query(`SELECT * from products WHERE name ILIKE '%${data}%'`, (error, queryResult) => {
 

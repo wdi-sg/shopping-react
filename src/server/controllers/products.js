@@ -19,7 +19,9 @@ module.exports = (db) => {
         response.send({products: result});
     }
 
-    let data = "bread";
+
+
+    let data = request.params.id;
 
     db.products.find(data, doneWithQuery);
 

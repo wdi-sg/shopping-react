@@ -1,7 +1,6 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 
-import Counter from './components/counter/counter';
 import Form from './components/form/form';
 import Product from './components/product/product';
 import Searchresult from './components/searchresult/searchresult';
@@ -25,8 +24,13 @@ class App extends React.Component {
     this.handleRemoval = this.handleRemoval.bind(this);
   }
 
-  handleChange(query) {
-    fetch("/products").then(res=>res.json().then(res=>this.setState({result:res})));
+  handleChange(event) {
+    console.log(event.target.value)
+    let query = event.target.value.toUpperCase()
+
+    // fetch("/products").then(res=>res.json().then(res=>this.setState({result:res})));
+    // fetch("/search").then(res=>res.json().then(res=>this.setState({result:res})));
+    fetch(`/search/${query}`).then(res=>res.json().then(res=>this.setState({result:res})));
     this.setState({query: query})
   }
 
@@ -90,7 +94,7 @@ class App extends React.Component {
     return (
       <div className="row">
         <div className="col-4">
-            <Form onChange={this.handleChange}/>
+            <Form onChange={this.handleChange} searchTerm={this.state.query}/>
             <Searchresult results={this.state.result} query={this.state.query} idCallback={this.getProductInfo}/>
         </div>
         <div className="col-4">

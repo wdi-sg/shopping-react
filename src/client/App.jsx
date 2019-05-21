@@ -34,6 +34,19 @@ class App extends React.Component {
         this.setState({ products: data.products });
     }
 
+    sortProductByPriceHandler() {
+        let newProducts = [...this.state.products];
+
+        newProducts.sort((a, b) => {
+            a = Number(a.price.replace("$", ''));
+            b = Number(b.price.replace("$", ''));
+
+            return a - b;
+        });
+
+        this.setState({ products: newProducts });
+    }
+
     selectProductHandler(e) {
         let product = this.state.products.find( (item) => {
             return item.id.toString() === e.target.id;
@@ -65,6 +78,7 @@ class App extends React.Component {
                     <div className="col-4">
                         <Search
                             products= { this.state.products }
+                            sortProductByPriceHandler= { () => { this.sortProductByPriceHandler() } }
                             searchProductsHandler= { (e) => { this.searchProductsHandler(e.target.value) } }
                             selectProductHandler= { (e) => { this.selectProductHandler(e) } }
                         />

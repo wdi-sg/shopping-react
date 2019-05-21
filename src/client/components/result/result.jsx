@@ -9,7 +9,7 @@ class Result extends React.Component {
                 id={ item.id }
                 onClick= { (e) => { this.props.selectProductHandler(e) } }
             >
-                { item.name }
+                { item.name }, { item.price }
             </div>
         );
     });
@@ -18,6 +18,11 @@ class Result extends React.Component {
       <div>
         <h4>Results:</h4>
         { elements }
+        <button
+            onClick= { () => { this.props.sortProductByPriceHandler() } }
+        >
+            Sort Result by Price (Lowest to Highest)
+        </button>
       </div>
     );
   }

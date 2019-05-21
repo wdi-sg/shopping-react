@@ -24,17 +24,26 @@ class App extends React.Component {
   };
   onSearchSubmit = () => {
     const query = this.state.query;
-    const url = '/products?query=' + query;
-    let context = this;
-    fetch(url)
-      .then(function(response) {
-        return response.json();
+    // const url = '/products?query=' + query;
+    const railsUrl = 'http://127.0.0.1:3000/products?query=' + query;
+    // let context = this;
+    fetch(railsUrl)
+      .then((res) => {
+        // console.dir(res);
+        return res.json();
       })
-      .then(function(myJson) {
-        // console.log(JSON.stringify(myJson));
+      .then((myJson) => {
         let products = myJson.products;
-        context.setState({products: products});
+        this.setState({products: products});
       });
+    //   .then(function(response) {
+    //     return response.json();
+    //   })
+    //   .then(function(myJson) {
+    //     // console.log(JSON.stringify(myJson));
+    //     let products = myJson.products;
+    //     context.setState({products: products});
+    //   });
   };
   onClickProduct = (event) => {
     let product = JSON.parse(event.target.attributes.value.value);
@@ -59,7 +68,7 @@ class App extends React.Component {
           <div className="col">
             <Product product={this.state.product} onClickHandler={this.onClickCart} />
           </div>
-          <div className="col">
+          <div className="col-5">
             3rd col
             <Cart cart={this.state.cart} />
           </div>

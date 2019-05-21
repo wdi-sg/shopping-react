@@ -1,12 +1,14 @@
 import React from 'react';
+import styles from './styles.scss'
 
 class Result extends React.Component {
   render() {
     const elements = this.props.products.map( (item, index) => {
         return (
             <div
-                key={ index }
-                id={ item.id }
+                className= { styles.result }
+                key= { index }
+                id= { item.id }
                 onClick= { (e) => { this.props.selectProductHandler(e) } }
             >
                 { item.name }, { item.price }
@@ -19,12 +21,18 @@ class Result extends React.Component {
         <h4>Results:</h4>
         { elements }
         <br/>
-        <button onClick= { () => { this.props.sortProductByPriceAscHandler() } }>
+        <button
+            className= "btn btn-primary"
+            onClick= { () => { this.props.sortProductByPriceAscHandler() } }
+        >
             Sort Result by Price (Lowest to Highest)
         </button>
         <br/>
         <br/>
-        <button onClick= { () => { this.props.sortProductByPriceDescHandler() } }>
+        <button
+            className= "btn btn-info"
+            onClick= { () => { this.props.sortProductByPriceDescHandler() } }
+        >
             Sort Result by Price (Highest to Lowest)
         </button>
       </div>

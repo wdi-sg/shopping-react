@@ -1,15 +1,17 @@
 import React from 'react';
 
+import styles from './styles.scss';
+
 class Product extends React.Component {
   render() {
     if (this.props.selectedProduct !== null) {
         return (
-          <div>
+          <div className= {styles.product}>
             <h4>Product:</h4>
-            <p>Name: { this.props.selectedProduct.name }</p>
-            <p>Description: { this.props.selectedProduct.description }</p>
-            <p>Price: { this.props.selectedProduct.price }</p>
-            <button
+            <p><span className= { styles.title }>Name:  </span>{ this.props.selectedProduct.name }</p>
+            <p><span className= { styles.title }>Description:  </span>{ this.props.selectedProduct.description }</p>
+            <p><span className= { styles.title }>Price:  </span>{ this.props.selectedProduct.price }</p>
+            <button className= "btn btn-success"
                 onClick= { () => { this.props.addProductToCartHandler() } }>
                 Add to Cart
             </button>

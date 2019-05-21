@@ -1,6 +1,8 @@
 import React from 'react';
 import Result from '../result/result';
 
+import styles from './styles.scss';
+
 class Cart extends React.Component {
     render() {
         if (this.props.cart.length > 0) {
@@ -18,11 +20,15 @@ class Cart extends React.Component {
 
             const elements = this.props.cart.map( (item, index) => {
                 return (
-                        <div key={ index }>
-                            <p>Name: { item.name }</p>
-                            <p>Description: { item.description }</p>
-                            <p>Price: { item.price }</p>
+                        <div
+                            className= { styles.cart }
+                            key={ index }
+                        >
+                            <p><span className= { styles.title }>Name: </span>{ item.name }</p>
+                            <p><span className= { styles.title }>Description: </span>{ item.description }</p>
+                            <p><span className= { styles.title }>Price: </span>{ item.price }</p>
                             <button
+                                className= "btn btn-danger"
                                 id={ item.id }
                                 onClick= { (e) => { this.props.removeProductToCartHandler(e) } }
                             >
@@ -42,10 +48,18 @@ class Cart extends React.Component {
 
                     <hr/>
                     <div>
-                        <p><b>Sub-Total: </b>${ subTotal.toFixed(2) }</p>
-                        <p><b>Shipping: </b>${ shipping.toFixed(2) }</p>
-                        <p><b>GST (7%): </b>${ gst.toFixed(2) }</p>
-                        <p><b>Total: </b>${ total.toFixed(2) }</p>
+                        <div className= { styles.payment }>
+                            <span className= { styles.title }>Sub-Total: </span>${ subTotal.toFixed(2) }
+                        </div>
+                        <div className= { styles.payment }>
+                            <span className= { styles.title }>Shipping: </span>${ shipping.toFixed(2) }
+                        </div>
+                        <div className= { styles.payment }>
+                            <span className= { styles.title }>GST (7%): </span>${ gst.toFixed(2) }
+                        </div>
+                        <div className= { styles.payment }>
+                            <span className= { styles.title }>Total: </span>${ total.toFixed(2) }
+                        </div>
                     </div>
                 </div>
             );

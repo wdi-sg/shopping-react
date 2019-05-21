@@ -12,7 +12,7 @@ class App extends React.Component {
         super();
         this.state = {
             items: [],
-            currItem: [],
+            currProduct: [],
             cartItems: [],
         };
         this.makeAjaxCall = this.makeAjaxCall.bind(this);
@@ -50,15 +50,15 @@ class App extends React.Component {
         newCurrItem.push(clickedItem);
 
         this.setState({
-            currItem: newCurrItem
+            currProduct: newCurrItem
         })
     }
 
     addToCart() {
-        let currItem = this.state.currItem;
+        let currProduct = this.state.currProduct;
         let newCartItems = this.state.cartItems;
 
-        newCartItems.push(currItem);
+        newCartItems.push(currProduct);
         // console.log(newCartItems);
 
         this.setState({
@@ -100,7 +100,7 @@ class App extends React.Component {
                     </div>
                     <div className="col">
                         <Product
-                            clickedItem={this.state.currItem}
+                            clickedItem={this.state.currProduct}
                             addToCart={(e) => {this.addToCart(e)}}
                         />
                     </div>
@@ -108,6 +108,37 @@ class App extends React.Component {
                         <Cart
                             cartItems={this.state.cartItems}
                         />
+                        <br/>
+                        <div className="row">
+                            <div className="col-6">
+                                <span>Subtotal</span>
+                            </div>
+                            <div className="col">
+                                $x.xx
+                            </div>
+                            <div className="col">
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-6">
+                                <span>GST</span>
+                            </div>
+                            <div className="col">
+                                $x.xx
+                            </div>
+                            <div className="col">
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-6">
+                                <span>Shipping ($7)</span>
+                            </div>
+                            <div className="col">
+                                $x.xx
+                            </div>
+                            <div className="col">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

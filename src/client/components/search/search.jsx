@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './style.scss';
 import Result from '../result/result';
 
 class Search extends React.Component {

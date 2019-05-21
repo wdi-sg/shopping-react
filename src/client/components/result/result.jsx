@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './style.scss';
 
 class Result extends React.Component {
 
@@ -12,6 +11,7 @@ class Result extends React.Component {
 
     return (
       <div>
+        <h4>Results:</h4>
         { elements }
       </div>
     );

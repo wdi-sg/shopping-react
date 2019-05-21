@@ -6,35 +6,34 @@ class App extends React.Component {
     constructor() {
         super();
 
+        this.ajaxTimeout = null;
         this.state = {
-            products: [],
-            request: new XMLHttpRequest(),
+            products: []
         };
     }
 
-    searchHandler(e) {
-        // the reason for this variable is because loadRequestHandler is unable to access react .this within its scope
-        const reactState = this;
+    searchHandler(searchString) {
+        if (searchString.length > 3 ) {
+            clearTimeout(this.ajaxTimeout);
+            this.ajaxTimeout = setTimeout(() => { this.doAjax(searchString) }, 500);
 
-        const loadRequestHandler = function () {
-            const data = JSON.parse( this.responseText );
-            reactState.setState( { products: data.products } );
+        } else {
+            this.setState( { products: [] } );
         }
+    }
 
-        if (e.target.value.length > 3 ) {
-            this.state.request.addEventListener("load", loadRequestHandler);
-            this.state.request.open("GET", "http://localhost:3000/products?query=" + e.target.value);
-            this.state.request.send();
-            // const ajaxCall = setTimeout(() => { this.req.send(); }, 1000);
-            console.log("fire!");
-        }
+    async doAjax(searchString) {
+        const response = await fetch(`/products?query=${ searchString }`);
+        const data = await response.json();
+
+        this.setState({ products: data.products });
     }
 
     render() {
         return (
             <div>
                 <Search
-                    searchHandler= { (e) => { this.searchHandler(e) } }
+                    searchHandler= { (e) => { this.searchHandler(e.target.value) } }
                     products={ this.state.products }/>
             </div>
         );

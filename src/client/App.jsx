@@ -99,7 +99,7 @@ class App extends React.Component {
         //   });
     };
     onClickProduct = (event) => {
-        let product = JSON.parse(event.target.attributes.value.value);
+        let product = JSON.parse(event.target.parentElement.attributes.value.value);
         // console.log(product);
         this.setState({product: product});
     };

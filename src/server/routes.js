@@ -5,4 +5,6 @@ module.exports = (app, db) => {
 
   app.get('/search/:item', products.getItem);
 
+  app.post(`/test`, products.testStuff);
+
 };

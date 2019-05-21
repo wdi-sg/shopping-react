@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './style.scss';
 
-class AddToCard extends React.Component{
+class AddtoCart extends React.Component{
     render(){
         return(
             <div className={styles.addCartButton}>
@@ -48,15 +48,15 @@ class Product extends React.Component{
         super()
     }
     render(){
-        console.log('hello wolf');
-        console.log(this.props.giveYou);
+        // console.log('hello wolf', this.props);
+
         return(
             <div className={styles.product_main}>
                 <ProductImage/>
                 <p>{this.props.giveYou.name}</p>
                 <Description desc={this.props.giveYou.desc}/>
                 <Price price={this.props.giveYou.price}/>
-                <AddToCard stuff={this.props.giveYou} addToCart={this.props.addToCart}/>
+                <AddtoCart stuff={this.props.giveYou} addToCart={this.props.addToCart} addToPrice={this.props.addToPrice}/>
             </div>
         );
     }

@@ -7,8 +7,15 @@ class CheckOutPayment extends React.Component{
         super()
     }
     render(){
+        console.log('PAYMENT', this.props.price)
         return(
-            <p>Pay here</p>
+
+            <div>
+                <p>Sub Total: ${this.props.price.subtotal}</p>
+                <p>Shipping (5%): ${this.props.price.shipping}</p>
+                <p>GST (7%): ${this.props.price.GST}</p>
+                <p>Total: ${this.props.price.total}</p>
+            </div>
         );
     }
 }
@@ -61,15 +68,19 @@ class List extends React.Component{
 class Shop extends React.Component{
     constructor(){
         super()
+        this.state={
+            priceArr:[],
+        }
     }
 
     render(){
+        console.log('Hello carter', this.props)
         return(
-            <div>
+            <React.Fragment>
                 <p>Shopping Cart</p>
                 <List list={this.props.giveYou}/>
-                <CheckOutPayment/>
-            </div>
+                <CheckOutPayment price={this.props.givePrice}/>
+            </React.Fragment>
         );
     }
 }

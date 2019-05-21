@@ -4,7 +4,6 @@ import styles from './style.scss';
 class Result extends React.Component {
 
   render() {
-    console.log(this.props)
     let elements = this.props.products.map( (item) => {
         return (
             <li>{ item.name }</li>

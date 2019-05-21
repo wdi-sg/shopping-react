@@ -5,9 +5,9 @@ class Product extends React.Component {
     return (
       <div>
         <h4>Product:</h4>
-        <p>Name:<br/>{ this.props.selectedProduct.name }</p>
-        <p>Description:<br/>{ this.props.selectedProduct.description }</p>
-        <p>Price:<br/>{ this.props.selectedProduct.price }</p>
+        <p>Name: { this.props.selectedProduct.name }</p>
+        <p>Description: { this.props.selectedProduct.description }</p>
+        <p>Price: { this.props.selectedProduct.price }</p>
         <button
             onClick= { () => { this.props.addProductToCartHandler() } }>
             Add to Cart

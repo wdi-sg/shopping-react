@@ -5,7 +5,7 @@ class Result extends React.Component {
     const elements = this.props.products.map( (item, index) => {
         return (
             <div
-                key={ item.id }
+                key={ index }
                 id={ item.id }
                 onClick= { (e) => { this.props.selectProductHandler(e) } }
             >
@@ -18,6 +18,8 @@ class Result extends React.Component {
       <div>
         <h4>Results:</h4>
         { elements }
+
+        <br/>
         <button
             onClick= { () => { this.props.sortProductByPriceHandler() } }
         >

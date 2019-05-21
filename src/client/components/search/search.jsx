@@ -14,7 +14,7 @@ class Search extends React.Component {
 
                 <br/>
                 {
-                    this.props.products.length > 1 ?
+                    this.props.products.length > 0 ?
                     (
                         <Result
                             sortProductByPriceHandler= { () => { this.props.sortProductByPriceHandler() } }

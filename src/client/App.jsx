@@ -20,7 +20,7 @@ class App extends React.Component {
     searchProductsHandler(searchString) {
         if (searchString.length > 3 && searchString.trim() !== "") {
             clearTimeout(this.ajaxTimeout);
-            this.ajaxTimeout = setTimeout(() => { this.doAjaxCall(searchString) }, 300);
+            this.ajaxTimeout = setTimeout(() => { this.doAjaxCall(searchString) }, 250);
 
         } else {
             this.setState( { products: [] } );

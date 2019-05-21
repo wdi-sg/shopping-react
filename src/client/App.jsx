@@ -14,10 +14,46 @@ class App extends React.Component {
             items: [],
             currProduct: [],
             cartItems: [],
+            subtotal: 0,
+            gst: 0,
+            shipping: 0,
+            total: 0,
+
         };
         this.makeAjaxCall = this.makeAjaxCall.bind(this);
         this.getProductInfo = this.getProductInfo.bind(this);
         this.addToCart = this.addToCart.bind(this);
+        this.calcSubtotal = this.calcSubtotal.bind(this);
+        this.calcGst = this.calcGst.bind(this);
+    }
+
+    calcGst() {
+        let currSubtotal = this.state.subtotal;
+        console.log(currSubtotal);
+        let newGst = (currSubtotal * 0.07).toFixed(2);
+        this.setState({gst: newGst});
+    }
+
+    calcSubtotal() {
+        let cartItems = this.state.cartItems;
+        let prices = cartItems.price;
+        let priceArr = [];
+
+        for (let i = 0; i < cartItems.length; i++) {
+            let item = cartItems[i];
+            for (let j = 0; j < item.length; j++) {
+                let price = (item[j].price).substr(1);
+                priceArr.push(parseFloat(price));
+            }
+        }
+        let sum = priceArr.reduce((a, b) => a + b, 0);
+        let roundSum = sum.toFixed(2);
+        // console.log(priceArr);
+        // console.log(sum);
+
+        this.setState({
+            subtotal: roundSum
+        })
     }
 
     makeAjaxCall() {
@@ -102,43 +138,16 @@ class App extends React.Component {
                         <Product
                             clickedItem={this.state.currProduct}
                             addToCart={(e) => {this.addToCart(e)}}
+                            calcSubtotal={(e) => {this.calcSubtotal(e)}}
+                            calcGst={(e) => {this.calcGst(e)}}
                         />
                     </div>
                     <div className="col">
                         <Cart
                             cartItems={this.state.cartItems}
+                            subtotal={this.state.subtotal}
+                            gst={this.state.gst}
                         />
-                        <br/>
-                        <div className="row">
-                            <div className="col-6">
-                                <span>Subtotal</span>
-                            </div>
-                            <div className="col">
-                                $x.xx
-                            </div>
-                            <div className="col">
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-6">
-                                <span>GST</span>
-                            </div>
-                            <div className="col">
-                                $x.xx
-                            </div>
-                            <div className="col">
-                            </div>
-                        </div>
-                        <div className="row">
-                            <div className="col-6">
-                                <span>Shipping ($7)</span>
-                            </div>
-                            <div className="col">
-                                $x.xx
-                            </div>
-                            <div className="col">
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

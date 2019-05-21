@@ -5,7 +5,11 @@ import styles from './style.scss';
 class Cart extends React.Component {
     constructor() {
         super();
-        this.state = {};
+        this.state = {
+        };
+        // this.removeitem = this.removeitem.bind(this);
+        // this.clearCart = this.clearCart.bind(this);
+
     }
 
     removeItem(e) {
@@ -41,10 +45,39 @@ class Cart extends React.Component {
             <div>
                 {cart}
                 <button
-                    type="button"
-                    className="btn btn-danger"
-                    onClick={()=>{this.clearCart()}}>Clear Cart
+                    type="button" className="btn btn-danger" onClick={()=>{this.clearCart()}}>Clear Cart
                 </button>
+                <br/>
+                <div className="row">
+                    <div className="col-6">
+                        Subtotal
+                    </div>
+                    <div className="col">
+                        ${this.props.subtotal}
+                    </div>
+                    <div className="col">
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-6">
+                        GST (7%)
+                    </div>
+                    <div className="col">
+                        ${this.props.gst}
+                    </div>
+                    <div className="col">
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-6">
+                        Shipping ($7)
+                    </div>
+                    <div className="col">
+                        $x.xx
+                    </div>
+                    <div className="col">
+                    </div>
+                </div>
             </div>
         );
     }

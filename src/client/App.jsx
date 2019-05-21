@@ -25,12 +25,13 @@ class App extends React.Component {
   }
 
   handleChange(event) {
-    console.log(event.target.value)
-    let query = event.target.value.toUpperCase()
+    console.log(event.target.value);
+    let query = event.target.value;
 
     // fetch("/products").then(res=>res.json().then(res=>this.setState({result:res})));
     // fetch("/search").then(res=>res.json().then(res=>this.setState({result:res})));
-    fetch(`/search/${query}`).then(res=>res.json().then(res=>this.setState({result:res})));
+    // fetch(`/products/search/${query}`).then(res=>res.json().then(res=>this.setState({result:res})));
+    fetch(`/products/search?search=${query}`).then(res=>res.json().then(res=>this.setState({result:res})));
     this.setState({query: query})
   }
 

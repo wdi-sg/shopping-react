@@ -19,17 +19,35 @@ module.exports = (db) => {
         response.send({products: result});
     }
 
+    // let data = request.params.id;
+    let data = request.query.search;
 
-
-    let data = request.params.id;
+    // console.log(request.query);
 
     db.products.find(data, doneWithQuery);
 
   }
 
+  // let sort = (request, response) => {
+
+  //   db.products.sort((error, products) => {
+  //     // queryResult contains pokemon data returned from the pokemon model
+  //     if (error) {
+  //       console.error('error getting pokemon', error);
+  //       response.status(500);
+  //       response.send('server error');
+  //     } else {
+  //       response.send({products: products});
+  //     }
+  //   });
+  // };
+
+
+
 
   return {
     getAll: getAll,
-    find: find
+    find: find,
+    // sort: sort
   };
 };

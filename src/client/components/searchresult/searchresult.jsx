@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './style.scss';
+import Sort from './sort.jsx';
 
 class Searchresult extends React.Component {
 
@@ -8,7 +9,6 @@ class Searchresult extends React.Component {
         super();
         this.showProduct = this.showProduct.bind(this);
     }
-
 
     showProduct(e){
         let productId = e.target.id;
@@ -31,6 +31,7 @@ class Searchresult extends React.Component {
         }
     return (
       <div>
+        <Sort />
         <h4>Results for {this.props.query}</h4>
         <ul>{searchResults}</ul>
       </div>

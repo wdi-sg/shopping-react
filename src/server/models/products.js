@@ -21,9 +21,6 @@ module.exports = (dbPoolInstance) => {
   };
 
   let find = (data, callback) => {
-    console.log("jadjashdjsahjdkhaskdhkasjhdkjashdjhasj");
-    console.log(data);
-    console.log("jadjashdjsahjdkhaskdhkasjhdkjashdjhasj");
 
 
     dbPoolInstance.query(`SELECT * from products WHERE name ILIKE '%${data}%'`, (error, queryResult) => {
@@ -31,6 +28,7 @@ module.exports = (dbPoolInstance) => {
       if (error) {
         // invoke callback function with results after query has executed
         callback(error, null);
+
       } else {
         // invoke callback function with results after query has executed
 
@@ -39,8 +37,24 @@ module.exports = (dbPoolInstance) => {
     });
   };
 
+  // let sort = (callback) => {
+
+  //   dbPoolInstance.query(`SELECT * FROM products ORDER BY price ASC`, (error, queryResult) => {
+
+  //     if (error) {
+  //       // invoke callback function with results after query has executed
+  //       callback(error, null);
+  //     } else {
+  //       // invoke callback function with results after query has executed
+
+  //       callback(null, queryResult.rows);
+  //     }
+  //   });
+  // };
+
   return {
     getAll,
-    find
+    find,
+    // sort
   };
 };

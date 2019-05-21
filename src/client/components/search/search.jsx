@@ -49,7 +49,9 @@ class Search extends React.Component {
 
 		if (entry) {
 			console.log("searching for product..");
-			fetch(`/products/search/${entry}/order/${order}`)
+			
+			// fetch(`/products/search/${entry}/order/${order}`)
+			fetch(`/products/query?search=${entry}&order=${order}`)
 			.then((resp) => resp.json())
 			.then((data) => {
 				// console.log("data.products",data.products);
@@ -95,7 +97,8 @@ class Search extends React.Component {
 
 		const reactThis = this;
 
-		fetch(`/products/search/${this.state.searchInput}/order/${optionSelected}`)
+		// fetch(`/products/search/${this.state.searchInput}/order/${optionSelected}`)
+		fetch(`/products/query?search=${this.state.searchInput}&order=${optionSelected}`)
 		.then((resp) => resp.json())
 		.then((data) => {
 			// console.log("data.products",data.products);

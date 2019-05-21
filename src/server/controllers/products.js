@@ -15,8 +15,10 @@ module.exports = (db) => {
 
   let search = (request, response) => {
 
-    const searchInput = request.params.query;
-    let order = request.params.order;
+    // const searchInput = request.params.query;
+    // let order = request.params.order;
+    const searchInput = request.query.search;
+    let order = request.query.order;
     console.log("order", order);
 
     const callback = (error, products) => {

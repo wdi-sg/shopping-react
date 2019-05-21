@@ -13,7 +13,7 @@ class App extends React.Component {
       productHidden: true,
       cart: [],
       cartHidden: true,
-      totalAmount: 1.00,
+      totalAmount: 0.00,
     };
     // this.displayProduct = this.displayProduct.bind(this);
   }
@@ -33,9 +33,10 @@ class App extends React.Component {
     });
   }
 
-  removeItemFromCart = (updatedCart) => {
+  removeItemFromCart = (updatedCart,updatedTotalAmount) => {
     this.setState({
-      cart: updatedCart
+      cart: updatedCart,
+      totalAmount: updatedTotalAmount,
     });
   }
 

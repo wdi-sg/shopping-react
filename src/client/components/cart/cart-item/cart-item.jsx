@@ -9,7 +9,12 @@ class CartItem extends React.Component {
 		const updatedCart = cart;
 		updatedCart.splice(index,1);
 		console.log("handleDelete updatedCart",updatedCart);
-		removeFromCart(updatedCart);
+		let updatedTotalAmount = 0;
+		for (let i=0; i<updatedCart.length; i++) {
+			updatedTotalAmount = (updatedTotalAmount + updatedCart[i].quantity * parseFloat(updatedCart[i].price.slice(1,updatedCart[i].price.length)));
+		}
+
+		removeFromCart(updatedCart,updatedTotalAmount);
 	}
 
 	displayItem = (displayProduct, item) => {
@@ -17,7 +22,7 @@ class CartItem extends React.Component {
 		displayProduct(item);
 	}
 
-	changeQuantity = (index,cart,addProductToCart,totalAmount,e) => {
+	changeQuantity = (index,cart,addProductToCart,e) => {
 		const quantity = e.target.value;
 		console.log("quantity",quantity);
 		console.log("index", index);
@@ -43,7 +48,7 @@ class CartItem extends React.Component {
 					</div>
 				</div>
 					<div className="d-flex align-items-center">
-						<input style={{width:"50px"}} type="number" min="0" value={this.props.item.quantity} onChange={(e)=>this.changeQuantity(this.props.index,this.props.cart,this.props.addProductToCart,this.props.totalAmount,e)} />
+						<input style={{width:"50px"}} type="number" min="0" value={this.props.item.quantity} onChange={(e)=>this.changeQuantity(this.props.index,this.props.cart,this.props.addProductToCart,e)} />
 						<button className="align-self-start" style={{border:"none", backgroundColor:"transparent"}} onClick={()=>this.handleDelete(this.props.index, this.props.cart, this.props.removeFromCart)}>❌</button>
 					</div>
 			</div>

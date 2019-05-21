@@ -14,27 +14,24 @@ class Search extends React.Component {
 		}
 	}
 
-	// handleLoad () {
-	// 	console.log("handleLoad");
-	// 	const reactThis = this;
+	componentDidMount () {
+		fetch(`/products`)
+		.then((resp) => resp.json())
+		.then((data) => {
+			// console.log("data.products",data.products);
+			const searchResultArray = data.products;
+			const searchResultObjectKeys = Object.keys(searchResultArray[0]);
+			// console.log("searchResultObjectKeys", searchResultObjectKeys);
 
-	// 	fetch(`/products`)
-	// 	.then((resp) => resp.json())
-	// 	.then((data) => {
-	// 		// console.log("data.products",data.products);
-	// 		const searchResultArray = data.products;
-	// 		const searchResultObjectKeys = Object.keys(searchResultArray[0]);
-	// 		// console.log("searchResultObjectKeys", searchResultObjectKeys);
-
-	// 		reactThis.setState({
-	// 			searchResultObjectKeys: searchResultObjectKeys,
-	// 			searchResultArray: searchResultArray
-	// 		})
-	// 	})
-	// 	.catch(function(error) {
-	// 		console.log("Fetch Error", error)
-	// 	})
-	// }
+			this.setState({
+				searchResultObjectKeys: searchResultObjectKeys,
+				searchResultArray: searchResultArray
+			})
+		})
+		.catch(function(error) {
+			console.log("Fetch Error", error)
+		})
+	}
 
 	handleSearchChange (e) {
 		console.log("handleSearchChange");
@@ -44,7 +41,7 @@ class Search extends React.Component {
 			searchInput: entry
 		})
 
-		const reactThis = this;
+		// const reactThis = this;
 		let order = this.state.optionSelected;
 
 		if (entry) {
@@ -59,7 +56,7 @@ class Search extends React.Component {
 				const searchResultObjectKeys = Object.keys(searchResultArray[0]);
 				// console.log("searchResultObjectKeys", searchResultObjectKeys);
 
-				reactThis.setState({
+				this.setState({
 					searchResultObjectKeys: searchResultObjectKeys,
 					searchResultArray: searchResultArray
 				})
@@ -77,7 +74,7 @@ class Search extends React.Component {
 				const searchResultObjectKeys = Object.keys(searchResultArray[0]);
 				// console.log("searchResultObjectKeys", searchResultObjectKeys);
 
-				reactThis.setState({
+				this.setState({
 					searchResultObjectKeys: searchResultObjectKeys,
 					searchResultArray: searchResultArray
 				})
@@ -95,7 +92,7 @@ class Search extends React.Component {
 			optionSelected: optionSelected
 		})
 
-		const reactThis = this;
+		// const reactThis = this;
 
 		// fetch(`/products/search/${this.state.searchInput}/order/${optionSelected}`)
 		fetch(`/products/query?search=${this.state.searchInput}&order=${optionSelected}`)
@@ -106,7 +103,7 @@ class Search extends React.Component {
 			const searchResultObjectKeys = Object.keys(searchResultArray[0]);
 			// console.log("searchResultObjectKeys", searchResultObjectKeys);
 
-			reactThis.setState({
+			this.setState({
 				searchResultObjectKeys: searchResultObjectKeys,
 				searchResultArray: searchResultArray
 			})
@@ -155,11 +152,11 @@ class Search extends React.Component {
 					<div className="d-flex justify-content-between">
 						<div className="d-flex flex-wrap align-items-center justify-content-between">
 							<span>Sort By:&nbsp;</span>
-							<select style={{height:"90%", fontSize:"14px"}}onChange={(e)=>this.handleSelectChange(e)}>
+							<select style={{height:"90%", fontSize:"14px"}} onChange={(e)=>this.handleSelectChange(e)}>
 								<option value="name" defaultValue>Name</option>
 								<option value="price">Price</option>
 							</select>
-							<button className="btn btn-info ml-3" style={{height:"90%"}} onClick={()=>this.viewCart(this.props.viewCart)}>View/Hide Cart</button>
+							<button className="btn btn-info ml-3" style={{height:"90%"}} id={style["show-hide-cart"]} onClick={()=>this.viewCart(this.props.viewCart)}>View/Hide Cart</button>
 						</div>
 						
 					</div>

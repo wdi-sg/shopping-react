@@ -17,6 +17,7 @@ module.exports = (db) => {
 
     // const searchInput = request.params.query;
     // let order = request.params.order;
+    console.log("request.query",request.query);
     const searchInput = request.query.search;
     let order = request.query.order;
     console.log("order", order);

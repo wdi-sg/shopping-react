@@ -1,7 +1,7 @@
 import React from 'react';
 
 import SearchForm from './searchForm';
-import DisplaySearchProducts from '../product/displaySearchProducts';
+import SearchResults from '../search/searchResults';
 
 import styles from './style.scss';
 
@@ -12,13 +12,14 @@ class Search extends React.Component {
             searchWord: "",
             allProducts: [],
             searchResults: [],
-            currentProduct: null,
         }
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.getAllProducts = this.getAllProducts.bind(this);
         this.searchProducts = this.searchProducts.bind(this);
+        this.searchResultsCallback = this.searchResultsCallback.bind(this);
+        //this.reqListener = this.reqListener.bind(this);
     }
 
     handleChange(e) {
@@ -43,11 +44,10 @@ class Search extends React.Component {
         this.setState({allProducts: data.products})
         console.log(this.state.allProducts)
         let allProducts = this.state.allProducts;
-        console.log(allProducts)
 
-        let allName = allProducts.map(obj => {
-            console.log(obj.name)
-        }) // end of map
+        // let allName = allProducts.map(obj => {
+        //     console.log(obj.name)
+        // }) // end of map
     }
 
     searchProducts() {
@@ -59,7 +59,8 @@ class Search extends React.Component {
 
         var req = new XMLHttpRequest();
         req.open("GET", "/products", false);
-        req.send(null);
+       // req.addEventListener("load", getShowList);
+        req.send();
 
         const data = JSON.parse(req.responseText);
 
@@ -69,42 +70,29 @@ class Search extends React.Component {
 
         let searchResults = this.state.searchResults;
 
-        let reactThis = this;
         let allName = allProducts.map(obj => {
             if (obj.name.toLowerCase().includes(searchWord)) {
                 searchResults.push(obj);
-                // var li = document.createElement("li");
-                // var liText = document.createTextNode(obj.name);
-
-                // // when user click product name, put obj into currentProduct state
-                // li.onclick = function() {
-                //     reactThis.setState({currentProduct: obj})
-                // };
-
-                // // var a = document.createElement("a");
-                // // a.href = `/products/${obj.id}`;
-                // // a.text = obj.name;
-                // // a.id = obj.id;
-
-                // //li.appendChild(a);
-                // li.appendChild(liText);
-                // ul.appendChild(li);
             }
         }) // end of map
-        //div.appendChild(ul)
-        //body.appendChild(div);
+    }
+
+    // take current product from search results (child) to the parent
+    searchResultsCallback(dataFromSearchResults) {
+        // this.setState({currentProduct: dataFromSearchResults})
+
+        // let currentProduct = this.state.currentProduct;
+        console.log("search: ", dataFromSearchResults)
+        this.props.callbackFromApp(dataFromSearchResults)
     }
 
     render() {
         return (
-            <div>
+            <React.Fragment>
                 <SearchForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} searchWord={this.state.searchWord} searchProducts={this.searchProducts} />
 
-                <DisplaySearchProducts searchResults={this.state.searchResults} />
-
-            </div>
-
-
+                <SearchResults searchResults={this.state.searchResults} callbackFromSearch={this.searchResultsCallback} />
+            </React.Fragment>
         )
     }
 }

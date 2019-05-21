@@ -8,9 +8,18 @@ class Product extends React.Component {
         return (
           <div className= {styles.product}>
             <h4>Product:</h4>
-            <p><span className= { styles.title }>Name:  </span>{ this.props.selectedProduct.name }</p>
-            <p><span className= { styles.title }>Description:  </span>{ this.props.selectedProduct.description }</p>
-            <p><span className= { styles.title }>Price:  </span>{ this.props.selectedProduct.price }</p>
+            <div>
+                <span className= { styles.title }>Name:  </span>
+                { this.props.selectedProduct.name }
+            </div>
+            <div>
+                <span className= { styles.title }>Description:  </span>
+                { this.props.selectedProduct.description }
+            </div>
+            <div><span className= { styles.title }>Price:  </span>
+                { this.props.selectedProduct.price }
+            </div>
+            <br/>
             <button className= "btn btn-success"
                 onClick= { () => { this.props.addProductToCartHandler() } }>
                 Add to Cart

@@ -1,8 +1,6 @@
 import React from 'react';
 import Result from '../result/result';
 
-import styles from './styles.scss';
-
 class Search extends React.Component {
     render() {
         return (

@@ -5,6 +5,8 @@ import Search from './components/search/search';
 import Product from './components/product/product';
 import Cart from './components/cart/cart';
 
+import styles from './styles.scss'
+
 class App extends React.Component {
     constructor() {
         super();
@@ -13,6 +15,7 @@ class App extends React.Component {
 
         this.state = {
             cart: [],
+            displayCart: false,
             products: [],
             selectedProduct: null,
         };
@@ -69,12 +72,15 @@ class App extends React.Component {
         this.setState( { selectedProduct: product } );
     }
 
-    addProductToCartHandler(e) {
+    addProductToCartHandler() {
         let newCart = [...this.state.cart];
         let newProduct = {...this.state.selectedProduct}
         newCart.push(newProduct);
 
-        this.setState( { cart: newCart } );
+        this.setState({
+            cart: newCart,
+            displayCart: true
+        });
     }
 
     removeProductToCartHandler(e) {
@@ -85,33 +91,42 @@ class App extends React.Component {
         this.setState( { cart: newCart } );
     }
 
+    hideCartHandler() {
+        this.setState( { displayCart: false } );
+    }
+
     render() {
         return (
-            <div className="container">
-                <div className="row">
-                    <div className="col-4">
-                        <Search
-                            products= { this.state.products }
-                            sortProductByPriceAscHandler= { () => { this.sortProductByPriceAscHandler() } }
-                            sortProductByPriceDescHandler= { () => { this.sortProductByPriceDescHandler() } }
-                            searchProductsHandler= { (e) => { this.searchProductsHandler(e.target.value) } }
-                            selectProductHandler= { (e) => { this.selectProductHandler(e) } }
-                        />
-                    </div>
+            <div>
+                <div className="container">
+                    <div className="row">
+                        <div className= {styles.search + " col-4"}>
+                            <Search
+                                products= { this.state.products }
+                                sortProductByPriceAscHandler= { () => { this.sortProductByPriceAscHandler() } }
+                                sortProductByPriceDescHandler= { () => { this.sortProductByPriceDescHandler() } }
+                                searchProductsHandler= { (e) => { this.searchProductsHandler(e.target.value) } }
+                                selectProductHandler= { (e) => { this.selectProductHandler(e) } }
+                            />
+                        </div>
 
-                    <div className="col-4">
-                        <Product
-                            selectedProduct = { this.state.selectedProduct }
-                            addProductToCartHandler= { (e) => { this.addProductToCartHandler(e) } }
-                        />
-                    </div>
+                        <div className= {styles.product + " col-8"}>
+                            <Product
+                                selectedProduct = { this.state.selectedProduct }
+                                addProductToCartHandler= { (e) => { this.addProductToCartHandler(e) } }
 
-                    <div className="col-4">
-                        <Cart
-                            cart = { this.state.cart }
-                            removeProductToCartHandler= { (e) => { this.removeProductToCartHandler(e) } }
-                        />
+                            />
+                        </div>
                     </div>
+                </div>
+
+                <div>
+                    <Cart
+                        cart = { this.state.cart }
+                        hideCartHandler= { () => { this.hideCartHandler() } }
+                        removeProductToCartHandler= { (e) => { this.removeProductToCartHandler(e) } }
+                        displayCart = {this.state.displayCart }
+                    />
                 </div>
             </div>
         );

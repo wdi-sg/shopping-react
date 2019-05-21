@@ -6,9 +6,9 @@ class Result extends React.Component {
     const elements = this.props.products.map( (item, index) => {
         return (
             <div
-                className= { styles.result }
                 key= { index }
                 id= { item.id }
+                className= { styles.result }
                 onClick= { (e) => { this.props.selectProductHandler(e) } }
             >
                 { item.name }, { item.price }

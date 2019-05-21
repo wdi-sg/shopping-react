@@ -15,6 +15,7 @@ class Results extends React.Component {
       return (
         <tr key={product.id} onClick={this.props.onClickProduct}>
           <td value={JSON.stringify(product)}>{product.name}</td>
+          <td>{product.price}</td>
         </tr>
       );
     });
@@ -23,6 +24,7 @@ class Results extends React.Component {
         <thead>
           <tr>
             <th scope="col">Name</th>
+            <th scope="col">Price</th>
           </tr>
         </thead>
         <tbody>{productsHTML}</tbody>

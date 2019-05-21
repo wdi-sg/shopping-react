@@ -22,12 +22,12 @@ class Cart extends React.Component {
       );
     });
     return (
-      <div className="container">
+      <div>
         <table className="table">
           <thead>
             <tr>
               <th scope="col">Name</th>
-              <td scope="col">Price</td>
+              <th scope="col">Price</th>
             </tr>
           </thead>
           <tbody>{productsHTML}</tbody>

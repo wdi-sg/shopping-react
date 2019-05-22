@@ -11,6 +11,10 @@
 	font-weight: bold;
 }
 
+#chicken td {
+	vertical-align: middle;
+}
+
 .showCart {
 	top: 25px;
 	left: 15%;
@@ -21,6 +25,14 @@
 	position: absolute;
 	background-color: #EBEDEF;
 	border: 1px solid black;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@keyframes animatetop {
+  from {top: -300px; opacity: 0}
+  to {top: 0; opacity: 1}
 }
 
 .hideCart {
@@ -33,11 +45,20 @@
 	position: absolute;
 	background-color: #EBEDEF;
 	border: 1px solid black;
+  animation-name: animateback;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@keyframes animateback {
+  from {top: 0px; opacity: 1 }
+  to {top: -300px; opacity: 0 }
 }
 
 .close {
 	left: 45%;
 	font-size: 20px;
+	font-weight: bold;
 	position: relative;
 }
 

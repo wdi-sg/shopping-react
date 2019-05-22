@@ -56,7 +56,7 @@ class Cart extends React.Component {
                     </div>
                     <h3>Shopping Cart</h3>
                     <br/>
-                    <table className="table table-striped">
+                    <table className="table table-striped" id={styles.chicken}>
                         <thead>
                             <tr>
                               <th scope="col">#</th>

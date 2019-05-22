@@ -5,9 +5,11 @@ class Search extends React.Component {
     render() {
         return (
             <div>
-                <form onKeyUp={ (e) => { this.props.searchProductsHandler(e) } }>
+                <form
+                    onSubmit={ (e) => { e.preventDefault() } }
+                    onChange={ (e) => { this.props.searchProductsHandler(e) } }>
                     <h4>Search:</h4>
-                    <input type="text" className="form-control"/>
+                    <input type="text" className= "form-control"/>
                 </form>
 
                 <br/>

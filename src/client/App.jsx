@@ -100,12 +100,12 @@ class App extends React.Component {
             <div>
                 <div className="container">
                     <div className="row">
-                        <div className= {styles.search + " col-4"}>
+                        <div className= { styles.search + " col-4" }>
                             <Search
                                 products= { this.state.products }
                                 sortProductByPriceAscHandler= { () => { this.sortProductByPriceAscHandler() } }
                                 sortProductByPriceDescHandler= { () => { this.sortProductByPriceDescHandler() } }
-                                searchProductsHandler= { (e) => { this.searchProductsHandler(e.target.value) } }
+                                searchProductsHandler= { (e) => { this.searchProductsHandler(e.target.value, e) } }
                                 selectProductHandler= { (e) => { this.selectProductHandler(e) } }
                             />
                         </div>

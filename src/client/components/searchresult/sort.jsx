@@ -8,7 +8,7 @@ class Sort extends React.Component {
     render() {
     return (
       <div>
-       <select>
+       <select onChange={this.props.handleChange}>
             <option>--Sort by price--</option>
             <option>Lowest to highest</option>
             <option>Highest to lowest</option>
@@ -17,6 +17,5 @@ class Sort extends React.Component {
     );
   }
 }
-
 
 export default Sort;

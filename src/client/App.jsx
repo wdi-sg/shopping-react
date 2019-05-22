@@ -15,6 +15,7 @@ class App extends React.Component {
       product: {name: '', price: '', description: '', id: ''},
       result: '',
       query: '',
+      order: 'ASC',
       cart: { items: [] }
     };
 
@@ -28,10 +29,7 @@ class App extends React.Component {
     console.log(event.target.value);
     let query = event.target.value;
 
-    // fetch("/products").then(res=>res.json().then(res=>this.setState({result:res})));
-    // fetch("/search").then(res=>res.json().then(res=>this.setState({result:res})));
-    // fetch(`/products/search/${query}`).then(res=>res.json().then(res=>this.setState({result:res})));
-    fetch(`/products/search?search=${query}`).then(res=>res.json().then(res=>this.setState({result:res})));
+    fetch(`/products/search?search=${query}&order=${this.state.order}`).then(res=>res.json().then(res=>this.setState({result:res})));
     this.setState({query: query})
   }
 
@@ -102,7 +100,7 @@ class App extends React.Component {
             <Product name={this.state.product.name} price={this.state.product.price} description={this.state.product.description} id={this.state.product.id} cartProductId={this.getCartproductId} />
         </div>
         <div className="col-4">
-            <ShoppingCart cartInfo={this.state.cart} itemToRemove={this.handleRemoval} />
+            <ShoppingCart cartInfo={this.state.cart} itemToRemove={this.handleRemoval} changeLowest={this.handleSort} />
         </div>
       </div>
     );

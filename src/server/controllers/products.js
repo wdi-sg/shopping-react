@@ -20,7 +20,11 @@ module.exports = (db) => {
     }
 
     // let data = request.params.id;
-    let data = request.query.search;
+
+    let data = {
+        queryString: request.query.search,
+        order: request.query.order
+    }
 
     // console.log(request.query);
 

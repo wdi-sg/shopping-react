@@ -3,9 +3,7 @@ import styles from './style.scss';
 
 class Form extends React.Component {
 
-
   render() {
-
     return (
       <div>
         <h4>🔍 Search</h4>
@@ -14,6 +12,5 @@ class Form extends React.Component {
     );
   }
 }
-
 
 export default Form;

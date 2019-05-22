@@ -18,9 +18,9 @@ if (process.env.DATABASE_URL) {
   };
 } else {
   configs = {
-    user: 'akira',
+    user: 'khyreerusydi',
     host: '127.0.0.1',
-    database: 'testdb',
+    database: 'shoppingreact',
     port: 5432
   };
 }

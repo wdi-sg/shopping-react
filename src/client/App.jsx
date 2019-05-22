@@ -7,6 +7,7 @@ import Form from './components/form/form';
 import Search from './components/search/search';
 import DisplayProduct from './components/product/displayProduct';
 import DisplayCart from './components/cart/displayCart';
+import SubTotal from './components/cart/subtotal';
 
 
 
@@ -44,7 +45,7 @@ class App extends React.Component {
         cartItems.push(currentObj)
         this.setState({cartItems: cartItems})
 
-        console.log(cartItems);
+        //console.log(cartItems);
 
     }
 
@@ -64,6 +65,7 @@ class App extends React.Component {
 
                 <div className="col">
                     <DisplayCart cartItems={this.state.cartItems} />
+                    <SubTotal cartItems={this.state.cartItems} />
                 </div>
             </div>
         </div>

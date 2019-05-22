@@ -10,8 +10,8 @@ children components. This means the only place where you see this.state
 is inside the parent, App.jsx class */
 
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       message: 'hello',
     };

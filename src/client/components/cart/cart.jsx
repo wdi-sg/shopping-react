@@ -7,44 +7,44 @@ class Cart extends React.Component {
         if (this.props.cart.length > 0) {
             const shipping = 7;
             const subTotal = this.props.cart.map((item) => {
-                                    return Number(item.price.replace("$", ''))
+                                 return Number(item.price.replace("$", ''));
                              })
                              .reduce((total, price) => {
-                                    return total + price;
+                                 return total + price;
                              });
 
             const gst = (subTotal + shipping) * 0.07;
             const total = subTotal + shipping + gst;
 
             const elements = this.props.cart.map((item, index) => {
-                return (
-                        <tr className={ styles.cartItem } key={ index }>
-                            <td>
-                                { index + 1}
-                            </td>
-                            <td>
-                                { item.name }
-                            </td>
-                            <td>
-                                { item.description }
-                            </td>
-                            <td>
-                                <span className= { styles.title }>Price: </span>
-                                { item.price }
-                            </td>
+                                return (
+                                        <tr className={ styles.cartItem } key={ index }>
+                                            <td>
+                                                { index + 1}
+                                            </td>
+                                            <td>
+                                                { item.name }
+                                            </td>
+                                            <td>
+                                                { item.description }
+                                            </td>
+                                            <td>
+                                                <span className= { styles.title }>Price: </span>
+                                                { item.price }
+                                            </td>
 
-                            <td>
-                                <button
-                                    id={ item.id }
-                                    className= "btn btn-danger"
-                                    onClick= { (e) => { this.props.removeProductToCartHandler(e) } }
-                                >
-                                    Remove
-                                </button>
-                            </td>
-                        </tr>
-                );
-            });
+                                            <td>
+                                                <button
+                                                    id={ item.id }
+                                                    className= "btn btn-danger"
+                                                    onClick= { (e) => { this.props.removeProductToCartHandler(e) } }
+                                                >
+                                                    Remove
+                                                </button>
+                                            </td>
+                                        </tr>
+                                );
+                             });
 
             return (
                 <div className= { this.props.displayCart? styles.showCart: styles.hideCart}>
@@ -94,8 +94,6 @@ class Cart extends React.Component {
                 </div>
             );
         } else {
-            const temp = this.props.displayCart? styles.showCart: styles.hideCart;
-
             return (
                 <div className= { this.props.displayCart? styles.showCart: styles.hideCart }>
                     <div

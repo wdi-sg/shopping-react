@@ -94,6 +94,8 @@ class Cart extends React.Component {
                 </div>
             );
         } else {
+            const temp = this.props.displayCart? styles.showCart: styles.hideCart;
+
             return (
                 <div className= { this.props.displayCart? styles.showCart: styles.hideCart }>
                     <div

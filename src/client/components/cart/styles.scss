@@ -20,7 +20,6 @@
 	left: 15%;
 	width: 70%;
 	padding: 20px;
-	display: block;
 	text-align: center;
 	position: absolute;
 	background-color: #EBEDEF;
@@ -29,18 +28,16 @@
   animation-duration: 0.4s
 }
 
-/* Add Animation */
 @keyframes animatetop {
-  from {top: -300px; opacity: 0}
-  to {top: 0; opacity: 1}
+  from { top: -1000px; opacity: 0 }
+  to { top: 25px; opacity: 1 }
 }
 
 .hideCart {
-	top: 25px;
+	top: -1000px;
 	left: 15%;
 	width: 70%;
 	padding: 20px;
-	display: none;
 	text-align: center;
 	position: absolute;
 	background-color: #EBEDEF;
@@ -49,10 +46,9 @@
   animation-duration: 0.4s
 }
 
-/* Add Animation */
 @keyframes animateback {
-  from {top: 0px; opacity: 1 }
-  to {top: -300px; opacity: 0 }
+  from { top: 25px }
+  to { top: -1000px }
 }
 
 .close {

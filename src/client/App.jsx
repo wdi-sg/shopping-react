@@ -15,7 +15,7 @@ class App extends React.Component {
 
         this.state = {
             cart: [],
-            displayCart: false,
+            displayCart: null,
             products: [],
             selectedProduct: null,
         };

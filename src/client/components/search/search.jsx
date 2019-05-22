@@ -10,9 +10,14 @@ class Search extends React.Component{
     render(){
         return (
             <React.Fragment>
-
-
+                <h1>
+                    Hello from the child search component
+                </h1>
             </React.Fragment>
         )
     }
 }
+
+/* then we export the search component so whichever higher component
+that wants to use Search can call it by simply importing it */
+export default Search;

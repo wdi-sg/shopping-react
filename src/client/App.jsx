@@ -74,6 +74,53 @@ class App extends React.Component {
         }
         this.setState({sort: newSort, products: newProducts});
     };
+    railsShow = () => {
+        const query = '3';
+        const railsUrl = 'http://127.0.0.1:3000/family/' + query;
+        // let context = this;
+        fetch(railsUrl)
+            .then((res) => {
+                // console.dir(res);
+                return res.json();
+            })
+            .then((response) => {
+                console.log('Success:', JSON.stringify(response));
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    };
+    railsPost = () => {
+        const railsUrl = 'http://localhost:3000/family';
+        const data = {
+            household: {
+                name: 'lucy famiry',
+                parents_attributes: {
+                    0: {_destroy: false, name: 'greg', parent_type: 'father'},
+                    1: {_destroy: false, name: 'lucy', parent_type: 'mother'}
+                }
+            }
+        };
+        fetch(railsUrl, {
+            method: 'POST', // or 'PUT'
+            mode: 'cors',
+            body: JSON.stringify(data), // data can be `string` or {object}!
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then((res) => {
+                // console.log(res);
+                // console.log(res.json());
+                return res.json();
+            })
+            .then((response) => {
+                console.log('Success:', JSON.stringify(response));
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    };
     onSearchSubmit = () => {
         this.setState({sort: '3'});
         const query = this.state.query;
@@ -119,6 +166,12 @@ class App extends React.Component {
     render() {
         return (
             <div className="row">
+                <div onClick={this.railsPost} className="btn btn-primary">
+                    Make Rails Post
+                </div>
+                <div onClick={this.railsShow} className="btn btn-primary">
+                    Make Rails Show
+                </div>
                 <div className="col">
                     <Form
                         onChangeHandler={this.onSearchInputChange}

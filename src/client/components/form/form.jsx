@@ -6,15 +6,29 @@ class Form extends React.Component {
   constructor() {
     super();
     this.state = {
-      monkey: 'haha',
+      query: "",
     };
+
+    this.changeHandler = this.changeHandler.bind(this);
   }
 
+    changeHandler(event) {
+        this.setState({query: event.target.value});
+        // console.log("change", event.target.value);
+        this.props.searchHandler(this.state.query);
+    }
+
   render() {
+
     return (
       <div>
-        <p>{this.state.monkey}</p>
-        <input className={styles.name} />
+        <p>Search: </p>
+        <input
+            className={styles.input}
+            placeholder="Enter product here"
+            onChange={() => this.changeHandler(event)}
+            value={this.state.query}
+        />
       </div>
     );
   }

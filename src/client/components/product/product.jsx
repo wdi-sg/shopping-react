@@ -4,6 +4,7 @@ import styles from './style.scss';
 
 export class Product extends React.Component {
     render() {
+
         return (
             <div  class="col-md-4">
             <h1> This is the product component </h1>

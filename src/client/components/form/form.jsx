@@ -1,20 +1,33 @@
 import React from 'react';
 
-import styles from './style.scss';
-
 class Form extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      monkey: 'haha',
-    };
-  }
 
   render() {
     return (
       <div>
-        <p>{this.state.monkey}</p>
-        <input className={styles.name} />
+        <input onChange={this.props.onChangeHandler} value={this.props.searchForm} placeholder="search" />
+        <button onClick={this.props.onClickHandler}>Search</button>
+        <ListItems queryData={this.props.queryData} showProductHandler={this.props.showProductHandler} />
+      </div>
+    );
+  }
+}
+
+class ListItems extends React.Component {
+  render() {
+    const {queryData} = this.props;
+    return (
+      <div>
+        {queryData.length !== 0
+          ? queryData.map((element, index) => (
+              <div key={index}>
+                <p>{element.name}</p>
+                <button onClick={this.props.showProductHandler} id={element.id}>
+                  show
+                </button>
+              </div>
+            ))
+          : null}
       </div>
     );
   }

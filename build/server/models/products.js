@@ -20,19 +20,7 @@ module.exports = (dbPoolInstance) => {
     });
   };
 
-  const getOne = (params, callback) => {
-    dbPoolInstance.query(`SELECT * FROM products WHERE name ILIKE '%${params}%'`, (err, res) => {
-      if (err){
-        callback(err, null);
-      } else {
-        console.log(res.rows);
-        callback(null, res.rows);
-      }
-    })
-  }
-
   return {
-    getAll,
-    getOne
+    getAll
   };
 };

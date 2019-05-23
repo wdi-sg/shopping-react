@@ -18,27 +18,24 @@ class App extends React.Component {
         this.makeAjaxCall = this.makeAjaxCall.bind(this);
         this.getProductInfo = this.getProductInfo.bind(this);
         this.addToCart = this.addToCart.bind(this);
+        // this.removeitem = this.removeitem.bind(this);
+        this.clearCart = this.clearCart.bind(this);
     }
 
     makeAjaxCall() {
-        // get a hold of component for react
-        var reactThis = this;
+        fetch('/products')
+        .then(response => {
+            // console.log(response);
+            return response.json();
+        })
+        .then(json => {
+            // console.log('json', json.products);
+            this.setState({items: json.products})
+        })
+    }
 
-        var reqListener = function() {
-
-            const data = JSON.parse(this.responseText);
-
-            reactThis.setState({ items: data.products })
-            // console.log(data);
-
-            // this keyword doesnt refer to component
-            //this.setState({items:this.responseText})
-        }
-
-        var oReq = new XMLHttpRequest();
-        oReq.addEventListener("load", reqListener);
-        oReq.open("GET", "/products");
-        oReq.send();
+    componentDidMount(){
+        // this.makeAjaxCall();
     }
 
     getProductInfo(e) {
@@ -63,6 +60,16 @@ class App extends React.Component {
 
         this.setState({
             cartItems: newCartItems
+        })
+    }
+
+    clearCart() {
+        let newCart = this.state.cartItems;
+
+        newCart = [];
+
+        this.setState({
+            cartItems: newCart
         })
     }
 
@@ -107,6 +114,7 @@ class App extends React.Component {
                     <div className="col">
                         <Cart
                             cartItems={this.state.cartItems}
+                            clearCart={(e) => {this.clearCart(e)}}
                         />
                     </div>
                 </div>

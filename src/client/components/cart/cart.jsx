@@ -7,8 +7,6 @@ class Cart extends React.Component {
         super();
         this.state = {
         };
-        // this.removeitem = this.removeitem.bind(this);
-        // this.clearCart = this.clearCart.bind(this);
     }
 
     render() {
@@ -44,7 +42,14 @@ class Cart extends React.Component {
                             {item[0].price}
                         </div>
                         <div className="col">
-                            <button type="button" className="btn btn-outline-danger btn-sm" onClick={()=>{this.removeItem()}}>Remove</button>
+                            <button
+                                type="button"
+                                className="btn btn-outline-danger btn-sm"
+                                onClick={()=>{this.removeItem()}}
+                                id={index}
+                            >
+                            Remove
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -55,7 +60,9 @@ class Cart extends React.Component {
             <div>
                 {cart}
                 <button
-                    type="button" className="btn btn-danger" onClick={()=>{this.clearCart()}}>Clear Cart
+                    type="button"
+                    className="btn btn-danger"
+                    onClick={()=>{this.props.clearCart()}}>Clear Cart
                 </button>
                 <br/>
                 <div className="row">

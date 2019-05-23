@@ -9,21 +9,31 @@ class Cart extends React.Component {
         };
         // this.removeitem = this.removeitem.bind(this);
         // this.clearCart = this.clearCart.bind(this);
-
-    }
-
-    removeItem(e) {
-        console.log('removeitem', Math.random());
-    }
-
-    clearCart(e) {
-        console.log('clearcart', Math.random());
     }
 
     render() {
         // console.log(this.props.cartItems);
-        let cart = this.props.cartItems.map((item, index) => {
+        let cartItems = this.props.cartItems;
+        let prices = cartItems.price;
+        let priceArr = [];
 
+        for (let i = 0; i < cartItems.length; i++) {
+            let item = cartItems[i];
+            for (let j = 0; j < item.length; j++) {
+                let price = (item[j].price).substr(1);
+                priceArr.push(parseFloat(price));
+            }
+        }
+
+        let subtotal = priceArr.reduce((a, b) => a + b, 0);
+        let shipping = 0;
+        if (this.props.cartItems.length > 0) {
+            shipping = 7;
+        }
+        let gst = (subtotal + shipping) * 0.07;
+        let total = subtotal + shipping + gst;
+
+        let cart = this.props.cartItems.map((item, index) => {
             return (
                 <div key={index}>
                     <div className="row">
@@ -53,7 +63,17 @@ class Cart extends React.Component {
                         Subtotal
                     </div>
                     <div className="col">
-                        ${this.props.subtotal}
+                        ${ subtotal.toFixed(2) }
+                    </div>
+                    <div className="col">
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col-6">
+                        Shipping
+                    </div>
+                    <div className="col">
+                        ${ shipping.toFixed(2) }
                     </div>
                     <div className="col">
                     </div>
@@ -63,17 +83,17 @@ class Cart extends React.Component {
                         GST (7%)
                     </div>
                     <div className="col">
-                        ${this.props.gst}
+                        ${ gst.toFixed(2) }
                     </div>
                     <div className="col">
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-6">
-                        Shipping ($7)
+                        <strong>TOTAL</strong>
                     </div>
                     <div className="col">
-                        $x.xx
+                        <strong>${ total.toFixed(2) }</strong>
                     </div>
                     <div className="col">
                     </div>

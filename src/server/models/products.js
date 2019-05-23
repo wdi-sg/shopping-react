@@ -27,9 +27,11 @@ module.exports = (dbPoolInstance) => {
 
   let edit = (request, callback) => {
       // `UPDATE products SET name='${req.body.name}' WHERE id=${req.body.id} RETURNING *`
-      console.log(request.body.name);
-      console.log(request.body.id);
-    const queryString = "UPDATE products SET name=" + request.body.name + " WHERE id=" + request.body.id + " RETURNING *";
+      console.log('REQUEST BODY', request.body);
+
+    const queryString = `UPDATE products SET name='${request.body.name}' WHERE id=${request.body.id} RETURNING *`;
+
+    console.log('QUERY STRING', queryString);
 
     dbPoolInstance.query(queryString, (error, queryResult) => {
       if (error) {

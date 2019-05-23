@@ -25,7 +25,7 @@ class App extends React.Component {
         this.calculate = this.calculate.bind(this);
     }
 
-    componentDidMount(){
+    loadProducts(){
         fetch('/products')
         .then(response => {
             console.log(response);
@@ -35,6 +35,10 @@ class App extends React.Component {
             console.log('json', json.products);
             this.setState({items: json.products})
         })
+    }
+
+    componentDidMount(){
+        this.loadProducts();
     }
 
     calculate(item) {
@@ -84,8 +88,19 @@ class App extends React.Component {
                 id: id
             })
         })
-        .then(response => console.log(response))
-        .then(json => console.log(json))
+        .then(response => {
+            if (response.status === 200){
+                this.loadProducts();
+            }
+            // return response.json();
+        })
+        // .then(json => {
+        //     console.log(json);
+        //     //use json.resultToReturn to modify products with setState
+        //     const duplicateProducts = [...this.state.products];
+        //     duplicateProducts.find(product => product.id === json.resultToReturn[0].id)
+        // })
+        // .catch(err => console.log(err))
     }
 
   render() {

@@ -1,5 +1,4 @@
-/*almost no change ndone to this file. Only had to edit the
-psql config username and database name*/
+/*almost no change done to this file. Only had to edit the psql config username and database name*/
 const pg = require('pg');
 const products = require('./models/products');
 const url = require('url');

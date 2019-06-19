@@ -5,7 +5,7 @@ import CartItem from './cart-item/cart-item';
 console.log("style",style);
 class Cart extends React.Component {
 
-	hideCart = (hideCart) => {
+	hideCart (hideCart) {
 		hideCart();
 	}
 

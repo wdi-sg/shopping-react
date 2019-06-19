@@ -35,6 +35,7 @@ class Search extends React.Component {
 
 	handleSearchChange (e) {
 		console.log("handleSearchChange");
+		console.log("event target", e.target);
 		const entry = e.target.value;
 		console.log("Search input",entry);
 		this.setState({

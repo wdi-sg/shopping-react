@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 class Product extends React.Component {
 
-	handleClick = () => {
+	handleClick () {
 		console.log("Clicked add to cart!");
 	  const productToAdd = this.props.productToDisplay;
 	  const productId = productToAdd.id;

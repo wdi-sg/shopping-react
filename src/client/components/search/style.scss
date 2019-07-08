@@ -1,0 +1,11 @@
+table {
+    white-space: nowrap;
+}
+
+#show-hide-cart {
+	position: fixed;
+	max-height: 2rem;
+	right: 0;
+	bottom: 0;
+	z-index: 1;
+}

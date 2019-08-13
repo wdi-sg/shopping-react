@@ -14,7 +14,6 @@ class Product extends React.Component {
 
     // sending product id selected from "add to cart" button to parent
     getId(id) {
-        console.log("id from from proddducttt " + id)
         this.props.cartProductId(id);
     }
 

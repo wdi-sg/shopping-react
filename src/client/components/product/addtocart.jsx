@@ -15,7 +15,7 @@ class AddToCart extends React.Component {
 
   render() {
     return (
-      <button id={this.props.id} onClick={this.clickHandler}>Add to cart</button>
+      <button id={this.props.id} onClick={this.clickHandler} className={ this.props.id ? '' : styles.cart }>Add to cart</button>
     );
   }
 }

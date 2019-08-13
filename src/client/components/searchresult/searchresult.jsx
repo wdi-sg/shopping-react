@@ -13,7 +13,6 @@ class Searchresult extends React.Component {
 
     showProduct(e){
         let productId = e.target.id;
-        console.log("this is the product's id " + productId);
         this.props.idCallback(productId);
     }
 
@@ -22,8 +21,6 @@ class Searchresult extends React.Component {
     }
 
     render() {
-        console.log("query" + this.props.query)
-        console.log(this.props.results)
 
         let searchResults;
 

@@ -26,20 +26,32 @@ class App extends React.Component {
   }
 
   handleChange(event) {
-    console.log(event.target.value);
+    
     let query = event.target.value;
+    this.setState({query: query});
 
-    fetch(`/products/search?search=${query}&order=${this.state.order}`).then(res=>res.json().then(res=>this.setState({result:res})));
-    this.setState({query: query})
+    const retrieveData = async () => {
+      let data = await fetch(`/products/search?search=${query}&order=${this.state.order}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error();
+        }
+        return response.json();
+      });
+      this.setState({ result: data });
+    }
+
+    retrieveData();
+
   }
 
   // receiving id from shoppingcart to see which item needs to be removed
   handleRemoval(id) {
-    console.log("about to remove this id " + id);
+    // console.log("about to remove this id " + id);
     let cart = this.state.cart;
     let newCart = {...cart};
-    console.log(newCart);
-    console.log(newCart.items);
+    // console.log(newCart);
+    // console.log(newCart.items);
 
 
     // finding index in array of item we're removing

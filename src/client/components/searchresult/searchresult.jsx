@@ -19,7 +19,6 @@ class Searchresult extends React.Component {
 
     handleChange(e) {
         console.log(e.target.value);
-
     }
 
     render() {

@@ -16,7 +16,7 @@ class Counter extends React.Component {
   }
 
     handleClick(){
-        let num = Math.random();
+        let num = Math.random () *100;
 
         const newArray = [num, ...this.state.counters];
 

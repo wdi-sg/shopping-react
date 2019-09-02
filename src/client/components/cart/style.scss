@@ -1,0 +1,30 @@
+.cartContainer {
+  margin: 0 20px;
+  background-color: #fff;
+  width: 33%;
+  padding: 20px;
+  border-radius: 0.5rem;
+}
+
+.item {
+  position: relative;
+}
+
+.price {
+  color:salmon;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.total {
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  .totalPrice {
+    color:salmon;
+    font-weight: bold;
+  }
+}

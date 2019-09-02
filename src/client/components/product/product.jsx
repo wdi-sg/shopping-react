@@ -6,10 +6,9 @@ import styles from './style.scss';
 import main_styles from '../../style.scss';
 
 class Product extends React.Component {
-  // addToCart(event){
-  //   this.props.doAdd(this.props.pokemon);
-
-  // }
+  addToCart(event){
+    this.props.addToCart(this.props.displayedProduct);
+  }
 
   render() {
     return (

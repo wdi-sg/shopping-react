@@ -3,6 +3,7 @@ import { hot } from 'react-hot-loader';
 
 import Search from './components/search/search';
 import Product from './components/product/product';
+import Cart from './components/cart/cart';
 
 class App extends React.Component {
   constructor() {
@@ -11,9 +12,11 @@ class App extends React.Component {
       message: 'hello',
       searchResults: [],
       displayedProduct: {},
+      cartItems: [],
     };
     this.doSearch = this.doSearch.bind(this);
     this.showProduct = this.showProduct.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   doSearch() {
@@ -41,11 +44,19 @@ class App extends React.Component {
   }
 
 
-  showProduct(product){
+  showProduct(product) {
     console.log("GOING TO SHOW THIS PRODUCT: ", product);
     this.setState({displayedProduct: product});
     console.log("dislpayed object ISSSS");
     console.log(this.state.displayedProduct);
+  }
+
+  addToCart(product) {
+    const newCart = [product, ...this.state.cartItems];
+    const updatedCart = {
+        cartItems : newCart,
+    };
+    this.setState(updatedCart);
   }
 
   render() {
@@ -61,7 +72,11 @@ class App extends React.Component {
             />
           </div>
           <div className="col-6">
-            <Product displayedProduct={this.state.displayedProduct}/>
+            <Product 
+                displayedProduct={this.state.displayedProduct}
+                addToCart={this.addToCart}
+            />
+            <Cart cartItems={this.state.cartItems}/>
           </div>
         </div>
       </div>

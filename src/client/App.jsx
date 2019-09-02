@@ -13,11 +13,14 @@ class App extends React.Component {
       searchResults: [],
       displayedProduct: {},
       cartItems: [],
+      subtotal: 0,
     };
     this.doSearch = this.doSearch.bind(this);
     this.showProduct = this.showProduct.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.sumCart = this.sumCart.bind(this);
   }
+
 
   doSearch() {
     console.log("SEARCHINGGG!!!")
@@ -57,6 +60,17 @@ class App extends React.Component {
         cartItems : newCart,
     };
     this.setState(updatedCart);
+    setTimeout(this.sumCart,300);
+    // this.sumCart();
+  }
+
+  sumCart(){
+    let cartTotal = this.state.cartItems.reduce((sum, i) => (
+        sum += parseFloat(i.price.replace("$", ""))
+        ), 0)
+    this.setState({subtotal: cartTotal})
+    console.log("AMOUNT IS " + cartTotal)
+    console.log("Subtaotl is!!!" + this.state.subtotal)
   }
 
   render() {
@@ -64,19 +78,24 @@ class App extends React.Component {
       <div className="container">
         Shopping App
         <div className="row">
-          <div className="col-6">
+          <div className="col-4">
             <Search 
                 doSearch={this.doSearch} 
                 searchResults={this.state.searchResults}
                 showProduct={this.showProduct}
             />
           </div>
-          <div className="col-6">
+          <div className="col-4">
             <Product 
                 displayedProduct={this.state.displayedProduct}
                 addToCart={this.addToCart}
             />
-            <Cart cartItems={this.state.cartItems}/>
+          </div>
+          <div className="col-4">
+            <Cart 
+                cartItems={this.state.cartItems}
+                subtotal={this.state.subtotal}
+            />
           </div>
         </div>
       </div>

@@ -12,9 +12,24 @@ class App extends React.Component {
     this.state = {
         error: null,
         isLoaded: false,
-        products: []
+        products: [],
+        selectedItem: "",
+        cartItems: []
     };
+
+    this.handleClickToView = this.handleClickToView.bind(this);
   }
+
+  handleClickToView(index){
+      console.log('clicked ' , index)
+
+      let selectedItem = this.state.products[index];
+
+      this.setState({
+          selectedItem : selectedItem
+      })
+  }
+
 
   componentDidMount() {
     fetch("http://localhost:3000/products")
@@ -45,8 +60,12 @@ class App extends React.Component {
           return (
               <div className={styles.container}>
                   <div>Error: {error.message}</div>
-                  <SearchList products = {products} error={error} isLoaded={isLoaded}/>
-                  <ProductView/>
+                  <SearchList
+                        products = {products}
+                        error={error}
+                        isLoaded={isLoaded}
+                        handleClickToView={this.handleClickToView}/>
+                  <ProductView selectedItem = {this.state.selectedItem} />
                   <Cart/>
               </div>
           );
@@ -55,8 +74,8 @@ class App extends React.Component {
           return (
               <div className={styles.container}>
                   <div>Loading...</div>
-                  <SearchList products = {this.state.products} error={error} isLoaded={isLoaded}/>
-                  <ProductView/>
+                  <SearchList products = {this.state.products} error={error} isLoaded={isLoaded} handleClickToView={this.handleClickToView}/>
+                  <ProductView selectedItem = {this.state.selectedItem} />
                   <Cart/>
               </div>
 
@@ -66,8 +85,8 @@ class App extends React.Component {
       } else {
           return (
               <div className={styles.container}>
-                <SearchList products = {this.state.products} error={error} isLoaded={isLoaded}/>
-                <ProductView/>
+                <SearchList products = {this.state.products} error={error} isLoaded={isLoaded} handleClickToView={this.handleClickToView}/>
+                <ProductView selectedItem = {this.state.selectedItem} />
                 <Cart/>
               </div>
 

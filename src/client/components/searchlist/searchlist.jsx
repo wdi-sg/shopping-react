@@ -6,8 +6,7 @@ class SearchList extends React.Component{
 
 
   render() {
-      console.log(this.props)
-
+     console.log(this.props)
 
      return (
         <div className={styles.searchList}>
@@ -15,7 +14,7 @@ class SearchList extends React.Component{
            <div>
                {this.props.products.map((product, index) => {
                    return(
-                       <div className={styles.searchItem} key={index}>
+                       <div onClick={ (e) =>{ this.props.handleClickToView(index)} } className={styles.searchItem} key={index}>
                             <span className={styles.searchItemPrice}>{product.price}</span>
                             <span className={styles.searchItemName}>{product.name}</span>
                        </div>

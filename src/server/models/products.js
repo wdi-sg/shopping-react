@@ -20,7 +20,23 @@ module.exports = (dbPoolInstance) => {
     });
   };
 
+  // let getSearch = (callback, input) => {
+
+  //   dbPoolInstance.query('SELECT * FROM products WHERE name LIKE '%input%', (error, queryResult) => {
+  //     if (error) {
+  //       // invoke callback function with results after query has executed
+  //       callback(error, null);
+  //     } else {
+  //       // invoke callback function with results after query has executed
+
+  //       callback(null, queryResult.rows );
+  //     }
+  //   });
+  // };
+  
+
   return {
     getAll
+    // getSearch
   };
 };

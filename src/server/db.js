@@ -12,15 +12,15 @@ if (process.env.DATABASE_URL) {
     user: auth[0],
     password: auth[1],
     host: params.hostname,
-    port: params.port,
+    port: paranpms.port,
     database: params.pathname.split('/')[1],
     ssl: true
   };
 } else {
   configs = {
-    user: 'akira',
+    user: 'valenlyn',
     host: '127.0.0.1',
-    database: 'testdb',
+    database: 'shopping_react',
     port: 5432
   };
 }

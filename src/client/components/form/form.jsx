@@ -1,20 +1,13 @@
 import React from 'react';
-
 import styles from './style.scss';
 
 class Form extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      monkey: 'haha',
-    };
-  }
 
   render() {
     return (
       <div>
-        <p>{this.state.monkey}</p>
-        <input className={styles.name} />
+        <h4>🔍 Search</h4>
+        <input value={this.props.searchTerm} className={styles.name} onChange={this.props.onChange} />
       </div>
     );
   }

@@ -9,6 +9,7 @@ class Search extends React.Component {
       searchInput: '',
       counter : 0,
       queryResult: {}
+
     };
   }
 
@@ -78,8 +79,17 @@ class Search extends React.Component {
         <p>
             <button onClick={()=>{this.doReq()}}>Search</button>
         </p>
-        <p>{this.state.searchInput}</p>
-            <input className={styles.name} onChange={()=>{this.storeWord()}} />
+        <p>search query: {this.state.searchInput}</p>
+
+
+        <input className={styles.name} onChange={()=>{this.storeWord()}} />
+
+        <p>{this.state.queryResult.id}</p>
+        <p>{this.state.queryResult.name}</p>
+        <p>{this.state.queryResult.price}</p>
+        <p>{this.state.queryResult.description}</p>
+
+
       </div>
     );
   }

@@ -5,30 +5,29 @@ import PropTypes from 'prop-types';
 import styles from './style.scss';
 import main_styles from '../../style.scss';
 
-class Counter extends React.Component {
+class Cart extends React.Component {
   constructor() {
     super();
     this.state = {
-      banana: 'Counter',
+      text: 'Cart',
       counters : []
     };
-      this.handleClick = this.handleClick.bind(this);
+      // this.handleClick = this.handleClick.bind(this);
   }
 
-    handleClick(){
-        let num = Math.random();
+    // handleClick(){
+    //     let num = Math.random();
 
-        const newArray = [num, ...this.state.counters];
+    //     const newArray = [num, ...this.state.counters];
 
-        this.setState({ counters : newArray });
-    }
+    //     this.setState({ counters : newArray });
+    // }
 
   render() {
     return (
       <div>
-          <button onClick={this.handleClick}>click me</button>
           <p className={styles.desc}>
-            {this.props.message} : {this.state.banana}
+            {this.props.message} : {this.state.text}
           </p>
           {this.state.counters.map((counter)=>{ return <p>{counter}</p>})}
       </div>
@@ -36,8 +35,8 @@ class Counter extends React.Component {
   }
 }
 
-Counter.propTypes = {
+Cart.propTypes = {
   message: PropTypes.string.isRequired,
 };
 
-export default Counter;
+export default Cart;

@@ -2,7 +2,7 @@ import React from 'react';
 
 import styles from './style.scss';
 
-class Form extends React.Component {
+class Search extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -75,9 +75,8 @@ class Form extends React.Component {
   render() {
     return (
       <div>
-        <h3>{this.state.counter}</h3>
         <p>
-            <button onClick={()=>{this.doReq()}}>make AJAX request</button>
+            <button onClick={()=>{this.doReq()}}>Search</button>
         </p>
         <p>{this.state.searchInput}</p>
             <input className={styles.name} onChange={()=>{this.storeWord()}} />
@@ -86,4 +85,4 @@ class Form extends React.Component {
   }
 }
 
-export default Form;
+export default Search;

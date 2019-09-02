@@ -1,0 +1,23 @@
+.search_container {
+    padding:5px;
+    margin:20px;
+    width: 30%;
+    height:500px;
+    overflow: auto;
+    border: 3px blue solid;
+    border-radius: 10px;
+}
+
+.search_products {
+    font-size: 0.8em;
+}
+
+h3 {
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    border-radius: 5px;
+    background-color: beige;
+}

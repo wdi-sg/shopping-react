@@ -1,6 +1,7 @@
 module.exports = (db) => {
   let getAll = (request, response) => {
 
+    // model method to get all products
     db.products.getAll((error, products) => {
       // queryResult contains pokemon data returned from the pokemon model
       if (error) {

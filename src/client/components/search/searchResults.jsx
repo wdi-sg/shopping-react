@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 //import DisplayProduct from './displayProduct';
 
@@ -8,8 +9,8 @@ class SearchResults extends React.Component {
         let searchResults = this.props.searchResults;
 
         // do a map to print the list
-        let allProducts = searchResults.map(obj => {
-            return <li onClick={this.props.handleClickFromApp}>
+        let allProducts = searchResults.map((obj, index) => {
+            return <li key={index} onClick={this.props.handleClickFromApp}>
                     {obj.name}
                 </li>
         }) // end of map
@@ -26,6 +27,10 @@ class SearchResults extends React.Component {
             </React.Fragment>
         )
     }
+}
+
+SearchResults.propTypes = {
+    searchResults: PropTypes.array
 }
 
 export default SearchResults;

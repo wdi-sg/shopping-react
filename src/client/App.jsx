@@ -65,7 +65,6 @@ class App extends React.Component {
 
                 <div className="col">
                     <DisplayCart cartItems={this.state.cartItems} />
-                    <SubTotal cartItems={this.state.cartItems} />
                 </div>
             </div>
         </div>

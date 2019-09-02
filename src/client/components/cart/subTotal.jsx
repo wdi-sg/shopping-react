@@ -4,6 +4,7 @@ class SubTotal extends React.Component {
 
     render() {
         let cartItems = this.props.cartItems;
+        console.log(cartItems)
 
         if (!cartItems.length) {
             return (<p></p>)

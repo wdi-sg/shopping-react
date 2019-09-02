@@ -1,9 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import SearchForm from './searchForm';
 import SearchResults from '../search/searchResults';
 
-import styles from './style.scss';
+
 
 class Search extends React.Component {
     constructor() {
@@ -36,24 +37,37 @@ class Search extends React.Component {
         if (searchList.innerText !== "") {
             searchList.innerText = ""
         }
-
-        var req = new XMLHttpRequest();
-        req.open("GET", "/products", false);
-        req.send();
-
-        const data = JSON.parse(req.responseText);
-
-        // get all products
-        let allProducts = data.products
         let searchWord = this.state.searchWord;
 
         let searchResults = this.state.searchResults;
 
-        let allName = allProducts.map(obj => {
-            if (obj.name.toLowerCase().includes(searchWord)) {
-                searchResults.push(obj);
-            }
-        }) // end of map
+        fetch(`/products`)
+        .then(response => response.json())
+        .then(response => {
+            response.products.map(obj => {
+                if (obj.name.toLowerCase().includes(searchWord)) {
+                    searchResults.push(obj);
+                }
+            })
+        })
+
+        // var req = new XMLHttpRequest();
+        // req.open("GET", "/products", false);
+        // req.send();
+
+        // console.log(req)
+
+        // const data = JSON.parse(req.responseText);
+
+        // get all products
+        // let allProducts = data.products
+
+
+        // let allName = allProducts.map(obj => {
+        //     if (obj.name.toLowerCase().includes(searchWord)) {
+        //         searchResults.push(obj);
+        //     }
+        // }) // end of map
 
         //push it to app to pass down to display product
         this.props.callbackFromApp(searchResults)
@@ -70,6 +84,11 @@ class Search extends React.Component {
             </React.Fragment>
         )
     }
+}
+
+
+Search.propTypes = {
+    callbackFromApp: PropTypes.func
 }
 
 export default Search;

@@ -1,20 +1,22 @@
 import React from 'react';
 
+import SubTotal from './subtotal';
+
 import style from './style.scss';
+
 
 class DisplayCart extends React.Component {
     constructor() {
         super();
+        this.state = {
+            cartItems: []
+        }
 
-        this.setCartItems = this.removeFromCart.bind(this);
         this.removeFromCart = this.removeFromCart.bind(this);
     }
 
-    setCartItems() {
-        this.setState(this.props.cartItems)
-    }
-
     removeFromCart(e) {
+        console.log(this.state.cartItems)
         let id = e.target.id;
 
         let cartItems = this.props.cartItems;
@@ -22,13 +24,19 @@ class DisplayCart extends React.Component {
 
         console.log(cartItems)
 
+        this.setState({cartItems: cartItems});
+
+      //  reactThis.setState({reactThis.setState{cartItems}});
+
 
     }
 
     render() {
-        //setCartItems()
+        let cartItems = this.state.cartItems;
 
-        let cartItems = this.props.cartItems;
+        if (cartItems.length === 0) {
+            cartItems = this.props.cartItems;
+        }
         //let cartItems = this.state.cartItems;
 
         if (!cartItems.length) {
@@ -47,6 +55,7 @@ class DisplayCart extends React.Component {
             })
             return (<div>
                     {indvItems}
+                    <SubTotal cartItems={this.state.cartItems} />
                 </div>
 
 

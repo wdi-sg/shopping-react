@@ -32,7 +32,10 @@ html, body {
     width: 33.33%;
     border: 1px solid #eee;
     padding: 30px;
+
+
 }
+
 
 
 .productView{
@@ -55,4 +58,13 @@ html, body {
     width: 33.33%;
     border: 1px solid #eee;
     padding: 30px;
+}
+
+.searchItem{
+    margin-bottom: 10px;
+    font-size: 14px;
+
+    .searchItemPrice{
+        margin-right: 10px;
+    }
 }

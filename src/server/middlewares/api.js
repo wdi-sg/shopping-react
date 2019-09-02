@@ -10,7 +10,8 @@ module.exports = function setup(app) {
         status: 'online',
         servers
       });
-    }, 3000);
+      //3000
+    }, 8080);
   });
 
   app.post('/api/servers', (req, res) => {
@@ -27,6 +28,7 @@ module.exports = function setup(app) {
       res.json({
         success: true
       });
-    }, 3000);
+      //3000
+    }, 8080);
   });
 };

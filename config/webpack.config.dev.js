@@ -8,6 +8,7 @@ const commonConfig = require('./webpack.config.common');
 
 module.exports = merge(commonConfig, {
   mode: 'development',
+  //process.env.HTTP_PORT
   entry: [`webpack-hot-middleware/client?http://localhost:${process.env.HTTP_PORT}&reload=true&overlay=false`],
   output: {
     hotUpdateMainFilename: 'hot-update.[hash:6].json',

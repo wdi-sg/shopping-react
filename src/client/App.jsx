@@ -7,6 +7,7 @@ import Search from './components/search/search';
 import Product from './components/product/product';
 import Cart from './components/cart/cart';
 import styles from './style.scss';
+import 'boxicons'
 
 class App extends React.Component {
     constructor() {
@@ -22,6 +23,7 @@ class App extends React.Component {
         this.selectProduct = this.selectProduct.bind(this);
         this.addToCart = this.addToCart.bind(this);
         this.doSort = this.doSort.bind(this);
+        this.removeThis = this.removeThis.bind(this);
     }
 
     onChangeHandler(event){
@@ -57,15 +59,18 @@ class App extends React.Component {
     }
 
     doSort(event){
-        console.log("TEST")
-        console.log()
         if(event.target.value === "name-asc"){
             this.state.currentProductList.sort(function(a,b){return a.name>b.name? 1 : -1})
         }else{
             this.state.currentProductList.sort(function(a,b){return a.name<b.name? 1 : -1})
         }
-
         this.setState({currentProductList:this.state.currentProductList})
+    }
+
+    removeThis(event,index){
+        console.log("TEST")
+        this.state.cartList.splice(index,1)
+        this.setState({cartList:this.state.cartList})
     }
 
     render() {
@@ -74,7 +79,7 @@ class App extends React.Component {
             <div className={styles["main-container"]}>
                 <Search input={this.state.input} onChangeHandler={this.onChangeHandler} products={this.state.products} filterSearch={this.filterSearch} selectProduct={this.selectProduct} currentProductList={this.state.currentProductList} doSort={this.doSort}/>
                 <Product selectedProduct={this.state.selectedProduct} addToCart={this.addToCart}/>
-                <Cart cartList={this.state.cartList}/>
+                <Cart cartList={this.state.cartList} removeThis={this.removeThis}/>
             </div>
         );
     }

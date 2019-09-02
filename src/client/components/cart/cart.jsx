@@ -6,9 +6,9 @@ class Cart extends React.Component {
 
   render() {
     let subTotal = 0;
-    let cartList = this.props.cartList.map(x=>{
+    let cartList = this.props.cartList.map((x,index)=>{
         subTotal += parseFloat(x.price.replace('$', ''))
-        return <div className={styles["single-cart"]}>{x.name}</div>
+        return <div className={styles["single-cart"]}><span>{x.name}</span> <span className={styles.delete}><box-icon name='x'onClick={(e)=>{this.props.removeThis(e,index)}}></box-icon></span></div>
     })
     let GST = subTotal * 0.17
     let shipping = 7

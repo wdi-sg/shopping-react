@@ -1,6 +1,6 @@
 module.exports = (db) => {
-  let getAll = (request, response) => {
 
+  let getAll = (request, response) => {
     db.products.getAll((error, products) => {
       // queryResult contains pokemon data returned from the pokemon model
       if (error) {
@@ -12,6 +12,7 @@ module.exports = (db) => {
       }
     });
   };
+
 
   return {
     getAll: getAll

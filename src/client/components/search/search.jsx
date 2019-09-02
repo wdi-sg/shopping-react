@@ -8,7 +8,7 @@ class Search extends React.Component {
         super();
         this.state = {
             query: "",
-            result: ""
+            result: []
         };
     }
 
@@ -20,17 +20,6 @@ class Search extends React.Component {
 
     }
 
-    // submitHandler(event) {
-
-    //     // line below is when the user presses the "Enter" key
-    //     if (event.keyCode === 13) {
-    //         // this.props.receivingInput(this.state.query);
-
-    //         console.log(this.state.query)
-    //         this.setState({query: ""});
-    //     }
-    // }
-
     doRequest() {
 
         console.log('starting request')
@@ -39,7 +28,7 @@ class Search extends React.Component {
         const banana = this;
 
         let responseHandler = function() {
-            // console.log("()()()()()response text", this.responseText);
+
             // console.log("status text", this.statusText);
             // console.log("status code", this.status);
 
@@ -52,6 +41,7 @@ class Search extends React.Component {
             })
 
             banana.setState({ result : item });
+            banana.setState({ query: ""});
 
             console.log(banana.state.result)
         };
@@ -70,10 +60,11 @@ class Search extends React.Component {
     }
 
     render() {
-        // let items = this.state.result.map((item,i) => {
-        //     return( <li key={i}>Name: {item.name} ,Price: {item.price}</li>
-        //     )
-        // });
+        let items = this.state.result.map((item,i) => {
+            return(
+                <li key={i}> {item.name} : {item.price} </li>
+            )
+        });
 
         return(
             <div>
@@ -83,7 +74,7 @@ class Search extends React.Component {
                 <button onClick={ () => {this.doRequest()} }>Search</button>
                 </p>
                 <ul>
-
+                    {items}
                 </ul>
 
             </div>

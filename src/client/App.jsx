@@ -4,6 +4,7 @@ import {hot} from 'react-hot-loader';
 import styles from './style.scss';
 import Search from './components/search/search';
 import Product from './components/product/product';
+import Cart from './components/cart/cart';
 
 class App extends React.Component {
 	constructor() {
@@ -12,7 +13,8 @@ class App extends React.Component {
 			error: null,
 			productsLoaded: false,
 			products: [],
-			selectedProduct: null
+			selectedProduct: null,
+			cart:[]
 		};
 	}
 	getResults = (text) => {
@@ -35,8 +37,11 @@ class App extends React.Component {
 	selectProduct = (e,index) => {
 		this.setState({
 			selectedProduct: this.state.products[index]
-		},function(){console.log(this.state.selectedProduct)});
+		});
 
+	};
+	addToCart = (e) => {
+		this.setState({cart:[...this.state.cart,this.state.selectedProduct]})
 	};
 	render() {
 		return (
@@ -46,7 +51,8 @@ class App extends React.Component {
 					selectProduct={this.selectProduct}
 					products={this.state.products}
 				/>
-				<Product product={this.state.selectedProduct}/>
+				<Product product={this.state.selectedProduct} addToCart={this.addToCart}/>
+				<Cart cart={this.state.cart}/>
 			</div>
 		);
 	}

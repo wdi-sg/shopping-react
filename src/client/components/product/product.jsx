@@ -1,20 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './style.scss';
-
 import ProductDetail from './product-detail';
 
 class Product extends React.Component {
-	constructor() {
-		super();
-		this.state = {
-		};
-	}
-
 	render() {
-		let productDetails = "";
+		let productDetails = "No product selected";
 		if (this.props.product != null) {
-			productDetails = <ProductDetail product={this.props.product}/>
+			productDetails = <ProductDetail product={this.props.product} addToCart={this.props.addToCart}/>
 		}
 		return (
 			<div className={styles.productContainer}>
@@ -25,6 +18,7 @@ class Product extends React.Component {
 	}
 }
 ProductDetail.propTypes ={
-	product: PropTypes.object
+	product: PropTypes.object,
+	addToCart: PropTypes.func
 };
 export default Product;

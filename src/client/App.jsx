@@ -18,6 +18,7 @@ class App extends React.Component {
     };
 
     this.handleClickToView = this.handleClickToView.bind(this);
+    this.handleAddToCart = this.handleAddToCart.bind(this);
   }
 
   handleClickToView(index){
@@ -30,6 +31,23 @@ class App extends React.Component {
       })
   }
 
+  handleAddToCart(id){
+      console.log('added ' , id)
+
+      let products = this.state.products
+      let selectedId = parseInt(id)-1;
+      let itemToAdd = products[selectedId]
+
+      let cartItems = this.state.cartItems;
+
+      cartItems.push(itemToAdd );
+
+      this.setState({
+          cartItems: cartItems
+      })
+
+      console.log(this.state.cartItems);
+  }
 
   componentDidMount() {
     fetch("http://localhost:3000/products")
@@ -65,8 +83,8 @@ class App extends React.Component {
                         error={error}
                         isLoaded={isLoaded}
                         handleClickToView={this.handleClickToView}/>
-                  <ProductView selectedItem = {this.state.selectedItem} />
-                  <Cart/>
+                  <ProductView selectedItem = {this.state.selectedItem} handleAddToCart={this.handleAddToCart} />
+                 <Cart cartItems={this.state.cartItems}/>
               </div>
           );
 
@@ -75,8 +93,8 @@ class App extends React.Component {
               <div className={styles.container}>
                   <div>Loading...</div>
                   <SearchList products = {this.state.products} error={error} isLoaded={isLoaded} handleClickToView={this.handleClickToView}/>
-                  <ProductView selectedItem = {this.state.selectedItem} />
-                  <Cart/>
+                  <ProductView selectedItem = {this.state.selectedItem} handleAddToCart={this.handleAddToCart}/>
+                  <Cart cartItems={this.state.cartItems}/>
               </div>
 
           );
@@ -86,8 +104,8 @@ class App extends React.Component {
           return (
               <div className={styles.container}>
                 <SearchList products = {this.state.products} error={error} isLoaded={isLoaded} handleClickToView={this.handleClickToView}/>
-                <ProductView selectedItem = {this.state.selectedItem} />
-                <Cart/>
+                <ProductView selectedItem = {this.state.selectedItem} handleAddToCart={this.handleAddToCart}/>
+                <Cart cartItems={this.state.cartItems}/>
               </div>
 
         );

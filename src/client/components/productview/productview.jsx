@@ -17,7 +17,7 @@ class ProductView extends React.Component{
                     <br/>
                     <p>{this.props.selectedItem.description}</p>
                     <br/>
-                    <button> Add to Cart</button>
+                    <button onClick={(e)=> this.props.handleAddToCart(this.props.selectedItem.id)}> Add to Cart</button>
                 </div>
             )
         } else{

@@ -1,3 +1,4 @@
+/*almost no change done to this file. Only had to edit the psql config username and database name*/
 const pg = require('pg');
 const products = require('./models/products');
 const url = require('url');
@@ -18,9 +19,9 @@ if (process.env.DATABASE_URL) {
   };
 } else {
   configs = {
-    user: 'akira',
+    user: 'siangeeeo',
     host: '127.0.0.1',
-    database: 'testdb',
+    database: 'shoppingreact',
     port: 5432
   };
 }

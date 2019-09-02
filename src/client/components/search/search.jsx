@@ -9,7 +9,7 @@ class Search extends React.Component {
 
   render() {
     const list  = this.props.list;
-    console.log(list)
+    
     
       return (
         <div>

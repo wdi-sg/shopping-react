@@ -21,6 +21,8 @@ class Product extends React.Component {
           <p className={styles.desc}>
             {this.props.item.description} 
           </p>
+
+          <button onClick = {this.props.add}>Add to cart </button>
       </div>
     );
   }

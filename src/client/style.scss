@@ -2,11 +2,57 @@ html, body {
   background-color: white;
   min-width: 700px;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
-body{
-  padding:20px;
-}
+
 
 .desc{
 	background-color:pink;
+}
+
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.searchList{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100%;
+    width: 33.33%;
+    border: 1px solid #eee;
+    padding: 30px;
+}
+
+
+.productView{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100%;
+    width: 33.33%;
+    border: 1px solid #eee;
+    padding: 30px;
+}
+
+.cart{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100%;
+    width: 33.33%;
+    border: 1px solid #eee;
+    padding: 30px;
 }

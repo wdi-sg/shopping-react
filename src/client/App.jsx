@@ -1,8 +1,10 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
+import styles from 'style.scss';
 
-import Counter from './components/counter/counter';
-import Form from './components/form/form';
+import SearchList from './components/searchlist/searchlist';
+import ProductView from './components/productview/productview';
+import Cart from './components/cart/cart';
 
 class App extends React.Component {
   constructor() {
@@ -14,10 +16,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <Form />
-        Welcome.
-        <Counter message={this.state.message} />
+      <div className={styles.container}>
+        <SearchList/>
+        <ProductView/>
+        <Cart/>
       </div>
     );
   }

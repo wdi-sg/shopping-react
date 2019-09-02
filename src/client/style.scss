@@ -10,3 +10,66 @@ body{
 .desc{
 	background-color:pink;
 }
+
+.main-container{
+    position:relative;
+    width:100%;
+    display:flex;
+    border:1px solid black;
+    justify-content: space-around;
+    height:100vh;
+}
+
+.individual-container{
+    border:1px solid black;
+    width:33%;
+    padding:20px;
+    overflow-y: auto;
+
+}
+
+
+.search-list{
+    border:1px solid black;
+    padding:20px;
+    margin-bottom:5px;
+
+}
+
+.search-list:hover{
+    cursor:pointer;
+
+}
+
+.cart-list{
+    border:1px solid black;
+    width:100%;
+    height:300px;
+    overflow-y: auto;
+    padding:10px;
+}
+
+.single-cart{
+    border:1px solid black;
+    padding:10px 20px;
+    margin-bottom:5px;
+
+}
+
+.cart-table{
+    border:1px solid black;
+    width:100%;
+
+    th{
+        padding:10px;
+        border:1px solid black;
+        text-align: left;
+        width:150px;
+    }
+
+    td{
+        padding:10px;
+        border:1px solid black;
+    }
+}
+

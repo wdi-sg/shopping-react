@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './style.scss';
+import styles from '../../style.scss';
 
 class Form extends React.Component {
   constructor() {
@@ -12,7 +12,7 @@ class Form extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={styles["individual-container"]}>
         <p>{this.state.monkey}</p>
         <input className={styles.name} />
       </div>

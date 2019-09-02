@@ -1,6 +1,8 @@
 import React from 'react';
 
 import styles from './style.scss';
+import main_styles from '../../style.scss';
+
 
 class Form extends React.Component {
   constructor() {
@@ -21,7 +23,7 @@ class Form extends React.Component {
 
     // what to do when we recieve the request
     var responseHandler = function() {
-        console.log("()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()()response text", this.responseText);
+        console.log("()()()()()response text", this.responseText);
         console.log("status text", this.statusText);
         console.log("status code", this.status);
         const result = JSON.parse( this.responseText);

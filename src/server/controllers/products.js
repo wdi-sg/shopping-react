@@ -1,4 +1,5 @@
 module.exports = (db) => {
+
   let getAll = (request, response) => {
 
     // model method to get all products

@@ -5,6 +5,7 @@ import styles from 'style.scss';
 import SearchList from './components/searchlist/searchlist';
 import ProductView from './components/productview/productview';
 import Cart from './components/cart/cart';
+import AddProduct from './components/addProduct/addProduct';
 
 class App extends React.Component {
   constructor() {
@@ -19,6 +20,7 @@ class App extends React.Component {
 
     this.handleClickToView = this.handleClickToView.bind(this);
     this.handleAddToCart = this.handleAddToCart.bind(this);
+    this.addNewProduct = this.addNewProduct.bind(this);
   }
 
   handleClickToView(index){
@@ -48,6 +50,19 @@ class App extends React.Component {
 
       console.log(this.state.cartItems);
   }
+
+      addNewProduct(product){
+          console.log("RERERERERERERERERERERERERERERERERRE");
+          console.log("RERERERERERERERERERERERERERERERERRE");
+          console.log("RERERERERERERERERERERERERERERERERRE");
+          console.log("RERERERERERERERERERERERERERERERERRE");
+          console.log("RERERERERERERERERERERERERERERERERRE");
+          console.log( product );
+
+          this.setState(
+              {products:[product,...this.state.products]}
+          )
+      }
 
   componentDidMount() {
     fetch("http://localhost:3000/products")
@@ -103,9 +118,17 @@ class App extends React.Component {
       } else {
           return (
               <div className={styles.container}>
-                <SearchList products = {this.state.products} error={error} isLoaded={isLoaded} handleClickToView={this.handleClickToView}/>
-                <ProductView selectedItem = {this.state.selectedItem} handleAddToCart={this.handleAddToCart}/>
-                <Cart cartItems={this.state.cartItems}/>
+                <div className={styles.row}>
+                    <SearchList products = {this.state.products} error={error} isLoaded={isLoaded} handleClickToView={this.handleClickToView}/>
+                    <ProductView selectedItem = {this.state.selectedItem} handleAddToCart={this.handleAddToCart}/>
+                </div>
+
+                <div className={styles.row}>
+                    <Cart cartItems={this.state.cartItems}/>
+                    <AddProduct addNewProduct={this.addNewProduct}/>
+                </div>
+
+
               </div>
 
         );

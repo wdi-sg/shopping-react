@@ -15,6 +15,7 @@ class Cart extends React.Component{
                 return(
                     <tr>
                         <td>{item.name}</td><td>{item.price}</td>
+
                     </tr>
 
                 )

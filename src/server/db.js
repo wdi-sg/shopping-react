@@ -20,7 +20,7 @@ if (process.env.DATABASE_URL) {
   configs = {
     user: 'yixin',
     host: '127.0.0.1',
-    database: 'shoppingdb',
+    database: 'shopping',
     port: 5432
   };
 }

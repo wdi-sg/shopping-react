@@ -12,15 +12,30 @@ html, body {
 	background-color:pink;
 }
 
+
+
 .container{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.row{
+    display: flex;
+    flex-direction: rows;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
 }
 
 .searchList{
@@ -28,8 +43,9 @@ html, body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    height: 100%;
-    width: 33.33%;
+    overflow: scroll;
+    height: 50vh;
+    width: 50%;
     border: 1px solid #eee;
     padding: 30px;
 
@@ -46,8 +62,8 @@ html, body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    height: 100%;
-    width: 33.33%;
+    height: 50vh;
+    width: 50%;
     border: 1px solid #eee;
     padding: 30px;
 }
@@ -57,8 +73,8 @@ html, body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    height: 100%;
-    width: 33.33%;
+    height: 50vh;
+    width: 50%;
     border: 1px solid #eee;
     padding: 30px;
 }
@@ -73,5 +89,20 @@ html, body {
 
     .searchItemPrice{
         margin-right: 10px;
+    }
+}
+
+.addProduct{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 50vh;
+    width: 50%;
+    border: 1px solid #eee;
+    padding: 30px;
+
+    div{
+        margin-bottom: 10px;
     }
 }

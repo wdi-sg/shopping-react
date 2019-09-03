@@ -27,7 +27,8 @@ class Form extends React.Component {
         products: [],
         foundList: []
     };
-    this.handleClick = this.handleClick.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
+    this.changeHandler = this.changeHandler.bind(this);
   }
 
 
@@ -43,8 +44,28 @@ class Form extends React.Component {
     currentValue = event.target.value;
     this.setState({searchText: currentValue});
     console.log("state: ", this.state.searchText);
+
+    // based on searchText we will display items accordingly.
+    let itemArray = this.state.products;
+    // let word = this.state.searchText;
+    let foundItems = []; // clear items inside list to begin with
+
+
+    itemArray.map(item => {
+            // console.log(item.name);
+            // console.log (item.name.toLowerCase().includes(word));
+
+            if (item.name.toLowerCase().includes(currentValue.toLowerCase())) {
+                console.log("*************");
+                console.log("found:", item.name);
+                foundItems.push(item);
+
+            }
+        });
+        this.setState({foundList: foundItems});
   }
 
+    /*
     handleClick(){
         // impt to bind function in constructor in order to call this.state keys.
         // alert(this.state.searchText);
@@ -56,7 +77,7 @@ class Form extends React.Component {
         // let foundItems = this.state.foundList;
         let itemArray = this.state.products;
         let word = this.state.searchText;
-        let foundItems = [];
+        let foundItems = []; // clear items inside list to begin with
 
         itemArray.map(item => {
             // console.log(item.name);
@@ -71,8 +92,9 @@ class Form extends React.Component {
         });
 
         console.log(foundItems);
+        <button onClick={this.handleClick}>search</button>
 
-    }
+    } */
 
 
   render() {
@@ -80,8 +102,7 @@ class Form extends React.Component {
       <div>
         <h3>Search:</h3>
         <input className={styles.name} onChange={(event)=>{this.changeHandler(event);}} value={this.state.searchText}/>
-        <button onClick={this.handleClick}>search</button>
-        <List items={this.state.products} />
+        <List items={this.state.foundList} />
       </div>
     );
   }

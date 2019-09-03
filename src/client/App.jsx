@@ -1,23 +1,55 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 
-import Counter from './components/counter/counter';
-import Form from './components/form/form';
+import styles from './style.scss';
+import Search from './components/search/search';
+import Product from './components/product/product';
+import Price from './components/price/price';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      message: 'hello',
+       products: [],
     };
   }
 
+  componentDidMount() {
+    fetch("http://localhost:3000/products")
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            products: result.products
+          });
+        },
+
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+    }
+
+
+
+
+
   render() {
+
+    const allItems = this.state.products.map((item, index)=>{
+            return <li key={index}> {item.name} </li>
+        });
+
     return (
-      <div>
-        <Form />
-        Welcome.
-        <Counter message={this.state.message} />
+      <div className = {styles.container}>
+        <Search />
+         <p>{allItems}</p>
+        <Product />
+        <Price />
       </div>
     );
   }

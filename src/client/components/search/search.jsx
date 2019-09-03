@@ -6,13 +6,10 @@ class Search extends React.Component {
 
   render() {
 
-    // console.log(this.props.searchResults)
-    let searchResults = this.props.searchResults;
-        // do a map to print the list
-        let allProducts = searchResults.map((obj, index) => {
-            return <li key={index}  >
+        let allProducts = this.props.searchResults.map((obj, index) => {
+            return <div key={index} onClick={(event)=>{this.props.selectedProduct(event)}}>
                     {obj.name}
-                </li>
+                </div>
         }) // end of map
 
     return (

@@ -1,4 +1,4 @@
-.product_wrapper{
+.cart_wrapper{
     width:33%;
     min-height:90vh;
     border:1px grey solid;
@@ -10,9 +10,12 @@
     align-items:center;
 }
 
-.boxes{
+.cartitems_wrapper{
+    border:1px red solid;
     width:90%;
     min-height:200px;
-    border:1px red solid;
-    text-align:center;
+    display: flex;
+    flex-direction:column;
+    flex-wrap:wrap;
+    align-items:center;
 }

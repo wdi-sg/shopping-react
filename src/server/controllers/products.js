@@ -15,7 +15,20 @@ module.exports = (db) => {
     });
   };
 
+  let newProduct = (request, response) => {
+
+    db.products.newThing(request.body,(error, result) => {
+      // TODO add conditionals that check for errors
+
+      response.send(result[0]);
+    });
+
+
+  };
+
+
   return {
-    getAll: getAll
+    getAll: getAll,
+    newProduct: newProduct
   };
 };

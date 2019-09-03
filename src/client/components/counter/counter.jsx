@@ -30,7 +30,7 @@ class Counter extends React.Component {
           <p className={styles.desc}>
             {this.props.message} : {this.state.banana}
           </p>
-          {this.state.counters.map((counter)=>{ return <p>{counter}</p>})}
+          {this.state.counters.map((counter,index)=>{ return <p key={index}>{counter}</p>})}
       </div>
     );
   }

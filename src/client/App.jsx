@@ -9,14 +9,17 @@ class App extends React.Component {
     super();
     this.state = {
       message: 'hello',
+      currentProduct: null,
     };
+  }
+
+  getProduct(object) {
   }
 
   render() {
     return (
       <div>
-        <Form />
-        Welcome.
+        <Form getProduct={this.getProduct}/>
         <Counter message={this.state.message} />
       </div>
     );

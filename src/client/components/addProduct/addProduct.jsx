@@ -96,7 +96,7 @@ class AddProduct extends React.Component{
                          <input onChange={(event) => {this.descChangeHandler(event)}}/>
                      </div>
 
-                      <button onClick={(event)=>{this.submit(event);}}>create product</button>
+                      <button className="btn btn-primary btn-lg" onClick={(event)=>{this.submit(event);}}>create product</button>
 
 
                  </div>

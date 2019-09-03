@@ -3,6 +3,7 @@ const express = require('express');
 const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
 const db = require('./db');
+const path = require('path');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 process.env.PORT = process.env.PORT || 3000;
@@ -28,6 +29,9 @@ app.use(cookieParser());
 
 //add This!
 app.use(express.json());
+
+// app.use(express.static('public'))
+app.use('/static', express.static(path.join(__dirname, 'public')));
 
 app.use(
   express.urlencoded({

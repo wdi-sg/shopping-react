@@ -23,7 +23,7 @@ class Cart extends React.Component{
 
 
             return(
-                <div className={styles.cart}>
+                <div className="cart">
                     <h1>Cart</h1>
                     <table>
                         {cartItemList}
@@ -32,7 +32,7 @@ class Cart extends React.Component{
             )
         } else{
             return(
-                <div className={styles.cart}>
+                <div className="cart">
                     <h1>Cart</h1>
                 </div>
             )

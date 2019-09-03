@@ -1,12 +1,33 @@
-html, body {
-  background-color: white;
-  min-width: 700px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-body{
-  padding:20px;
+.searchContainer,
+.cartContainer,
+.productContainer {
+	border: 1px solid #333;
+	height: 90vh;
+
+	h2{
+		text-align: center;
+	}
 }
 
-.desc{
-	background-color:pink;
+.searchContainer{
+	.searchInput{
+		text-align: center;
+	}
+	.productDiv{
+		width: 99%;
+		margin: auto 0;
+		overflow: auto;
+		height: 80vh;
+	}
 }
+
+.indivProduct{
+	width: 90%;
+	padding: 3%;
+	border: 1px solid #333;
+	border-radius: 10px;
+	margin-top: 2rem;
+}
+
+
+

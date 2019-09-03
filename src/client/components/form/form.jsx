@@ -17,6 +17,13 @@ class ProductDetail extends React.Component {
 
 
 class ProductList extends React.Component {
+
+    showDetail(event, product){
+        console.log("add it!!!!!==> " + product.name);
+        this.props.showDetail(product);
+    }
+
+
     render() {
         let itemsElements = this.props.items.map((item, index) => {
           return (

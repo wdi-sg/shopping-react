@@ -10,3 +10,24 @@ body{
 .desc{
 	background-color:pink;
 }
+
+.pagecontent{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: red;
+}
+
+.panel{
+  height: 100vh;
+  width: 30vw;
+  border: 1px solid black;
+}
+
+.itemtag{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: space-between;
+  background-color: blue;
+}

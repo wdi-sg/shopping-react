@@ -1,0 +1,12 @@
+
+.page-content{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.panel{
+  height: 100px;
+  width: 30px;
+  border: 1px solid black;
+}

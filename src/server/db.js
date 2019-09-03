@@ -18,7 +18,8 @@ if (process.env.DATABASE_URL) {
   };
 } else {
   configs = {
-    user: 'akira',
+    user: 'marcus',
+    password: 'password',
     host: '127.0.0.1',
     database: 'testdb',
     port: 5432

@@ -1,23 +1,38 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
+import styles from './style.scss';
 
-import Counter from './components/counter/counter';
-import Form from './components/form/form';
+
+import Search from './components/search/search';
+import Product from './components/product/product';
+import Cart from './components/cart/cart';
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      message: 'hello',
+      item: {},
+      cart: []
     };
+  }
+
+  sendItem(item){
+    this.setState({item:item})
+  }
+
+  sendToCart(item){
+    console.log(item)
+    let array = this.state.cart
+    array.push(item)
+    this.setState({cart:array})
   }
 
   render() {
     return (
-      <div>
-        <Form />
-        Welcome.
-        <Counter message={this.state.message} />
+      <div className={styles.pagecontent}>
+        <Search sendItem={this.sendItem.bind(this)}/>
+        <Product item={this.state.item} toCart={this.sendToCart.bind(this)}/>
+        <Cart cart={this.state.cart}/>
       </div>
     );
   }

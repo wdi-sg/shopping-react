@@ -1,0 +1,24 @@
+.searchContainer {
+  margin: 0 20px;
+  background-color: #fff;
+  width: 33%;
+  padding: 20px;
+  border-radius: 0.5rem;
+}
+
+.input {
+  width: 100%;
+  padding: 4px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.product {
+  transition: 0.3s;
+  cursor: pointer;
+  &:hover {
+    color: salmon;
+  }
+}

@@ -1,0 +1,38 @@
+.productContainer {
+  margin: 0 20px;
+  background-color: #fff;
+  width: 33%;
+  padding: 20px;
+  border-radius: 0.5rem;
+}
+
+.product {
+  position: relative;
+}
+
+.price {
+  color:salmon;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.add {
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  background-color: salmon;
+  display: flex;
+  color: #fff;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover {
+    opacity: 0.5;
+  }
+}

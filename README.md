@@ -11,7 +11,7 @@ There should be 3 main components:
   - search for a product and display the results (this should just get the entire list of products for now)
   - clicking on a product causes the product window to display/be filled
   
-2. Product display component
+2. Cart display component
   - displays information about the product (don't worry about the product image)
   - has a button to add to cart
   

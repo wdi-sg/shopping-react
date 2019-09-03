@@ -1,12 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap');
+
 html, body {
-  background-color: white;
+  background-color: #EEE;
   min-width: 700px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-body{
-  padding:20px;
+  font-family: 'Montserrat', sans-serif;
 }
 
-.desc{
-	background-color:pink;
+.container{
+	padding: 40px;
+    display: flex;
+}
+h2 {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
 }

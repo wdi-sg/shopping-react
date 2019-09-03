@@ -1,0 +1,26 @@
+.container {
+	position:r elative;
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	height: 100vh;
+}
+
+.col {
+	border: 1px solid black;
+	width: 33%;
+	padding: 20px;
+	overflow-y: auto;
+}
+
+.searchlist {
+	border: 1px solid black;
+	padding: 20px;
+	margin-bottom: 5px;
+}
+
+
+.searchlist:hover{
+	background-color: lightgrey;
+	cursor: pointer;
+}

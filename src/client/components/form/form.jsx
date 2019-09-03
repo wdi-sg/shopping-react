@@ -3,15 +3,35 @@ import React from 'react';
 import styles from './style.scss';
 
 
-class List extends React.Component {
+class ProductDetail extends React.Component {
+    render() {
+        return ( <div>
+                <h3> Details </h3>
+                <p> name: {this.props.product.name} </p>
+                <p> price: {this.props.product.price} </p>
+                <p> description: {this.props.product.description} </p>
+            </div>
+            );
+    }
+}
+
+
+class ProductList extends React.Component {
     render() {
         let itemsElements = this.props.items.map((item, index) => {
-          return <li key={index}>{item.name}</li>
+          return (
+            <li key={index}>
+                <button onClick={(event) => {this.showDetail(event, item)}}> {item.name} </button>
+            </li>
+            );
+
         });
-        return (
-          <ul>
-            {itemsElements}
-          </ul>
+        return ( <div>
+            <h3>List of Products:</h3>
+            <ul>
+                {itemsElements}
+            </ul>
+        </div>
         );
     }
 }
@@ -23,14 +43,16 @@ class Form extends React.Component {
   constructor() {
     super();
     this.state = {
-      searchText: '',
+        message: "hello",
+        searchText: '',
         products: [],
-        foundList: []
+        foundList: [],
+        currentProduct: {}
     };
     // this.handleClick = this.handleClick.bind(this);
     this.changeHandler = this.changeHandler.bind(this);
+    this.selectedProduct = this.selectedProduct.bind(this);
   }
-
 
   componentDidMount() {
     fetch('http://localhost:3000/products')
@@ -50,59 +72,34 @@ class Form extends React.Component {
     // let word = this.state.searchText;
     let foundItems = []; // clear items inside list to begin with
 
-
     itemArray.map(item => {
-            // console.log(item.name);
-            // console.log (item.name.toLowerCase().includes(word));
+        // console.log(item.name);
+        // console.log (item.name.toLowerCase().includes(word));
 
-            if (item.name.toLowerCase().includes(currentValue.toLowerCase())) {
-                console.log("*************");
-                console.log("found:", item.name);
-                foundItems.push(item);
+        if (item.name.toLowerCase().includes(currentValue.toLowerCase())) {
+            // console.log("*************");
+            // console.log("found:", item.name);
+            foundItems.push(item);
 
-            }
-        });
-        this.setState({foundList: foundItems});
+        }
+    });
+
+    this.setState({foundList: foundItems});
+    console.log(this.state.foundList);
   }
 
-    /*
-    handleClick(){
-        // impt to bind function in constructor in order to call this.state keys.
-        // alert(this.state.searchText);
-
-        // return all product objects inside array
-        // let all = this.state.products.map((item) => {
-            // console.log(item);
-        // });
-        // let foundItems = this.state.foundList;
-        let itemArray = this.state.products;
-        let word = this.state.searchText;
-        let foundItems = []; // clear items inside list to begin with
-
-        itemArray.map(item => {
-            // console.log(item.name);
-            // console.log (item.name.toLowerCase().includes(word));
-
-            if (item.name.toLowerCase().includes(word.toLowerCase())) {
-                console.log("*************");
-                console.log("found:", item.name);
-                foundItems.push(item.name);
-                this.setState({foundList: foundItems});
-            }
-        });
-
-        console.log(foundItems);
-        <button onClick={this.handleClick}>search</button>
-
-    } */
-
+    selectedProduct(product){
+        console.log("GOING TO SHOW THIS PRODUCT: ", product);
+        this.setState({currentProduct: product});
+    }
 
   render() {
     return(
       <div>
         <h3>Search:</h3>
         <input className={styles.name} onChange={(event)=>{this.changeHandler(event);}} value={this.state.searchText}/>
-        <List items={this.state.foundList} />
+        <ProductList items={this.state.foundList} showDetail={this.selectedProduct} />
+        <ProductDetail product={this.state.currentProduct} />
       </div>
     );
   }

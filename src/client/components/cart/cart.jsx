@@ -11,15 +11,24 @@ class Cart extends React.Component{
 
         if(this.props.cartItems){
 
-            let cartItemList = this.props.cartItems.map((item) => {
+            let subTotal = 0;
+            let shippingRate = 7;
+            let gst = 0.07;
+
+            let cartItemList = this.props.cartItems.map((item,index) => {
+                subTotal += parseFloat(item.price.replace('$', ''))
+                console.log("subTotal");
+                console.log(subTotal);
+
                 return(
                     <tr>
-                        <td>{item.name}</td><td>{item.price}</td>
+                        <td key={index}>{item.name}</td><td>{item.price}</td>
 
                     </tr>
 
                 )
             })
+
 
 
             return(
@@ -28,6 +37,12 @@ class Cart extends React.Component{
                     <table>
                         {cartItemList}
                     </table>
+                    <div>
+                        SubTotal: ${subTotal.toFixed(2)}<br/>
+                        Shipping: ${shippingRate.toFixed(2)}<br/>
+                        GST: ${(subTotal*gst).toFixed(2)}<br/>
+                        Total: ${ (subTotal + shippingRate + (subTotal*gst)).toFixed(2)}<br/>
+                    </div>
                 </div>
             )
         } else{

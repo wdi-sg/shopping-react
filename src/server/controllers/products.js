@@ -1,6 +1,8 @@
 module.exports = (db) => {
+
   let getAll = (request, response) => {
 
+    // model method to get all products
     db.products.getAll((error, products) => {
       // queryResult contains pokemon data returned from the pokemon model
       if (error) {
@@ -13,7 +15,20 @@ module.exports = (db) => {
     });
   };
 
+  let newProduct = (request, response) => {
+
+    db.products.newThing(request.body,(error, result) => {
+      // TODO add conditionals that check for errors
+
+      response.send(result[0]);
+    });
+
+
+  };
+
+
   return {
-    getAll: getAll
+    getAll: getAll,
+    newProduct: newProduct
   };
 };

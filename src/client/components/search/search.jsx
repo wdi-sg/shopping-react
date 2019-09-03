@@ -2,13 +2,14 @@ import React from 'react';
 
 import styles from './style.scss';
 
-class Form extends React.Component {
+class Search extends React.Component {
   constructor() {
     super();
     this.state = {
       searchInput: '',
       counter : 0,
       queryResult: {}
+
     };
   }
 
@@ -75,15 +76,23 @@ class Form extends React.Component {
   render() {
     return (
       <div>
-        <h3>{this.state.counter}</h3>
         <p>
-            <button onClick={()=>{this.doReq()}}>make AJAX request</button>
+            <button onClick={()=>{this.doReq()}}>Search</button>
         </p>
-        <p>{this.state.searchInput}</p>
-            <input className={styles.name} onChange={()=>{this.storeWord()}} />
+        <p>search query: {this.state.searchInput}</p>
+
+
+        <input className={styles.name} onChange={()=>{this.storeWord()}} />
+
+        <p>{this.state.queryResult.id}</p>
+        <p>{this.state.queryResult.name}</p>
+        <p>{this.state.queryResult.price}</p>
+        <p>{this.state.queryResult.description}</p>
+
+
       </div>
     );
   }
 }
 
-export default Form;
+export default Search;

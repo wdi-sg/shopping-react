@@ -14,13 +14,28 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <Form />
-        Welcome.
-        <Counter message={this.state.message} />
+      <div class="container">
+
+            <div class="row">
+                    <div class="col">
+                        <Form />
+                    </div>
+
+                    <div class="col">
+                        <Counter message={this.state.message} />
+                    </div>
+
+                    <div class="col">
+                    </div>
+            </div>
+
       </div>
     );
   }
 }
 
 export default hot(module)(App);
+
+      // <Search />
+      // <Product />
+      // <Cart />

@@ -31,6 +31,8 @@ app.use(
   })
 );
 
+
+
 // Set react-views to be the default view engine
 const reactEngine = require('express-react-views').createEngine();
 app.set('views', __dirname + '/views');
@@ -38,6 +40,7 @@ app.set('view engine', 'jsx');
 app.engine('jsx', reactEngine);
 
 require('./routes')(app, db);
+
 
 // application routes (this goes last)
 setupAppRoutes(app);

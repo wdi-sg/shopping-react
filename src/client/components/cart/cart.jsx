@@ -16,6 +16,13 @@ class Cart extends React.Component {
              </ul>
             </div>
         <div> Total Price </div>
+        <ul className="list-group">
+            <li className="list-group-item">
+                SGD {this.props.totalPrice.reduce((a, b)=>a + b, 0).toFixed(2)}
+             </li>
+
+        </ul>
+
 
 
         </div>

@@ -14,7 +14,8 @@ class App extends React.Component {
         products:[],
         searchResults: [],
         details: [],
-        cart: []
+        cart: [],
+        totalPrice:[]
     };
     this.searchFilter = this.searchFilter.bind(this);
     this.detailsClick = this.detailsClick.bind(this);
@@ -33,11 +34,17 @@ class App extends React.Component {
 
     addCart (event) {
         console.log(event.target.value);
+        //add items to cart
         let products = this.state.products;
         let newCartItem = products.filter(product =>  {return product.id == event.target.value});
         let cart = this.state.cart;
         cart.push(newCartItem[0])
-        this.setState({cart: cart})
+        //add total price to cart
+        let totalPrice = this.state.totalPrice;
+        let newItemPrice = parseFloat(newCartItem[0].price.replace("$"," "));
+        totalPrice.push(newItemPrice);
+        totalPrice.reduce((a,b) => a + b, 0);
+        this.setState({cart: cart, totalPrice: totalPrice,})
 
 
     }
@@ -91,7 +98,7 @@ render() {
                         <Info details ={this.state.details} addCart={this.addCart}/>
                     </div>
                     <div className ="col-4">
-                        <Cart cart={this.state.cart}/>
+                        <Cart cart={this.state.cart} totalPrice={this.state.totalPrice}/>
                     </div>
                 </div>
             </div>

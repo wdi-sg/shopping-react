@@ -83,6 +83,8 @@
     "pg": "^7.8.0",
     "prop-types": ">=15.7.2",
     "react": "^16.8.2",
+    "react-dnd": "^9.3.4",
+    "react-dnd-html5-backend": "^9.3.4",
     "react-dom": "^16.8.2",
     "react-hot-loader": ">=4.6.5",
     "request": "^2.88.0",

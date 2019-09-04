@@ -1,50 +1,73 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
 
-import List from './components/list/list'
-import Show from './components/show/show'
-import NewProduct from './components/newProduct/newProduct'
+import styles from './style.scss';
+import Projects from './components/projects/projects'
+import Bins from './components/bins/bins'
 
 
 class App extends React.Component {
-  constructor() {
-    super();
 
-    this.state = {
-        showProduct: '',
-        searchProduct: ''
-    };
-  }
+    constructor(){
+        super()
 
+        this.state={
+            value:'',
+            projectNames: ['sample']
+        }
+    }
 
-  receiveHandler(product){
-    this.setState({showProduct: product})
+    deleteProject(data){
+        let projectNames = this.state.projectNames
+        projectNames.splice(data, 1)
+        this.setState({projectNames: projectNames})
+    }
 
-  }
+    changeHandler(event){
+        this.setState({value: event.target.value})
+        let projectNames = this.state.projectNames
+        if(event.keyCode === 13){
+            let newProjectName = event.target.value
+            projectNames.push(newProjectName)
+            this.setState({projectNames: projectNames, value: ''})
+        }
+    }
 
   render() {
 
+    let projects = this.state.projectNames.map((project,index)=>{
+        return(
+            <div className='card' key={index}>
+                <div className='card-header'></div>
+                <div className='card-body'>
+                    <p>{project}</p>
+                </div>
+                <div className='card-footer text-right'>
+                </div>
+            </div>
+        )
+    })
 
     return (
-      <div className = 'container-fluid'>
-        <div className='card-header text-center'>
-            <h1>Shopping List</h1>
-        </div>
         <div>
-            <NewProduct />
+            <div className='header text-center'>
+                <div className='row'>
+                    <div className='col-4'></div>
+                    <div className='col-4'>
+                        <h1>Trello Clone</h1>
+                    </div>
+                    <div className='col-4'>
+                        <Bins projects={this.state.projectNames} dropItem={(data)=>{this.deleteProject(data)}}/>
+                    </div>
+                </div>
+            </div>
+            <div className='text-center'>
+                <input onChange={(event)=>{this.changeHandler(event)}} onKeyDown={(event)=>{this.changeHandler(event)}} value={this.state.value}/>
+            </div>
+            <div className={styles.projects}>
+                <Projects projects={this.state.projectNames} deleteProject={(index)=>{this.deleteProject(index)}}/>
+            </div>
         </div>
-        <div className='row'>
-            <div className='col-4'>
-                <List sendHandler={(product)=>{this.receiveHandler(product)}} item={this.state.searchProduct} searchShowHandler={(searchProduct)=>{this.receiveSearchProducts(searchProduct)}}/>
-            </div>
-            <div className='col-4'>
-                <Show product={this.state.showProduct}/>
-            </div>
-            <div className='col-4'>
-                <p></p>
-            </div>
-        </div>
-      </div>
     );
   }
 }

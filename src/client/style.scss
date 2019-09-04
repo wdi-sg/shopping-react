@@ -10,3 +10,16 @@ body{
 .desc{
 	background-color:pink;
 }
+
+.mainWrap{
+	display: flex;
+	flex: nowrap;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+.colShow {
+	display:inline-block;
+	box-sizing: border-box;
+	width: 30%;
+}

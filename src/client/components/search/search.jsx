@@ -7,8 +7,7 @@ class Search extends React.Component {
     super();
     this.state = {
       monkey: 'haha',
-      word: '',
-      counter: 0
+
     };
   }
 
@@ -16,15 +15,27 @@ class Search extends React.Component {
 
     render() {
         console.log("RENDERING SEARCH RESULTS");
+        // console.log(this.props.searchRes);
+        let searchRes = [this.props.searchRes];
+        console.log(searchRes);
+
+            /*let searchItems = searchRes.map((item) => {
+            // let itemId = item.id;
+            console.log(item.name, item.price)
+                    return (
+                            <li>{item.name}, {item.price} <button onClick={(e)=>{this.props.prodDetails(e, item.id)}}>Show Details</button>
+                            </li>
+                        )
+                });*/
+
 
 
         return (
           <div>
             <p>{this.state.monkey}</p>
-            <input className={styles.name} onChange={(event)=>{this.changeHandler(event)}} value={this.state.word} />
-            <button onClick={()=>{this.doSearch()}}>Search</button>
+
             <ul>
-                {listItems}
+
             </ul>
           </div>
         );

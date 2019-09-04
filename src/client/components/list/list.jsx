@@ -1,4 +1,5 @@
 import React from 'react';
+import Search from '../search/search'
 
 class List extends React.Component{
 
@@ -8,9 +9,23 @@ class List extends React.Component{
         this.state={
             products: [],
             showProduct: [],
-            searchProduct: []
+            searchProducts: []
         }
     }
+
+    receiveSearch(value){
+        console.log("in the list class inside receiveSearch: ", value)
+        let products = this.state.products
+        console.log('product array: ', products)
+        let searchProducts = this.state.searchProducts
+        let newArray = products.filter(obj=>{
+            let name = obj.name.toLowerCase()
+            return name.includes(value)
+        })
+        this.setState({searchProducts: newArray})
+        console.log(searchProducts)
+  }
+
 
     searchShowHandler(){
         let searchProduct = this.state.searchProduct[0]
@@ -41,17 +56,34 @@ class List extends React.Component{
     showItem(){
         let value = event.target.value
         let products = this.state.products
+        let searchProducts = this.state.searchProducts
         let showProduct = this.state.showProduct
-        let newProduct = products[value]
-        if (showProduct.length !== 0){
-            showProduct[0] = newProduct
-            this.setState({showProduct: showProduct})
-            this.sendHandler()
+        if(searchProducts.length !== 0){
+            let newSearchProduct = searchProducts[value]
+            if(showProduct.length !== 0){
+                showProduct[0] = newSearchProduct
+                this.setState({showProduct: showProduct})
+                this.sendHandler()
+            }
+            else{
+                showProduct.push(newSearchProduct)
+                this.setState({showProduct: showProduct})
+                this.sendHandler()
+            }
         }
         else{
-            showProduct.push(newProduct)
-            this.setState({showProduct: showProduct})
-            this.sendHandler()
+            console.log("hii")
+            let newProduct = products[value]
+            if (showProduct.length !== 0){
+                showProduct[0] = newProduct
+                this.setState({showProduct: showProduct})
+                this.sendHandler()
+            }
+            else{
+                showProduct.push(newProduct)
+                this.setState({showProduct: showProduct})
+                this.sendHandler()
+            }
         }
     }
 
@@ -64,8 +96,8 @@ class List extends React.Component{
 
     render(){
         let mapProducts;
-        if(this.state.products.length !== 0){
-            mapProducts = this.state.products.map((product,index)=>{
+        if(this.state.searchProducts.length !== 0){
+            mapProducts = this.state.searchProducts.map((product,index)=>{
                 return(
                     <div className='row form-inline' key={index}>
                         <div className='col-6'>
@@ -81,7 +113,20 @@ class List extends React.Component{
             })
         }
         else{
-            mapProducts = 'loading'
+            mapProducts = this.state.products.map((product,index)=>{
+                return(
+                    <div className='row form-inline' key={index}>
+                        <div className='col-6'>
+                            <p>Name: {product.name}</p>
+                        </div>
+                        <div className='col-3 offset-3'>
+                            <button className='btn btn-sm btn-outline-primary' onClick={()=>{this.showItem()}} value={index}>Show Item</button>
+                        </div>
+                        <br />
+                        <br />
+                    </div>
+                )
+            })
         }
 
         return(
@@ -90,6 +135,7 @@ class List extends React.Component{
                     <h6>Item List</h6>
                 </div>
                 <div className='card-body'>
+                    <Search searchItem={(value)=>{this.receiveSearch(value)}}/>
                     {mapProducts}
                 </div>
             </div>

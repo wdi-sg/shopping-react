@@ -1,6 +1,7 @@
 -- create pokemons table
 CREATE TABLE IF NOT EXISTS products (
-	id SERIAL PRIMARY KEY,
+	fid SERIAL PRIMARY KEY
+	id INTEGER
 	name TEXT,
 	price TEXT,
 	description TEXT

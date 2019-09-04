@@ -13,15 +13,12 @@ class Search extends React.Component{
         }
     }
 
-
     searchItem(){
         let value = this.state.itemName
         this.props.searchItem(value)
         this.setState({itemName: ''})
 
     }
-
-
 
 
     changeHandler(event){
@@ -32,6 +29,7 @@ class Search extends React.Component{
         }
         else{
             this.setState({itemName: value})
+            this.props.searchItem(value)
         }
     }
 

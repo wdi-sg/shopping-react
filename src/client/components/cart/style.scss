@@ -1,0 +1,21 @@
+.cart_wrapper{
+    width:33%;
+    min-height:90vh;
+    border:1px grey solid;
+    color:grey;
+    padding:10px;
+    display: flex;
+    flex-direction:column;
+    flex-wrap:wrap;
+    align-items:center;
+}
+
+.cartitems_wrapper{
+    border:1px red solid;
+    width:90%;
+    min-height:200px;
+    display: flex;
+    flex-direction:column;
+    flex-wrap:wrap;
+    align-items:center;
+}

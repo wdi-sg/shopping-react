@@ -10,3 +10,31 @@ body{
 .desc{
 	background-color:pink;
 }
+
+.serviceBox
+{
+    width:100%;
+    margin: 0 auto;
+    margin-top:10px;
+    height:700px;
+    //border:1px solid black;
+}
+.serviceBox1, .serviceBox2, .serviceBox3 {
+    float:left;
+    width:30%;
+    height:690px;
+    padding: 5px;
+    border:1px solid #bdbdbd;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    -moz-box-shadow: 0 0 10px #bdbdbd;
+    -webkit-box-shadow: 0 0 10px #bdbdbd;
+    box-shadow: 0 0 10px #bdbdbd;
+}
+
+.box{
+    height: 250px;
+    background-color: white;
+    
+    
+}

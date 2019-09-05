@@ -8,13 +8,14 @@ module.exports = (dbPoolInstance) => {
 
   let getAll = (callback) => {
 
-    dbPoolInstance.query('SELECT * from products', (error, queryResult) => {
+    dbPoolInstance.query('SELECT * from products limit 20', (error, queryResult) => {
       if (error) {
         // invoke callback function with results after query has executed
         callback(error, null);
       } else {
         // invoke callback function with results after query has executed
-
+        //console.log("Q Result rows /////////////////////////////////")
+        //console.log(queryResult.rows)
         callback(null, queryResult.rows );
       }
     });

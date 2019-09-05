@@ -7,7 +7,7 @@ class Bins extends React.Component{
     drop(event){
         event.preventDefault();
         const data = event.dataTransfer.getData('transfer');
-        console.log('the dropped item id: ', data)
+        console.log('At bins.jsx the dropped item id: ', data)
         this.props.dropItem(data)
     }
 

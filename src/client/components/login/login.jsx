@@ -1,9 +1,9 @@
 import React from 'react';
 
-import style from '../../style.scss';
+import style from './style.scss';
 
 
-class Cart extends React.Component {
+class Login extends React.Component {
 
     render(){
          return (
@@ -14,4 +14,4 @@ class Cart extends React.Component {
     }
 }
 
-export default Cart;
+export default Login;

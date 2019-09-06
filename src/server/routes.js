@@ -1,5 +1,5 @@
 module.exports = (app, db) => {
-  const products = require('./controllers/products')(db);
+  const login = require('./controllers/login')(db);
 
-  app.get('/products', products.getAll);
+  app.get('/login', login.displayLogin);
 };

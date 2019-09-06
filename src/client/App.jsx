@@ -1,69 +1,53 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
+import Cookies from 'universal-cookie';
 
-import Search from './components/search/search';
-import Product from './components/product/product';
-import Cart from './components/cart/cart'
 
-import './style.scss';
+import Login from './components/login/login';
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+
+
+import style from './style.scss';
+
+class Index extends React.Component {
+
+    render() {
+        let cookie = new Cookies();
+        console.log(cookie.get('meow'))
+        return(
+        <div className={`${style.homeDisplay}`}>
+            <div className={`${style.homeImage}`}>
+                <img src="https://res.cloudinary.com/dgv4tcunc/image/upload/v1567757922/Cardnect_fqub79.png" />
+            </div>
+            <div className={`${style.homeText}`}>
+                <p>A Wallet for Namecards</p>
+                {cookie.get('meow')}
+            </div>
+        </div>
+        );
+    }
+}
+
 
 class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-        allProducts: null,
-        searchResults: [],
-        selectedProduct: null
-    };
-
-    this.seeProduct= this.seeProduct.bind(this);
-    this.filterResults = this.filterResults.bind(this);
-  }
-
-  componentDidMount(){
-    fetch("/products")
-    .then(response => response.json())
-    .then((result) => {
-        this.setState({allProducts: result.products})
-    },
-    (error) =>{
-        console.log(error)
-    })
-
-  }
-
-  filterResults(event) {
-    console.log(event.keyCode)
-    if (event.keyCode === 13) {
-        let filteredResults = [];
-        const searchTerm = event.target.value;
-
-        this.state.allProducts.map( product => {
-            if (product.name.toLowerCase().includes(searchTerm.toLowerCase())){
-                filteredResults.push(product);
-            }
-        })
-
-        this.setState({searchResults: filteredResults})
-    }
-  }
-
-    seeProduct(event){
-        console.log(event.target)
-        const productLocation = parseInt(event.target.id)-1;
-        console.log(productLocation)
-        const product = this.state.allProducts[productLocation];
-        this.setState({selectedProduct: product})
-    }
-
 
     render() {
     return (
-        <div className={'row justify-content-center'}>
-            <Search filterResults={this.filterResults} seeProduct={this.seeProduct} searchResults={this.state.searchResults} />
-            <Product product={this.state.selectedProduct} />
-            <Cart />
-        </div>
+        <Router>
+            <div className={`${style.mainLogin}`}>
+                <div className={`${style.overallNav}`}>
+                    <div className={`${style.navText}`}>
+                        <span>
+                            CARDLET
+                        </span>
+                    </div>
+                    <div className={`${style.navLinks}`}>
+                        <a href="/login">Login</a>
+                    </div>
+                </div>
+                <Index />
+            </div>
+        </Router>
     );
     }
 }

@@ -1,0 +1,44 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.homeDisplay {
+	width: 75%;
+	text-align: center;
+	margin: 17vh auto 0;
+}
+
+.homeImage>img{
+	width: 75%;
+}
+
+.homeText {
+	margin-top: 2rem;
+	font-size:1.3rem;
+}
+
+.loginForm {
+	width: 75%;
+	margin: 5vh auto 0;
+	text-align: center;
+}
+
+.btn {
+	background-color:#042F4B;
+	color: #f2f2f2;
+}
+
+.login-signup{
+	width: 75%;
+	text-align: center;
+	margin: 3vh auto 0;
+}
+
+.login-signup>p{
+	margin: 0;
+}
+
+.login-signup>a{
+	margin: 0;
+}

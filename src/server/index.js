@@ -3,6 +3,7 @@ const express = require('express');
 const methodOverride = require('method-override');
 const cookieParser = require('cookie-parser');
 const db = require('./db');
+const path = require('path');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 process.env.PORT = process.env.PORT || 3001;
@@ -24,6 +25,7 @@ app.set('env', process.env.NODE_ENV);
 
 // Set up middleware
 app.use(methodOverride('_method'));
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(cookieParser());
 app.use(
   express.urlencoded({

@@ -4,7 +4,7 @@ CREATE TABLE IF NOT EXISTS users (
   username TEXT,
   password TEXT,
 	user_name TEXT,
-	user_photo TEXT,
+	user_photo TEXT DEFAULT "https://res.cloudinary.com/dgv4tcunc/image/upload/v1567770337/defaultperson_bc1xxt.png",
 	created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 

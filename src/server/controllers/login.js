@@ -1,6 +1,6 @@
 module.exports = (db) => {
   let displayLogin= (request, response) => {
-    response.render('login/display');
+    response.render('login/login');
   };
 
   let displaySignup= (request, response) => {

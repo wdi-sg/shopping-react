@@ -3,6 +3,8 @@
 	padding: 0;
 }
 
+
+/* Login Page */
 .homeDisplay {
 	width: 75%;
 	text-align: center;
@@ -41,4 +43,27 @@
 
 .login-signup>a{
 	margin: 0;
+}
+
+/* Register Page */
+.signupDisplay{
+	width:75%;
+	text-align: center;
+	margin: 11vh auto 0;
+}
+
+.signupDisplay>p{
+	font-size: 1.3rem;
+	font-weight: bold;
+	margin-top: 4vh;
+}
+
+.signupForm{
+	width: 75%;
+	text-align:center;
+	margin: 3vh auto;
+}
+
+.custom-file-label{
+	text-align: left;
 }

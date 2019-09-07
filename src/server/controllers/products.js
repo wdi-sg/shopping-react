@@ -13,7 +13,32 @@ module.exports = (db) => {
     });
   };
 
+
+
+      let newProduct = (request, response) => {
+        console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~')
+        console.log(request.body)
+        db.products.newThing(request.body,(error, result) => {
+          console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+          console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+          console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+          console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+          console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+          console.log( error );
+          console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+          console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+          console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+          console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+          console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+          console.log("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$");
+          console.log( result );
+
+        });
+        response.send("WHAT WORKS");
+    }
+
   return {
-    getAll: getAll
+    getAll: getAll,
+    newProduct:newProduct
   };
 };

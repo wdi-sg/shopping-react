@@ -97,3 +97,7 @@ Temporary Items
 
 # react
 build-dev
+
+#uploads
+/src/server/uploads/*
+!/src/server/uploads/.gitkeep

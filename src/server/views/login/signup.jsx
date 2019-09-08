@@ -11,6 +11,7 @@ class Signup extends React.Component {
             <meta name={"author"} content={"Anton Fisher"} />
             <link rel={"stylesheet"} href={"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"} integrity={"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"} crossorigin={"anonymous"} />
             <link rel={"stylesheet"} href={"/style.css"} />
+            <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet" />
             <title>Cardlet Register</title>
         </head>
         <body>
@@ -22,20 +23,20 @@ class Signup extends React.Component {
                     <p>Register New Account</p>
                 </div>
                 <div className={"signupForm"}>
-                    <form method={'POST'} action={"/login"}>
+                    <form method={'POST'} action={"/signup"} enctype={"multipart/form-data"}>
                         <div className={"form-group"}>
 				            <input type={"text"} className={"form-control text-input"} placeholder ={'Username'} aria-describedby={"Username"} name={'username'} />
 				        </div>
                         <div className={"form-group"}>
-				            <input type={"text"} className={"form-control text-input"} placeholder ={'Password'} aria-describedby={"Password"} name={'password'} />
+				            <input type={"password"} className={"form-control text-input"} placeholder ={'Password'} aria-describedby={"Password"} name={'password'} />
 				        </div>
                         <div className={"form-group"}>
-				            <input type={"text"} className={"form-control text-input"} placeholder ={'Name'} aria-describedby={"name"} name={'user_name'} />
+				            <input type={"text"} className={"form-control text-input"} placeholder ={'Name'} aria-describedby={"name"} name={'name'} />
 				        </div>
                         <div className={'input-group'}>
                             <div className={"custom-file"}>
                                 <input type={"file"} id={'register-photo'} accept={"image/*;capture=camera"} className={"custom-file-input"} placeholder ={'User Photo'} aria-describedby={"User Photo"} name={'photo'} />
-                                <label className={"custom-file-label "} for={'register-photo'}>Choose file</label>
+                                <label className={"custom-file-label "} for={'register-photo'}>Add Profile Picture</label>
                             </div>
                         </div>
                         <button type={'submit'} className={'btn btn-lg mt-3'}>Next</button>

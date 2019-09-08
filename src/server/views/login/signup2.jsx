@@ -1,7 +1,17 @@
 var React = require("react");
+import {isMobile} from "react-device-detect";
 
-class Login extends React.Component {
+class SignupTwo extends React.Component {
+
+  checkMobile() {
+    if (isMobile) {
+        return <a href={"/signup2/upload"}><button className={"btn"}>Take a photo/Upload Business Card</button></a>
+    }
+    return <a href={"/signup2/upload"}><button className={"btn add-card-button-1"}>Upload Business Card</button></a>
+  }
+
   render() {
+
     return (
       <html>
         <head>
@@ -10,32 +20,28 @@ class Login extends React.Component {
             <meta name={"mobile-web-app-capable"} content={"yes"} />
             <meta name={"author"} content={"Anton Fisher"} />
             <link rel={"stylesheet"} href={"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"} integrity={"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"} crossorigin={"anonymous"} />
-            <link rel={"stylesheet"} href={"/style.css"} />
             <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet" />
-            <title>Cardlet Login</title>
+            <link rel={"stylesheet"} href={"/style.css"} />
+            <title>Cardlet Register</title>
         </head>
         <body>
-            <div class={"container-fluid p-0"}>
-                <div className={"homeDisplay"}>
-                    <div className={"homeImage"}>
-                        <img src="https://res.cloudinary.com/dgv4tcunc/image/upload/v1567757922/Cardnect_fqub79.png" />
+            <div className={"container-fluid p-0"}>
+                <div className={'navigation'}>
+                    <div className={'app-detail-container'}>
+                        <img src={"https://res.cloudinary.com/dgv4tcunc/image/upload/v1567853175/C_yefdmo.png"} />
+                        <p>ARDLET</p>
                     </div>
-                    <p className={"homeText"}>A Wallet for Namecards</p>
                 </div>
-                <div className={"loginForm"}>
-                    <form method={'POST'} action={"/login"}>
-                        <div className={"form-group"}>
-				            <input type={"text"} className={"form-control text-input"} placeholder ={'Username'} aria-describedby={"Username"} name={'username'} />
-				        </div>
-                        <div className={"form-group"}>
-				            <input type={"password"} className={"form-control text-input"} placeholder ={'Password'} aria-describedby={"Password"} name={'password'} />
-				        </div>
-                        <button type={'submit'} className={'btn btn-lg'}>Login</button>
-                    </form>
+                <div className={"add-card-parent-container"}>
+                    <div className={"add-card-container"}>
+                        <p className={"add-card-hello"}>Hi <strong>{this.props.details.user_name}</strong>!</p>
+                        <p className={"add-card-text"}>Let's add your first Business Card.</p>
+                        {this.checkMobile()}
+                        <a href={"/signup2/design"}><button className={'btn add-card-button-2'}>Design a Business Card</button></a>
+                    </div>
                 </div>
-                <div className={'login-signup'}>
-                    <p>No account yet?</p>
-                    <a href="/signup">Register</a>
+                <div className={'footer'}>
+                    <p>Decide what to add here?</p>
                 </div>
             </div>
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -47,4 +53,4 @@ class Login extends React.Component {
   }
 }
 
-module.exports = Login;
+module.exports = SignupTwo;

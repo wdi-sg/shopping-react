@@ -1,5 +1,5 @@
 const pg = require('pg');
-const products = require('./models/products');
+const login = require('./models/login');
 const url = require('url');
 
 var configs;
@@ -35,7 +35,7 @@ module.exports = {
   /*
    * ADD APP MODELS HERE
    */
-  products: products(pool),
+  login: login(pool),
 
   //make queries directly from here
   queryInterface: (text, params, callback) => {

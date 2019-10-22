@@ -1,5 +1,5 @@
 module.exports = (app, db) => {
-  const products = require('./controllers/products')(db);
+  const cats = require('./controllers/cats')(db);
 
-  app.get('/products', products.getAll);
+  app.get('/cats', cats.getAll);
 };

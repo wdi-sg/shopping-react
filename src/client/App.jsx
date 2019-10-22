@@ -1,63 +1,62 @@
 import React from 'react';
 import { hot } from 'react-hot-loader';
-import Search from './components/search/search';
-import Product from './components/product/product';
-import Cart from './components/cart/cart';
-import styles from './style.scss';
+import Search from './components/search';
+import GifList from './components/giflist';
+import Favourite from './components/favourite';
+import style from './style.scss';
 
 class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      searchWord: '',
-      products:[],
-      searchResults:[],
-      selectedProduct:null,
-      cartList:[]
-    };
-    this.handleInput = this.handleInput.bind(this);
-    this.makeAjaxCall = this.makeAjaxCall.bind(this);
-    this.selectedProduct = this.selectedProduct.bind(this);
-    this.addToCart = this.addToCart.bind(this);
+   constructor() {
+        super();
+        this.state = {
+            gifs: []
+        }
+        this.handleTermChange = this.handleTermChange.bind(this);
+    }
 
+
+  handleTermChange(term) {
+    console.log(term);
   }
 
-    handleInput(event){
-        let currentValue = event.target.value;
-        this.setState({searchWord:currentValue});
-    }
-
-    selectedProduct(event){
-
-        this.state.selectedProduct = this.state.products.filter(x=>x.name === event.target.innerText)[0]
-        this.setState({selectedProduct:[this.state.selectedProduct]})
-
-        // console.log(this.state.selectedProduct)
-
-    }
-
-    addToCart(event){
-        this.setState({cartList:[this.state.selectedProduct,...this.state.cartList]})
-        // console.log(this.state.cartList)
-    }
+  handleTermChange(term) {
+    // console.log(term);
+    //---------------------->
+    let url = `http://api.giphy.com/v1/gifs/search?q=${term}&api_key=dc6zaTOxFJmzC&limit=8`;
+    fetch(url)
+    .then(response => response.json())
+    .then((gifs) => {
+      // console.log(gifs);
+      // console.log(gifs.length);
+      this.setState({
+        gifs: gifs.data
+      });
+    });
+  };
 
    makeAjaxCall(){
 
     const thisWord = this;
+    const API_KEY = "dc6zaTOxFJmzC"
 
+    var request = new XMLHttpRequest();
     var responseHandler = function(){
+
+
         const result = JSON.parse( this.responseText);
-        thisWord.setState({products: result.products});
+        // console.log(result);
+        thisWord.setState({searchResults: result.data});
+        // console.log(this.state.searchResults);
 
 
-        let searchList = thisWord.state.products? thisWord.state.products.filter(x=>x.name.toLowerCase().includes(thisWord.state.searchWord.toLowerCase())):null;
-        thisWord.setState({searchResults:searchList})
+
+        // let searchList = thisWord.state.cats? thisWord.state.cats.filter(x=>x.name.toLowerCase().includes(thisWord.state.searchWord.toLowerCase())):null;
+        // thisWord.setState({searchResults:searchList})
 
     };
 
-    var request = new XMLHttpRequest();
     request.addEventListener("load", responseHandler);
-    request.open("GET", "/products");
+    request.open("GET", `http://api.giphy.com/v1/gifs/search?q=${(this.state.searchWord).replace(/\s/g, '+')}&api_key=${API_KEY}&limit=8`,true);
     request.send();
   }
 
@@ -66,21 +65,15 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className={styles.app_wrapper}>
-        <Search
-            handleInput={this.handleInput}
-            makeAjaxCall={this.makeAjaxCall}
-            searchWord={this.state.searchWord}
-            products={this.state.products}
-            selectedProduct={this.selectedProduct}
-            searchResults={this.state.searchResults}>
-        </Search>
-        <Product
-            selectedProduct={this.state.selectedProduct}
-            addToCart={this.addToCart}>
-        </Product>
-        <Cart cartList={this.state.cartList}>
-        </Cart>
+      <div className={style.app_wrapper}>
+        <Favourite count={this.state.count}/>
+        <Search onTermChange={this.handleTermChange}/>
+        <GifList gifs={this.state.gifs} />
+
+        <div className={style.footer}>
+            <div>Gallereasy POC web app</div>
+            <div>2359 Media</div>
+        </div>
       </div>
     );
   }

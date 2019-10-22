@@ -9,15 +9,12 @@ class App extends React.Component {
    constructor() {
         super();
         this.state = {
-            gifs: []
+            gifs: [],
+            count: 0
         }
         this.handleTermChange = this.handleTermChange.bind(this);
+        this.counter = this.counter.bind(this);
     }
-
-
-  handleTermChange(term) {
-    console.log(term);
-  }
 
   handleTermChange(term) {
     // console.log(term);
@@ -34,41 +31,23 @@ class App extends React.Component {
     });
   };
 
-   makeAjaxCall(){
+  counter() {
+        console.log('In Counter')
+        let counter = this.state.count
+            counter = counter + 1
 
-    const thisWord = this;
-    const API_KEY = "dc6zaTOxFJmzC"
-
-    var request = new XMLHttpRequest();
-    var responseHandler = function(){
-
-
-        const result = JSON.parse( this.responseText);
-        // console.log(result);
-        thisWord.setState({searchResults: result.data});
-        // console.log(this.state.searchResults);
-
-
-
-        // let searchList = thisWord.state.cats? thisWord.state.cats.filter(x=>x.name.toLowerCase().includes(thisWord.state.searchWord.toLowerCase())):null;
-        // thisWord.setState({searchResults:searchList})
-
-    };
-
-    request.addEventListener("load", responseHandler);
-    request.open("GET", `http://api.giphy.com/v1/gifs/search?q=${(this.state.searchWord).replace(/\s/g, '+')}&api_key=${API_KEY}&limit=8`,true);
-    request.send();
-  }
-
+            this.setState({count:counter})
+            console.log(this.state.count)
+    }
 
 
 
   render() {
     return (
       <div className={style.app_wrapper}>
-        <Favourite count={this.state.count}/>
+        <Favourite count={this.state.count} />
         <Search onTermChange={this.handleTermChange}/>
-        <GifList gifs={this.state.gifs} />
+        <GifList gifs={this.state.gifs} count={this.counter}/>
 
         <div className={style.footer}>
             <div>Gallereasy POC web app</div>

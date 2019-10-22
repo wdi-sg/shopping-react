@@ -10,7 +10,7 @@ class GifItem extends React.Component {
     return (
             <div className={style.gifItem_wrapper}>
                 <i className='bx bxs-heart'></i>
-                <img src={this.props.gif.images.downsized.url} className={style.gifItem} onClick={this.props.count} />
+                <img src={this.props.gif.images.downsized.url} id={this.key} className={style.gifItem} onClick={this.props.count} />
             </div>
     );
   }

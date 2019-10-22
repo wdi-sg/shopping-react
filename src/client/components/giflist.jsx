@@ -7,7 +7,7 @@ class GifList extends React.Component {
 
   render() {
 
-        const gifItems = this.props.gifs.map(image => {
+        const gifItems = this.props.gifs.map((image) => {
 
         return (
             <GifItem key={image.id} gif={image} count={this.props.count}/>

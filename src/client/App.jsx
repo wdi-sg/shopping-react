@@ -10,7 +10,8 @@ class App extends React.Component {
         super();
         this.state = {
             gifs: [],
-            count: 0
+            count: 0,
+            favourite:'false'
         }
         this.handleTermChange = this.handleTermChange.bind(this);
         this.counter = this.counter.bind(this);
@@ -32,12 +33,20 @@ class App extends React.Component {
   };
 
   counter() {
-        console.log('In Counter')
-        let counter = this.state.count
-            counter = counter + 1
+        //console.log('In Counter')
 
+        let counter = this.state.count
+
+        if(this.state.favourite === 'false'){
+            counter = counter + 1
             this.setState({count:counter})
-            console.log(this.state.count)
+            this.setState({favourite:'true'})
+        }
+        else{
+            counter = counter - 1
+            this.setState({count:counter})
+            this.setState({favourite:'false'})
+        }
     }
 
 

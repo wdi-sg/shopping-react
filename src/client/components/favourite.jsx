@@ -5,8 +5,6 @@ import gifItem from './gifitem';
 class Favourite extends React.Component {
 
 
-
-
   render() {
 
         const Count = this.props.count;

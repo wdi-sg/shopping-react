@@ -32,6 +32,7 @@ export class Search extends Component {
             <div>
                 <label >Search</label>
                 <input type="text" value={this.state.search} onChange={(e)=> this.updateSearch(e)}/>
+                
                 <ul className="list-group">
                     {searchResult}
                 </ul>

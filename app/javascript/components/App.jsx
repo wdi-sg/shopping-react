@@ -29,8 +29,8 @@ export class App extends Component {
       }
 
       addToCart(e){
-       this.state.cartItems.push(this.state.selectedProduct)
-       this.setState({cartItems: this.state.cartItems})
+   
+       this.setState({cartItems: [...this.state.cartItems, this.state.selectedProduct]})
       }
     
     render() {
@@ -39,9 +39,9 @@ export class App extends Component {
             <div className="container">
                 <div className="row">
                 
-                    <div className="col-4"> <Search products={this.state.products} selectProduct={(e) => this.selectProduct(e)}/> </div>
-                    <div className="col-4"> <Product selectedProduct={this.state.selectedProduct} addToCart={(e)=> this.addToCart(e)}/> </div>
-                    <div className="col-4"> <Cart cartItems={this.state.cartItems} /> </div>
+                    <div className="col-4 border p-4"> <Search products={this.state.products} selectProduct={(e) => this.selectProduct(e)}/> </div>
+                    <div className="col-4 border p-4"> <Product selectedProduct={this.state.selectedProduct} addToCart={(e)=> this.addToCart(e)}/> </div>
+                    <div className="col-4 border p-4"> <Cart cartItems={this.state.cartItems} /> </div>
 
                 </div>
             

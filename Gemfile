@@ -52,3 +52,6 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "ffaker", "~> 2.13"
+
+# pg_search builds ActiveRecord named scopes that take advantage of PostgreSQL’s full text search http://www.casebook.net
+gem 'pg_search'

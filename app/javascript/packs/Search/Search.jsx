@@ -29,8 +29,25 @@ class Search extends React.Component {
       }
       
       inputChangeHandler(event) {
-          console.log("event.target.value", event.target.value);
+          const url = '/products/search';
+      
+          let params = {
+            params: {
+              name: event.target.value
+            }
+          };
 
+          axios.get(url, params)
+            .then((response) => {
+        
+              const data = response.data
+        
+              this.setState({ products: data })
+        
+            }).catch((error)=>{
+              console.log(error);
+            })
+  
       }
 
     render() {

@@ -12,14 +12,16 @@ class App extends React.Component{
         this.state = {
             products:[]
         }
+
+        this.getProducts = this.getProducts.bind(this)
     }
 
 
-    getProducts(){
-
+    getProducts(event){
+        console.log(event)
           const url = '/products.json';
 
-          axios.get(url)
+          axios.get(url,event)
             .then((response) => {
 
               const data = response.data
@@ -33,6 +35,7 @@ class App extends React.Component{
 
     render(){
 
+
         const products = this.state.products.map((product, index)=>{
                   return (<div key = {index}>
                     <p>{product.name}</p>
@@ -41,12 +44,11 @@ class App extends React.Component{
                       <p>{product.description}</p>
                   </div>);
                 });
+        console.log(products)
         return(
               <div>
-        <Search/>
-        <button onClick={()=>{ this.getProducts() }}>
-          Click to See Products
-        </button>
+        <Search onClick={this.getProducts}/>
+
         {products}
         <Display/>
         <Cart/>

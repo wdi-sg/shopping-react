@@ -1,20 +1,22 @@
-import React from 'react'
+import React from 'react';
 import axios from 'axios';
+import styles from './style.scss';
+import Search from './Search/Search'
 
 class App extends React.Component{
     constructor(){
         super();
         this.state = {
-            name:"",
+            query:"",
             products: []
         }
     }
 
-    getProducts(){
+    searchProducts(){
         const url = '/products.json';
         const whenDone = (response) => {
-            const data = response.data
-            this.setState({ products: data })
+            let {query} = this.state
+            this.setState({ products: response.data.filter(x=>x.name.includes(query))})
         }
         const whenError = (error)=>{
             console.log(error);
@@ -22,6 +24,11 @@ class App extends React.Component{
         axios.get(url)
         .then(whenDone)
         .catch(whenError)
+    }
+
+    onSearchQuery(event){
+        let query = event.target.value;
+        this.setState({query})
     }
 
     render() {
@@ -32,10 +39,13 @@ class App extends React.Component{
                 <p>Description: {product.description}</p>
             </div>);
         });
+
         return (<div>
-            <button onClick={()=>{ this.getProducts() }}>
-                Click to See Products
-            </button>
+            <Search
+                searchProducts={()=>{this.searchProducts()}}
+                onSearchQuery={(event)=>{this.onSearchQuery(event)}}
+                className="col"
+            />
             {products}
         </div>);
     }

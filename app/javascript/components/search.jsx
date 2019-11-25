@@ -13,6 +13,7 @@ class Search extends React.Component{
     getTerm(event) {
       console.log(event.target.value);
       let term = event.target.value;
+
       this.setState({term});
     }
 
@@ -38,12 +39,12 @@ class Search extends React.Component{
     render(){
         console.log( "rendering", this.state.products);
 
-        // console log the posts, this should be an array of objects
+        // console log the products, this should be an array of objects
         const products = this.state.products.map((product, index)=>{
           return (<div>
-            <p>{product.name}</p>
-            <p>{product.price}</p>
-            <p>{product.description}</p>
+            <p>Product: {product.name}</p>
+            <p>Price: ${product.price}</p>
+            <p>Description: {product.description}</p>
           </div>);
         });
 

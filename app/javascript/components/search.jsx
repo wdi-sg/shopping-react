@@ -6,13 +6,23 @@ class Search extends React.Component{
         this.props.onClick(event)
     }
 
+    changeHandler(event){
+        this.props.onChange(event)
+    }
+
     render(){
         return (
         <div>
-        <p>Search</p>
          <button onClick={(event)=>{ this.handleClick(event) }}>
-          Click to See Products
+          Click to See All Products
         </button>
+        <p>Search</p>
+
+          <div>
+            <input onChange={(event)=>{this.changeHandler(event)}} name="query" type="text" value = {event.target.value} placeholder="Search products..."/>
+            <button onClick={(event)=>{ this.handleClick(event) }}type="submit">Search</button>
+          </div>
+
         </div>
     )
     }

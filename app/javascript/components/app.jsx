@@ -10,18 +10,32 @@ class App extends React.Component{
     constructor(){
         super()
         this.state = {
-            products:[]
+            products:[],
+            input:'search',
+            filtered:[]
         }
 
         this.getProducts = this.getProducts.bind(this)
+        this.searchProduct = this.searchProduct.bind(this)
     }
+
+  //   componentDidMount(){
+  //   fetch('products.json')
+  //   .then((response) => {const data = response.data
+
+  //             this.setState({ products: data })
+  //         })
+  //   .catch((error) => {
+  //     console.log(error)
+  //   })
+  // }
 
 
     getProducts(event){
         console.log(event)
           const url = '/products.json';
 
-          axios.get(url,event)
+          axios.get(url)
             .then((response) => {
 
               const data = response.data
@@ -33,23 +47,61 @@ class App extends React.Component{
             })
         }
 
+    searchProduct(event){
+        let searchInput = event.target.value
+        console.log(searchInput)
+        this.setState({input:searchInput})
+
+         const filteredProducts = this.state.products.filter((product)=>{return product.name.indexOf(this.state.input)!==-1})
+        console.log(filteredProducts)
+
+
+         axios.get('/products.json')
+            .then((response) => {
+
+              const data = response.data
+
+              this.setState({filtered:filteredProducts})
+
+            }).catch((error)=>{
+              console.log(error);
+            })
+
+    }
+
     render(){
 
 
         const products = this.state.products.map((product, index)=>{
                   return (<div key = {index}>
-                    <p>{product.name}</p>
-                    <p>{product.price}</p>
-                     <img src = {product.image_url}/>
-                      <p>{product.description}</p>
+                    <p>Name: {product.name}</p>
+                      <img src = {product.image_url}/>
+                      <p>Description:{product.description}</p>
                   </div>);
                 });
         console.log(products)
-        return(
-              <div>
-        <Search onClick={this.getProducts}/>
 
-        {products}
+
+
+        const filteredProducts= this.state.filtered.map((product,index)=>{
+            return
+            (<div key = {index}>
+                    <p>Name: {product.name}</p>
+                      <img src = {product.image_url}/>
+                      <p>Description:{product.description}</p>
+                  </div>);
+        })
+         console.log(this.state.filtered)
+        console.log(filteredProducts)
+        console.log(this.state.filtered.map((product)=>{product.name}))
+
+
+
+        return(
+        <div>
+        <Search onClick={this.getProducts} onChange={this.searchProduct} />
+        {filteredProducts}
+
         <Display/>
         <Cart/>
         </div>

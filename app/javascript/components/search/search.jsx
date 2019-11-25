@@ -1,5 +1,5 @@
 import React from 'react';
-
+import axios from 'axios';
 class Search extends React.Component{
   constructor(){
     super()
@@ -14,11 +14,28 @@ class Search extends React.Component{
    this.setState({monkey: input});
 
  }
+ componentDidMount=()=>{
+   const url = '/products.json';
+   axios.get(url)
+     .then((response) => {
+
+       const data = response.data
+
+       this.setState({ products: data })
+
+     }).catch((error)=>{
+       console.log(error);
+     })
+ }
+
 
   onNameChange(event){
           console.log(event.target.value);
-        if(event.target.value) {
-
+          console.log(this.state.products);
+        if(event.target.value == this.state.products.name) {
+          console.log(this.state.products);
+        } else{
+          console.log("none");
         }
       }
 

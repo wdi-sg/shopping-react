@@ -10,10 +10,15 @@ class Search extends React.Component{
         };
     }
 
-    getProducts(event){
+    getSearchTerm(event){
         console.log("Value: ", event.target.value);
         this.setState({searchTerm: event.target.value});
         console.log("State search term: ", this.state.searchTerm);
+    }
+
+    getProducts(){
+        const searchTerm = this.state.searchTerm;
+        const onClick = this.props;
 
         const url = '/products.json?q=' + this.state.searchTerm;
 
@@ -40,9 +45,13 @@ class Search extends React.Component{
         return(
             <div>
                 Search for Products:
-                <input onChange={(event) => { this.getProducts(event)}}
+                <input onChange={(event) => { this.getSearchTerm(event)}}
                     value={this.state.searchTerm} />
-                {productList}
+                <button onClick={() => this.getProducts()}>Search</button>
+                <ul>
+                    <h3>Results >>></h3>
+                    {productList}
+                </ul>
             </div>
         );
     }

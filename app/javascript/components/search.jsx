@@ -37,14 +37,16 @@ class Search extends React.Component{
         let productList = this.state.searchResult.map((product, index) => {
             return(
                 <div key={index}>
-                    <li>{product.name}</li>
+                    <li>
+                        <a href={"/products/" + product.id}>{product.name}</a>
+                    </li>
                 </div>
             );
         });
 
         return(
             <div>
-                Search for Products:
+                Exact Search for Products:
                 <input onChange={(event) => { this.getSearchTerm(event)}}
                     value={this.state.searchTerm} />
                 <button onClick={() => this.getProducts()}>Search</button>

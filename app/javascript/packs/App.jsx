@@ -1,5 +1,4 @@
 import React from 'react';
-import Product from './Product/Product';
 import Search from './Search/Search';
 
 class App extends React.Component {
@@ -10,7 +9,6 @@ class App extends React.Component {
             <div>
                 <h1>Shopping</h1>
                 <Search />
-                <Product />
             </div>
         );
     }

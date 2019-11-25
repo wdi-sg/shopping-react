@@ -1,13 +1,16 @@
 import React from 'react';
 import styles from './style';
 import axios from 'axios';
+import SearchResult from './SearchResult/SearchResult';
+import Product from '../Product/Product';
 
 class Search extends React.Component {
 
     constructor() {
         super();
         this.state = {
-            products: []
+            products: [],
+            selectedProduct: null
         }
     }
 
@@ -19,7 +22,7 @@ class Search extends React.Component {
           .then((response) => {
       
             const data = response.data
-            console.log("data", data);
+            // console.log("data", data);
       
             this.setState({ products: data })
       
@@ -50,19 +53,21 @@ class Search extends React.Component {
   
       }
 
+      clickHandler(product) {
+        this.setState({selectedProduct: product});
+      }
+
     render() {
 
         let products = this.state.products;
 
         products = products.map(product => (
-            <div key={product.id}>
-                <h3>{product.name}</h3>
-                <hr/>
-            </div>
-        ))
+          <SearchResult product={product} key={product.id} clicked={()=>{this.clickHandler(product)}}/>
+        ));
 
         return (
             <div className={styles.search}>
+                <Product product={this.state.selectedProduct}/>
                 <h1>Search</h1>
                 <button onClick={()=>{ this.getAllPosts() }}>
                     View All Products

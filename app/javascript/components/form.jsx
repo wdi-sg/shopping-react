@@ -29,10 +29,10 @@ class Form extends React.Component {
     render() {
       // console.log( "rendering", this.state.posts);
       // console log the posts, this should be an array of objects
-const posts = this.state.posts.map((post, index)=>{
+const posts = this.state.productss.map((product, index)=>{
   return (<div key={index}>
-    <p>{post.title}</p>
-    <p>{post.content}</p>
+    <p>{product.name}</p>
+    <p>{product.description}</p>
   </div>);
 });
   

@@ -12,22 +12,27 @@ export class Search extends Component {
     updateSearch(e) {
         this.setState({search: e.target.value})
     }
+
+  
     render() {
         let searchFilter = this.props.products.filter(
             (product) => {
-                return product.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
+                return product.name.toLowerCase().includes(this.state.search.toLowerCase());
             }
         )
 
          let searchResult = searchFilter.map(item => {
-             return <li>{item.name}</li>
+             if(this.state.search !== '') {
+                return <li className="list-group-item" onClick={(e)=>{this.props.selectProduct(e)}} >{item.name}</li>
+
+             }
          })   
         return (
             
             <div>
                 <label >Search</label>
                 <input type="text" value={this.state.search} onChange={(e)=> this.updateSearch(e)}/>
-                <ul>
+                <ul className="list-group">
                     {searchResult}
                 </ul>
             </div>

@@ -7,16 +7,30 @@ export class App extends Component {
     constructor(){
         super()
         this.state = {
-            products: []
+            products: [],
+            selectedProduct: null,
+            cartItems: []
+
         }
     }
 
     componentDidMount() {
         axios.get('http://localhost:3000/products.json')
         .then(response => {
-          console.log(response.data);
+          
           this.setState({products: response.data})
         })
+      }
+      selectProduct(e) {
+       
+        this.state.selectedProduct = this.state.products.filter(product=>product.name === e.target.innerText)[0]
+        this.setState({selectedProduct:this.state.selectedProduct})
+    
+      }
+
+      addToCart(e){
+       this.state.cartItems.push(this.state.selectedProduct)
+       this.setState({cartItems: this.state.cartItems})
       }
     
     render() {
@@ -25,9 +39,9 @@ export class App extends Component {
             <div className="container">
                 <div className="row">
                 
-                    <div className="col-4"> <Search products={this.state.products}/> </div>
-                    <div className="col-4"> <Product /> </div>
-                    <div className="col-4"> <Cart /> </div>
+                    <div className="col-4"> <Search products={this.state.products} selectProduct={(e) => this.selectProduct(e)}/> </div>
+                    <div className="col-4"> <Product selectedProduct={this.state.selectedProduct} addToCart={(e)=> this.addToCart(e)}/> </div>
+                    <div className="col-4"> <Cart cartItems={this.state.cartItems} /> </div>
 
                 </div>
             

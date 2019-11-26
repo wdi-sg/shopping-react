@@ -61,4 +61,3 @@ Add more of the search result attributes into the product page.
 
 #### further
 Adjust the shipping cost according to the item added to the cart.
-

@@ -1,21 +1,28 @@
 import React from 'react';
-import Paper from '@material-ui/core/Paper';
-import InputBase from '@material-ui/core/InputBase';
-import IconButton from '@material-ui/core/IconButton';
-import SearchIcon from '@material-ui/icons/Search';
+import TextField from '@material-ui/core/TextField';
 
 class Search extends React.Component{
-
     render() {
-        return (<Paper component="form">
-            <InputBase
-                placeholder="Search"
-                onChange={(event)=>{this.props.onSearchQuery(event)}}
+        const results = this.props.searchResults.map((product,i)=>{
+            return <button
+                key={i}
+                className="btn btn-block btn-outline-primary"
+                onClick={()=>{this.props.viewDetails(product)}}
+            >
+                {product.name}
+            </button>
+        })
+        return (<div>
+            <TextField
+                id="outlined-basic"
+                label="Search"
+                variant="outlined"
+                onChange={(e)=>this.props.onSearchQuery(e)}
             />
-            <IconButton onClick={()=>{this.props.searchProducts()}}>
-                <SearchIcon />
-            </IconButton>
-        </Paper>);
+            <div className="mt-2">
+                {results}
+            </div>
+        </div>);
     }
 }
 

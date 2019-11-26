@@ -1,6 +1,20 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
+  def search
+    @products = Product.all
+    @results = @products.select do |product|
+      product[:name].include?(params[:query])
+    end
+    puts @results
+    respond_to do |format|
+      format.json {
+        render :json => @results
+      }
+      format.html
+    end
+  end
+
   # GET /products
   # GET /products.json
   def index

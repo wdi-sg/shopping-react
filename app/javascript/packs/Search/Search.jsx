@@ -17,6 +17,7 @@ class Search extends React.Component {
       shipping: 7,
       gst: 0,
       gstPercent: 7,
+      total: 0
     }
   }
 
@@ -71,10 +72,15 @@ class Search extends React.Component {
       let subTotal = this.state.subTotal;
       let gstPercent = this.state.gstPercent;
       let gst = this.state.gst;
-      
+      let total = this.state.total;
+      let shipping = this.state.shipping;
+
       subTotal += itemPrice;
       gst = subTotal * gstPercent/100;
-      this.setState({ cart: [...cart, selectedProduct], subTotal, gst })
+
+      total = subTotal + gst + shipping;
+
+      this.setState({ cart: [...cart, selectedProduct], subTotal, gst, total })
     }
   }
 
@@ -89,7 +95,7 @@ class Search extends React.Component {
     return (
       <div className={styles.search}>
         <Cart cart={this.state.cart} price={this.state.subTotal} shipping={this.state.shipping} 
-        gst={this.state.gst}/>
+        gst={this.state.gst} total={this.state.total}/>
         <Product product={this.state.selectedProduct} clicked={() => { this.addToCart(this.state.selectedProduct) }} />
         <h1>Search</h1>
         <button onClick={() => { this.getAllPosts() }}>

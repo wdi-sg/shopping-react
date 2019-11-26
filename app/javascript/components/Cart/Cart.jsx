@@ -1,5 +1,6 @@
 import React from 'react';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Fab from '@material-ui/core/Fab';
 
 class Search extends React.Component{
     render() {
@@ -13,8 +14,9 @@ class Search extends React.Component{
         };
         let cartList = cart.map((item,i)=>{
             return (<li key={i} className="lead mt-1">
-                {item.name} ${item.price} <button onClick={()=>this.props.removeItem(i)} className="btn btn-sm btn-outline-danger"><DeleteIcon /></button>
+                {item.name} ${item.price} <Fab size="small" color="secondary" onClick={()=>this.props.removeItem(i)}><DeleteIcon /></Fab>
             </li>)
+
         })
         return (<div>
             <h1>Cart</h1>

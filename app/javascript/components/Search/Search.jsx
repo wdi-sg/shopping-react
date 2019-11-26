@@ -1,16 +1,19 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 class Search extends React.Component{
     render() {
         const results = this.props.searchResults.map((product,i)=>{
-            return <button
+            return <Button
+                variant="outlined"
+                color="primary"
                 key={i}
-                className="btn btn-block btn-outline-primary"
                 onClick={()=>{this.props.viewDetails(product)}}
+                className="btn-block"
             >
                 {product.name}
-            </button>
+            </Button>
         })
         return (<div>
             <TextField

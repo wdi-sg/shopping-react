@@ -1,4 +1,6 @@
 import React from 'react';
+import Fab from '@material-ui/core/Fab';
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 class Product extends React.Component{
 
@@ -16,14 +18,16 @@ class Product extends React.Component{
             return (<div className="col">
                 <h3>{name}</h3>
                 <img src={image_url} className="img-fluid"/>
-                <p>{description}</p>
-                <h4>${price}</h4>
-                <button
-                    onClick={()=>{this.props.addToCart(this.props.product)}}
-                    className="btn btn-block btn-primary"
-                >
-                    Add to cart
-                </button>
+                <p className="text-left p-2">{description}</p>
+                <div className="d-flex justify-content-between align-items-center">
+                    <h4>${price}</h4>
+                    <Fab
+                        color="primary"
+                        onClick={()=>{this.props.addToCart(this.props.product)}}
+                    >
+                        <ShoppingCartIcon/>
+                    </Fab>
+                </div>
             </div>)
         } else {
             return (<div>

@@ -68,14 +68,9 @@ class App extends React.Component{
         })
         console.log('look item')
           console.log(cartItem)
-        let newCart = this.state.cart.splice()
 
-        newCart.push(cartItem)
-        console.log(newCart)
+        this.setState({ cart: [...this.state.cart, cartItem] })
 
-        this.setState({cart:newCart})
-        console.log('AAAAA CART')
-        console.log(this.state.cart)
 
     }
 

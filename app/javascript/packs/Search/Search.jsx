@@ -7,93 +7,101 @@ import Cart from '../Cart/Cart';
 
 class Search extends React.Component {
 
-    constructor() {
-        super();
-        this.state = {
-            products: [],
-            selectedProduct: null,
-            cart: [],
-            subTotal: 0
-        }
+  constructor() {
+    super();
+    this.state = {
+      products: [],
+      selectedProduct: null,
+      cart: [],
+      subTotal: 0,
+      shipping: 7,
+      gst: 0,
+      gstPercent: 7,
     }
+  }
 
-    getAllPosts(){
+  getAllPosts() {
 
-        const url = '/products.json';
-      
-        axios.get(url)
-          .then((response) => {
-      
-            const data = response.data
-            // console.log("data", data);
-      
-            this.setState({ products: data })
-      
-          }).catch((error)=>{
-            console.log(error);
-          })
+    const url = '/products.json';
+
+    axios.get(url)
+      .then((response) => {
+
+        const data = response.data
+        // console.log("data", data);
+
+        this.setState({ products: data })
+
+      }).catch((error) => {
+        console.log(error);
+      })
+  }
+
+  inputChangeHandler(event) {
+    const url = '/products/search';
+
+    let params = {
+      params: {
+        name: event.target.value
       }
+    };
+
+    axios.get(url, params)
+      .then((response) => {
+
+        const data = response.data
+
+        this.setState({ products: data })
+
+      }).catch((error) => {
+        console.log(error);
+      })
+
+  }
+
+  clickHandler(product) {
+    this.setState({ selectedProduct: product });
+  }
+
+  addToCart(selectedProduct) {
+    let cart = this.state.cart;
+
+    if (selectedProduct) {
+      let itemPrice = parseFloat(selectedProduct.price);
+      let subTotal = this.state.subTotal;
+      let gstPercent = this.state.gstPercent;
+      let gst = this.state.gst;
       
-      inputChangeHandler(event) {
-          const url = '/products/search';
-      
-          let params = {
-            params: {
-              name: event.target.value
-            }
-          };
+      subTotal += itemPrice;
+      gst = subTotal * gstPercent/100;
+      this.setState({ cart: [...cart, selectedProduct], subTotal, gst })
+    }
+  }
 
-          axios.get(url, params)
-            .then((response) => {
-        
-              const data = response.data
-        
-              this.setState({ products: data })
-        
-            }).catch((error)=>{
-              console.log(error);
-            })
-  
-      }
+  render() {
 
-      clickHandler(product) {
-        this.setState({selectedProduct: product});
-      }
+    let products = this.state.products;
 
-      addToCart(selectedProduct){
-        let cart = this.state.cart;
+    products = products.map(product => (
+      <SearchResult product={product} key={product.id} clicked={() => { this.clickHandler(product) }} />
+    ));
 
-        if (selectedProduct) {
-          let itemPrice = parseFloat(selectedProduct.price);
-          let subTotal = this.state.subTotal;
-          subTotal += itemPrice;
-          this.setState({cart: [...cart, selectedProduct], subTotal})
-        }
-      }
-
-    render() {
-
-        let products = this.state.products;
-
-        products = products.map(product => (
-          <SearchResult product={product} key={product.id} clicked={()=>{this.clickHandler(product)}}/>
-        ));
-
-        return (
-            <div className={styles.search}>
-                <Cart cart={this.state.cart} price={this.state.subTotal}/>
-                <Product product={this.state.selectedProduct} clicked={()=>{this.addToCart(this.state.selectedProduct)}} />
-                <h1>Search</h1>
-                <button onClick={()=>{ this.getAllPosts() }}>
-                    View All Products
+    return (
+      <div className={styles.search}>
+        <Cart cart={this.state.cart} price={this.state.subTotal} shipping={this.state.shipping} 
+        gst={this.state.gst}/>
+        <Product product={this.state.selectedProduct} clicked={() => { this.addToCart(this.state.selectedProduct) }} />
+        <h1>Search</h1>
+        <button onClick={() => { this.getAllPosts() }}>
+          View All Products
                 </button>
-                <label htmlFor="search"></label>
-                <input id="search" type="text" onChange={(event)=>{this.inputChangeHandler(event)}}/>
-                <h2>results:</h2>
-                {products}
-            </div>
-        );
-    }
+        <label htmlFor="search"></label>
+        <input id="search" type="text" onChange={(event) => { this.inputChangeHandler(event) }} />
+        <h2>results:</h2>
+        {products}
+      </div>
+    );
+  }
 
 }
 

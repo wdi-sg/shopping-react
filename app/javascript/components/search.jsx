@@ -8,7 +8,8 @@ class Search extends React.Component{
         this.state = {
             searchTerm: "",
             searchResult: [],
-            selectedProduct: []
+            selectedProduct: [],
+            cart:[]
         };
     }
 
@@ -29,6 +30,7 @@ class Search extends React.Component{
                 const data = response.data;
                 this.setState({searchResult: data});
                 console.log(data);
+
             }).catch((error) => {
                 console.log(error);
             });
@@ -39,8 +41,13 @@ class Search extends React.Component{
         this.setState({selectedProduct: product});
     }
 
-    render() {
+    addToCart(product){
+        this.setState({cart: [product, ...this.state.cart]});
+        console.log("Product: ", product);
+    }
 
+    render() {
+        console.log("Current Cart: ", this.state.cart);
         let productList = this.state.searchResult.map((product, index) => {
             return(
                 <div key={index}>
@@ -66,7 +73,7 @@ class Search extends React.Component{
 
                 <div className="col">
                     <div id="prdt">
-                        <Product product={this.state.selectedProduct} />
+                        <Product product={this.state.selectedProduct} addCart={() => this.addToCart(this.state.selectedProduct)} />
                     </div>
                 </div>
             </div>

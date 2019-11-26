@@ -1,5 +1,4 @@
 import React from 'react'
-import axios from 'axios';
 
 class Product extends React.Component{
     constructor(){
@@ -15,6 +14,8 @@ class Product extends React.Component{
                 <p>Name: {this.props.product.name}</p>
                 <p>Description: {this.props.product.description}</p>
                 <p>Price: ${this.props.product.price}</p>
+                <button onClick={() => {this.props.addCart()}}>Add to Cart</button>
+
             </div>
         );
     }

@@ -3,6 +3,7 @@ import styles from './style';
 import axios from 'axios';
 import SearchResult from './SearchResult/SearchResult';
 import Product from '../Product/Product';
+import Cart from '../Cart/Cart';
 
 class Search extends React.Component {
 
@@ -10,7 +11,8 @@ class Search extends React.Component {
         super();
         this.state = {
             products: [],
-            selectedProduct: null
+            selectedProduct: null,
+            cart: []
         }
     }
 
@@ -57,6 +59,14 @@ class Search extends React.Component {
         this.setState({selectedProduct: product});
       }
 
+      addToCart(selectedProduct){
+        let cart = this.state.cart;
+
+        if (selectedProduct) {
+          this.setState({cart: [...cart, selectedProduct]})
+        }
+      }
+
     render() {
 
         let products = this.state.products;
@@ -67,7 +77,8 @@ class Search extends React.Component {
 
         return (
             <div className={styles.search}>
-                <Product product={this.state.selectedProduct}/>
+                <Cart cart={this.state.cart}/>
+                <Product product={this.state.selectedProduct} clicked={()=>{this.addToCart(this.state.selectedProduct)}} />
                 <h1>Search</h1>
                 <button onClick={()=>{ this.getAllPosts() }}>
                     View All Products

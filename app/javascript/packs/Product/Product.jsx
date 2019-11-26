@@ -19,7 +19,7 @@ class Product extends React.Component {
                 <h1>Product</h1>
                 <p>{name}</p>
                 <p>{description}</p>
-                <button>add to cart</button>
+                <button onClick={this.props.clicked}>add to cart</button>
             </div>
         );
     }

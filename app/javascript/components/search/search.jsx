@@ -4,7 +4,8 @@ class Search extends React.Component{
   constructor(){
     super()
     this.state = {
-    products:null
+      products:null,
+      searchTerm:""
     }
   }
   checkInput=(event)=>{
@@ -21,7 +22,7 @@ class Search extends React.Component{
 
        const data = response.data
 
-       this.setState({ products: data })
+       this.setState({ products: data, display:data })
 
      }).catch((error)=>{
        console.log(error);
@@ -30,24 +31,22 @@ class Search extends React.Component{
 
 
   onNameChange(event){
-          console.log(event.target.value);
-          console.log(this.state.products);
-        if(event.target.value == this.state.products.name) {
-          console.log(this.state.products);
-        } else{
-          console.log("none");
-        }
-      }
+    console.log(event.target.value)
+    this.state.searchTerm = event.target.value;
+    this.setState({searchTerm:this.state.searchTerm})
+  }
 
     render(){
 
+
+      const something = this.state.products ? this.state.products.filter(x=>x.name.toLowerCase().includes(this.state.searchTerm.toLowerCase())).map(x=><p>{x.name}</p>) :"";
       return(
 
         <div>
-          <input placeholder="search" onChange={()=>{this.onNameChange(event)}}/>
+          <input placeholder="search" onChange={(e)=>{this.onNameChange(e)}}/>
           <br/>
           <h1>huehue</h1>
-          <input onChange={this.checkInput} />
+        {something}
         </div>
       )
     }

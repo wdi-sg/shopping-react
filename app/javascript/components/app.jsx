@@ -34,7 +34,7 @@ class App extends React.Component{
 
 
   render(){
-    const products = this.state.products.map((product)=>{
+    const products = this.state.products.map((product,index)=>{
       return(
         <div>
 

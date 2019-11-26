@@ -12,7 +12,8 @@ class Search extends React.Component {
         this.state = {
             products: [],
             selectedProduct: null,
-            cart: []
+            cart: [],
+            subTotal: 0
         }
     }
 
@@ -63,7 +64,10 @@ class Search extends React.Component {
         let cart = this.state.cart;
 
         if (selectedProduct) {
-          this.setState({cart: [...cart, selectedProduct]})
+          let itemPrice = parseFloat(selectedProduct.price);
+          let subTotal = this.state.subTotal;
+          subTotal += itemPrice;
+          this.setState({cart: [...cart, selectedProduct], subTotal})
         }
       }
 
@@ -77,7 +81,7 @@ class Search extends React.Component {
 
         return (
             <div className={styles.search}>
-                <Cart cart={this.state.cart}/>
+                <Cart cart={this.state.cart} price={this.state.subTotal}/>
                 <Product product={this.state.selectedProduct} clicked={()=>{this.addToCart(this.state.selectedProduct)}} />
                 <h1>Search</h1>
                 <button onClick={()=>{ this.getAllPosts() }}>

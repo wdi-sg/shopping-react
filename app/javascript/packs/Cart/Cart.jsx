@@ -13,6 +13,8 @@ class Cart extends React.Component {
                 <h1>Cart</h1>
                 <hr/>
                 { cart.map(cartItem => <CartItem item={cartItem} key={cartItem.id}/>) }
+                <hr/>
+                <h3>sub total: ${this.props.price}</h3>
             </div>
         );
     }

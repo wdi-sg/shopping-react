@@ -7,6 +7,7 @@ class CartItem extends React.Component {
         return (
             <div>
                 <h3>{this.props.item.name}</h3>
+                <p>${this.props.item.price}</p>
             </div>
         );
     }

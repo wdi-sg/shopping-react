@@ -75,9 +75,9 @@ class App extends React.Component{
              <img src={product.image_url} className="card-img-top "/>
 
               <div className="card-body">
-                <h5 className="card-title">{product.name}</h5>
+                <h5 className="card-title d-inline"> {product.name}  <span className="float-right pl-2"> {product.price}$</span></h5>
 
-                <p className="card-text">{product.price}</p>
+
               </div>
 
              </div>

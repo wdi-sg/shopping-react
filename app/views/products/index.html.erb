@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Products</h1>
+
+
+<%= link_to 'New Product', new_product_path %>
+
+
+<div class="container ">
+	<% @products.each_slice(3) do |product| %>
+		<div class="card-row d-flex justify-content-around my-5">
+
+			<% product.each do |card| %>
+			<div class="card float-left justify-content-around" style="width: 18rem;">
+
+			  <img src="<%= card.image_url %>" class="card-img-top" style="width: auto; height:200px;" alt="...">
+			  <div class="card-body">
+			    <h5 class="card-title d-inline"><%= card.name %></h5><span class="float-right d-inline"><%= card.price  %>$</span>
+
+			    <p class="card-text"><%= card.description.first(80) %></p>
+			  </div>
+
+			  <div class="card-body">
+			    <a class="card-link"><%= link_to 'Show', card %></a>
+			    <a class="card-link"> <%= link_to 'Edit', edit_product_path(product) %> </a>
+			    <a class="card-link"> <%= link_to 'Destroy', product_path(card), method: :delete, data: { confirm: 'Are you sure?' } %> </a>
+			  </div>
+
+			</div>
+			<% end %>
+
+		</div>
+		<% end %>
+		<br/>
+
+</div>
+<br/>

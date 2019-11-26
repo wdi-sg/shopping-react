@@ -41,6 +41,7 @@ class App extends React.Component{
             <div className="row w-100">
                 <div className="col-4">
                     <h1>Search</h1>
+                    <hr/>
                     <Search
                         onSearchQuery={(e)=>{this.onSearchQuery(e)}}
                         searchResults={this.state.searchResults}
@@ -49,6 +50,7 @@ class App extends React.Component{
                 </div>
                 <div className="col-4">
                     <h1>Product</h1>
+                    <hr/>
                     <Product
                         product={this.state.product}
                         addToCart={(product)=>{this.addToCart(product)}}

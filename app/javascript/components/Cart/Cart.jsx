@@ -18,10 +18,15 @@ class Search extends React.Component{
         })
         return (<div>
             <h1>Cart</h1>
+            <hr/>
             <ul className="list-unstyled">
                 {cartList}
             </ul>
-            <h4>Total: ${totalPrice}</h4>
+            <hr/>
+            <h5>Subtotal: ${totalPrice}</h5>
+            <h5>Shipping: ${Math.ceil(totalPrice/10000) * 7}</h5>
+            <h5>GST: ${(totalPrice * .07).toFixed(2)};</h5>
+            <h4>Total: ${(totalPrice * 1.07 + Math.ceil(totalPrice/10000) * 7).toFixed(2)}</h4>
         </div>);
     }
 }

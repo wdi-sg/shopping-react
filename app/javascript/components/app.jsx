@@ -12,27 +12,22 @@ class App extends React.Component{
         this.state = {
             products:[],
             input:'search',
-            filtered:[]
+            filtered:[],
+            showProduct: [],
+            cart:[]
         }
-
         this.getProducts = this.getProducts.bind(this)
         this.searchProduct = this.searchProduct.bind(this)
+        this.showProduct = this.showProduct.bind(this)
+        this.addtoCart = this.addtoCart.bind(this)
     }
 
-  //   componentDidMount(){
-  //   fetch('products.json')
-  //   .then((response) => {const data = response.data
+    componentDidMount(){
 
-  //             this.setState({ products: data })
-  //         })
-  //   .catch((error) => {
-  //     console.log(error)
-  //   })
-  // }
+        this.getProducts()
+    }
 
-
-    getProducts(event){
-        console.log(event)
+    getProducts(){
           const url = '/products.json';
 
           axios.get(url)
@@ -47,63 +42,67 @@ class App extends React.Component{
             })
         }
 
+      showProduct(event,eventId){
+
+         let oneProduct = this.state.products.filter((product)=>{if (product.id === eventId) return product })
+
+
+            this.setState({ showProduct: oneProduct })
+        }
+
     searchProduct(event){
         let searchInput = event.target.value
-        console.log(searchInput)
-        this.setState({input:searchInput})
+          this.setState({input:searchInput})
 
          const filteredProducts = this.state.products.filter((product)=>{return product.name.indexOf(this.state.input)!==-1})
-        console.log(filteredProducts)
 
+        this.setState({filtered:filteredProducts})
+    }
 
-         axios.get('/products.json')
-            .then((response) => {
+    addtoCart(event){
+        console.log(event.target.value)
+        let cartNumber = parseInt(event.target.value)
+        let cartItem = this.state.products.filter((product)=>{
 
-              const data = response.data
+            if (product.id === cartNumber) return product
+        })
+        console.log('look item')
+          console.log(cartItem)
+        let newCart = this.state.cart.splice()
 
-              this.setState({filtered:filteredProducts})
+        newCart.push(cartItem)
+        console.log(newCart)
 
-            }).catch((error)=>{
-              console.log(error);
-            })
+        this.setState({cart:newCart})
+        console.log('AAAAA CART')
+        console.log(this.state.cart)
 
     }
 
     render(){
 
 
-        const products = this.state.products.map((product, index)=>{
-                  return (<div key = {index}>
-                    <p>Name: {product.name}</p>
-                      <img src = {product.image_url}/>
-                      <p>Description:{product.description}</p>
-                  </div>);
-                });
-        console.log(products)
-
-
-
-        const filteredProducts= this.state.filtered.map((product,index)=>{
-            return
-            (<div key = {index}>
-                    <p>Name: {product.name}</p>
-                      <img src = {product.image_url}/>
-                      <p>Description:{product.description}</p>
+        const filteredResult = this.state.filtered.map((product,index)=>{
+            return (<div key = {index}>
+                    <p><a onClick = {(e)=>{this.showProduct(e,product.id)}} href="#" value = {product.id}>{product.name}</a></p>
                   </div>);
         })
-         console.log(this.state.filtered)
-        console.log(filteredProducts)
-        console.log(this.state.filtered.map((product)=>{product.name}))
 
+        return (
+        <div className = "container">
+            <div className = "row">
+            <div className = "col-4">
+                <Search onChange={this.searchProduct} />
+                {filteredResult}
+            </div>
 
-
-        return(
-        <div>
-        <Search onClick={this.getProducts} onChange={this.searchProduct} />
-        {filteredProducts}
-
-        <Display/>
-        <Cart/>
+            <div className = "col-4">
+                 <Display item = {this.state.showProduct} cart = {this.addtoCart}/>
+            </div>
+             <div className = "col-4">
+                <Cart stuff = {this.state.cart}/>
+            </div>
+            </div>
         </div>
         )
     }

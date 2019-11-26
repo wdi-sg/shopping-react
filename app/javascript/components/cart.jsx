@@ -3,7 +3,13 @@ import React from 'react';
 class Cart extends React.Component{
 
     render(){
-        return <p>Cart</p>
+        return (
+        <div>
+            <h1>Cart</h1>
+            <p>{this.props.stuff}</p>
+        </div>
+
+        )
     }
 }
 

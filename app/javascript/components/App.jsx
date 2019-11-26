@@ -1,14 +1,17 @@
 import React from 'react';
 import axios from 'axios';
 import styles from './style.scss';
-import Search from './Search/Search'
+import Search from './Search/Search';
+import Product from './Product/Product';
+import Cart from './Cart/Cart';
 
 class App extends React.Component{
     constructor(){
         super();
         this.state = {
             query:"",
-            products: []
+            products: [],
+            cart: []
         }
     }
 
@@ -31,22 +34,29 @@ class App extends React.Component{
         this.setState({query})
     }
 
-    render() {
-        const products = this.state.products.map((product,index)=>{
-            return (<div key={index}>
-                <p>Name: {product.name} Price: ${product.price}</p>
-                <p>{product.image_url}</p>
-                <p>Description: {product.description}</p>
-            </div>);
-        });
+    addToCart(i){
+        this.setState({cart: [i,...this.state.cart]})
+    }
 
-        return (<div>
-            <Search
-                searchProducts={()=>{this.searchProducts()}}
-                onSearchQuery={(event)=>{this.onSearchQuery(event)}}
-                className="col"
-            />
-            {products}
+    render() {
+        return (<div className="container d-flex">
+            <div className="col">
+                <h1>Search</h1>
+                <Search
+                    searchProducts={()=>{this.searchProducts()}}
+                    onSearchQuery={(event)=>{this.onSearchQuery(event)}}
+                />
+            </div>
+            <div className="col">
+                <h1>Product</h1>
+                <Product
+                    products={this.state.products}
+                    addToCart={(i)=>{this.addToCart(i)}}
+                />
+            </div>
+            <div className="col">
+                <Cart state={this.state}/>
+            </div>
         </div>);
     }
 }

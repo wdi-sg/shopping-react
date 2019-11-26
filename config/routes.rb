@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   get "onepage/index"
+  get "products/search" => "products#searching"
   resources :carts
   resources :products
   devise_for :users

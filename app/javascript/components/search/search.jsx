@@ -1,24 +1,30 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import axios from 'axios';
-import Search from '../search/search';
 
 
-class App extends React.Component {
+class Search extends React.Component {
     constructor() {
         super();
         this.state = {
             products: []
         }
     }
+    inputChangeHandler(event) {
+        console.log("HIIIIII", event.target.value)
+        const url = 'products/search';
 
-    getProducts() {
-        console.log("retrieving products!!!")
-        const url = '/products.json';
+        let params = {
+            params: {
+                name: event.target.value
+            }
+        };
 
-        axios.get(url)
+
+
+        axios.get(url, params)
             .then((response) => {
-                console.log(response.data);
+
                 const data = response.data
 
                 this.setState({ products: data })
@@ -26,7 +32,9 @@ class App extends React.Component {
             }).catch((error) => {
                 console.log(error);
             })
+
     }
+
     render() {
         const products = this.state.products.map((product, index) => {
             return (<div>
@@ -39,17 +47,15 @@ class App extends React.Component {
                 </ul>
             </div>);
         });
+
         return (
             <div>
-                <Search />
-                <h1>Welcome to this budget Amazon, which runs on rails.</h1>
-                <button onClick={() => { this.getProducts() }}>
-                    Click to See All Products
-                </button>
+                <h1>Hi from Search</h1>
+                <input id="search" type="text" onChange={(event) => { this.inputChangeHandler(event) }} />
                 {products}
             </div>
         );
     }
 }
 
-export default App;
+export default Search;

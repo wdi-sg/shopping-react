@@ -7,6 +7,19 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
+  def search
+    @products = Product.where(name: params[:term])
+
+    respond_to do |format|
+      format.json {
+          render :json => @products
+      }
+
+      format.html
+    end
+
+  end
+
   # GET /products/1
   # GET /products/1.json
   def show

@@ -18,8 +18,8 @@ class Search extends React.Component{
     }
 
     getProducts(){
-
-        const url = '/products.json';
+        // const url = '/products.json
+        const url = '/products/search.json?term=' + this.state.term;
         const whenDone = (response) => {
           const data = response.data
           this.setState({ products: data })

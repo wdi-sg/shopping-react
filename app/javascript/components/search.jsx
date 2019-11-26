@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import Display from './display'
+import Cart from './cart'
 
 class Search extends React.Component{
     constructor(){
@@ -52,8 +53,7 @@ class Search extends React.Component{
     }
 
     render(){
-        console.log( "Cart", this.state.cart);
-
+        // console.log( "Cart", this.state.cart);
         // console log the products, this should be an array of objects
         const list = this.state.products.map((product)=>{
           return (<div>
@@ -81,10 +81,10 @@ class Search extends React.Component{
                 {list}
               </div>
               <div>
-                <Display product={this.state.item} addCart={()=>this.addToCart(this.state.item)}/>
+                <Display product={this.state.item} addCart={()=>this.addToCart(this.state.item)} />
               </div>
               <div>
-
+                <Cart checkout={this.state.cart} />
               </div>
             </div>
         );

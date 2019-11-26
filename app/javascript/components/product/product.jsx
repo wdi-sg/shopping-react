@@ -19,6 +19,7 @@ class Product extends React.Component {
         const url = '/products.json';
 
         const whenDone = (response) => {
+            console.log("Ajax call success!")
             const data = response.data
             this.setState({ products: data })
             console.log("WOW DATA", data);
@@ -34,15 +35,17 @@ class Product extends React.Component {
             .catch(whenError)
     }
     render() {
-        // console.log("this.state", this.state.products)
-        const products = this.state.products.map((product) => {
-            return (<div>
+        console.log("this stata", this.state.products[0])
+        const allProducts = this.state.products.map((product, index) => {
+            return (
                 <li>
                     {product.name}
                     {product.description}
                 </li>
-            </div >);
+            );
         });
+
+        // console.log("this.state", allProducts)
 
         return (
             <div>
@@ -50,7 +53,7 @@ class Product extends React.Component {
                 <button onClick={() => { this.getProducts() }}>
                     see all products
                     </button>
-                {products}
+                {allProducts}
             </div >
         );
     }

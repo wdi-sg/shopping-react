@@ -7,11 +7,17 @@ class Cart extends React.Component{
 
     render() {
 
+        let subtotal = 0;
+        const gst = 0.07;
+        const shipping = 7;
+        let priceWithGst = 0;
         let total = 0;
 
         let cartItem = this.props.cart.map((product, index) => {
 
-            total += parseFloat(product.price);
+            subtotal += parseFloat(product.price);
+            priceWithGst = subtotal * gst;
+            total = subtotal + priceWithGst + shipping;
 
             return(
                 <div key={index}>
@@ -26,7 +32,11 @@ class Cart extends React.Component{
             <div>
                 <h3>Your Cart</h3>
                 {cartItem}
-                <p>Total Price: ${total.toFixed(2)}</p>
+                <hr/>
+                <p>Subtotal: ${subtotal.toFixed(2)}</p>
+                <p>GST: ${priceWithGst.toFixed(2)}</p>
+                <p>Shipping: ${shipping}</p>
+                <p><strong>Total: ${total.toFixed(2)}</strong></p>
             </div>
         );
     }

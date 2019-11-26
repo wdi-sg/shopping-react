@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Grid from '@material-ui/core/Grid';
 // import { hot } from 'react-hot-loader';
 // import styles from './style.scss';
 
@@ -65,31 +66,46 @@ class App extends React.Component{
 
         // console log the posts, this should be an array of objects
         const products = this.state.products.map((product, index)=>{
+            console.log(product)
           return (
-            <div>
-            <div className="card float-left justify-content-around" style="width: 18rem;">
-             <img src={product.img_url} className="card-img-top" style="width: auto; height:200px;" alt="..." />
+
+            <div key={index}>
+
+            <div className="card float-left  mb-5 justify-content-around" >
+             <img src={product.image_url} className="card-img-top "/>
 
               <div className="card-body">
                 <h5 className="card-title">{product.name}</h5>
 
                 <p className="card-text">{product.price}</p>
               </div>
+
              </div>
-             </div>
+
+</div>
 
 
           );
+
         });
 
         return(
-            <div>
+            <div style={{ margin: "0 auto" , textAlign: "center"  }}>
                 my appp
                 <button onClick={()=>{ this.getProducts() }}>
                   Click to See Products
                 </button>
-                {products}
+                <div style={{ padding: 60 }}>
+                 <Grid
+  container
+  direction="row"
+  justify="space-around"
+  alignItems="center"
 
+>
+                {products}
+           </Grid>
+</div>
             </div>
         );
     }

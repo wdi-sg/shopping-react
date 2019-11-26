@@ -12,7 +12,7 @@ class Display extends React.Component{
       return(
           <div>
             <h3>Product Details</h3>
-            <img src={product.url} />
+            <img src={product.image_url} />
             <p>Product: {product.name}</p>
             <p>Price: ${product.price}</p>
             <p>Description: {product.description}</p>

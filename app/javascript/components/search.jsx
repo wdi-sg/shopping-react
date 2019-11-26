@@ -49,7 +49,7 @@ class Search extends React.Component{
         console.log( "rendering", this.state.products);
 
         // console log the products, this should be an array of objects
-        const list = this.state.products.map((product, index)=>{
+        const list = this.state.products.map((product)=>{
           return (<div>
             <p>{product.name}
               <button onClick={() => { this.setItem(product) }}>

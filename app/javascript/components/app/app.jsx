@@ -39,9 +39,12 @@ class App extends React.Component {
                 </ul>
             </div>);
         });
+
+
         return (
             <div>
                 <Search />
+                <hr />
                 <h1>Welcome to this budget Amazon, which runs on rails.</h1>
                 <button onClick={() => { this.getProducts() }}>
                     Click to See All Products

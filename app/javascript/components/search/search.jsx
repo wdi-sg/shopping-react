@@ -1,14 +1,17 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import axios from 'axios';
+import Viewproduct from '../viewproduct/viewproduct'
 
 
 class Search extends React.Component {
     constructor() {
         super();
         this.state = {
-            products: []
+            products: [],
+            selectedProduct: null
         }
+        // console.log(selectedProduct);
     }
     inputChangeHandler(event) {
         console.log("HIIIIII", event.target.value)
@@ -35,14 +38,17 @@ class Search extends React.Component {
 
     }
 
+    clickHandler(product) {
+        this.setState({ selectedProduct: product });
+        console.log("product clicked on is", this.state.selectedProduct)
+    }
+
     render() {
         const products = this.state.products.map((product, index) => {
             return (<div>
                 <ul>
                     <li key={product.id}></li>
-                    <li>Name: {product.name}</li>
-                    <li>Description: {product.description}</li>
-                    <li>price: ${product.price}</li>
+                    <li>{product.name}</li>
                     <br />
                 </ul>
             </div>);
@@ -50,9 +56,10 @@ class Search extends React.Component {
 
         return (
             <div>
-                <h1>Hi from Search</h1>
+                <h1>Search Stuff Man</h1>
                 <input id="search" type="text" onChange={(event) => { this.inputChangeHandler(event) }} />
                 {products}
+                <Viewproduct product={products} onclick={() => { this.clickHandler(product) }} />
             </div>
         );
     }

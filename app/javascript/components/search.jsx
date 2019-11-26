@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 import Product from './product';
+import Cart from './cart';
 
 class Search extends React.Component{
     constructor(){
@@ -58,6 +59,7 @@ class Search extends React.Component{
             );
         });
 
+
         return(
             <div>
                 <div className="col">
@@ -75,6 +77,10 @@ class Search extends React.Component{
                     <div id="prdt">
                         <Product product={this.state.selectedProduct} addCart={() => this.addToCart(this.state.selectedProduct)} />
                     </div>
+                </div>
+
+                <div className="col">
+                    <Cart cart={this.state.cart} />
                 </div>
             </div>
         );

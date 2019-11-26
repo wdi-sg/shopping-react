@@ -15,7 +15,6 @@ class Product extends React.Component{
                 <p>Description: {this.props.product.description}</p>
                 <p>Price: ${this.props.product.price}</p>
                 <button onClick={() => {this.props.addCart()}}>Add to Cart</button>
-
             </div>
         );
     }

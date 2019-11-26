@@ -8,7 +8,8 @@ class Search extends React.Component{
         this.state = {
             term: "",
             products: [],
-            item: []
+            item: [],
+            cart: []
         }
     }
 
@@ -45,8 +46,13 @@ class Search extends React.Component{
         console.log( "Item selected", item);
     }
 
+    addToCart(item){
+        this.setState({cart:[item, ...this.state.cart]});
+        console.log( "Added to cart", item);
+    }
+
     render(){
-        console.log( "rendering", this.state.products);
+        console.log( "Cart", this.state.cart);
 
         // console log the products, this should be an array of objects
         const list = this.state.products.map((product)=>{
@@ -75,7 +81,10 @@ class Search extends React.Component{
                 {list}
               </div>
               <div>
-                <Display product={this.state.item} />
+                <Display product={this.state.item} addCart={()=>this.addToCart(this.state.item)}/>
+              </div>
+              <div>
+
               </div>
             </div>
         );

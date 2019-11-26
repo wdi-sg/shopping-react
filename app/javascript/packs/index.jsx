@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Search from '../components/search'
+import Search from '../components/search';
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(

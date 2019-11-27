@@ -1,18 +1,21 @@
 import React from 'react';
 
 class Viewproduct extends React.Component {
+    constructor() {
+        super();
+    }
 
     render() {
-
-        let product = this.props.product.map((product, index) => {
-            return (<div>
-                <ul>
-                    <li key={product.id}></li>
-                    <li>{product.name}</li>
-                    <br />
-                </ul>
-            </div>);
-        });
+        const product = this.props.product;
+        // let product = this.props.product.map((product, index) => {
+        //     return (<div>
+        //         <ul>
+        //             <li key={product.id}></li>
+        //             <li>{product.name}</li>
+        //             <br />
+        //         </ul>
+        //     </div>);
+        // });
 
         console.log("selecte product is", product)
 
@@ -27,9 +30,10 @@ class Viewproduct extends React.Component {
 
         return (
             <div>
-                <h1>Here's the product</h1>
-                {product}
-                <button>add to cart</button>
+                <h3>Product Details</h3>
+                <p>Product: {product.name}</p>
+                <p>Price: ${product.price}</p>
+                <p>Description: {product.description}</p>
             </div>
         );
     }

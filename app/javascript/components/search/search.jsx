@@ -9,7 +9,7 @@ class Search extends React.Component {
         super();
         this.state = {
             products: [],
-            selectedProduct: null
+            selectedProduct: []
         }
         // console.log(selectedProduct);
     }
@@ -39,8 +39,8 @@ class Search extends React.Component {
     }
 
     clickHandler(product) {
+        console.log("product clicked on is", product);
         this.setState({ selectedProduct: product });
-        console.log("product clicked on is", this.state.selectedProduct)
     }
 
     render() {
@@ -49,6 +49,7 @@ class Search extends React.Component {
                 <ul>
                     <li key={product.id}></li>
                     <li>{product.name}</li>
+                    <button onClick={() => { this.clickHandler(product) }}>View product</button>
                     <br />
                 </ul>
             </div>);
@@ -59,7 +60,7 @@ class Search extends React.Component {
                 <h1>Search Stuff Man</h1>
                 <input id="search" type="text" onChange={(event) => { this.inputChangeHandler(event) }} />
                 {products}
-                <Viewproduct product={products} onclick={() => { this.clickHandler(product) }} />
+                <Viewproduct product={this.state.selectedProduct} />
             </div>
         );
     }

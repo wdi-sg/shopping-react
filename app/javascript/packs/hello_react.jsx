@@ -6,8 +6,9 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import Search from '../components/search'
+
 const Hello = props => (
-  <div>Hello {props.name}sbdkhkshdks!
+  <div>
   <Search/>
   </div>
 )

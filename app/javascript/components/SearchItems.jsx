@@ -87,11 +87,16 @@ export class SearchItems extends Component {
       );
     });
 
+    console.log(pageNumbers);
+
     return (
       <div>
         {filteredProducts.length > 0 ? (
           <p>
-            <strong>Page {this.state.currentPage} results: </strong>
+            <strong>
+              {" "}
+              Showing page {this.state.currentPage} of {pageNumbers.length}:{" "}
+            </strong>
           </p>
         ) : null}
         <div>{renderProducts}</div>

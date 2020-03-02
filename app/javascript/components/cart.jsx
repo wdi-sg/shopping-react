@@ -23,6 +23,7 @@ export default class Cart extends Component {
                     products={this.props.shoppingCart} 
                     onItemClick={()=>{this.onItemClick()}}
                 />
+                <Totals shoppingCart={this.props.shoppingCart} />
             </div>
         )
     }
@@ -80,7 +81,30 @@ class Totals extends Component {
     render() {
         return (
             <div>
+                <SubTotal shoppingCart={this.props.shoppingCart} />
+                <Shipping />
+            </div>
+        )
+    }
+}
 
+class SubTotal extends Component {
+    render() {
+        let subTotal = 0
+        for (let item of this.props.shoppingCart) {
+            subTotal += parseFloat(item.price)
+        }
+        return (
+            <div>Sub-total: ${subTotal}</div>
+        )
+    }
+}
+
+class Shipping extends Component {
+    render() {
+        return (
+            <div>
+                Shipping: $7
             </div>
         )
     }

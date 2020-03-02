@@ -45,8 +45,9 @@ export default class App extends Component {
                         <Search setActiveItem={(num)=>{this.setActiveItem(num)}}/>
                     </Grid>
                     <Grid item xs={4}>
-                        <Product activeProduct={this.state.activeProduct} 
-                        addProductToCart={(product)=>{this.addProductToCart(product)}/>
+                        <Product activeProduct={this.state.activeProduct}
+                        addProductToCart={(product)=>{this.addProductToCart(product)}} 
+                        />
                     </Grid>
                     <Grid item xs={4}>
                         

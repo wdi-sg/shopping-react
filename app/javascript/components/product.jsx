@@ -8,6 +8,10 @@ export default class Product extends Component {
         super()
     }
 
+    addProductToCart() {
+        this.props.addProductToCart(this.props.activeProduct)
+    }
+
     render() {
         return (
             <div>
@@ -19,7 +23,7 @@ export default class Product extends Component {
                 <br />
                 <ProductPrice price={this.props.activeProduct.price} />
                 <br />
-                <AddToCartButton />
+                <AddToCartButton addProductToCart={()=>{this.addProductToCart()}} />
 
             </div>
         )
@@ -70,7 +74,10 @@ class ProductPrice extends Component {
 class AddToCartButton extends Component {
     render() {
         return (
-            <Button variant="contained" color="primary"><AddShoppingCartIcon/>Add to Cart!</Button>
+            <Button variant="contained"
+            color="primary"
+            onClick={(event)=>{this.props.addProductToCart()}}>
+                <AddShoppingCartIcon/>Add to Cart!</Button>
         )
     }
 }

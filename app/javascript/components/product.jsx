@@ -6,34 +6,18 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 export default class Product extends Component {
     constructor() {
         super()
-        this.state = {
-            productID: 0,
-            activeProduct: {}
-        }
     }
 
-    getProduct(number){
-        const url = `/products/${number}.json`      
-        axios.get(url)
-          .then((response) => {
-            const data = response.data
-            this.setState({ activeProduct: data })
-          }).catch((error)=>{
-            console.log(error);
-          })
-      }
-
     render() {
-        this.getProduct(this.props.productID)
         return (
             <div>
-                <ProductName name={this.state.activeProduct.name} />
+                <ProductName name={this.props.activeProduct.name} />
                 <br />
-                <ProductImage image_url={this.state.activeProduct.image_url} />
+                <ProductImage image_url={this.props.activeProduct.image_url} />
                 <br />
-                <ProductDescription description={this.state.activeProduct.description} />
+                <ProductDescription description={this.props.activeProduct.description} />
                 <br />
-                <ProductPrice price={this.state.activeProduct.price} />
+                <ProductPrice price={this.props.activeProduct.price} />
                 <br />
                 <AddToCartButton />
 

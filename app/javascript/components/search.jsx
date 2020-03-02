@@ -12,6 +12,8 @@ export default class Search extends Component {
     }
 
     onItemClick(number) {
+        console.log('clicked')
+        console.log(number)
         this.props.setActiveItem(number)
     }
 
@@ -32,7 +34,7 @@ export default class Search extends Component {
         return (
             <div>
                 <p>Woo, search box</p>
-                <SearchBox getProducts={()=>{this.getProducts()}} />
+                <SearchBox getProducts={() => {this.getProducts()}} />
                 <hr />
                 <ProductList products={this.state.products}
                     onItemClick={(number) => {this.onItemClick(number)}}

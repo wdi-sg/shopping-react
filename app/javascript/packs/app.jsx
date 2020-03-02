@@ -5,19 +5,29 @@ import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
 import Search from '../components/search'
 import Product from '../components/product.jsx'
+import axios from 'axios'
 
 export default class App extends Component {
     constructor() {
         super()
 
         this.state = {
-            activeItem: 0
+            activeProduct: {}
         }
     }
 
-    setActiveItem(number) {
-        this.setState({activeItem: number})
-    }
+    setActiveItem(number){
+        console.log('getting new item in app')
+        console.log(number)
+        const url = `/products/${number}.json`      
+        axios.get(url)
+          .then((response) => {
+            const data = response.data
+            this.setState({ activeProduct: data })
+          }).catch((error)=>{
+            console.log(error);
+          })
+      }
 
 
     render() {
@@ -32,7 +42,7 @@ export default class App extends Component {
                         <Search setActiveItem={(num)=>{this.setActiveItem(num)}}/>
                     </Grid>
                     <Grid item xs={4}>
-                        <Product productID={this.state.activeItem} />
+                        <Product activeProduct={this.state.activeProduct} />
                     </Grid>
                     <Grid item xs={4}>
                         

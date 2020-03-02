@@ -31,9 +31,8 @@ class App extends React.Component {
 
         const product = this.state.products.map((product, index)=>{
             return (
-                <div key={product.id}>
-                        <li>{product.name}</li>
-                </div>);
+                        <li key={index}>{product.name}</li>
+                );
         });
 
         return (

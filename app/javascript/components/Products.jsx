@@ -17,13 +17,13 @@ export class Products extends Component {
               <div className="card-body">
                 <p>Name: {name}</p>
                 <p>Price: {price}</p>
-                <button
+                <a href="#"
                   onClick={() => {
                     this.productClickHandler(product);
                   }}
                 >
                   See more details
-                </button>
+                </a>
               </div>
             </div>
           );

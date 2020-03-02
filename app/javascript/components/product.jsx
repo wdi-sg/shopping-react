@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import Button from '@material-ui/core/Button'
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 
@@ -24,11 +23,11 @@ export default class Product extends Component {
                 <ProductPrice price={this.props.activeProduct.price} />
                 <br />
                 <AddToCartButton addProductToCart={()=>{this.addProductToCart()}} />
-
             </div>
         )
     }
 }
+
 
 class ProductName extends Component {
 render() {
@@ -36,6 +35,7 @@ render() {
         <h1>{this.props.name}</h1>
     )
 }}
+
 
 class ProductImage extends Component {
     render() {
@@ -46,6 +46,7 @@ class ProductImage extends Component {
         )
     }
 }
+
 
 class ProductDescription extends Component {
     render() {
@@ -59,6 +60,7 @@ class ProductDescription extends Component {
     }
 }
 
+
 class ProductPrice extends Component {
     render() {
         return(
@@ -70,6 +72,7 @@ class ProductPrice extends Component {
         )
     }
 }
+
 
 class AddToCartButton extends Component {
     render() {

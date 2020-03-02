@@ -15,7 +15,7 @@ export default class Search extends Component {
         this.props.setActiveItem(number)
     }
 
-    getProducts(){
+    getProducts() {
 
         const url = '/products.json';
       
@@ -42,6 +42,7 @@ export default class Search extends Component {
     }
 }
 
+
 class SearchBox extends Component {
 
     getProducts () {
@@ -58,6 +59,7 @@ class SearchBox extends Component {
         )
     }
 }
+
 
 class ProductList extends Component {
 

@@ -32,17 +32,20 @@ export default class Cart extends Component {
 
 export class CartItems extends Component {
     render() {
-        let cartArray = []    
-        console.log(this.props.products)    
-        if (this.props.products) {
-            cartArray = this.props.products.map((item, index) => {
-                return (
-                <CartItem item={item}
-                    index={index}
-                    onItemClick={(event)=>{this.props.onItemClick(event)}}
-                />
-                )
-            })
+        console.log('products in cart menu')
+        console.log(this.props.products)
+        let cartArray = []   
+        if (this.props.products !== undefined) {
+            if (this.props.products) {
+                cartArray = this.props.products.map((item, index) => {
+                    return (
+                    <CartItem item={item}
+                        index={index}
+                        onItemClick={(event)=>{this.props.onItemClick(event)}}
+                    />
+                    )
+                })
+        }
     }
 
         return (
@@ -63,6 +66,7 @@ export class CartItems extends Component {
     }
 }
 
+
 class CartItem extends Component {
     render() {
         return (
@@ -77,6 +81,7 @@ class CartItem extends Component {
     }
 }
 
+
 class Totals extends Component {
     render() {
         return (
@@ -87,6 +92,7 @@ class Totals extends Component {
         )
     }
 }
+
 
 class SubTotal extends Component {
     render() {
@@ -99,6 +105,7 @@ class SubTotal extends Component {
         )
     }
 }
+
 
 class Shipping extends Component {
     render() {

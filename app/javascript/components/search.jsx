@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Button from '@material-ui/core/Button'
 import axios from 'axios'
+import CartItems from './cart'
 
 export default class Search extends Component {
     constructor() {
@@ -28,7 +29,9 @@ export default class Search extends Component {
 
 
     render() {
-        return (   
+        console.log('items in search')
+        console.log(this.state.products)
+        return (       
             <div>
                 <SearchBox getProducts={() => {this.getProducts()}} />
                 <ProductList products={this.state.products}

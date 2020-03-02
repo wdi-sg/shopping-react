@@ -3,15 +3,17 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
 import Search from '../components/search'
-import Product from '../components/product.jsx'
+import Product from '../components/product'
 import axios from 'axios'
+import Cart from '../components/cart'
 
 export default class App extends Component {
     constructor() {
         super()
 
         this.state = {
-            activeProduct: {}
+            activeProduct: {},
+            shoppingCart: []
         }
     }
 
@@ -27,10 +29,10 @@ export default class App extends Component {
       }
 
     addProductToCart(product) {
-        console.log(product.name)
-        console.log('adding to cart.')
+        let cartArray = this.state.shoppingCart
+        cartArray.push(product)
+        this.setState({shoppingCart: cartArray})
     }
-
 
     render() {
         return (
@@ -49,7 +51,7 @@ export default class App extends Component {
                         />
                     </Grid>
                     <Grid item xs={4}>
-                        
+                        <Cart shoppingCart={this.state.shoppingCart} />
                     </Grid>
             </Grid>
         )

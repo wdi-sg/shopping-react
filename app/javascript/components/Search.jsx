@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Products from "./Products";
+import SearchItems from "./SearchItems";
 
 export class Search extends Component {
   constructor() {
@@ -82,7 +82,7 @@ export class Search extends Component {
           </div>
         </div>
 
-        <Products
+        <SearchItems
           filteredProducts={filteredProducts}
           liftToSearch={this.liftToSearch}
         />

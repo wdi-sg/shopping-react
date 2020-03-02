@@ -20,7 +20,7 @@ export class Product extends Component {
                   <strong>Name:</strong> {name}
                 </p>
                 <p>
-                  <strong>Price:</strong> {price}
+                  <strong>Price:</strong> ${price}
                 </p>
                 <p>
                   <strong>Description:</strong> {description}

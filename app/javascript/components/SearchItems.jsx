@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export class Products extends Component {
+export class SearchItems extends Component {
   productClickHandler = product => {
     this.props.liftToSearch(product);
   };
@@ -15,9 +15,11 @@ export class Products extends Component {
           return (
             <div className="card my-2" key={id}>
               <div className="card-body">
-                <p>Name: {name}</p>
-                <p>Price: {price}</p>
-                <a href="#"
+                <p>
+                  <strong>Name:</strong> {name}
+                </p>
+                <a
+                  href="#"
                   onClick={() => {
                     this.productClickHandler(product);
                   }}
@@ -33,4 +35,4 @@ export class Products extends Component {
   }
 }
 
-export default Products;
+export default SearchItems;

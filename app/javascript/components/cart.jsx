@@ -5,7 +5,7 @@ export default class Cart extends React.Component {
 
         const cartItems = this.props.cart.map((item, index)=>{
 
-            return <p key={index}>{item.name}</p>
+            return <p key={index}>{item.name}:{item.price}</p>
 
         })
 

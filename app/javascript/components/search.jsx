@@ -3,14 +3,6 @@ import axios from 'axios';
 
 export default class Search extends React.Component {
 
-    constructor(){
-        super()
-        this.state = {
-            products: [],
-            input: ""
-        }
-    }
-
     getProducts(){
 
         const url = 'http://127.0.0.1:3000/products.json';
@@ -19,8 +11,8 @@ export default class Search extends React.Component {
           .then((response) => {
 
             const data = response.data
+            console.log(data)
 
-            this.setState({products: data})
             this.props.allProductsLifter(data)
 
           }).catch((error)=>{
@@ -37,7 +29,7 @@ export default class Search extends React.Component {
 
             const data = response.data
             console.log("data", data)
-            
+
             this.props.singleProductLifter(data)
 
           }).catch((error)=>{
@@ -45,11 +37,42 @@ export default class Search extends React.Component {
           })
       }
 
-      submitHandler(e){
-          e.preventDefault()
-          const input = e.target.elements.input.value
-          this.setState({input: input})
-          this.getProducts()
+      sortByPrice(){
+
+        const products = this.props.products
+
+        products.sort((a,b)=>{
+
+            if (a.price < b.price){
+                return -1
+            }
+            if (a.price > b.price){
+                return 1
+            }
+
+            return 0
+        })
+
+        this.props.allProductsLifter(products)
+      }
+
+      sortByName(){
+
+        const products = this.props.products
+
+        products.sort((a,b)=>{
+
+            if (a.name < b.name){
+                return -1
+            }
+            if (a.name > b.name){
+                return 1
+            }
+
+            return 0
+        })
+
+        this.props.allProductsLifter(products)
 
       }
 
@@ -57,28 +80,23 @@ export default class Search extends React.Component {
 
         const allProducts = this.props.products.map((product, index)=>{
 
-            return <a className="btn" onClick={(e)=>{this.selectProduct(index+1)}} key={index}>{product.name}</a>
+            return <a className="btn" onClick={(e)=>{this.selectProduct(index+1)}} key={index}>{product.name}:{product.price}</a>
 
         })
 
-        const filtered = this.state.products.filter((product, index)=>{
+        let sortByPriceButton
+        if (allProducts[0]){
+            sortByPriceButton = <button onClick={()=>{this.sortByPrice()}}>Sort by Price</button>
+        }
 
-            return product.name.includes(this.state.input)
-
-        })
-
-        const products = this.filtered.map((product, index)=>{
-
-            return <a className="btn" onClick={(e)=>{this.selectProduct(index+1)}} key={index}>{product.name}</a>
-
-        })
+        let sortByNameButton
+        if (allProducts[0]){
+            sortByNameButton = <button onClick={()=>{this.sortByName()}}>Sort by Name</button>
+        }
 
         return(
             <div>
-                <form onSubmit={(e)=>{this.submitHandler(e)}}>
-                    <input type="text" name="input"/>
-                    <button type="submit">Get Products</button>
-                </form>
+                {sortByPriceButton}{sortByNameButton}
                 <button onClick={()=>{this.getProducts()}}>Get all Products</button>
                 {allProducts}
             </div>

@@ -58,7 +58,7 @@ export class Search extends Component {
     return (
       <div className="col-4">
         <h6 style={{ width: "100%" }}>Search for products</h6>
-        <div className="row">
+        <div className="row mb-3">
           <div className="col-6">
             <input
               style={{ width: "100%" }}

@@ -37,6 +37,11 @@ export default class Search extends React.Component {
           })
       }
 
+      submitHandler(e){
+          e.preventDefault()
+          console.log(e.target.elements.input.value)
+      }
+
     render(){
 
         const allProducts = this.props.products.map((product, index)=>{
@@ -47,6 +52,10 @@ export default class Search extends React.Component {
 
         return(
             <div>
+                <form>
+                    <input type="text" name="input" onSubmit={(e)=>{this.submitHandler(e)}}/>
+                    <button type="submit">Get Products</button>
+                </form>
                 <button onClick={()=>{this.getProducts()}}>Get all Products</button>
                 {allProducts}
             </div>

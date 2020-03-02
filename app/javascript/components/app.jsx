@@ -39,7 +39,7 @@ export default class App extends React.Component {
                 </div>
 
                 <div className="col-4">
-                    Hi!
+                    <Cart cart={this.state.cart}/>
                 </div>
 
             </div>

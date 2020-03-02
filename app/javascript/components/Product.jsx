@@ -25,10 +25,12 @@ export class Product extends Component {
                 <p>
                   <strong>Description:</strong> {description}
                 </p>
-                <p>
-                  <button onClick={() => this.addToCart(product)}>
-                    Add to cart
-                  </button>
+                <p className="text-right">
+                  <i
+                    style={{ cursor: "pointer" }}
+                    onClick={() => this.addToCart(product)}
+                    className="fas fa-cart-plus"
+                  ></i>
                 </p>
               </div>
             </div>

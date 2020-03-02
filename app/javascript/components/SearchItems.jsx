@@ -15,7 +15,6 @@ export class SearchItems extends Component {
     axios
       .get(url)
       .then(response => {
-        console.log(response.data);
         product = response.data[0];
         this.props.liftToSearch(product);
       })

@@ -32,7 +32,6 @@ class SimpleSlider extends React.Component {
   };
 
   render() {
-    console.log(this.state.allProducts);
     this.allProducts();
     const { allProducts } = this.state;
     var settings = {
@@ -63,13 +62,9 @@ export class App extends Component {
   };
 
   deleteFromCart = itemToDelete => {
-    console.log("IN APPPPP");
+    this.state.cart.splice(itemToDelete, 1);
 
-    const remainingItems = this.state.cart.filter(item => {
-      return item !== itemToDelete;
-    });
-
-    this.setState({ cart: remainingItems });
+    this.setState({ cart: this.state.cart });
   };
 
   liftToApp = product => {

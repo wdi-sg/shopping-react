@@ -14,7 +14,6 @@ export class Search extends Component {
   }
 
   liftToSearch = product => {
-    console.log(product, "IN SEARCH");
     this.props.liftToApp(product);
   };
 
@@ -43,9 +42,20 @@ export class Search extends Component {
 
   onSelectChange = (sortQuery, products) => {
     // this.setState({ sortQuery: sortQuery });
-    const sortedProducts = products.sort((a, b) => {
-      return parseFloat(a.price) - parseFloat(b.price);
-    });
+
+    let sortedProducts;
+
+    if (sortQuery === "alphabetical") {
+      sortedProducts = products.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortQuery === "low to high") {
+      sortedProducts = products.sort((a, b) => {
+        return parseFloat(a.price) - parseFloat(b.price);
+      });
+    } else if (sortQuery === "high to low") {
+      sortedProducts = products.sort((a, b) => {
+        return parseFloat(b.price) - parseFloat(a.price);
+      });
+    }
 
     this.setState({ products: sortedProducts, sortQuery: "" });
   };
@@ -75,8 +85,10 @@ export class Search extends Component {
                   this.onSelectChange(e.target.value, filteredProducts);
                 }}
               >
-                <option>Choose an option..</option>
-                <option>Price</option>
+                <option>Filter</option>
+                <option value="alphabetical">Alphabetical</option>
+                <option value="low to high">Price ascending</option>
+                <option value="high to low">Price descending</option>
               </select>
             ) : null}
           </div>

@@ -9,7 +9,6 @@ export class CartItems extends Component {
   }
 
   clickHandler = item => {
-    console.log("clicking");
     this.props.deleteFromApp(item);
   };
 
@@ -31,6 +30,7 @@ export class CartItems extends Component {
               </div>
               <div>
                 <i
+                  style={{ cursor: "pointer" }}
                   onClick={() => {
                     this.toggleCartItemVisibility();
                   }}
@@ -40,14 +40,14 @@ export class CartItems extends Component {
             </div>
 
             {this.state.showCartItems
-              ? cartItems.map(item => {
+              ? cartItems.map((item, index) => {
                   const { name, price } = item;
 
                   totalPrice += price;
                   itemsInCart++;
 
                   return (
-                    <div key={item.id} className="card mb-2">
+                    <div key={index} className="card mb-2">
                       <div className="card-body">
                         <div className="d-flex justify-content-between">
                           <div>
@@ -55,6 +55,7 @@ export class CartItems extends Component {
                           </div>
                           <div>
                             <i
+                              style={{ cursor: "pointer" }}
                               onClick={() => {
                                 this.clickHandler(item);
                               }}

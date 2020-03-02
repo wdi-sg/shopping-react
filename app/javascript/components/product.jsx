@@ -11,20 +11,37 @@ export default class Product extends Component {
         this.props.addProductToCart(this.props.activeProduct)
     }
 
+    isEmpty(obj) {
+        for(var key in obj) {
+            if(obj.hasOwnProperty(key))
+                return false;
+        }
+        return true;
+    }
+
     render() {
-        return (
-            <div>
-                <ProductName name={this.props.activeProduct.name} />
-                <br />
-                <ProductImage image_url={this.props.activeProduct.image_url} />
-                <br />
-                <ProductDescription description={this.props.activeProduct.description} />
-                <br />
-                <ProductPrice price={this.props.activeProduct.price} />
-                <br />
-                <AddToCartButton addProductToCart={()=>{this.addProductToCart()}} />
-            </div>
-        )
+        if (this.isEmpty(this.props.activeProduct)) {
+            return (
+                <div>
+                    <h3>Please select a product</h3>
+                </div>
+            )
+        } else {
+            console.log(this.props.activeProduct)
+            return (
+                <div>
+                    <ProductName name={this.props.activeProduct.name} />
+                    <br />
+                    <ProductImage image_url={this.props.activeProduct.image_url} />
+                    <br />
+                    <ProductDescription description={this.props.activeProduct.description} />
+                    <br />
+                    <ProductPrice price={this.props.activeProduct.price} />
+                    <br />
+                    <AddToCartButton addProductToCart={()=>{this.addProductToCart()}} />
+                </div>
+            )
+        }
     }
 }
 
@@ -66,7 +83,7 @@ class ProductPrice extends Component {
         return(
             <div>
                 <h3>
-                    {this.props.price}
+                    ${this.props.price}
                 </h3>
             </div>
         )
@@ -78,7 +95,7 @@ class AddToCartButton extends Component {
     render() {
         return (
             <Button variant="contained"
-            color="primary"
+            color="secondary"
             onClick={(event)=>{this.props.addProductToCart()}}>
                 <AddShoppingCartIcon/>Add to Cart!</Button>
         )

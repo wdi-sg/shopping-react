@@ -8,30 +8,49 @@ import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 
 export default class Cart extends Component {
+    constructor() {
+        super()
+    }
+
+    onItemClick() {
+        console.log('clicky click')
+    }
 
     render() {
         return (
             <div>
-                <CartItems shoppingCart={this.props.shoppingCart} />
+                <CartItems
+                    products={this.props.shoppingCart} 
+                    onItemClick={()=>{this.onItemClick()}}
+                />
             </div>
         )
     }
 }
 
 
-class CartItems extends Component {
+export class CartItems extends Component {
     render() {
-        let cartArray = this.props.shoppingCart.map((item, index) => {
-            return (<CartItem item={item} index={index}/>)
-        })
+        let cartArray = []    
+        console.log(this.props.products)    
+        if (this.props.products) {
+            cartArray = this.props.products.map((item, index) => {
+                return (
+                <CartItem item={item}
+                    index={index}
+                    onItemClick={(event)=>{this.props.onItemClick(event)}}
+                />
+                )
+            })
+    }
 
         return (
-            <TableContainer componen={Paper}>
+            <TableContainer component={Paper}>
                 <Table size="small" aria-label="shopping cart">
                     <TableHead>
                         <TableRow>
                             <TableCell>Item</TableCell>
-                            <TableCell align="right">Quantity</TableCell>
+                            <TableCell align="right">Price</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -46,7 +65,8 @@ class CartItems extends Component {
 class CartItem extends Component {
     render() {
         return (
-            <TableRow key={this.props.index}>
+            <TableRow key={this.props.index} id={this.props.item.id}
+            onClick={(event)=>{this.props.onItemClick(event)}}>
                 <TableCell component="th" scope="row">
                     {this.props.item.name}
                 </TableCell>

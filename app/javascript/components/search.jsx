@@ -7,7 +7,7 @@ export default class Search extends Component {
         super()
 
         this.state = {
-            products: [],
+            products: []
         }
     }
 
@@ -16,9 +16,7 @@ export default class Search extends Component {
     }
 
     getProducts() {
-
         const url = '/products.json';
-      
         axios.get(url)
           .then((response) => {
             const data = response.data
@@ -28,12 +26,11 @@ export default class Search extends Component {
           })
       }
 
+
     render() {
-        return (
+        return (   
             <div>
-                <p>Woo, search box</p>
                 <SearchBox getProducts={() => {this.getProducts()}} />
-                <hr />
                 <ProductList products={this.state.products}
                     onItemClick={(number) => {this.onItemClick(number)}}
                 />
@@ -77,7 +74,7 @@ class ProductList extends Component {
                     <li id={item.id} 
                         key={index} 
                         onClick={(event)=>{this.onItemClick(event)}}>
-                            {item.name}
+                            {item.name} - ${item.price}
                     </li>
                 )
             }

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @shopping.name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @shopping.price %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @shopping.url %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @shopping.description %>
+</p>
+
+<%= link_to 'Edit', edit_shopping_path(@shopping) %> |
+<%= link_to 'Back', shoppings_path %>

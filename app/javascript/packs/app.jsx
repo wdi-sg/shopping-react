@@ -26,14 +26,13 @@ export default class App extends Component {
                 container
                 direction="row"
                 justify="center"
-                alignItems="center"
+                alignItems="flex-start"
                 >
                     <Grid item xs={4}>
                         <Search setActiveItem={(num)=>{this.setActiveItem(num)}}/>
                     </Grid>
                     <Grid item xs={4}>
-                        <Button variant="contained" color="primary">Hello!</Button>
-                        <p>Greetings, React.</p>
+                        <Product productID={this.state.activeItem} />
                     </Grid>
                     <Grid item xs={4}>
                         

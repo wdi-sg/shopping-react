@@ -4,14 +4,19 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import Grid from '@material-ui/core/Grid'
 import Search from '../components/search'
+import Product from '../components/product.jsx'
 
 export default class App extends Component {
     constructor() {
         super()
 
         this.state = {
-            activeItem = ""
+            activeItem: 0
         }
+    }
+
+    setActiveItem(number) {
+        this.setState({activeItem: number})
     }
 
 
@@ -24,7 +29,7 @@ export default class App extends Component {
                 alignItems="center"
                 >
                     <Grid item xs={4}>
-                        <Search />
+                        <Search setActiveItem={(num)=>{this.setActiveItem(num)}}/>
                     </Grid>
                     <Grid item xs={4}>
                         <Button variant="contained" color="primary">Hello!</Button>

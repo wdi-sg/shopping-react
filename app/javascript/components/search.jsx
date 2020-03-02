@@ -11,6 +11,10 @@ export default class Search extends Component {
         }
     }
 
+    onItemClick(number) {
+        this.props.setActiveItem(number)
+    }
+
     getProducts(){
 
         const url = '/products.json';
@@ -30,7 +34,9 @@ export default class Search extends Component {
                 <p>Woo, search box</p>
                 <SearchBox getProducts={()=>{this.getProducts()}} />
                 <hr />
-                <ProductList products={this.state.products}/>
+                <ProductList products={this.state.products}
+                    onItemClick={(number) => {this.onItemClick(number)}}
+                />
             </div>
         )
     }
@@ -51,13 +57,18 @@ class SearchBox extends Component {
 
 class ProductList extends Component {
 
+    onItemClick(event) {
+        let number = event.target.id
+        this.props.onItemClick(number)
+    }
+
     render() {
 
         let productList = []
         if (this.props.products.length > 0) {
             productList = this.props.products.map((item, index) => {
                 return (
-                    <li key={index}>{item.name}</li>
+                    <li id={item.id} key={index} onClick={(event)=>{this.onItemClick(event)}}>{item.name}</li>
                 )
             }
             )

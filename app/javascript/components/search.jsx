@@ -12,8 +12,6 @@ export default class Search extends Component {
     }
 
     onItemClick(number) {
-        console.log('clicked')
-        console.log(number)
         this.props.setActiveItem(number)
     }
 
@@ -52,7 +50,11 @@ class SearchBox extends Component {
 
     render() {
         return (
-        <Button color="primary" variant="contained" onClick={()=>{ this.getProducts() }}>Click me to search</Button>
+        <Button color="primary" 
+            variant="contained"
+            onClick={()=>{ this.getProducts() }}>
+                Click me to search
+        </Button>
         )
     }
 }
@@ -70,7 +72,11 @@ class ProductList extends Component {
         if (this.props.products.length > 0) {
             productList = this.props.products.map((item, index) => {
                 return (
-                    <li id={item.id} key={index} onClick={(event)=>{this.onItemClick(event)}}>{item.name}</li>
+                    <li id={item.id} 
+                        key={index} 
+                        onClick={(event)=>{this.onItemClick(event)}}>
+                            {item.name}
+                    </li>
                 )
             }
             )

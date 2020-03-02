@@ -17,8 +17,6 @@ export default class App extends Component {
     }
 
     setActiveItem(number){
-        console.log('getting new item in app')
-        console.log(number)
         const url = `/products/${number}.json`      
         axios.get(url)
           .then((response) => {
@@ -28,6 +26,11 @@ export default class App extends Component {
             console.log(error);
           })
       }
+
+    addProductToCart(product) {
+        console.log(product.name)
+        console.log('adding to cart.')
+    }
 
 
     render() {
@@ -42,7 +45,8 @@ export default class App extends Component {
                         <Search setActiveItem={(num)=>{this.setActiveItem(num)}}/>
                     </Grid>
                     <Grid item xs={4}>
-                        <Product activeProduct={this.state.activeProduct} />
+                        <Product activeProduct={this.state.activeProduct} 
+                        addProductToCart={(product)=>{this.addProductToCart(product)}/>
                     </Grid>
                     <Grid item xs={4}>
                         

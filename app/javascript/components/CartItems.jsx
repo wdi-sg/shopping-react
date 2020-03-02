@@ -42,6 +42,10 @@ export class CartItems extends Component {
             {this.state.showCartItems
               ? cartItems.map(item => {
                   const { name, price } = item;
+
+                  totalPrice += price;
+                  itemsInCart++;
+
                   return (
                     <div key={item.id} className="card mb-2">
                       <div className="card-body">
@@ -60,7 +64,6 @@ export class CartItems extends Component {
                         </div>
 
                         <p>Price: {price}</p>
-                        {((totalPrice += price), itemsInCart++)}
                       </div>
                     </div>
                   );

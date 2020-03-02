@@ -31,6 +31,9 @@ export class SearchItems extends Component {
                 <p>
                   <strong>Name:</strong> {name}
                 </p>
+                <p>
+                  <strong>Price:</strong> ${price}
+                </p>
                 <a
                   href={linkToProduct}
                   onClick={e => {

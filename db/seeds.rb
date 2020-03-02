@@ -7,12 +7,23 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 #
 #
-100.times do |i|
 
-  name = FFaker::Product.product_name
-  price = rand(2.00..30.00).floor(2)
-  url = FFaker::Image.url
-  description = FFaker::Lorem.description
+user1 = User.new({email: FFaker::Internet.email, password: 'password', password_confirmation: 'password'})
+user1.save
 
-  Product.create({name: name, price: price, image_url: url, description: description})
+user2 = User.new({email: FFaker::Internet.email, password: 'password', password_confirmation: 'password'})
+user2.save
+
+user3 = User.new({email: FFaker::Internet.email, password: 'password', password_confirmation: 'password'})
+user3.save
+
+user4 = User.new({email: FFaker::Internet.email, password: 'password', password_confirmation: 'password'})
+user4.save
+
+users = [user1,user2,user3,user4]
+
+users.each do |user|
+  40.times do |n|
+    user.product.create({title: FFaker::Lorem.words, price: rand(2.00..30.00).floor(2), image: FFaker::Image.url, content: FFaker::Lorem.paragraph})
+  end
 end

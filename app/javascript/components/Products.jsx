@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 
 export class Products extends Component {
+  productClickHandler = product => {
+    this.props.liftToSearch(product);
+  };
   render() {
     // console.log(this.props);
     let filteredProducts = this.props.filteredProducts;
+
     return (
       <div>
         {filteredProducts.map(product => {
@@ -13,8 +17,13 @@ export class Products extends Component {
               <div className="card-body">
                 <p>Name: {name}</p>
                 <p>Price: {price}</p>
-                <p>Description: {description}</p>
-                <p>Url: {url}</p>
+                <button
+                  onClick={() => {
+                    this.productClickHandler(product);
+                  }}
+                >
+                  See more details
+                </button>
               </div>
             </div>
           );

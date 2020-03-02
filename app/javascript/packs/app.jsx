@@ -6,15 +6,30 @@ import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Search from "../components/Search";
 import Product from "../components/Product";
+import Cart from "../components/Cart";
 import PropTypes from "prop-types";
 
 export class App extends Component {
+  state = {
+    product: "",
+    cart: []
+  };
+
+  liftToApp = product => {
+    this.setState({ product: product });
+  };
+
+  addToCart = product => {
+    this.setState({ cart: [product, ...this.state.cart] });
+  };
+
   render() {
     return (
       <div className="container">
         <div className="row mt-5">
-          <Search />
-          <Product />
+          <Search liftToApp={this.liftToApp} />
+          <Product addToCart={this.addToCart} product={this.state.product} />
+          <Cart cartItems={this.state.cart} />
         </div>
       </div>
     );

@@ -12,6 +12,11 @@ export class Search extends Component {
     };
   }
 
+  liftToSearch = product => {
+    console.log(product, "IN SEARCH")
+    this.props.liftToApp(product)
+  };
+
   onSearchChange = searchQuery => {
     searchQuery = searchQuery.toLowerCase();
     const url = "/products.json";
@@ -44,7 +49,7 @@ export class Search extends Component {
       return parseFloat(a.price) - parseFloat(b.price);
     });
 
-    this.setState({ products: sortedProducts });
+    this.setState({ products: sortedProducts, sortQuery: "" });
   };
 
   render() {
@@ -79,7 +84,10 @@ export class Search extends Component {
           </div>
         </div>
 
-        <Products filteredProducts={filteredProducts} />
+        <Products
+          filteredProducts={filteredProducts}
+          liftToSearch={this.liftToSearch}
+        />
       </div>
     );
   }

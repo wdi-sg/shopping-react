@@ -8,22 +8,20 @@ export class Search extends Component {
     this.state = {
       searchQuery: "",
       sortQuery: "",
-      products: []
+      products: [],
+      allProducts: []
     };
   }
 
   liftToSearch = product => {
-    console.log(product, "IN SEARCH")
-    this.props.liftToApp(product)
+    console.log(product, "IN SEARCH");
+    this.props.liftToApp(product);
   };
 
   onSearchChange = searchQuery => {
     searchQuery = searchQuery.toLowerCase();
     const url = "/products.json";
     this.setState({ searchQuery: searchQuery });
-
-    console.log(searchQuery, "HOHO");
-    console.log(this.state.searchQuery, "HIHI");
 
     axios
       .get(url)
@@ -34,7 +32,7 @@ export class Search extends Component {
         let filteredProducts = data.filter(product => {
           return product.name.toLowerCase().includes(searchQuery);
         });
-
+        this.setState({ allProducts: response.data });
         this.setState({ products: filteredProducts });
         // this.setState({ posts: data });
       })

@@ -42,7 +42,11 @@ export default class Search extends React.Component{
         const cart = [product, ...this.state.cart];
         this.setState({ cart: cart });
     }
-
+    removeProduct = (index) =>{
+        let cart = this.state.cart;
+        cart.splice(index,1);
+        this.setState({ cart: cart });
+    }
     render(){
         const products = this.state.products.map((product, index)=>{
           return (
@@ -72,7 +76,7 @@ export default class Search extends React.Component{
                             </div>
                     </div>
                         {displayProduct}
-                        <Cart product={this.state.cart}/>
+                        <Cart product={this.state.cart} removeProduct={this.removeProduct}/>
              </div>
             </div>
             );

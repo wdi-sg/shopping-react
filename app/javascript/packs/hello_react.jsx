@@ -7,12 +7,15 @@ import ReactDOM from "react-dom";
 import PropTypes from "prop-types";
 import axios from "axios";
 
+// import { Button } from "shards-react";
+
 class Products extends React.Component {
   constructor() {
     super();
     this.state = {
       products: [],
-      product: {}
+      product: {},
+      cart: []
     };
     this.getProducts = this.getProducts.bind(this);
   }
@@ -50,8 +53,18 @@ class Products extends React.Component {
       });
   }
 
+  addCart(product) {
+    let cart = this.state.cart;
+    cart.push(product);
+    let selectedProduct = this.state.products.filter(
+      element => element == product
+    );
+    this.setState({ products: product, selectedProduct: selectedProduct });
+    console.log(selectedProduct);
+    console.log(cart);
+  }
+
   render() {
-    console.log("RENDERRRRRING");
     console.log(this.state.products);
 
     const products = this.state.products.map((products, index) => {
@@ -72,21 +85,13 @@ class Products extends React.Component {
     });
 
     return (
-      <div>
+      <div className="container">
         <h2>All Products</h2>
         {products}
         <Oneproduct
           product={this.state.product}
           getProducts={this.getProducts}
         />
-
-        {/* <button
-          onClick={() => {
-            this.getProducts();
-          }}
-        >
-          Click to See Products
-        </button> */}
       </div>
     );
   }
@@ -102,14 +107,12 @@ export default class Oneproduct extends React.Component {
       return (
         <div>
           <img src={product.image_url} />
-          <div>
-            <strong>Name:</strong>
-            <p>{product.name}</p>
-            <strong>Description:</strong>
-            <p>{product.description}</p>
-            <strong>Price($):</strong>
-            <p>{product.price}</p>
-          </div>
+          <strong>Name:</strong>
+          <p>{product.name}</p>
+          <strong>Description:</strong>
+          <p>{product.description}</p>
+          <strong>Price($):</strong>
+          <p>{product.price}</p>
 
           <button
             onClick={() => {
@@ -118,21 +121,44 @@ export default class Oneproduct extends React.Component {
           >
             Click to see all Products
           </button>
+          <Cart addCart={this.addCart} />
         </div>
       );
     } else {
-      return (
-        <div></div>
-        // <button
-        //   onClick={() => {
-        //     this.getProducts();
-        //   }}
-        // >
-        //   Click to see all Products
-        // </button>
-      );
+      return <div></div>;
     }
   }
+}
+
+export class Cart extends React.Component {
+  addCart(event, product) {
+    this.props.addCart(product);
+  }
+  render() {
+    let cartList = this.props.products((product) => {
+    return (
+      <div>
+        <img src={product.image_url} />
+        <strong>Name:</strong>
+        <p>{product.name}</p>
+        <strong>Description:</strong>
+        <p>{product.description}</p>
+        <strong>Price($):</strong>
+        <p>{product.price}</p>
+
+        <button
+          onClick={event => {
+            this.addCart(event, product);
+          }}
+        >
+          Add to Cart
+        </button>
+      </div>
+    );
+  })
+  return (
+  <ol>{cartList}</ol>
+  );
 }
 
 const Hello = props => <div>Hello {props.name}!</div>;

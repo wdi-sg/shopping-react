@@ -96,7 +96,7 @@ class AddToCartButton extends Component {
         return (
             <Button variant="contained"
             color="secondary"
-            onClick={(event)=>{this.props.addProductToCart()}}>
+            onClick={()=>{this.props.addProductToCart()}}>
                 <AddShoppingCartIcon/>Add to Cart!</Button>
         )
     }

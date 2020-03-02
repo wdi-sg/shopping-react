@@ -1,8 +1,20 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 export class SearchItems extends Component {
   productClickHandler = product => {
-    this.props.liftToSearch(product);
+    const url = "/products/" + product + ".json";
+    axios
+      .get(url)
+      .then(response => {
+        console.log(response.data);
+        product = response.data[0];
+        this.props.liftToSearch(product);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    // console.log(productID);
   };
   render() {
     // console.log(this.props);
@@ -12,6 +24,7 @@ export class SearchItems extends Component {
       <div>
         {filteredProducts.map(product => {
           const { id, name, price, description, url } = product;
+          const linkToProduct = "/products/" + id;
           return (
             <div className="card my-2" key={id}>
               <div className="card-body">
@@ -19,9 +32,10 @@ export class SearchItems extends Component {
                   <strong>Name:</strong> {name}
                 </p>
                 <a
-                  href="#"
-                  onClick={() => {
-                    this.productClickHandler(product);
+                  href={linkToProduct}
+                  onClick={e => {
+                    e.preventDefault();
+                    this.productClickHandler(id);
                   }}
                 >
                   See more details

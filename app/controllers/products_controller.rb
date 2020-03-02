@@ -12,6 +12,15 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @product = Product.where(id: params[:id])
+
+    respond_to do |format|
+      format.json {
+        render :json => @product
+      }
+
+      format.html
+    end
   end
 
   def new

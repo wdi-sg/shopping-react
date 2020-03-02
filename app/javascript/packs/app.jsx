@@ -15,6 +15,16 @@ export class App extends Component {
     cart: []
   };
 
+  deleteFromCart = itemToDelete => {
+    console.log("IN APPPPP");
+
+    const remainingItems = this.state.cart.filter(item => {
+      return item !== itemToDelete;
+    });
+
+    this.setState({ cart: remainingItems });
+  };
+
   liftToApp = product => {
     this.setState({ product: product });
   };
@@ -29,7 +39,10 @@ export class App extends Component {
         <div className="row mt-5">
           <Search liftToApp={this.liftToApp} />
           <Product addToCart={this.addToCart} product={this.state.product} />
-          <Cart cartItems={this.state.cart} />
+          <Cart
+            cartItems={this.state.cart}
+            deleteFromCart={this.deleteFromCart}
+          />
         </div>
       </div>
     );

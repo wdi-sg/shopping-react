@@ -15,6 +15,7 @@ export class Product extends Component {
             <h6>Product</h6>
             <div className="card">
               <div className="card-body">
+                <img className="mb-2" src={url} />
                 <p>
                   <strong>Name:</strong> {name}
                 </p>
@@ -23,9 +24,6 @@ export class Product extends Component {
                 </p>
                 <p>
                   <strong>Description:</strong> {description}
-                </p>
-                <p>
-                  <strong>URL:</strong> {url}
                 </p>
                 <p>
                   <button onClick={() => this.addToCart(product)}>

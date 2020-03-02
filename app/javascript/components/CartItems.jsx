@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 
 export class CartItems extends Component {
+  clickHandler = item => {
+    console.log("clicking");
+    this.props.deleteFromApp(item);
+  };
   render() {
     const cartItems = this.props.cartItems;
     let totalPrice = 0;
@@ -13,9 +17,18 @@ export class CartItems extends Component {
             {cartItems.map(item => {
               const { name, price } = item;
               return (
-                <div className="card mb-2">
+                <div key={item.id} className="card mb-2">
                   <div className="card-body">
-                    <p>Name: {name}</p>
+                    <p>
+                      Name: {name}
+                      <button
+                        onClick={() => {
+                          this.clickHandler(item);
+                        }}
+                      >
+                        x
+                      </button>
+                    </p>
                     <p>Price: {price}</p>
                     {((totalPrice += price), itemsInCart++)}
                   </div>
@@ -26,7 +39,10 @@ export class CartItems extends Component {
               <strong>Items in cart: </strong> {itemsInCart}
             </p>
             <p className="text-right">
-              <strong>Total: </strong> ${totalPrice}
+              <strong>Shipping: </strong>$7
+            </p>
+            <p className="text-right">
+              <strong>Total: </strong> ${totalPrice + 7}
             </p>
           </div>
         ) : null}

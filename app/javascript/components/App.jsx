@@ -1,19 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios';
+import Products from '../components/Products';
 
 
 class App extends React.Component {
     constructor() {
         super();
         this.state = {
-            products: []
+            products: [],
+            individualProduct: null,
+            cart: null
         }
     }
 
-
 getProducts(){
-
   const url = '/products.json';
 
   axios.get(url)
@@ -28,24 +29,36 @@ getProducts(){
     })
 }
 
+
+showIndividualProduct(index) {
+    this.setState({ individualProduct: this.state.products[index] })
+}
+
 render() {
     let lists = this.state.products.map( (stuff, index)=> {
-    return <li key={index}>{stuff.name}</li>
-} )
+        return (
+        <button value={index} onClick={e => {
+            this.showIndividualProduct(e.target.value)
+        }}>{stuff.name}</button>
+        )
+})
+
     return (
           <div>
           <button onClick={()=>{ this.getProducts() }}>
           Click to See Products
           </button>
-
-<ul>
-{lists}
-</ul>
+        <ul>
+                {lists}
+        </ul>
+        <Products individualProduct = {this.state.individualProduct} />
 
 </div>
         )
     }
 }
+
+
 
 
 export default App;

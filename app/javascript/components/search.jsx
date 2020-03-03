@@ -20,6 +20,8 @@ import FormControl from '@material-ui/core/FormControl'
 import { InputLabel, InputAdornment } from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search'
 import Input from '@material-ui/core/Input'
+import Select from '@material-ui/core/Select'
+import MenuItem from '@material-ui/core/MenuItem'
 
 export default class Search extends Component {
     constructor() {
@@ -27,8 +29,25 @@ export default class Search extends Component {
 
         this.state = {
             products: [],
-            searchField: ""
+            searchField: "",
+            ordering: ""
         }
+    }
+
+    comparePrice( itemA , itemB ) { 
+      const a = parseFloat(itemA.price)
+      const b = parseFloat(itemB.price)
+      if (a > b) { return 1 }
+      if (a < b) { return -1 }
+      else { return 0 }
+    }
+
+    compareName( itemA , itemB ) { 
+      const a = itemA.name.toLowerCase()
+      const b = itemB.name.toLowerCase()
+      if (a > b) { return 1 }
+      if (a < b) { return -1 }
+      else { return 0 }
     }
 
     onItemClick(number) {
@@ -59,6 +78,28 @@ export default class Search extends Component {
         }
       }
 
+    orderProducts(order) {
+      let productList = this.state.products
+      switch (order) {
+        case "Name Ascending":
+          productList = productList.sort(this.compareName)
+          break;
+        case "Name Descending":
+          productList = (productList.sort(this.compareName)).reverse()
+          break;
+        case "Price Ascending":
+          productList = productList.sort(this.comparePrice)
+          break;
+        case "Price Descending":
+          productList = (productList.sort(this.comparePrice)).reverse()
+          break;
+        default:
+          productList = productList
+          break;
+      }
+      this.setState({ products: productList } )
+    }
+
     textBoxUpdate(event) {
       let newWord = event.target.value
       this.setState( { searchField: newWord })
@@ -70,6 +111,10 @@ export default class Search extends Component {
         this.getProducts()
       }
     }
+
+    handleChange(event) {
+      this.orderProducts(event.target.value);
+    };
 
 
     render() {
@@ -88,6 +133,23 @@ export default class Search extends Component {
                       <InputAdornment position="start">
                         <SearchIcon />
                       </InputAdornment>} />
+
+                    <br />
+                  {/* <InputLabel id="order-label" htmlFor="order-label">Sort By:</InputLabel> */}
+                  <Select
+                    labelId="order-label"
+                    id="order-label"
+                    value={this.state.ordering}
+                    onChange={(event)=>{this.handleChange(event)}}
+                  >
+                    <MenuItem value="">
+                      <em>None</em>
+                    </MenuItem>
+                    <MenuItem value={"Name Ascending"}>Name A->Z</MenuItem>
+                    <MenuItem value={"Name Descending"}>Name Z->A</MenuItem>
+                    <MenuItem value={"Price Ascending"}>Price Low->High</MenuItem>
+                    <MenuItem value={"Price Descending"}>Price High->Low</MenuItem>
+                  </Select>
                     <br />
                   <SearchBox getProducts={() => {this.getProducts()}} />
                 </FormControl>

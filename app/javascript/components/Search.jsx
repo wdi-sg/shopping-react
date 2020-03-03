@@ -12,7 +12,7 @@ class Search extends React.Component {
         console.log('state results:', this.props.results)
 
       const displayRes = this.props.results.map((res, index)=>{
-          return (<li id = {index} onClick = {()=> {this.props.getProd({res}) }} >
+          return (<li key = {index} onClick = {()=> {this.props.getProd(res,index) }} >
             {res}
           </li>);
         });

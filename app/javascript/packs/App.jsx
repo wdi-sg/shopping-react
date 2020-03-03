@@ -15,6 +15,7 @@ class App extends React.Component {
     this.state = {
       search_term: "",
       prod_name: "",
+      prod_index:0,
       results: []
     }
   }
@@ -53,9 +54,12 @@ class App extends React.Component {
           })
   }
 
-  getProd(name){
+  getProd(name,i){
     let prodName = name
-    console.log('prod name is:', prodName)
+    let index = parseInt(i)
+    this.setState ({prod_name: name, prod_index: index})
+
+    console.log('prod name & index are:', prodName + index)
   }
 
 
@@ -65,10 +69,10 @@ class App extends React.Component {
         <div className = "container">
           <div className ="row">
             <div className ="col-1">
-              <Search setSearchTerm = {(input)=>{this.setSearchTerm(input)}} term = {this.state.search_term} results = {this.state.results} getProd = { (product)=>{this.getProd(product)} }/>
+              <Search setSearchTerm = {(input)=>{this.setSearchTerm(input)}} term = {this.state.search_term} results = {this.state.results} getProd = {(product,index)=>{this.getProd(product,index)}}/>
             </div>
             <div className = "col-2">
-            <Product/>
+            <Product name = {this.state.prod_name}/>
             </div>
           </div>
         </div>

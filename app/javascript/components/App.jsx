@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios';
 import Products from '../components/Products';
-// import Carts from '../components/Carts';
+import Cart from '../components/Cart';
 
 var popups = require("popups");
 
@@ -12,7 +12,7 @@ class App extends React.Component {
         this.state = {
             products: [],
             individualProduct: null,
-            cart: null
+            cartItems: []
         }
     }
 
@@ -28,10 +28,17 @@ getProducts(){
     })
 }
 
-
 showIndividualProduct(index) {
-    this.setState({ individualProduct: this.state.products[index] })
+    this.setState({individualProduct: this.state.products[index]})
 }
+
+
+  addToCart(e){
+       this.state.cartItems.push(this.state.individualProduct)
+       this.setState({cartItems: this.state.cartItems})
+      }
+
+
 
 render() {
     let lists = this.state.products.map((stuff, index)=> {
@@ -54,12 +61,12 @@ render() {
 </div>
         )
     }
-}
 
 
 
 
-// addProductToCart(){
+
+// addProductToCart() {
 //     if (selectedProduct = this.state.products[index]) {
 //         this.state.products.push(this.state.cart);
 //         this.setState(this.state.products);
@@ -72,6 +79,8 @@ render() {
 //     }
 // }
 
+
+}
 
 
 

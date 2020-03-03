@@ -1,15 +1,17 @@
 {
-  "app.js": "/packs/js/app-b913b9f1adac0c88cd54.js",
-  "app.js.map": "/packs/js/app-b913b9f1adac0c88cd54.js.map",
+  "app.js": "/packs/js/app-572a060511acaa5cb565.js",
+  "app.js.map": "/packs/js/app-572a060511acaa5cb565.js.map",
   "application.js": "/packs/js/application-77a42d232b50a179d44f.js",
   "application.js.map": "/packs/js/application-77a42d232b50a179d44f.js.map",
+  "cart/cart.js": "/packs/js/cart/cart-ff2c0a84bcfafb137a48.js",
+  "cart/cart.js.map": "/packs/js/cart/cart-ff2c0a84bcfafb137a48.js.map",
   "entrypoints": {
     "app": {
       "js": [
-        "/packs/js/app-b913b9f1adac0c88cd54.js"
+        "/packs/js/app-572a060511acaa5cb565.js"
       ],
       "js.map": [
-        "/packs/js/app-b913b9f1adac0c88cd54.js.map"
+        "/packs/js/app-572a060511acaa5cb565.js.map"
       ]
     },
     "application": {
@@ -20,15 +22,33 @@
         "/packs/js/application-77a42d232b50a179d44f.js.map"
       ]
     },
-    "search/searchall": {
+    "cart/cart": {
       "js": [
-        "/packs/js/search/searchall-d83fc38d9135054522fe.js"
+        "/packs/js/cart/cart-ff2c0a84bcfafb137a48.js"
       ],
       "js.map": [
-        "/packs/js/search/searchall-d83fc38d9135054522fe.js.map"
+        "/packs/js/cart/cart-ff2c0a84bcfafb137a48.js.map"
+      ]
+    },
+    "product/product": {
+      "js": [
+        "/packs/js/product/product-a3b0da31664933e1b01e.js"
+      ],
+      "js.map": [
+        "/packs/js/product/product-a3b0da31664933e1b01e.js.map"
+      ]
+    },
+    "search/searchall": {
+      "js": [
+        "/packs/js/search/searchall-fa72b1e6492250f69597.js"
+      ],
+      "js.map": [
+        "/packs/js/search/searchall-fa72b1e6492250f69597.js.map"
       ]
     }
   },
-  "search/searchall.js": "/packs/js/search/searchall-d83fc38d9135054522fe.js",
-  "search/searchall.js.map": "/packs/js/search/searchall-d83fc38d9135054522fe.js.map"
+  "product/product.js": "/packs/js/product/product-a3b0da31664933e1b01e.js",
+  "product/product.js.map": "/packs/js/product/product-a3b0da31664933e1b01e.js.map",
+  "search/searchall.js": "/packs/js/search/searchall-fa72b1e6492250f69597.js",
+  "search/searchall.js.map": "/packs/js/search/searchall-fa72b1e6492250f69597.js.map"
 }

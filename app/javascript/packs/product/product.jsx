@@ -29,7 +29,7 @@ additem(key){
             <h5 class="card-title">{name}</h5>
             <p class="card-text">{description}</p>
             <p class="card-text">{price}</p>
-            <button key={id} onClick ={()=>{this.additem(id)}}></button>
+            <button key={id} onClick ={()=>{this.additem(id)}}>Add to Cart</button>
           </div>
         </div>
         )

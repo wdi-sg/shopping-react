@@ -73,7 +73,7 @@ class Form extends React.Component {
         const productArray = this.state.products.map((product)=>{
             return (<div>
                 <p>id: {product.id} || name: {product.name} || Price: {product.price} ||content: {product.description} 
-                <button key={product.id} onClick ={()=>{this.showProduct(product.id)}}></button>
+                <button key={product.id} onClick ={()=>{this.showProduct(product.id)}}>Show</button>
                 </p>
                 </div>)
         })

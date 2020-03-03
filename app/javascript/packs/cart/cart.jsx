@@ -8,7 +8,8 @@ class Cart extends React.Component {
         console.log("constructing");
           super()
         this.state = {
-              total: 0
+              total: 0,
+              shipping: 7
           } 
         }
     
@@ -18,7 +19,7 @@ class Cart extends React.Component {
             return (<div class="card" style={{width: "18rem"}}>
             <div class="card-body">
             <h5 class="card-title">{product.name}</h5>
-            <button key={product.id} onClick ={()=>{}}></button>
+            <button key={product.id} onClick ={()=>{}}>Remove</button>
           </div>
         </div>
             )
@@ -28,7 +29,8 @@ class Cart extends React.Component {
             return arr.reduce(function(a,b){
                 console.log(a)
                 console.log(b.price)
-              return a.price + b.price
+                console.log(a.price + b.price)
+              return a + b.price
             },0);
           }
          let totalValue = arrSum(this.props.cartItem)
@@ -37,7 +39,9 @@ class Cart extends React.Component {
         return(
         <div>
             {products}
-            <p>total: {totalValue} </p>
+            <p>Sub Total: {totalValue} </p>
+            <p>Shipping: {this.state.shipping} </p>
+            <p>total: {totalValue + this.state.shipping} </p>
         </div>
         )
     }

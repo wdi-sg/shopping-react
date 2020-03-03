@@ -83,7 +83,7 @@ class CartItem extends Component {
                 <TableCell component="th" scope="row">
                     {this.props.item.name}
                 </TableCell>
-                <TableCell align="right">{this.props.item.price}</TableCell>
+                <TableCell align="right">${parseFloat(this.props.item.price).toFixed(2)}</TableCell>
                 <TableCell>
                     <Button color="secondary" id={this.props.index}
                     onClick={() => {this.removeFromCart(this.props.index)}}>
@@ -131,7 +131,7 @@ class Shipping extends Component {
     render() {
         return (
             <h3 align="right">
-                Shipping: $7
+                Shipping: $7.00
             </h3>
         )
     }

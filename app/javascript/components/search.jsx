@@ -107,7 +107,7 @@ function ProductList(props) {
                         {item.name}
                     </TableCell>
                     <TableCell id={item.id} align="right">
-                        ${item.price}
+                        ${parseFloat(item.price).toFixed(2)}
                     </TableCell>
                 </TableRow>
             )

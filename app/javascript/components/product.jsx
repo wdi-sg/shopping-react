@@ -86,7 +86,7 @@ class ProductPrice extends Component {
         return(
             <div>
                 <h3>
-                    ${this.props.price}
+                    ${parseFloat(this.props.price).toFixed(2)}
                 </h3>
             </div>
         )

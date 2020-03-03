@@ -3,12 +3,6 @@ import axios from 'axios';
 
 class Products extends React.Component {
 
-
-    updateCart() {
-        let number = event.target.value;
-        console.log(number);
-    }
-
     render() {
     const {selectedProduct, productId} = this.props
         return (

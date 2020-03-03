@@ -33,13 +33,12 @@ class App extends React.Component {
     }
 
 
-// how to onclick and check the index of selected item matches the one in product?
+// this method will update selectedProduct and also selectedProductId so we can use it later
     displaySelectedProduct(index) {
         this.setState({ selectedProduct: this.state.products[index], selectedProductId: index })
     }
 
     updateCurrentCart(index) {
-        //how does it get hold of the index of the selected item
         let item = this.state.products[index];
         //... means make a copy what's currently inside of this.state.cart
         this.setState({ cart: [...this.state.cart, item] })
@@ -48,7 +47,7 @@ class App extends React.Component {
 
 
     render() {
-                    console.log(this.state.cart)
+        console.log(this.state.cart)
 
         const product = this.state.products.map((product, index)=>{
             return (
@@ -73,7 +72,7 @@ class App extends React.Component {
                           sendToCart = {(productId) => {this.updateCurrentCart(productId)} }
                           productId={this.state.selectedProductId}
                 />
-                <Carts/>
+                <Carts productInCarts = {this.state.cart}/>
             </div>
             )
     }

@@ -5,11 +5,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import Search from '../components/search'
+import App from '../app'
 
 const Hello = props => (
   <div>
-  <Search/>
+  <App/>
   </div>
 )
 

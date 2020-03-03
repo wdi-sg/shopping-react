@@ -25,7 +25,6 @@ export default class Search extends React.Component{
             total += shipping + gst + subtotal;
         }
         return(
-            <div>
                 <div className="col">
                     <h1>Cart</h1>
                     {display}
@@ -42,7 +41,6 @@ export default class Search extends React.Component{
                         total: {total.toFixed(2)}
                     </div>
                 </div>
-            </div>
             );
     }
 }

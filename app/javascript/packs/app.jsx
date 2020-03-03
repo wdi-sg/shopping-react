@@ -34,6 +34,12 @@ export default class App extends Component {
         this.setState({shoppingCart: cartArray})
     }
 
+    removeProductFromCart(arrayIndex) {
+        let cartArray = this.state.shoppingCart
+        cartArray.splice(arrayIndex, 1)
+        this.setState({shoppingCart: cartArray})
+    }
+
     render() {
         return (
             <Grid
@@ -42,16 +48,17 @@ export default class App extends Component {
                 justify="center"
                 alignItems="flex-start"
                 >
-                    <Grid item xs={4}>
+                    <Grid item xs={4} m={1}>
                         <Search setActiveItem={(num)=>{this.setActiveItem(num)}}/>
                     </Grid>
-                    <Grid item xs={4}>
+                    <Grid item xs={4} m={1}>
                         <Product activeProduct={this.state.activeProduct}
                         addProductToCart={(product)=>{this.addProductToCart(product)}} 
                         />
                     </Grid>
-                    <Grid item xs={4}>
-                        <Cart shoppingCart={this.state.shoppingCart} />
+                    <Grid item xs={4} m={1}>
+                        <Cart shoppingCart={this.state.shoppingCart}
+                        removeProductFromCart={(index)=>{this.removeProductFromCart(index)}}/>
                     </Grid>
             </Grid>
         )

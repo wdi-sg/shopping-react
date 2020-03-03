@@ -6,14 +6,16 @@ import TableContainer from '@material-ui/core/TableContainer'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
+import Button from '@material-ui/core/Button'
+import DeleteIcon from '@material-ui/icons/Delete';
 
 export default class Cart extends Component {
     constructor() {
         super()
     }
 
-    onItemClick() {
-        console.log('clicky click')
+    removeFromCart(number) {
+        this.props.removeProductFromCart(number)
     }
 
     render() {
@@ -21,7 +23,7 @@ export default class Cart extends Component {
             <div>
                 <CartItems
                     products={this.props.shoppingCart} 
-                    onItemClick={()=>{this.onItemClick()}}
+                    removeFromCart={(event)=>{this.removeFromCart(event)}}
                 />
                 <Totals shoppingCart={this.props.shoppingCart} />
             </div>
@@ -38,9 +40,10 @@ export class CartItems extends Component {
                 cartArray = this.props.products.map((item, index) => {
                     return (
                     <CartItem item={item}
+                        index={index}
                         id={index}
                         key={index}
-                        onItemClick={(event)=>{this.props.onItemClick(event)}}
+                        removeFromCart={(event)=>{this.props.removeFromCart(event)}}
                     />
                     )
                 })
@@ -48,12 +51,13 @@ export class CartItems extends Component {
     }
 
         return (
-            <TableContainer component={Paper}>
+            <TableContainer component={Paper} m={2}>
                 <Table size="small" aria-label="shopping cart">
                     <TableHead>
                         <TableRow>
                             <TableCell>Item</TableCell>
                             <TableCell align="right">Price</TableCell>
+                            <TableCell></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
@@ -67,14 +71,25 @@ export class CartItems extends Component {
 
 
 class CartItem extends Component {
+
+    removeFromCart(number) {
+        console.log(number)
+        this.props.removeFromCart(number)
+    }
+
     render() {
         return (
-            <TableRow key={this.props.index} id={this.props.item.id}
-            onClick={(event)=>{this.props.onItemClick(event)}}>
+            <TableRow key={this.props.index} id={this.props.item.id}>
                 <TableCell component="th" scope="row">
                     {this.props.item.name}
                 </TableCell>
                 <TableCell align="right">{this.props.item.price}</TableCell>
+                <TableCell>
+                    <Button color="secondary" id={this.props.index}
+                    onClick={() => {this.removeFromCart(this.props.index)}}>
+                        <DeleteIcon/>
+                    </Button>
+                </TableCell>
             </TableRow>
         )
     }
@@ -86,7 +101,6 @@ class Totals extends Component {
         return (
             <div>
                 <SubTotal shoppingCart={this.props.shoppingCart} />
-                <Shipping />
             </div>
         )
     }
@@ -99,8 +113,15 @@ class SubTotal extends Component {
         for (let item of this.props.shoppingCart) {
             subTotal += parseFloat(item.price)
         }
+        let GST = ((subTotal / 107) * 7).toFixed(2)
+        subTotal = subTotal
         return (
-            <div>Sub-total: ${subTotal}</div>
+            <div>
+            <h3 align="right">Sub-total ({this.props.shoppingCart.length} items): ${subTotal.toFixed(2)}</h3>
+            <h3 align="right">GST: ${GST}</h3>
+            <Shipping />
+            <h2 align="right">Grand Total: ${(subTotal + 7).toFixed(2)}</h2>
+            </div>
         )
     }
 }
@@ -109,9 +130,9 @@ class SubTotal extends Component {
 class Shipping extends Component {
     render() {
         return (
-            <div>
+            <h3 align="right">
                 Shipping: $7
-            </div>
+            </h3>
         )
     }
 }

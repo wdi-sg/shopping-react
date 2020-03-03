@@ -116,7 +116,7 @@ function ProductList(props) {
     }
 
     return (
-        <TableContainer>
+        <TableContainer m={2}>
             <Table size="small" aria-label="search-results">
                 <TableHead>
                     <TableRow>
@@ -130,7 +130,7 @@ function ProductList(props) {
                 <TableFooter>
                     <TableRow>
                         <TablePagination 
-                        rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+                        rowsPerPageOptions={[5, 10, 20, { label: 'All', value: -1 }]}
                         colSpan={2}
                         count={props.products.length}
                         rowsPerPage={rowsPerPage}

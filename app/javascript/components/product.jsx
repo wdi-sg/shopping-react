@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import Button from '@material-ui/core/Button'
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
+import { Card } from '@material-ui/core'
+import CardContent from '@material-ui/core/CardContent';
 
 export default class Product extends Component {
     constructor() {
@@ -28,17 +30,19 @@ export default class Product extends Component {
             )
         } else {
             return (
-                <div>
-                    <ProductName name={this.props.activeProduct.name} />
-                    <br />
-                    <ProductImage image_url={this.props.activeProduct.image_url} />
-                    <br />
-                    <ProductDescription description={this.props.activeProduct.description} />
-                    <br />
-                    <ProductPrice price={this.props.activeProduct.price} />
-                    <br />
-                    <AddToCartButton addProductToCart={()=>{this.addProductToCart()}} />
-                </div>
+                <Card m={2}>
+                    <CardContent>
+                        <ProductName name={this.props.activeProduct.name} />
+                        <br />
+                        <ProductImage image_url={this.props.activeProduct.image_url} />
+                        <br />
+                        <ProductDescription description={this.props.activeProduct.description} />
+                        <br />
+                        <ProductPrice price={this.props.activeProduct.price} />
+                        <br />
+                        <AddToCartButton addProductToCart={()=>{this.addProductToCart()}} />
+                    </CardContent>
+                </Card>
             )
         }
     }

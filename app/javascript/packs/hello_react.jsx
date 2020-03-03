@@ -5,9 +5,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import Search from '../components/Search'
+
 
 const Hello = props => (
-  <div>Hello {props.name}!</div>
+  <div>
+    <p> Hello {props.name}! </p>
+    <Search/>
+  </div>
 )
 
 Hello.defaultProps = {

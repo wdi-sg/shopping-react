@@ -1,6 +1,4 @@
 import React from 'react'
-import { hot } from 'react-hot-loader';
-
 
 class Product extends React.Component {
     constructor(){
@@ -18,8 +16,6 @@ class Product extends React.Component {
 
         );
     }
-
-
 }
 
-export default hot(module)(Product);
+export default Product;

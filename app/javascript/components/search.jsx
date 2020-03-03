@@ -118,9 +118,8 @@ class SearchBox extends Component {
     }
 }
 
-
 function ProductList(props) {
-
+  
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
 

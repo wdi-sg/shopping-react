@@ -7,22 +7,27 @@ import TableCell from '@material-ui/core/TableCell'
 import TableContainer from '@material-ui/core/TableContainer'
 import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
-import TableFooter from '@material-ui/core/TableFooter';
-import TablePagination from '@material-ui/core/TablePagination';
-import IconButton from '@material-ui/core/IconButton';
-import FirstPageIcon from '@material-ui/icons/FirstPage';
-import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft';
-import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
-import LastPageIcon from '@material-ui/icons/LastPage';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
+import TableFooter from '@material-ui/core/TableFooter'
+import TablePagination from '@material-ui/core/TablePagination'
+import IconButton from '@material-ui/core/IconButton'
+import FirstPageIcon from '@material-ui/icons/FirstPage'
+import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
+import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight'
+import LastPageIcon from '@material-ui/icons/LastPage'
+import { makeStyles, useTheme } from '@material-ui/core/styles'
+import PropTypes from 'prop-types'
+import FormControl from '@material-ui/core/FormControl'
+import { InputLabel, InputAdornment } from '@material-ui/core'
+import SearchIcon from '@material-ui/icons/Search'
+import Input from '@material-ui/core/Input'
 
 export default class Search extends Component {
     constructor() {
         super()
 
         this.state = {
-            products: []
+            products: [],
+            searchField: ""
         }
     }
 
@@ -31,23 +36,64 @@ export default class Search extends Component {
     }
 
     getProducts() {
-        const url = '/products.json';
-        axios.get(url)
-          .then((response) => {
-            const data = response.data
-            this.setState({ products: data })
-          }).catch((error)=>{
-            console.log(error);
+        let url = '/products.json';
+        if (this.state.searchField === "") {
+            axios.get(url).then((response) => {
+              const data = response.data
+              this.setState({ products: data })
+            }).catch((error)=>{
+              console.log(error);
+            })
+        } else {
+          axios.get(url, {
+            params: {
+              search: this.state.searchField
+            }
           })
+            .then((response) => {
+              const data = response.data
+              this.setState({ products: data })
+            }).catch((error)=>{
+              console.log(error);
+            })
+        }
       }
+
+    textBoxUpdate(event) {
+      let newWord = event.target.value
+      this.setState( { searchField: newWord })
+      
+    }
+
+    handleKeyPress(event) {
+      if (event.key === 'Enter') {
+        this.getProducts()
+      }
+    }
 
 
     render() {
         return (       
             <div>
-                <SearchBox getProducts={() => {this.getProducts()}} />
-                <ProductList products={this.state.products}
-                    onItemClick={(number) => {this.onItemClick(number)}}
+                <FormControl>
+                  <InputLabel
+                    htmlFor="search-box">
+                    Search
+                  </InputLabel>
+                  <Input 
+                    id="search-box"
+                    onChange={(event)=>{this.textBoxUpdate(event)}}
+                    onKeyPress={(event) => {this.handleKeyPress(event);}}
+                    startAdornment={
+                      <InputAdornment position="start">
+                        <SearchIcon />
+                      </InputAdornment>} />
+                    <br />
+                  <SearchBox getProducts={() => {this.getProducts()}} />
+                </FormControl>
+                <ProductList 
+                  products={this.state.products}
+                  onItemClick={(number) => {this.onItemClick(number)}}
                 />
             </div>
         )
@@ -66,7 +112,7 @@ class SearchBox extends Component {
         <Button color="primary" 
             variant="contained"
             onClick={()=>{ this.getProducts() }}>
-                Click me to search
+                Search
         </Button>
         )
     }

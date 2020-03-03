@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import Products from '../components/Products';
 import Carts from '../components/Carts';
+import Search from '../components/Search';
 
 class App extends React.Component {
     constructor() {
@@ -59,20 +60,33 @@ class App extends React.Component {
             );
         });
 
+    let display = "";
+        if(this.state.selectedProduct){
+            display = <Products selectedProduct = {this.state.selectedProduct}
+                                sendToCart = {(productId) => {this.updateCurrentCart(productId)} }
+                                productId={this.state.selectedProductId}
+                    />
+        }
         // console.log('initially it looks like this in console.log');
+
+        let displayCart = "";
+            if(this.state.cart) {
+                displayCart = <Carts productInCarts = {this.state.cart}/>
+            }
+
 
         return (
             <div>
                 <h2>Products</h2>
-                <button onClick={() => {this.getProducts()}}> Get products </button>
+                <Search />
+                <br/>
+                <br/>
+                <button onClick={() => {this.getProducts()}}> Show all products </button>
                 <ol>
                     {product}
                 </ol>
-                <Products selectedProduct = {this.state.selectedProduct}
-                          sendToCart = {(productId) => {this.updateCurrentCart(productId)} }
-                          productId={this.state.selectedProductId}
-                />
-                <Carts productInCarts = {this.state.cart}/>
+                {display}
+                {displayCart}
             </div>
             )
     }

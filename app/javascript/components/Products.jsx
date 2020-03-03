@@ -7,6 +7,7 @@ class Products extends React.Component {
     const {selectedProduct, productId} = this.props
         return (
             <div>
+                <h3>Selected product is: </h3>
                 <h3>Product name is: {selectedProduct ? selectedProduct.name : ""}</h3>
                 <h3>Price is: {selectedProduct ? selectedProduct.price : ""}</h3>
                 <h3>Description is: {selectedProduct ? selectedProduct.description : ""}</h3>

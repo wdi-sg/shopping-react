@@ -17,7 +17,6 @@ class Carts extends React.Component {
 
         return (
             <div>
-                <h3>carts come from here ~~~</h3>
                 <ol>
                     {cart}
                 </ol>

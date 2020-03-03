@@ -15,6 +15,10 @@ class App extends React.Component {
         }
     }
 
+//componentDidMount() is like on load (from Jessica)
+    componentDidMount(){
+        this.getProducts();
+    }
 
 // ajax part for upon clicking, it'll show products
     getProducts(){
@@ -43,8 +47,14 @@ class App extends React.Component {
         let item = this.state.products[index];
         //... means make a copy what's currently inside of this.state.cart
         this.setState({ cart: [...this.state.cart, item] })
-    }
+    };
 
+
+
+    showProduct = (event) =>{
+        let product = this.state.products[event];
+        this.setState({ selectedProduct: product });
+    }
 
 
     render() {
@@ -78,10 +88,13 @@ class App extends React.Component {
         return (
             <div>
                 <h2>Products</h2>
-                <Search />
+                <Search products={this.state.products}
+                        changeInput={this.changeInput}
+                        showProduct={this.showProduct}
+                        value={this.state.value}
+                />
                 <br/>
                 <br/>
-                <button onClick={() => {this.getProducts()}}> Show all products </button>
                 <ol>
                     {product}
                 </ol>

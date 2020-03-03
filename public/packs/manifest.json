@@ -1,4 +1,6 @@
 {
+  "Cart.js": "/packs/js/Cart-b969ba6ee35350de4f6e.js",
+  "Cart.js.map": "/packs/js/Cart-b969ba6ee35350de4f6e.js.map",
   "application.js": "/packs/js/application-f720b24022283010ae5a.js",
   "application.js.map": "/packs/js/application-f720b24022283010ae5a.js.map",
   "entrypoints": {
@@ -10,15 +12,23 @@
         "/packs/js/application-f720b24022283010ae5a.js.map"
       ]
     },
-    "hello_react": {
+    "Cart": {
       "js": [
-        "/packs/js/hello_react-5d3c4aa5deef1dea92ff.js"
+        "/packs/js/Cart-b969ba6ee35350de4f6e.js"
       ],
       "js.map": [
-        "/packs/js/hello_react-5d3c4aa5deef1dea92ff.js.map"
+        "/packs/js/Cart-b969ba6ee35350de4f6e.js.map"
+      ]
+    },
+    "hello_react": {
+      "js": [
+        "/packs/js/hello_react-b56bdfb4ca10f43d073f.js"
+      ],
+      "js.map": [
+        "/packs/js/hello_react-b56bdfb4ca10f43d073f.js.map"
       ]
     }
   },
-  "hello_react.js": "/packs/js/hello_react-5d3c4aa5deef1dea92ff.js",
-  "hello_react.js.map": "/packs/js/hello_react-5d3c4aa5deef1dea92ff.js.map"
+  "hello_react.js": "/packs/js/hello_react-b56bdfb4ca10f43d073f.js",
+  "hello_react.js.map": "/packs/js/hello_react-b56bdfb4ca10f43d073f.js.map"
 }

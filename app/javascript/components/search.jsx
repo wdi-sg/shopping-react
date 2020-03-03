@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 import Button from '@material-ui/core/Button'
 import axios from 'axios'
-import CartItems from './cart'
+import Table from '@material-ui/core/Table'
+import TableBody from '@material-ui/core/TableBody'
+import TableCell from '@material-ui/core/TableCell'
+import TableContainer from '@material-ui/core/TableContainer'
+import TableHead from '@material-ui/core/TableHead'
+import TableRow from '@material-ui/core/TableRow'
 
 export default class Search extends Component {
     constructor() {
@@ -29,8 +34,6 @@ export default class Search extends Component {
 
 
     render() {
-        console.log('items in search')
-        console.log(this.state.products)
         return (       
             <div>
                 <SearchBox getProducts={() => {this.getProducts()}} />
@@ -74,20 +77,36 @@ class ProductList extends Component {
         if (this.props.products.length > 0) {
             productList = this.props.products.map((item, index) => {
                 return (
-                    <li id={item.id} 
-                        key={index} 
-                        onClick={(event)=>{this.onItemClick(event)}}>
-                            {item.name} - ${item.price}
-                    </li>
+                    <TableRow id={item.id} 
+                    key={index} 
+                    onClick={(event)=>{this.onItemClick(event)}}>
+                        <TableCell id={item.id}>
+                            {item.name}
+                        </TableCell>
+                        <TableCell id={item.id} align="right">
+                            ${item.price}
+                        </TableCell>
+                    </TableRow>
                 )
             }
             )
     }
 
         return (
-            <ul>
-                {productList}
-            </ul>
+            <TableContainer>
+                <Table size="small" aria-label="search-results">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Name</TableCell>
+                            <TableCell align="right">Price</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {productList}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+                
         )
     }
 }

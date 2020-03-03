@@ -32,15 +32,14 @@ export default class Cart extends Component {
 
 export class CartItems extends Component {
     render() {
-        console.log('products in cart menu')
-        console.log(this.props.products)
         let cartArray = []   
         if (this.props.products !== undefined) {
             if (this.props.products) {
                 cartArray = this.props.products.map((item, index) => {
                     return (
                     <CartItem item={item}
-                        index={index}
+                        id={index}
+                        key={index}
                         onItemClick={(event)=>{this.props.onItemClick(event)}}
                     />
                     )

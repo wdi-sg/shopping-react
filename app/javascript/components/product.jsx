@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Button from '@material-ui/core/Button'
-import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart'
 
 export default class Product extends Component {
     constructor() {
@@ -27,7 +27,6 @@ export default class Product extends Component {
                 </div>
             )
         } else {
-            console.log(this.props.activeProduct)
             return (
                 <div>
                     <ProductName name={this.props.activeProduct.name} />

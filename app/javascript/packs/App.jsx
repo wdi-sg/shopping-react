@@ -20,8 +20,8 @@ class App extends React.Component {
   }
 
 setSearchTerm(input){
-  this.setState({search_term:input});
-  console.log('search_term:',input);
+  this.setState({search_term: event.target.value});
+  console.log('search_term:',event.target.value);
 
    var tempArr=[];
       const url = '/products.json';
@@ -36,8 +36,8 @@ setSearchTerm(input){
             const prodToLc = name.toLowerCase();
             console.log(prodToLc)
              // change search term  to lowercase
-            const term = this.state.term.toLowerCase();
-
+            let keyword = this.state.search_term
+            let term = keyword.toString().toLowerCase();
                 if(prodToLc.includes(term)) {
                     tempArr.push(prodToLc)
                 }
@@ -46,17 +46,20 @@ setSearchTerm(input){
                 this.setState({
                   results: tempArr
                 });
+
+            console.log('RESULT ARR:', this.state.results)
+
           }).catch((error)=>{
           console.log(error);
         })
 }
-
     render(){
+      console.log('USER SEARCH INPUT ', this.state.search_term)
       return(
         <div className = "container">
           <div className ="row">
             <div className ="col-1">
-              <Search setSearchTerm = {(input)=>{this.setSearchTerm(input)}} term = {this.state.search_term}/>
+              <Search setSearchTerm = {(input)=>{this.setSearchTerm(input)}} term = {this.state.search_term} results = {this.state.results}/>
             </div>
             <div className = "col-2">
             <Product />

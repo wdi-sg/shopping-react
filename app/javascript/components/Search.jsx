@@ -5,50 +5,14 @@ class Search extends React.Component {
     constructor(){
     super()
     console.log("rendering search");
-    this.state = {
-      term : "",
-      results: [],
-      option: ""
+        this.state = {
+        }
     }
-  }
-
-  // fetchResult(){
-  //   this.setState({term:event.target.value});
-  //   console.log('term:',event.target.value);
-  //   var tempArr=[];
-
-  //     const url = '/products.json';
-  //     axios.get(url)
-  //       .then((response) => {
-  //         const data = response.data
-  //         console.log("Here's the data:", data)
-  //         let productNames = data.map((product) => product.name)
-  //         console.log('product names:', productNames)
-  //         productNames.filter(name => {
-  //            // change product name to lowercase
-  //           const prodToLc = name.toLowerCase();
-  //           console.log(prodToLc)
-  //            // change search term  to lowercase
-  //           const term = this.state.term.toLowerCase();
-
-  //               if(prodToLc.includes(term)) {
-  //                   tempArr.push(prodToLc)
-  //               }
-  //           })
-  //               // Set the filtered state based on search term
-  //               this.setState({
-  //                 results: tempArr
-  //               });
-  //         }).catch((error)=>{
-  //         console.log(error);
-  //       })
-  // }
-
     render(){
-        console.log('state results:', this.state.results)
+        console.log('state results:', this.props.results)
 
-      const displayRes = this.state.results.map((res)=>{
-          return (<li onClick{()=> this.}>
+      const displayRes = this.props.results.map((res)=>{
+          return (<li>
             {res}
           </li>);
         });
@@ -57,8 +21,7 @@ class Search extends React.Component {
             <div className="container">
               <div className="row">
                 <h1>Search Product:</h1>
-                  <input type="text" onChange={()=> {this.props.setSearchTerm}} value = {this.props.term}/>
-
+                  <input type="text" onChange={(input)=> {this.props.setSearchTerm(input)}} value = {this.props.term} />
                   <h2>Search Result(s):</h2>
                   <ul>{displayRes}</ul>
               </div>

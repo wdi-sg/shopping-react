@@ -53,8 +53,8 @@ class App extends React.Component {
           })
   }
 
-  getName(){
-    let prodName =
+  getProd(name){
+    let prodName = name
     console.log('prod name is:', prodName)
   }
 
@@ -65,10 +65,10 @@ class App extends React.Component {
         <div className = "container">
           <div className ="row">
             <div className ="col-1">
-              <Search setSearchTerm = {(input)=>{this.setSearchTerm(input)}} term = {this.state.search_term} results = {this.state.results}/>
+              <Search setSearchTerm = {(input)=>{this.setSearchTerm(input)}} term = {this.state.search_term} results = {this.state.results} getProd = { (product)=>{this.getProd(product)} }/>
             </div>
             <div className = "col-2">
-            <Product getName = {(event)=>{this.getName(event)}}/>
+            <Product/>
             </div>
           </div>
         </div>
@@ -78,7 +78,7 @@ class App extends React.Component {
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <App name="Shopper" />,
+    <App name="Shopper"/>,
     document.body.appendChild(document.createElement('div')),
   )
 })

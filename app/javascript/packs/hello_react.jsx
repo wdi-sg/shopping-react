@@ -12,13 +12,13 @@ import Product from '../components/products';
 export default class Hello extends Component {
   render() {
     return (
-      <div class="container">
+      <div className="container">
           HELLO <br />
-          <div class="row">
-            <div class="col-sm-6">
+          <div className="row">
+            <div className="col-sm-6">
               <Search />
             </div>
-            <div class="col-sm-6">
+            <div className="col-sm-6">
               <Product />
             </div>
           </div>

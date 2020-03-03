@@ -53,7 +53,7 @@ export default class App extends React.Component{
     }
     filterProducts = () =>{
         const data = this.state.products;
-        const products = data.sort((a, b) => (parseInt(a.price) > parseInt(b.price)) ? 1 : -1);
+        const products = data.sort((a, b) => (parseFloat(a.price).toFixed(2) >= parseFloat(b.price).toFixed(2)) ? 1 : -1);
         this.setState({ products: products });
     }
     render(){

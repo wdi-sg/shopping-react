@@ -22,13 +22,15 @@ export default class Search extends React.Component{
         }
         const products = this.props.products.map((product, index)=>{
           return (
+            <React.Fragment key = {index}>
                 <div className="container">
                     <div className="row">
                         <div className="col p-0">
                             <button className="btn-link border-0" onClick={(e)=>{ this.showProduct(e)}} value={index}>{product.name} - {product.price}</button>
                          </div>
                     </div>
-                </div>);
+                </div>
+            </React.Fragment>);
         });
 
         return(

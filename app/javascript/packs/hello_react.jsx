@@ -5,22 +5,146 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import axios from 'axios';
+import Select from 'react-select'
 
-const Hello = props => (
-  <div>Hello {props.name}!</div>
-)
 
-Hello.defaultProps = {
-  name: 'David'
+class Search extends React.Component {
+
+    constructor(){
+        super()
+        this.state = {
+            products: [],
+            option: null
+        }
+    }
+
+    selectChange = option => {
+        this.setState( { option } )
+    }
+
+    selectSort(option){
+        const url = '/products.json';
+        axios.get(url)
+                .then( (response) => {
+                    const data = response.data
+                    console.log(data)
+                    this.setState( { products: data } )
+                }).catch( ( error ) => {
+                    console.log( error );
+                } )
+    }
+
+    render(){
+
+        const options = [
+            { value: 'id', label: 'ID' },
+            { value: 'name', label: 'Name' },
+            { value: 'price', label: 'Price' }
+        ]
+
+        const products = this.state.products.map( product => {
+            return <Result product={product} />
+         })
+
+        return(
+            <div>
+                <label>Sort by :</label>
+                <Select options={ options } onChange={ this.selectChange } value={ this.state.option } />
+                <button onClick={ ()=>{ this.selectSort(this.state.option) } } >Sort</button>
+                {products}
+            </div>
+        );
+    }
 }
 
-Hello.propTypes = {
-  name: PropTypes.string
+class Product extends React.Component {
+
+    constructor(){
+        super()
+        this.state = {
+
+        }
+    }
+
+
+    render(){
+
+        return(
+
+            <div>
+
+            </div>
+        );
+    }
 }
+
+class Cart extends React.Component {
+
+    constructor(){
+        super()
+        this.state = {
+
+        }
+    }
+
+
+    render(){
+
+        return(
+
+            <div>
+
+            </div>
+        );
+    }
+}
+
+class Result extends React.Component {
+
+    render(){
+
+        return(
+
+            <div>
+                <label>ID : { this.props.product.id }</label>
+                <label>Name : { this.props.product.name }</label>
+                <label>Price : { this.props.product.price }</label>
+                <button>Inspect</button>
+            </div>
+        );
+    }
+}
+
+class App extends React.Component {
+
+    constructor(){
+        super()
+        this.state = {
+            products: [],
+            cart: [],
+            select: ""
+        }
+    }
+
+
+    render(){
+
+        return(
+
+            <div>
+                <Search />
+                <Product />
+                <Cart />
+            </div>
+        );
+    }
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Hello name="React" />,
+    <App />,
     document.body.appendChild(document.createElement('div')),
   )
 })

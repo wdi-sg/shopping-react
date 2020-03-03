@@ -11,9 +11,24 @@ class Product extends React.Component {
       image_url: ""
     }
   }
+
+  getProdName(){
+    let product = this.props.name
+  }
+
     render(){
         return(
-
+            <div>
+                <h1>Product:</h1>
+                <h3>Name:</h3>
+                    <p>{this.state.name}</p>
+                <h3>Price:</h3>
+                    <p>{this.state.price}</p>
+                <h3>Description:</h3>
+                    <p>{this.state.description}</p>
+                <h3>Image:</h3>
+                    <img src = {this.state.image_url}/>
+            </div>
         );
     }
 }

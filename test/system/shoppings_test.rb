@@ -15,9 +15,9 @@ class ShoppingsTest < ApplicationSystemTestCase
     click_on "New Shopping"
 
     fill_in "Description", with: @shopping.description
+    fill_in "Imgurl", with: @shopping.imgurl
     fill_in "Name", with: @shopping.name
     fill_in "Price", with: @shopping.price
-    fill_in "Url", with: @shopping.url
     click_on "Create Shopping"
 
     assert_text "Shopping was successfully created"
@@ -29,9 +29,9 @@ class ShoppingsTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Description", with: @shopping.description
+    fill_in "Imgurl", with: @shopping.imgurl
     fill_in "Name", with: @shopping.name
     fill_in "Price", with: @shopping.price
-    fill_in "Url", with: @shopping.url
     click_on "Update Shopping"
 
     assert_text "Shopping was successfully updated"

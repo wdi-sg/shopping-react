@@ -11,8 +11,8 @@
 
   name = FFaker::Product.product_name
   price = rand(2.00..30.00).floor(2)
-  url = FFaker::Image.url
+  imgurl = FFaker::Image.url
   description = FFaker::Lorem.paragraph
 
-  Shopping.create({name: name, price: price, url: url, description: description})
+  Shopping.create({name: name, price: price, imgurl: imgurl, description: description})
 end

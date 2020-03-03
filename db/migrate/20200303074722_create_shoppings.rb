@@ -3,7 +3,7 @@ class CreateShoppings < ActiveRecord::Migration[6.0]
     create_table :shoppings do |t|
       t.string :name
       t.string :price
-      t.string :url
+      t.string :imgurl
       t.string :description
 
       t.timestamps

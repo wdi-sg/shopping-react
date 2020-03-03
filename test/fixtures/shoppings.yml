@@ -3,11 +3,11 @@
 one:
   name: MyString
   price: MyString
-  url: MyString
+  imgurl: MyString
   description: MyString
 
 two:
   name: MyString
   price: MyString
-  url: MyString
+  imgurl: MyString
   description: MyString

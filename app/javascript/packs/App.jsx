@@ -19,40 +19,46 @@ class App extends React.Component {
     }
   }
 
-setSearchTerm(input){
-  this.setState({search_term: event.target.value});
-  console.log('search_term:',event.target.value);
+  setSearchTerm(input){
+    this.setState({search_term: event.target.value});
+    console.log('search_term:',event.target.value);
 
-   var tempArr=[];
-      const url = '/products.json';
-      axios.get(url)
-        .then((response) => {
-          const data = response.data
-          console.log("Here's the data:", data)
-          let productNames = data.map((product) => product.name)
-          console.log('product names:', productNames)
-          productNames.filter(name => {
-             // change product name to lowercase
-            const prodToLc = name.toLowerCase();
-            console.log(prodToLc)
-             // change search term  to lowercase
-            let keyword = this.state.search_term
-            let term = keyword.toString().toLowerCase();
-                if(prodToLc.includes(term)) {
-                    tempArr.push(prodToLc)
-                }
-            })
-                // Set the filtered state based on search term
-                this.setState({
-                  results: tempArr
-                });
+     var tempArr=[];
+        const url = '/products.json';
+        axios.get(url)
+          .then((response) => {
+            const data = response.data
+            console.log("Here's the data:", data)
+            let productNames = data.map((product) => product.name)
+            console.log('product names:', productNames)
+            productNames.filter(name => {
+               // change product name to lowercase
+              const prodToLc = name.toLowerCase();
+              console.log(prodToLc)
+               // change search term  to lowercase
+              let keyword = this.state.search_term.toLowerCase();
+                  if(prodToLc.includes(keyword)) {
+                      tempArr.push(prodToLc)
+                  }
+              })
+                  // Set the filtered state based on search term
+                  this.setState({
+                    results: tempArr
+                  });
 
-            console.log('RESULT ARR:', this.state.results)
+              console.log('RESULT ARR:', this.state.results)
 
-          }).catch((error)=>{
-          console.log(error);
-        })
-}
+            }).catch((error)=>{
+            console.log(error);
+          })
+  }
+
+  getName(){
+    let prodName =
+    console.log('prod name is:', prodName)
+  }
+
+
     render(){
       console.log('USER SEARCH INPUT ', this.state.search_term)
       return(
@@ -62,7 +68,7 @@ setSearchTerm(input){
               <Search setSearchTerm = {(input)=>{this.setSearchTerm(input)}} term = {this.state.search_term} results = {this.state.results}/>
             </div>
             <div className = "col-2">
-            <Product />
+            <Product getName = {(event)=>{this.getName(event)}}/>
             </div>
           </div>
         </div>

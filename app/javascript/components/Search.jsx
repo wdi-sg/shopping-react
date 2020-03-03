@@ -1,5 +1,5 @@
 import React from 'react'
-import axios from 'axios';
+import axios from 'axios'
 
 class Search extends React.Component {
     constructor(){
@@ -11,8 +11,8 @@ class Search extends React.Component {
     render(){
         console.log('state results:', this.props.results)
 
-      const displayRes = this.props.results.map((res)=>{
-          return (<li>
+      const displayRes = this.props.results.map((res, index)=>{
+          return (<li id = {index} onClick = {(event)=> {this.props.getName(event)}} >
             {res}
           </li>);
         });

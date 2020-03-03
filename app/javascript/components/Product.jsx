@@ -1,4 +1,6 @@
 import React from 'react'
+import axios from 'axios';
+
 
 class Product extends React.Component {
     constructor(){
@@ -12,9 +14,7 @@ class Product extends React.Component {
     }
   }
 
-  getProdName(){
-    let product = this.props.name
-  }
+
 
     render(){
         return(

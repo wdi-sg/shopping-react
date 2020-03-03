@@ -13,6 +13,10 @@ export default class Search extends React.Component{
             cart: []
         }
     }
+    componentDidMount(){
+        this.getProducts();
+    }
+
     getProducts(){
           const url = '/products.json';
           axios.get(url)

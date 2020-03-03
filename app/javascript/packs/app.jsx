@@ -16,23 +16,21 @@ class SimpleSlider extends React.Component {
     allProducts: []
   };
 
-  allProducts = () => {
-    if (this.state.allProducts.length === 0) {
-      const url = "/products.json";
-      axios
-        .get(url)
-        .then(response => {
-          this.setState({ allProducts: response.data });
-          // this.setState({ posts: data });
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
-  };
+  componentDidMount() {
+    console.log("mounted")
+    const url = "/products.json";
+    axios
+      .get(url)
+      .then(response => {
+        this.setState({ allProducts: response.data });
+        // this.setState({ posts: data });
+      })
+      .catch(error => {
+        console.log(error);
+      });
+  }
 
   render() {
-    this.allProducts();
     const { allProducts } = this.state;
     var settings = {
       dots: false,

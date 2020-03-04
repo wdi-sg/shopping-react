@@ -73,7 +73,8 @@ class Products extends React.Component {
     const products = this.state.products.map((products, index) => {
       console.log(products);
       return (
-        <div>
+        <div className="col-4">
+          <br></br>
           <strong>Name:</strong>
           <p>{products.name}</p>
           <button
@@ -88,16 +89,19 @@ class Products extends React.Component {
     });
 
     return (
-      <div className="container">
-        <Cart cart={this.state.cart} />
+      <div className="container-fluid">
+        <div className="row">
+          <Cart cart={this.state.cart} />
 
-        <h2>All Products</h2>
-        {products}
-        <Oneproduct
-          product={this.state.product}
-          getProducts={this.getProducts}
-          addCart={x => this.addCart(x)}
-        />
+          <Oneproduct
+            product={this.state.product}
+            getProducts={this.getProducts}
+            addCart={x => this.addCart(x)}
+          />
+
+          <h2>All Products</h2>
+          {products}
+        </div>
       </div>
     );
   }
@@ -111,7 +115,7 @@ class Oneproduct extends React.Component {
     let product = this.props.product;
     if (Object.keys(product).length > 0) {
       return (
-        <div>
+        <div className="col-4">
           <img src={product.image_url} />
           <strong>Name:</strong>
           <p>{product.name}</p>

@@ -1,6 +1,6 @@
 {
-  "Cart.js": "/packs/js/Cart-b969ba6ee35350de4f6e.js",
-  "Cart.js.map": "/packs/js/Cart-b969ba6ee35350de4f6e.js.map",
+  "Cart.js": "/packs/js/Cart-d4bcba4b133a1899d4aa.js",
+  "Cart.js.map": "/packs/js/Cart-d4bcba4b133a1899d4aa.js.map",
   "application.js": "/packs/js/application-f720b24022283010ae5a.js",
   "application.js.map": "/packs/js/application-f720b24022283010ae5a.js.map",
   "entrypoints": {
@@ -14,21 +14,21 @@
     },
     "Cart": {
       "js": [
-        "/packs/js/Cart-b969ba6ee35350de4f6e.js"
+        "/packs/js/Cart-d4bcba4b133a1899d4aa.js"
       ],
       "js.map": [
-        "/packs/js/Cart-b969ba6ee35350de4f6e.js.map"
+        "/packs/js/Cart-d4bcba4b133a1899d4aa.js.map"
       ]
     },
     "hello_react": {
       "js": [
-        "/packs/js/hello_react-b56bdfb4ca10f43d073f.js"
+        "/packs/js/hello_react-5fbb0b49f6b580ca5f63.js"
       ],
       "js.map": [
-        "/packs/js/hello_react-b56bdfb4ca10f43d073f.js.map"
+        "/packs/js/hello_react-5fbb0b49f6b580ca5f63.js.map"
       ]
     }
   },
-  "hello_react.js": "/packs/js/hello_react-b56bdfb4ca10f43d073f.js",
-  "hello_react.js.map": "/packs/js/hello_react-b56bdfb4ca10f43d073f.js.map"
+  "hello_react.js": "/packs/js/hello_react-5fbb0b49f6b580ca5f63.js",
+  "hello_react.js.map": "/packs/js/hello_react-5fbb0b49f6b580ca5f63.js.map"
 }

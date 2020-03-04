@@ -7,7 +7,7 @@ class Products extends React.Component {
 
         return (
             <div>
-                <h2 style={{color: "blue"}}>{this.props.individualProduct? this.props.individualProduct.name : ""}</h2>
+                <h2 style={{color: "green"}}>{this.props.individualProduct? this.props.individualProduct.name : ""}</h2>
                 <h4>{this.props.individualProduct? "$"+ this.props.individualProduct.price : ""}</h4>
                 <h5 style={{color: "grey"}}>{this.props.individualProduct? this.props.individualProduct.description : ""}</h5>
                 {this.props.individualProduct? <button className="btn btn-warning" onClick={(e)=> this.props.addToCart(e)}> Add To Cart</button> : ""}

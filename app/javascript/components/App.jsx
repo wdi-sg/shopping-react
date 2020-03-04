@@ -33,7 +33,7 @@ showIndividualProduct(index) {
 }
 
 
-  addToCart(e){
+addToCart(e){
        this.state.cartItems.push(this.state.individualProduct)
        this.setState({cartItems: this.state.cartItems})
       }
@@ -43,7 +43,7 @@ showIndividualProduct(index) {
 render() {
     let lists = this.state.products.map((stuff, index)=> {
         return (
-        <button className="btn btn-outline-info" value={index} onClick={e => {
+        <button className="btn btn-outline-secondary" value={index} onClick={e => {
             this.showIndividualProduct(e.target.value)
         }}>{stuff.name}</button>
         )
@@ -51,7 +51,7 @@ render() {
 
     return (
           <div>
-          <button className="btn btn-danger" onClick={()=>{ this.getProducts() }}>
+          <button className="btn btn-warning" onClick={()=>{ this.getProducts() }}>
           Click to view products
           </button>
         <ul style={{backgroundColor: "lightyellow"}}>
@@ -63,25 +63,6 @@ render() {
     }
 
 
-
-
-
-// addProductToCart() {
-//     if (selectedProduct = this.state.products[index]) {
-//         this.state.products.push(this.state.cart);
-//         this.setState(this.state.products);
-//         console.log("clicking")
-//     } else {
-//         popups.alert({
-//             content:
-//                 "Please select an item"
-//             });
-//     }
-// }
-
-
 }
-
-
 
 export default App;

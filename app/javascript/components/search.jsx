@@ -34,6 +34,10 @@ export default class Search extends Component {
         }
     }
 
+    componentDidMount(){
+      this.getProducts();
+    }
+
     comparePrice( itemA , itemB ) { 
       const a = parseFloat(itemA.price)
       const b = parseFloat(itemB.price)
@@ -135,7 +139,6 @@ export default class Search extends Component {
                       </InputAdornment>} />
 
                     <br />
-                  {/* <InputLabel id="order-label" htmlFor="order-label">Sort By:</InputLabel> */}
                   <Select
                     labelId="order-label"
                     id="order-label"
@@ -143,7 +146,7 @@ export default class Search extends Component {
                     onChange={(event)=>{this.handleChange(event)}}
                   >
                     <MenuItem value="">
-                      <em>None</em>
+                      <em>Sort</em>
                     </MenuItem>
                     <MenuItem value={"Name Ascending"}>Name A->Z</MenuItem>
                     <MenuItem value={"Name Descending"}>Name Z->A</MenuItem>

@@ -7,7 +7,8 @@ import TableHead from '@material-ui/core/TableHead'
 import TableRow from '@material-ui/core/TableRow'
 import Paper from '@material-ui/core/Paper'
 import Button from '@material-ui/core/Button'
-import DeleteIcon from '@material-ui/icons/Delete';
+import DeleteIcon from '@material-ui/icons/Delete'
+import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
 
 export default class Cart extends Component {
     constructor() {
@@ -21,6 +22,7 @@ export default class Cart extends Component {
     render() {
         return (
             <div>
+                <h2><ShoppingCartIcon/>Your cart</h2>
                 <CartItems
                     products={this.props.shoppingCart} 
                     removeFromCart={(event)=>{this.removeFromCart(event)}}

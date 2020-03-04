@@ -3,7 +3,20 @@ import axios from 'axios';
 
 export default class Search extends React.Component {
 
-    getProducts(){
+    constructor(){
+        super()
+        this.state = {
+            input: ""
+        }
+    }
+
+    componentDidMount(){
+        this.getProducts("")
+    }
+
+    getProducts(e){
+
+        this.setState({input: e.toLowerCase()})
 
         const url = 'http://127.0.0.1:3000/products.json';
 
@@ -11,18 +24,23 @@ export default class Search extends React.Component {
           .then((response) => {
 
             const data = response.data
-            console.log(data)
 
-            this.props.allProductsLifter(data)
+            const products = data.filter((product)=>{
+
+                return product.name.toLowerCase().includes(this.state.input)
+
+            })
+
+            this.props.allProductsLifter(products)
 
           }).catch((error)=>{
             console.log(error);
           })
       }
 
-    selectProduct(index){
+    selectProduct(productId){
 
-        const productURL = "products/"+index+".json"
+        const productURL = "products/"+productId+".json"
 
         axios.get(productURL)
           .then((response) => {
@@ -43,13 +61,12 @@ export default class Search extends React.Component {
 
         products.sort((a,b)=>{
 
-            if (a.price < b.price){
+            if (parseInt(a.price) < parseInt(b.price)){
                 return -1
             }
-            if (a.price > b.price){
+            if (parseInt(a.price) > parseInt(b.price)){
                 return 1
             }
-
             return 0
         })
 
@@ -80,7 +97,7 @@ export default class Search extends React.Component {
 
         const allProducts = this.props.products.map((product, index)=>{
 
-            return <a className="btn" onClick={(e)=>{this.selectProduct(index+1)}} key={index}>{product.name}:{product.price}</a>
+            return <a className="btn" onClick={(e)=>{this.selectProduct(product.id)}} key={index}>{product.name}:{product.price}</a>
 
         })
 
@@ -97,7 +114,7 @@ export default class Search extends React.Component {
         return(
             <div>
                 {sortByPriceButton}{sortByNameButton}
-                <button onClick={()=>{this.getProducts()}}>Get all Products</button>
+                <input onChange={(e)=>{this.getProducts(e.target.value)}} placeholder="Search product"/>
                 {allProducts}
             </div>
         )

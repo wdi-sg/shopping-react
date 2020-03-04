@@ -14,7 +14,9 @@ require 'ffaker'
   name = FFaker::Product.product_name
   price = rand(2.00..30.00).floor(2)
   url = FFaker::Image.url
+
   description = FFaker::Lorem.sentences
+
 
   Product.create({name: name, price: price, image_url: url, description: description})
 end

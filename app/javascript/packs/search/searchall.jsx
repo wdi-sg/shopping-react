@@ -5,17 +5,22 @@ import axios from 'axios'
 class Form extends React.Component {
 
     constructor(){
-      console.log("constructing");
         super()
       this.state = {
             products:[],
             search: "",
             value: ""
+
         }
 
             this.handleChange = this.handleChange.bind(this);
             this.handleSubmit = this.handleSubmit.bind(this);
  
+    }
+
+      componentDidMount(){
+        console.log("Done rendering stuff")
+        this.getAllProduct()
       }
 
       showProduct(key){
@@ -31,6 +36,20 @@ class Form extends React.Component {
             }).catch((error)=>{
               console.log(error);
             })
+      }
+
+      getAllProduct(){
+        const url = '/products.json';
+        axios.get(url)
+        .then((response) => {
+          
+          const data = response.data
+          this.props.imageCallback(data)
+          this.props.productCallback(data)
+          this.setState({ products: data })
+        }).catch((error)=>{
+          console.log(error);
+        })
       }
 
       searchName(event){
@@ -55,7 +74,6 @@ class Form extends React.Component {
       }
 
       handleChange(array) {
-          console.log("JADASHDHADHSD")
           console.log(array)
           let lowestsort = array.sort((a,b) =>  a.price-b.price)
             this.setState({ products: lowestsort })
@@ -65,19 +83,17 @@ class Form extends React.Component {
         event.preventDefault();
       }
 
-
       render() {
 
         let filteredproducts = this.state.products
 
-        const productArray = this.state.products.map((product)=>{
-            return (<div>
+        const productArray = this.state.products.map((product,index)=>{
+            return (<div key = {index}>
                 <p>id: {product.id} || name: {product.name} || Price: {product.price} ||content: {product.description} 
                 <button key={product.id} onClick ={()=>{this.showProduct(product.id)}}>Show</button>
                 </p>
                 </div>)
         })
-
 
        return (
             <div>

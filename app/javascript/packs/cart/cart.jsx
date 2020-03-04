@@ -12,14 +12,31 @@ class Cart extends React.Component {
               shipping: 7
           } 
         }
+        
+        showProduct(key){
+          const url = '/products/' + key + '.json';
+          console.log(url)
+            axios.get(url)
+              .then((response) => {
+                
+                const data = response.data
+                console.log(data)
+                this.props.productCallback(data)
+          
+              }).catch((error)=>{
+                console.log(error);
+              })
+        }
     
     render(){
         console.log(this.props.cartItem)
-        let products = this.props.cartItem.map((product)=>{
+        let products = this.props.cartItem.map((product,index)=>{
+          console.log(index, "this is INDEX INDEX INDEX")
             return (<div class="card" style={{width: "18rem"}}>
             <div class="card-body">
             <h5 class="card-title">{product.name}</h5>
-            <button key={product.id} onClick ={()=>{}}>Remove</button>
+            <button key={index} onClick ={()=>{this.props.removeItem({index})}}>Remove</button>
+            <button key={product.id} onClick ={()=>{this.showProduct(product.id)}}>Show</button>
           </div>
         </div>
             )

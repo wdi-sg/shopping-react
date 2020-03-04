@@ -39,13 +39,14 @@ componentDidMount() {
 }
 
 
-getSelectedProduct(event) {
+setSelectedProduct(event) {
   const url = '/products.json';
 
   axios.get(url)
     .then((response) => {
   
       const data = response.data
+      console.log(data);
       this.setState({ selectedProduct : event.target.value })
 
     }).catch((error)=>{
@@ -60,10 +61,11 @@ getSelectedProduct(event) {
       <div className="container">
         <div className="row">
           <div className="col">
-              <Search searchProducts = {this.state.searchProducts}/>
+              <Search searchProducts = {this.state.searchProducts}
+                      setSelectedProduct={this.setSelectedProduct} product={this.state.selectedProduct}/>
           </div>
           <div className="col">
-              <Product setSelectedProduct={(event) => {this.setSelectedProduct(event)}} product={this.state.selectedProduct} />
+              <Product />
           </div>
           <div className="col">
               <Cart />

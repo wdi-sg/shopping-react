@@ -8,7 +8,7 @@ import PropTypes from 'prop-types'
 
 const Search = props => (
   <div>
-    Search
+    Search hello
   </div>
 )
 

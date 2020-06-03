@@ -14,5 +14,5 @@
   url = FFaker::Image.url
   description = FFaker::Lorem.paragraph
 
-  Product.create({name: name, price: price, image_url: url, description: description})
+  Item.create({name: name, price: price, url: url, description: description})
 end

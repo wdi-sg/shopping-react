@@ -1,3 +1,5 @@
+require 'ffaker'
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -12,7 +14,9 @@
   name = FFaker::Product.product_name
   price = rand(2.00..30.00).floor(2)
   url = FFaker::Image.url
-  description = FFaker::Lorem.paragraph
+
+  description = FFaker::Lorem.sentences
+
 
   Product.create({name: name, price: price, image_url: url, description: description})
 end

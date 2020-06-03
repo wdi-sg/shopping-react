@@ -51,6 +51,12 @@ class ProductsController < ApplicationController
     end
   end
 
+  def search
+    products = Product.arel_table
+    @products = Product.where(products[:name].matches("%#{params[:searchinput]}%"))
+    render json: @products.as_json, status: 200
+  end
+
   # DELETE /products/1
   # DELETE /products/1.json
   def destroy

@@ -6,7 +6,8 @@ class Product extends React.Component {
       super();
 
       this.state = {
-        products:[]
+        products:[],
+        cart:[],
       };
     }
 
@@ -37,14 +38,21 @@ class Product extends React.Component {
       axios.get(url).then(runWhenDone).catch(whenError)
     }
 
+    addToCart(id){
+        console.log('Hey! added to cart!')
+        console.log(this.state.products[key])
+    }
+
     render(){
 
-        const products = this.state.products.map((product)=>{
+        const products = this.state.products.map((product, index)=>{
             return (<div className="product">
+                <li key={index}>
                 <img src={product.url}/>
                 <p>Product Name: {product.name}</p>
                 <p>Product description: {product.description}</p>
-                <p>Product Price: ${product.price}</p> <button>add to cart</button>
+                <p>Product Price: ${product.price}</p> <button onClick={()=>{this.addToCart()}}>add to cart</button>
+                </li>
             </div>);
         });
         return (<div className="col">

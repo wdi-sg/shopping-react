@@ -4,6 +4,14 @@ import Search from './search';
 import Cart from './cart';
 
 class Main extends React.Component {
+    constructor(){
+      super();
+
+      this.state = {
+        products:[],
+        cart:["camera"],
+      };
+    }
     render(){
         return (<div className="container">
             <div className="row">
@@ -14,7 +22,7 @@ class Main extends React.Component {
             <Product/>
             </div>
             <div className="col">
-            <Cart/>
+            <Cart cart={this.state.cart}/>
             </div>
             </div>
         </div>);

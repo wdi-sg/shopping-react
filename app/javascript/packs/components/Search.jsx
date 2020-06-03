@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import Searchform from './Searchform'
 
 class Search extends React.Component{
     constructor(){
@@ -29,20 +30,21 @@ class Search extends React.Component{
         console.log(this.state)
 
         const posts = this.state.products.map((product, index)=>{
-          return (<div>
-            <p>{product.name}</p>
-            <p>{product.price}</p>
-            <p>{product.description}</p>
-          </div>);
+          return (
+            <div>
+                <p>{product.name}</p>
+                <img src={product.image_url} />
+            </div>
+          );
         });
 
         return(
             <div>
+                <Searchform />
                 <button onClick={()=>{ this.getProducts() }}>
-                  Click to See Posts
+                  Click to See all Products
                 </button>
                 {posts}
-                <p>oi oi</p>
             </div>
         )
     }

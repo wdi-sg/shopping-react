@@ -9,12 +9,39 @@ class ProductsController < ApplicationController
 
     if params[:foo] == "all"
     @products = Product.all
+
+
     elsif params[:foo] == "name"
       puts "I am in the name section"
-    @products = Product.all.order("name")
+      if params[:productName] == nil
+        @products = Product.all.order("name")
+      else
+        @products = Product.where("name like ?", "%#{params[:productName]}%").order("name")
+      end
+
+    elsif params[:foo] == "id"
+      puts "I am in the id section"
+      if params[:id] == nil
+        @products = Product.all.order("price")
+      else
+        @products = Product.where(id: params[:id])
+      end
+
+    elsif params[:foo] == "price"
+      puts "I am in the price section"
+      if params[:productName] == nil
+        puts "hello price"
+
+        @products = Product.all.order("price")
+      else
+        puts "Not pricesty"
+        @products = Product.where("name like ?", "%#{params[:productName]}%").order("price")
+
+      end
     elsif params[:foo] == "searchName"
 
       @products = Product.where("name like ?", "%#{params[:productName]}%")
+
     else
       puts "bye"
     end

@@ -13,131 +13,85 @@ class Product extends React.Component {
 
             products:[],
             clicked: false,
-            productSearch:""
+            productSearch:"",
+            cartPrices:[],
+            cartProducts :[],
+
 
       };
     }
 
-        changeHandler = event => {
-                //console.log(`Target value ${event.target.value}`)
-                this.setState({productSearch:event.target.value});
 
-                };
 
     // our click method
 
-    getSearchPosts()
+   addCart(event)
         {
-
-
-
-          const url = '/products.json';
+            //this.setState({productSearch:event.target.value});
+            //console.log(this.props)
+            const url = '/products.json';
           this.setState({clicked: !this.state.clicked});
 
-            axios.get(url, {params: {foo:"searchName", productName:this.state.productSearch}})
+            axios.get(url, {params: {foo:"id", id:event.target.id}})
             .then((response) => {
                 console.log("something")
               const data = response.data
-
-              this.setState({ products: data })
-
-            }).catch((error)=>{
-              console.log(error);
-            })
-        }
-
-
-
-    getPosts()
-        {
-
-          const url = '/products.json';
-          this.setState({clicked: !this.state.clicked});
-          if(this.state.clicked)
-          {
-          axios.get(url, {params: {foo:"all"}})
-            .then((response) => {
-                console.log("something")
-              const data = response.data
-
-              this.setState({ products: data })
-
-            }).catch((error)=>{
-              console.log(error);
-            })
-
-            console.log(this.state.clicked)
-            }
-            else
-            {
-                console.log("Entry")
-                this.setState({ products: [] })
-            }
-        }
-
-    getOrderedByNamePosts()
-        {
-
-          const url = '/products.json';
-          this.setState({clicked: !this.state.clicked});
-
-          axios.get(url, {params: {foo:"name"}})
-            .then((response) => {
-                console.log("something")
-              const data = response.data
-
-              this.setState({ products: data })
-
+              console.log(data)
+              var currentcartProduct = this.state.cartProducts;
+                currentcartProduct.push (data[0].name);
+                this.setState({cartProducts: currentcartProduct});
+              var currentcartPrice = this.state.cartPrices;
+                currentcartPrice.push (parseFloat(data[0].price));
+                this.setState({cartPrices: currentcartPrice});
+                console.log(this.state.cartProducts);
+                console.log(this.state.cartPrices);
+                this.props.cartProductArray(currentcartProduct);
+                this.props.cartPriceArray(currentcartPrice);
+              //this.setState({ products: data })
+               //this.props.productArray(data)
             }).catch((error)=>{
               console.log(error);
             })
 
 
-        }
+            console.log(event.target.id)
+            this.props.clickCartButton(event.target.id);
+            //this.props.callBackFromForm(event);
 
+            //console.log("change", event.target.value);
+        }
 
   render() {
         // console log the posts, this should be an array of objects
-
-        const products = this.state.products.map((product, index)=>{
-          //console.log(product);
+        //console.log(this.props.productData)
+        let john =[];
+        if(this.props.productData !== undefined)
+        {
+            console.log("Entered")
+            john = this.props.productData;
+        }
+        //console.log(john)
+        const products = john.map((product, index)=>{
+         //console.log(product);
           return (
             <React.Fragment key={index}>
-            <div className = "col-3">
-            <p>{product.id}: {product.name}</p>
-            <p>Price: {product.price}</p>
+            <div className = "col-3 ">
+            <p className="test">{product.id} {product.name}</p>
+            <p className="test">Price: {product.price}</p>
+            <button id={product.id} ref="inputBox" onClick={(event)=>{this.addCart(event)}}>Add</button>
           </div>
           </React.Fragment>
           );
         });
     return (
-    <div className = "row">
-      <div className = "col-12  border  ">
-        <p>
+    <div className = "row scrollBar">
 
-        <input value={this.state.productSearch} ref="inputBox" onChange={(event)=>{this.changeHandler(event);}}></input>
-        </p>
-        <p>
-            <button onClick={()=>{ this.getSearchPosts() }}>
-                  Search Product Name
-            </button>
-        </p>
-        <p>
 
-            <button onClick={()=>{ this.getPosts() }}>
-                  Click to See All Products
-            </button>
-        </p>
-        <p>
-            <button onClick={()=>{ this.getOrderedByNamePosts() }}>
-                  Arrange Products by Name
-            </button>
-        </p>
-        <div className = "row">
+
             {products}
-        </div>
 
-      </div>
+
+
     </div>
     );
   }

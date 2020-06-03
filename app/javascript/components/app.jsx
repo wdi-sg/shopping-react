@@ -82,6 +82,7 @@ export default class App extends React.Component {
             cart={this.state.cart}
             totalCost={this.state.totalCost}
             grandTotal={this.state.grandTotal}
+            displayItem={this.displayItem}
           />
         </div>
       </div>

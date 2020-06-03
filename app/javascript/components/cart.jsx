@@ -1,4 +1,5 @@
 import React from "react";
+import CartItem from "./cartitem";
 
 export default class Cart extends React.Component {
   renderCartItems = () => {
@@ -9,9 +10,15 @@ export default class Cart extends React.Component {
           <div className="card mb-2">
             <div className="row">
               <div className="col-8">
-                <h5>
+                <CartItem
+                  name={element.name}
+                  price={element.price}
+                  id={element.id}
+                  displayItem={this.props.displayItem}
+                />
+                {/* <h5>
                   {element.name} - ${element.price}
-                </h5>
+                </h5> */}
               </div>
               <div className="col-4">
                 <button>Remove Item</button>

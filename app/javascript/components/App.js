@@ -5,19 +5,30 @@ import Results from './Results'
 
 function App(){
 
-    const [products, setProducts] = useState([])
     const [results, setResults] = useState([])
     const [searchInput, setSearchInput] = useState(null)
 
     let searchProducts = ()=>{
 
-        const url = `/products/search/${searchInput}`;
-      
-        axios.get(url)
+        //If search input is empty, get all products
+        if (!searchInput){
+
+            return axios.get(`/products.json`)
+              .then((response) => {
+          
+                const data = response.data
+                setResults(data)
+          
+              }).catch((error)=>{
+                console.log(error);
+              })
+          }
+
+      //If not, get the value for searchInput and make a request to the search API.
+        axios.get(`/products/search/${searchInput}`)
           .then((response) => {
-      
+
             const data = response.data
-            console.log(data)
             setResults(data)
       
           }).catch((error)=>{
@@ -29,17 +40,6 @@ function App(){
     let searchInputTracker = (e) => {
         setSearchInput(e.target.value)
     }
-
-    // let resultElements = results.map(result => {
-    //     return (
-    //         <div>
-    //             <p>{result.name}</p>
-    //             <p>{result.price}</p>
-    //             <p>{result.description}</p>
-    //         </div>
-
-    //     )
-    // })
 
     return(
         <div>

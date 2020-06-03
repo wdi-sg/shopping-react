@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+select {
+  max-width: 100%;
+}
+
+.card-body img {
+  max-width: 100%;
+}

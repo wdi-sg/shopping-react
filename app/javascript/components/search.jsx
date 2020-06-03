@@ -28,20 +28,17 @@ export default class App extends React.Component {
           );
         });
         return result;
+      } else {
+        return "No search results found.";
       }
     }
 
-    let allItems = renderItems(this.props.allItems) || "";
-    let searchItems = renderItems(this.props.searchItems) || "";
+    let searchItems = renderItems(this.props.searchItems);
 
     return (
       <div>
-        <h3>Search</h3>
-        <input onChange={this.props.search}></input>
-        <div>
-          <button onClick={this.props.getAll}>Show All Items</button>
-        </div>
-        <div>{allItems}</div>
+        <h4>Search:</h4>
+        <input className="mb-2" onChange={this.props.search} />
         <div>{searchItems}</div>
       </div>
     );

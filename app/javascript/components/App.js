@@ -11,7 +11,7 @@ function App(){
 
     let searchProducts = ()=>{
 
-        const url = '/products.json';
+        const url = `/products/search/${searchInput}`;
       
         axios.get(url)
           .then((response) => {

@@ -5,22 +5,26 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import Search from './components/Search'
 
-const Hello = props => (
-  <div>Hello {props.name}!</div>
+const App = props => (
+  <div>
+      <div>hello react</div>
+      <Search />
+  </div>
 )
 
-Hello.defaultProps = {
+App.defaultProps = {
   name: 'David'
 }
 
-Hello.propTypes = {
+App.propTypes = {
   name: PropTypes.string
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <Hello name="React" />,
+    <App name="React" />,
     document.body.appendChild(document.createElement('div')),
   )
 })

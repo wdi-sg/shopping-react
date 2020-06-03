@@ -19,11 +19,16 @@ export default class DisplayItem extends React.Component {
             </li>
           </ul> */}
           <div class="card-body">
-            <button>Add To Cart</button>
+            <button onClick={this.props.addToCart}>Add To Cart</button>
           </div>
         </div>
       );
     }
-    return <div>{itemHtml}</div>;
+    return (
+      <div>
+        <h4>Item Details:</h4>
+        {itemHtml}
+      </div>
+    );
   }
 }

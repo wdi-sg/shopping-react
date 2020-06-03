@@ -1,7 +1,8 @@
 import React from "react";
 import axios from "axios";
 import Search from "./search";
-import ItemDetail from "./displayitem"
+import ItemDetail from "./displayitem";
+import Cart from "./cart";
 import { element } from "prop-types";
 
 export default class App extends React.Component {
@@ -11,6 +12,9 @@ export default class App extends React.Component {
     this.state = {
       searchItems: [],
       item: {},
+      cart: [],
+      totalCost: 0,
+      grandTotal: 0,
     };
   }
 
@@ -36,7 +40,7 @@ export default class App extends React.Component {
       .catch((error) => {
         console.log(error);
       });
-  }
+  };
 
   displayItem = (id) => {
     console.log(id);
@@ -45,7 +49,20 @@ export default class App extends React.Component {
     });
     console.log(item);
     this.setState({ item });
-  }
+  };
+
+  addToCart = () => {
+    let cart = this.state.cart;
+    cart.push(this.state.item);
+    let totalCost = 0;
+    for (let i = 0; i < cart.length; i++) {
+      totalCost = totalCost + cart[i].price;
+    }
+    let grandTotal = totalCost + 7;
+    totalCost = totalCost.toFixed(2);
+    grandTotal = parseFloat(grandTotal).toFixed(2);
+    this.setState({ cart, totalCost, grandTotal });
+  };
 
   render() {
     return (
@@ -58,9 +75,15 @@ export default class App extends React.Component {
           />
         </div>
         <div className="col-4">
-          <ItemDetail item={this.state.item}/>
+          <ItemDetail item={this.state.item} addToCart={this.addToCart} />
         </div>
-        <div className="col-4"></div>
+        <div className="col-4">
+          <Cart
+            cart={this.state.cart}
+            totalCost={this.state.totalCost}
+            grandTotal={this.state.grandTotal}
+          />
+        </div>
       </div>
     );
   }

@@ -7,7 +7,7 @@ export default class Item extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="item">
         <div className="card mb-2" id={this.props.id} onClick={this.onClick}>
           <h5>
             {this.props.name} - ${this.props.price}

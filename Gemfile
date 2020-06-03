@@ -50,4 +50,3 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "ffaker", "~> 2.15"
-gem 'json_response', '~> 1.0', '>= 1.0.1'

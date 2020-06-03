@@ -5,7 +5,19 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
+    puts params[:foo]
+
+    if params[:foo] == "all"
     @products = Product.all
+    elsif params[:foo] == "name"
+      puts "I am in the name section"
+    @products = Product.all.order("name")
+    elsif params[:foo] == "searchName"
+
+      @products = Product.where("name like ?", "%#{params[:productName]}%")
+    else
+      puts "bye"
+    end
   end
 
   # GET /products/1

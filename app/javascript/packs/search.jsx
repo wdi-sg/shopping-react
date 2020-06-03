@@ -5,10 +5,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import Searchcomponent from '../components/searchcomponent'
 
 const Search = props => (
   <div>
-    Search hello
+    <Searchcomponent />
   </div>
 )
 

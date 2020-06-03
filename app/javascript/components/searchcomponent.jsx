@@ -16,25 +16,27 @@ export default class Searchcomponent extends React.Component {
 
   axios.get(url)
     .then((response) => {
-
       const data = response.data
-
-      this.setState({ products: data })
-
+      let search = document.getElementById("name-input").value;
+      let filteredData = data.filter(filtered => {
+        return filtered.name.toLowerCase().includes(search.toLowerCase());
+      });
+      this.setState({ products: filteredData })
     }).catch((error)=>{
       console.log(error);
     })
   }
 
   render(){
-    const products = this.state.products.map((product, index)=>{
+
+    const products = this.state.products.map((filteredProduct, index)=>{
       return (<div>
-        <p>{product.name}</p>
+        <p>{filteredProduct.name}</p>
       </div>);
     });
     return(
       <div>
-        <div><input className="name-input"></input></div>
+        <div><input id="name-input"></input></div>
         <div>
           <button onClick={()=>{ this.getProducts() }}>
             Get Products

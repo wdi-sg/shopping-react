@@ -15,6 +15,7 @@ export default class App extends React.Component {
       cart: [],
       totalCost: 0,
       grandTotal: 0,
+      gst: 0,
     };
   }
 
@@ -58,11 +59,32 @@ export default class App extends React.Component {
     for (let i = 0; i < cart.length; i++) {
       totalCost = totalCost + cart[i].price;
     }
-    let grandTotal = totalCost + 7;
+    let gst = totalCost * 0.07;
+    let grandTotal = totalCost + 7 + gst;
     totalCost = totalCost.toFixed(2);
     grandTotal = parseFloat(grandTotal).toFixed(2);
-    this.setState({ cart, totalCost, grandTotal });
+    gst = gst.toFixed(2);
+    this.setState({ cart, totalCost, grandTotal, gst });
   };
+
+  removeFromCart = (event) => {
+    console.log(event.target.id);
+    let res = event.target.id.split("-");
+    let index = parseInt(res[1]);
+    let cart = this.state.cart;
+    cart.splice(index, 1);
+
+    let totalCost = 0;
+    for (let i = 0; i < cart.length; i++) {
+      totalCost = totalCost + cart[i].price;
+    }
+    let gst = totalCost * 0.07;
+    let grandTotal = totalCost + 7 + gst;
+    totalCost = totalCost.toFixed(2);
+    grandTotal = parseFloat(grandTotal).toFixed(2);
+    gst = gst.toFixed(2);
+    this.setState({ cart, totalCost, grandTotal, gst });
+  }
 
   render() {
     return (
@@ -82,7 +104,9 @@ export default class App extends React.Component {
             cart={this.state.cart}
             totalCost={this.state.totalCost}
             grandTotal={this.state.grandTotal}
+            gst={this.state.gst}
             displayItem={this.displayItem}
+            removeFromCart={this.removeFromCart}
           />
         </div>
       </div>

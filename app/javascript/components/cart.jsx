@@ -5,7 +5,8 @@ export default class Cart extends React.Component {
   renderCartItems = () => {
     let cart = this.props.cart;
     if (cart.length !== 0) {
-      let result = cart.map((element) => {
+      let result = cart.map((element, index) => {
+        let string = "cart-" + index;
         return (
           <div className="card mb-2">
             <div className="row">
@@ -16,12 +17,11 @@ export default class Cart extends React.Component {
                   id={element.id}
                   displayItem={this.props.displayItem}
                 />
-                {/* <h5>
-                  {element.name} - ${element.price}
-                </h5> */}
               </div>
               <div className="col-4">
-                <button>Remove Item</button>
+                <button id={string} onClick={this.props.removeFromCart}>
+                  Remove Item
+                </button>
               </div>
             </div>
           </div>
@@ -37,6 +37,10 @@ export default class Cart extends React.Component {
           <div className="row">
             <div className="col-8">Shipping Fee</div>
             <div className="col">$7.00</div>
+          </div>
+          <div className="row">
+            <div className="col-8">GST (7%)</div>
+            <div className="col">${this.props.gst}</div>
           </div>
           <div className="row">
             <div className="col-8">Grand Total</div>

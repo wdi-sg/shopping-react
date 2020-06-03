@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import Search from "./search";
+import ItemDetail from "./displayitem"
+import { element } from "prop-types";
 
 export default class App extends React.Component {
   constructor() {
@@ -8,10 +10,11 @@ export default class App extends React.Component {
 
     this.state = {
       searchItems: [],
+      item: {},
     };
   }
 
-  onSearch(event) {
+  onSearch = (event) => {
     const url = "/items.json";
     let input = event.target.value.toUpperCase();
     axios
@@ -35,8 +38,13 @@ export default class App extends React.Component {
       });
   }
 
-  displayItem(event) {
-    
+  displayItem = (id) => {
+    console.log(id);
+    let item = this.state.searchItems.find((element) => {
+      return element.id === id;
+    });
+    console.log(item);
+    this.setState({ item });
   }
 
   render() {
@@ -45,12 +53,13 @@ export default class App extends React.Component {
         <div className="col-4">
           <Search
             searchItems={this.state.searchItems}
-            search={(event) => {
-              this.onSearch(event);
-            }}
+            search={this.onSearch}
+            displayItem={this.displayItem}
           />
         </div>
-        <div className="col-4"></div>
+        <div className="col-4">
+          <ItemDetail item={this.state.item}/>
+        </div>
         <div className="col-4"></div>
       </div>
     );

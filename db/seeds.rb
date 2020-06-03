@@ -11,8 +11,9 @@
 
   name = FFaker::Product.product_name
   price = rand(2.00..30.00).floor(2)
-  url = FFaker::Image.url
+  # url = FFaker::Image.url
   description = FFaker::Lorem.paragraph
+  random = rand(1..500)
 
-  Product.create({name: name, price: price, image_url: url, description: description})
+  Item.create({name: name, price: price, image_url: "https://i.picsum.photos/id/#{random}/300/300.jpg", description: description})
 end

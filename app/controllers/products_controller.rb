@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    render json: @product.as_json, status: 200
   end
 
   # GET /products/new
@@ -75,6 +76,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name, :price, :img_url)
+      params.require(:product).permit(:name, :description, :price, :img_url)
     end
 end

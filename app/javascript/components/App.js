@@ -2,11 +2,14 @@ import React, {useState} from 'react'
 import axios from 'axios';
 import SearchForm from './SearchForm'
 import Results from './Results'
+import ProductListing from './ProductListing'
 
 function App(){
 
     const [results, setResults] = useState([])
     const [searchInput, setSearchInput] = useState(null)
+
+    const [selectedProduct, setSelectedProduct] = useState(null)
 
     let searchProducts = ()=>{
 
@@ -36,6 +39,16 @@ function App(){
           })
       }
 
+    let productResultClick = (e) => {
+        axios.get(`/products/${e.target.id}`)
+        .then((response) => {
+          const data = response.data
+          setSelectedProduct(data)
+        }).catch((error)=>{
+          console.log(error);
+        })
+        console.log(`the product id is ${e.target.id}`)
+    }
 
     let searchInputTracker = (e) => {
         setSearchInput(e.target.value)
@@ -43,10 +56,39 @@ function App(){
 
     return(
         <div>
-            <div className="container"></div>
+            <div className="container-fluid">
             <h2>HELL YEAH SHOPPING!!!!</h2>
-            <SearchForm inputTracker={searchInputTracker} searchFunction={searchProducts}/>
-            <Results items={results}/>
+
+            <div className="row">
+
+                <div className="col">
+
+                <SearchForm inputTracker={searchInputTracker} searchFunction={searchProducts}/>
+
+                 <Results productResultClick={productResultClick} products={results}/>
+
+
+                </div>
+
+                <div className="col">
+
+                {selectedProduct ? <ProductListing product={selectedProduct}/> : 'No item selected'}
+
+                </div>
+
+                <div className="col">
+
+                <SearchForm inputTracker={searchInputTracker} searchFunction={searchProducts}/>
+
+                </div>
+
+
+
+            </div>
+
+
+            </div>
+
         </div>
     )
 }

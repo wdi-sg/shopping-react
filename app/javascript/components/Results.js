@@ -1,35 +1,20 @@
 import React from 'react'
+import SearchResultListing from './SearchResultListing'
 
 function SearchForm(props){
 
     let results;
-    if (props.items){
-        results = props.items.map((result,i) => {
+    if (props.products){
+        results = props.products.map((product,i) => {
             return (
-                <tr key={i}>
-                    <td>{result.name}</td>
-                    <td>{result.price}</td>
-                    <td>{result.description}</td>
-                </tr>
+                <SearchResultListing key={i} id={product.id} productResultClick={props.productResultClick} product={product}/>
             )
         })
     }
 
     return(
-        <div>
-            <h1>Results</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                {results}
-                </tbody>
-            </table>
+        <div className="p-2">
+            {results}
         </div>
     )
 }

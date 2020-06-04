@@ -15,3 +15,12 @@
  */
 
  @import 'bootstrap';
+
+.listing{
+    background-color: white;
+}
+
+.listing:hover{
+    background-color: lightgray;
+    cursor: pointer;
+}

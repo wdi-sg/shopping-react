@@ -27,7 +27,7 @@ class Search extends React.Component{
 
         return(
             <div>
-                <Searchform />
+                <Searchform searchProduct={this.props.searchProduct}/>
                 <button onClick={()=>{ this.getProducts() }}>
                   Click to See all Products
                 </button>

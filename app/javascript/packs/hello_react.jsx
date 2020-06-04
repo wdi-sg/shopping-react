@@ -19,8 +19,10 @@ class App extends React.Component{
     }
 
     this.searchProduct = (products) => {
+        const reset = []
         this.setState({
-            products: products
+            products: products,
+            singleProduct: [...reset]
         })
     }
 

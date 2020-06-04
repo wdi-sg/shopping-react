@@ -2,6 +2,7 @@ import React from 'react';
 import Product from './product';
 import Search from './search';
 import Cart from './cart';
+import axios from 'axios';
 
 class Main extends React.Component {
     constructor(){
@@ -10,20 +11,37 @@ class Main extends React.Component {
       this.state = {
         products:[],
         cart:[],
+        cartPrice:[]
       };
     }
 
     addCart(){
         // this.setState({cart:event.target.value})
-        var price = event.target.price
-        var item = {
-            id:event.target.id,
-            name: event.target.name,
+        var idOfItem = (parseInt(event.target.id) - 1)
+        const url = '/products.json';
+        const runWhenDone = (response) => {
+        const data = response.data
+        console.log("**************")
+        console.log("**************")
+        console.log("**************")
+        console.log("**************")
+        console.log( data );
+        // this.setState({ products: data })
+        this.state.cart.push(data[idOfItem]);
+        this.state.cartPrice.push(parseFloat(data[idOfItem].price));
+        console.log(this.state.cartPrice)
+        this.setState({
+            cart: this.state.cart,
+            cartPrice: this.state.cartPrice
+        })
+        console.log(this.state.cart)
         }
-        console.log("at addcart", price)
-        console.log(item)
-        this.state.cart.push(item)
-        this.setState({cart:this.state.cart})
+
+        const whenError = (error) => {
+            console.log("eerror", error)
+        }
+        axios.get(url,{params:"id",id:idOfItem}).then(runWhenDone).catch(whenError);
+        // this.setState({cart:this.state.cart})
     }
 
     render(){
@@ -36,7 +54,7 @@ class Main extends React.Component {
             <Product addCart={()=>{this.addCart()}}/>
             </div>
             <div className="col">
-            <Cart cart={this.state.cart}/>
+            <Cart cart={this.state.cart} cartPrice={this.state.cartPrice}/>
             </div>
             </div>
         </div>);

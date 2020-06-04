@@ -14,24 +14,18 @@ class Product extends React.Component {
     handleClick(){
 
       const url = '/products.json';
-
       const runWhenDone = (response) => {
-
         const data = response.data
         console.log("**************")
         console.log("**************")
         console.log("**************")
         console.log("**************")
         console.log( data );
-
         this.setState({ products: data })
-
       }
-
       const whenError = (error) => {
           console.log("eerror", error)
       }
-
       axios.get(url).then(runWhenDone).catch(whenError)
     }
 

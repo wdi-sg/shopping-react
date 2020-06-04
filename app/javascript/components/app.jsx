@@ -1,7 +1,13 @@
 import React from 'react';
 import Search from './search';
+import Product from './product';
+
 
 class App extends React.Component {
+
+  lifting() {
+
+  }
 
   render() {
 
@@ -9,6 +15,7 @@ class App extends React.Component {
       <div>
         <h2> App file</h2>
         <Search/>
+        <Product/>
       </div>
     );
   }

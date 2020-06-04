@@ -1,8 +1,8 @@
 {
   "application.js": "/packs/js/application-f720b24022283010ae5a.js",
   "application.js.map": "/packs/js/application-f720b24022283010ae5a.js.map",
-  "components/Products.js": "/packs/js/components/Products-4a941ed6c70a19f45249.js",
-  "components/Products.js.map": "/packs/js/components/Products-4a941ed6c70a19f45249.js.map",
+  "components/Products.js": "/packs/js/components/Products-07609ed6d776786bacd2.js",
+  "components/Products.js.map": "/packs/js/components/Products-07609ed6d776786bacd2.js.map",
   "components/Search.js": "/packs/js/components/Search-adb0f1384b47a0f979ad.js",
   "components/Search.js.map": "/packs/js/components/Search-adb0f1384b47a0f979ad.js.map",
   "components/Searchform.js": "/packs/js/components/Searchform-3e29e00348d117e8a073.js",
@@ -18,10 +18,10 @@
     },
     "components/Products": {
       "js": [
-        "/packs/js/components/Products-4a941ed6c70a19f45249.js"
+        "/packs/js/components/Products-07609ed6d776786bacd2.js"
       ],
       "js.map": [
-        "/packs/js/components/Products-4a941ed6c70a19f45249.js.map"
+        "/packs/js/components/Products-07609ed6d776786bacd2.js.map"
       ]
     },
     "components/Search": {
@@ -42,13 +42,13 @@
     },
     "hello_react": {
       "js": [
-        "/packs/js/hello_react-a6ca6c1bf0314d26e8b6.js"
+        "/packs/js/hello_react-a6372eda3fc05a8c1d82.js"
       ],
       "js.map": [
-        "/packs/js/hello_react-a6ca6c1bf0314d26e8b6.js.map"
+        "/packs/js/hello_react-a6372eda3fc05a8c1d82.js.map"
       ]
     }
   },
-  "hello_react.js": "/packs/js/hello_react-a6ca6c1bf0314d26e8b6.js",
-  "hello_react.js.map": "/packs/js/hello_react-a6ca6c1bf0314d26e8b6.js.map"
+  "hello_react.js": "/packs/js/hello_react-a6372eda3fc05a8c1d82.js",
+  "hello_react.js.map": "/packs/js/hello_react-a6372eda3fc05a8c1d82.js.map"
 }

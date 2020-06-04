@@ -13,15 +13,23 @@ class App extends React.Component{
     super()
 
     this.state = {
-        products: []
+        products: [],
+        showProduct: []
     }
 
     this.searchProduct = (products) => {
         this.setState({
             products: products
         })
+    }
 
+    this.showProduct = (data) => {
+        const reset = []
 
+        this.setState({
+            products: [...reset],
+            showProduct: data
+        })
     }
   }
 
@@ -36,7 +44,7 @@ class App extends React.Component{
                 <Search searchProduct={this.searchProduct}/>
               </div>
               <div className="col-md-4">
-                <Products products={this.state.products}/>
+                <Products products={this.state.products} showProduct={this.state.showProduct}/>
               </div>
           </div>
       </div>

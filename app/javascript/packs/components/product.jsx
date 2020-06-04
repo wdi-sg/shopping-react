@@ -1,6 +1,9 @@
 import React from 'react'
 import axios from 'axios';
+import Slider from "react-slick";
 
+
+import Carousel from 'react-bootstrap/Carousel'
 class Product extends React.Component {
 
         constructor(){
@@ -47,6 +50,7 @@ class Product extends React.Component {
                 console.log(this.state.cartPrices);
                 this.props.cartProductArray(currentcartProduct);
                 this.props.cartPriceArray(currentcartPrice);
+
               //this.setState({ products: data })
                //this.props.productArray(data)
             }).catch((error)=>{
@@ -65,6 +69,7 @@ class Product extends React.Component {
         // console log the posts, this should be an array of objects
         //console.log(this.props.productData)
         let john =[];
+
         if(this.props.productData !== undefined)
         {
             console.log("Entered")
@@ -74,21 +79,37 @@ class Product extends React.Component {
         const products = john.map((product, index)=>{
          //console.log(product);
           return (
-            <React.Fragment key={index}>
-            <div className = "col-3 ">
+
+
+            <Carousel.Item>
+               <img
+                className="d-block w-100"
+                src="/2.png"
+                alt="First slide"
+                />
             <p className="test">{product.id} {product.name}</p>
             <p className="test">Price: {product.price}</p>
             <button id={product.id} ref="inputBox" onClick={(event)=>{this.addCart(event)}}>Add</button>
-          </div>
-          </React.Fragment>
+
+            </Carousel.Item>
+
+
+
           );
         });
+
+
+
     return (
-    <div className = "row scrollBar">
+    <div className = "row">
+        <div className = "col-12 text-center">
+            <Carousel>
+                {products}
+
+            </Carousel>
+        </div>
 
 
-
-            {products}
 
 
 

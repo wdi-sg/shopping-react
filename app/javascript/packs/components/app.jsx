@@ -5,7 +5,7 @@ import axios from 'axios';
 import Product from './product'
 import Form from './form'
 import Cart from './cart'
-
+import Carousel from 'react-bootstrap/Carousel'
 
 class App extends React.Component {
         constructor(){
@@ -58,8 +58,25 @@ class App extends React.Component {
         this.setState({cartPriceArray: event})
 
     }
-
+    const deleteCartItem = event =>{
+        console.log(event);
+        console.log(this.state.cartProductArray[event]);
+        let updateCartProduct = this.state.cartProductArray;
+        updateCartProduct.splice(event, 1);
+        this.setState({cartProductArray: updateCartProduct});
+        let updateCartPrice = this.state.cartPriceArray;
+        updateCartPrice.splice(event,1);
+        this.setState({cartPriceArray: updateCartPrice});
+    }
+        var settings = {
+      dots: true,
+      infinite: false,
+      speed: 500000,
+      slidesToShow: 1,
+      slidesToScroll: 1
+    };
     return (
+        <div>
     <div className = "row border    ">
         <div className="col-4">
          <Form
@@ -84,10 +101,13 @@ class App extends React.Component {
      <Cart
             cartProductArray = {this.state.cartProductArray}
             cartPriceArray = {this.state.cartPriceArray}
+            callBackFromDeleteCartItem = {deleteCartItem}
         />
         </div>
 
     </div>
+
+      </div>
     );
   }
 }

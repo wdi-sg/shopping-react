@@ -1,6 +1,14 @@
 {
   "application.js": "/packs/js/application-1d63d03af377eabfc330.js",
   "application.js.map": "/packs/js/application-1d63d03af377eabfc330.js.map",
+  "components/app.js": "/packs/js/components/app-a839651fe55c33fe99ff.js",
+  "components/app.js.map": "/packs/js/components/app-a839651fe55c33fe99ff.js.map",
+  "components/cart.js": "/packs/js/components/cart-4d9c9dbc81457ba1f485.js",
+  "components/cart.js.map": "/packs/js/components/cart-4d9c9dbc81457ba1f485.js.map",
+  "components/form.js": "/packs/js/components/form-708fa6adaaf05b62977a.js",
+  "components/form.js.map": "/packs/js/components/form-708fa6adaaf05b62977a.js.map",
+  "components/product.js": "/packs/js/components/product-d9f555ffe6f12be81391.js",
+  "components/product.js.map": "/packs/js/components/product-d9f555ffe6f12be81391.js.map",
   "entrypoints": {
     "application": {
       "js": [
@@ -10,15 +18,47 @@
         "/packs/js/application-1d63d03af377eabfc330.js.map"
       ]
     },
-    "hello_react": {
+    "components/app": {
       "js": [
-        "/packs/js/hello_react-643e6cd55781c35dd285.js"
+        "/packs/js/components/app-a839651fe55c33fe99ff.js"
       ],
       "js.map": [
-        "/packs/js/hello_react-643e6cd55781c35dd285.js.map"
+        "/packs/js/components/app-a839651fe55c33fe99ff.js.map"
+      ]
+    },
+    "components/cart": {
+      "js": [
+        "/packs/js/components/cart-4d9c9dbc81457ba1f485.js"
+      ],
+      "js.map": [
+        "/packs/js/components/cart-4d9c9dbc81457ba1f485.js.map"
+      ]
+    },
+    "components/form": {
+      "js": [
+        "/packs/js/components/form-708fa6adaaf05b62977a.js"
+      ],
+      "js.map": [
+        "/packs/js/components/form-708fa6adaaf05b62977a.js.map"
+      ]
+    },
+    "components/product": {
+      "js": [
+        "/packs/js/components/product-d9f555ffe6f12be81391.js"
+      ],
+      "js.map": [
+        "/packs/js/components/product-d9f555ffe6f12be81391.js.map"
+      ]
+    },
+    "hello_react": {
+      "js": [
+        "/packs/js/hello_react-54092a312e57c0195df5.js"
+      ],
+      "js.map": [
+        "/packs/js/hello_react-54092a312e57c0195df5.js.map"
       ]
     }
   },
-  "hello_react.js": "/packs/js/hello_react-643e6cd55781c35dd285.js",
-  "hello_react.js.map": "/packs/js/hello_react-643e6cd55781c35dd285.js.map"
+  "hello_react.js": "/packs/js/hello_react-54092a312e57c0195df5.js",
+  "hello_react.js.map": "/packs/js/hello_react-54092a312e57c0195df5.js.map"
 }

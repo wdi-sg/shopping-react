@@ -22,3 +22,24 @@
   height: 197px;
   overflow: scroll;
 }
+.carousel-caption h1 {
+font-family:    Garamond;
+font-size:      3em;
+color:          red !important;
+}
+/* Description text */
+.carousel-caption p {
+font-family:    Garamond;
+font-size:      2em;
+color:          blue !important;
+}
+/* Button text */
+.carousel-caption .btn {
+font-family:    Garamond;
+font-size:      1em;
+color:          yellow;
+}
+.carousel-inner > .item > img {
+  width:640px;
+  height:360px;
+}

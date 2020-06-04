@@ -11,8 +11,8 @@ class Cart extends React.Component {
 
       // set the default value
       this.state = {
-             cartItem:[""],
-             cartPrice:[],
+             //cartItem:[""],
+             //cartPrice:[],
              products :[],
             clicked: false,
             productSearch:""
@@ -22,7 +22,11 @@ class Cart extends React.Component {
     // our click method
 
 
-
+removeCartItem(event)
+{
+    console.log(event.target.id);
+    this.props.callBackFromDeleteCartItem(event.target.id);
+}
 
 
 
@@ -49,6 +53,7 @@ class Cart extends React.Component {
         <div className = "col-4 border">
             <p>Price: ${this.props.cartPriceArray[index]}
             </p>
+            <button id={index} ref="inputBox" onClick={(event)=>{this.removeCartItem(event)}}>Remove</button>
           </div>
           </React.Fragment>
           );

@@ -3,13 +3,6 @@ import axios from 'axios';
 import Searchform from './Searchform'
 
 class Search extends React.Component{
-    constructor(){
-        super()
-
-        this.state = {
-            products: []
-        }
-    }
 
     getProducts(){
         const url = '/products/index.json';
@@ -19,24 +12,18 @@ class Search extends React.Component{
             console.log(response)
             const data = response.data
 
-            this.setState({ products: data })
+            this.props.searchProduct(data)
 
         }).catch((error)=>{
             console.log("there is an error: " + error);
         })
     }
 
-    render(){
-        console.log(this.state)
+    getSearchInput(){
 
-        const posts = this.state.products.map((product, index)=>{
-          return (
-            <div>
-                <p>{product.name}</p>
-                <img src={product.image_url} />
-            </div>
-          );
-        });
+    }
+
+    render(){
 
         return(
             <div>
@@ -44,7 +31,6 @@ class Search extends React.Component{
                 <button onClick={()=>{ this.getProducts() }}>
                   Click to See all Products
                 </button>
-                {posts}
             </div>
         )
     }

@@ -1,7 +1,10 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
-    # byebug
+    if params.key?("name")
+      @products = Product.where('name LIKE ?', '%' + params[:name] + '%')
+    else
+      @products = Product.all
+    end
 
     respond_to do |format|
       format.json {render :json => @products}
@@ -9,4 +12,5 @@ class ProductsController < ApplicationController
       format.html
     end
   end
+
 end

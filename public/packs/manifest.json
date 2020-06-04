@@ -1,10 +1,12 @@
 {
   "application.js": "/packs/js/application-f720b24022283010ae5a.js",
   "application.js.map": "/packs/js/application-f720b24022283010ae5a.js.map",
-  "components/Search.js": "/packs/js/components/Search-2766acb3f234d5f2571a.js",
-  "components/Search.js.map": "/packs/js/components/Search-2766acb3f234d5f2571a.js.map",
-  "components/Searchform.js": "/packs/js/components/Searchform-08c954abbf2ef5e8793c.js",
-  "components/Searchform.js.map": "/packs/js/components/Searchform-08c954abbf2ef5e8793c.js.map",
+  "components/Products.js": "/packs/js/components/Products-4a941ed6c70a19f45249.js",
+  "components/Products.js.map": "/packs/js/components/Products-4a941ed6c70a19f45249.js.map",
+  "components/Search.js": "/packs/js/components/Search-22b3f4b4b55604bc4167.js",
+  "components/Search.js.map": "/packs/js/components/Search-22b3f4b4b55604bc4167.js.map",
+  "components/Searchform.js": "/packs/js/components/Searchform-3e29e00348d117e8a073.js",
+  "components/Searchform.js.map": "/packs/js/components/Searchform-3e29e00348d117e8a073.js.map",
   "entrypoints": {
     "application": {
       "js": [
@@ -14,31 +16,39 @@
         "/packs/js/application-f720b24022283010ae5a.js.map"
       ]
     },
-    "components/Search": {
+    "components/Products": {
       "js": [
-        "/packs/js/components/Search-2766acb3f234d5f2571a.js"
+        "/packs/js/components/Products-4a941ed6c70a19f45249.js"
       ],
       "js.map": [
-        "/packs/js/components/Search-2766acb3f234d5f2571a.js.map"
+        "/packs/js/components/Products-4a941ed6c70a19f45249.js.map"
+      ]
+    },
+    "components/Search": {
+      "js": [
+        "/packs/js/components/Search-22b3f4b4b55604bc4167.js"
+      ],
+      "js.map": [
+        "/packs/js/components/Search-22b3f4b4b55604bc4167.js.map"
       ]
     },
     "components/Searchform": {
       "js": [
-        "/packs/js/components/Searchform-08c954abbf2ef5e8793c.js"
+        "/packs/js/components/Searchform-3e29e00348d117e8a073.js"
       ],
       "js.map": [
-        "/packs/js/components/Searchform-08c954abbf2ef5e8793c.js.map"
+        "/packs/js/components/Searchform-3e29e00348d117e8a073.js.map"
       ]
     },
     "hello_react": {
       "js": [
-        "/packs/js/hello_react-94b49e3c8d15f37b6cb9.js"
+        "/packs/js/hello_react-64926cee223e8b3d0381.js"
       ],
       "js.map": [
-        "/packs/js/hello_react-94b49e3c8d15f37b6cb9.js.map"
+        "/packs/js/hello_react-64926cee223e8b3d0381.js.map"
       ]
     }
   },
-  "hello_react.js": "/packs/js/hello_react-94b49e3c8d15f37b6cb9.js",
-  "hello_react.js.map": "/packs/js/hello_react-94b49e3c8d15f37b6cb9.js.map"
+  "hello_react.js": "/packs/js/hello_react-64926cee223e8b3d0381.js",
+  "hello_react.js.map": "/packs/js/hello_react-64926cee223e8b3d0381.js.map"
 }

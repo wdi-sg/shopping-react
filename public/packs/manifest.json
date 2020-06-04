@@ -1,64 +1,64 @@
 {
-  "application.js": "/packs/js/application-6e4389d9912d7d3a1674.js",
-  "application.js.map": "/packs/js/application-6e4389d9912d7d3a1674.js.map",
-  "components/app.js": "/packs/js/components/app-a4f1c81b1c975a00d285.js",
-  "components/app.js.map": "/packs/js/components/app-a4f1c81b1c975a00d285.js.map",
-  "components/cart.js": "/packs/js/components/cart-6b56e2502ecec888e523.js",
-  "components/cart.js.map": "/packs/js/components/cart-6b56e2502ecec888e523.js.map",
-  "components/form.js": "/packs/js/components/form-66600ff94c6708437d0f.js",
-  "components/form.js.map": "/packs/js/components/form-66600ff94c6708437d0f.js.map",
-  "components/product.js": "/packs/js/components/product-b7adb96a719084561828.js",
-  "components/product.js.map": "/packs/js/components/product-b7adb96a719084561828.js.map",
+  "application.js": "/packs/js/application-d4cfda159342e3193140.js",
+  "application.js.map": "/packs/js/application-d4cfda159342e3193140.js.map",
+  "components/app.js": "/packs/js/components/app-8edd0043d15420d5c1af.js",
+  "components/app.js.map": "/packs/js/components/app-8edd0043d15420d5c1af.js.map",
+  "components/cart.js": "/packs/js/components/cart-b670534908c37a0a2fc8.js",
+  "components/cart.js.map": "/packs/js/components/cart-b670534908c37a0a2fc8.js.map",
+  "components/form.js": "/packs/js/components/form-44f401f36f0d5f8660d6.js",
+  "components/form.js.map": "/packs/js/components/form-44f401f36f0d5f8660d6.js.map",
+  "components/product.js": "/packs/js/components/product-b4873ec89c334a46fa6f.js",
+  "components/product.js.map": "/packs/js/components/product-b4873ec89c334a46fa6f.js.map",
   "entrypoints": {
     "application": {
       "js": [
-        "/packs/js/application-6e4389d9912d7d3a1674.js"
+        "/packs/js/application-d4cfda159342e3193140.js"
       ],
       "js.map": [
-        "/packs/js/application-6e4389d9912d7d3a1674.js.map"
+        "/packs/js/application-d4cfda159342e3193140.js.map"
       ]
     },
     "components/app": {
       "js": [
-        "/packs/js/components/app-a4f1c81b1c975a00d285.js"
+        "/packs/js/components/app-8edd0043d15420d5c1af.js"
       ],
       "js.map": [
-        "/packs/js/components/app-a4f1c81b1c975a00d285.js.map"
+        "/packs/js/components/app-8edd0043d15420d5c1af.js.map"
       ]
     },
     "components/cart": {
       "js": [
-        "/packs/js/components/cart-6b56e2502ecec888e523.js"
+        "/packs/js/components/cart-b670534908c37a0a2fc8.js"
       ],
       "js.map": [
-        "/packs/js/components/cart-6b56e2502ecec888e523.js.map"
+        "/packs/js/components/cart-b670534908c37a0a2fc8.js.map"
       ]
     },
     "components/form": {
       "js": [
-        "/packs/js/components/form-66600ff94c6708437d0f.js"
+        "/packs/js/components/form-44f401f36f0d5f8660d6.js"
       ],
       "js.map": [
-        "/packs/js/components/form-66600ff94c6708437d0f.js.map"
+        "/packs/js/components/form-44f401f36f0d5f8660d6.js.map"
       ]
     },
     "components/product": {
       "js": [
-        "/packs/js/components/product-b7adb96a719084561828.js"
+        "/packs/js/components/product-b4873ec89c334a46fa6f.js"
       ],
       "js.map": [
-        "/packs/js/components/product-b7adb96a719084561828.js.map"
+        "/packs/js/components/product-b4873ec89c334a46fa6f.js.map"
       ]
     },
     "hello_react": {
       "js": [
-        "/packs/js/hello_react-dc7e2c87c2a1bfea9d6f.js"
+        "/packs/js/hello_react-ed1ccb70682ab5c7929d.js"
       ],
       "js.map": [
-        "/packs/js/hello_react-dc7e2c87c2a1bfea9d6f.js.map"
+        "/packs/js/hello_react-ed1ccb70682ab5c7929d.js.map"
       ]
     }
   },
-  "hello_react.js": "/packs/js/hello_react-dc7e2c87c2a1bfea9d6f.js",
-  "hello_react.js.map": "/packs/js/hello_react-dc7e2c87c2a1bfea9d6f.js.map"
+  "hello_react.js": "/packs/js/hello_react-ed1ccb70682ab5c7929d.js",
+  "hello_react.js.map": "/packs/js/hello_react-ed1ccb70682ab5c7929d.js.map"
 }

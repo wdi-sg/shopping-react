@@ -50,3 +50,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "ffaker", "~> 2.15"
+gem 'bootstrap', '~> 4.5.0'
+gem 'jquery-rails'

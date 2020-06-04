@@ -43,6 +43,7 @@ function App(){
 
     return(
         <div>
+            <div className="container"></div>
             <h2>HELL YEAH SHOPPING!!!!</h2>
             <SearchForm inputTracker={searchInputTracker} searchFunction={searchProducts}/>
             <Results items={results}/>

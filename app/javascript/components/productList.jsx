@@ -12,7 +12,7 @@ class ProductList extends React.Component {
     };
   }
 
-  handleClick(){
+  indexClick(){
     console.log("clicked")
     const url = '/products.json';
     const runWhenDone = (response) => {
@@ -23,20 +23,37 @@ class ProductList extends React.Component {
     const whenError = (error) => {
         console.log("error", error)
     }
-
     axios.get(url).then(runWhenDone).catch(whenError)
+  }
+
+  showClick(){
+    console.log("show clicked")
+    // const url = '/products.json';
+    // const runWhenDone = (response) => {
+    //   const data = response.data
+    //   this.setState({ products: data })
+    // }
+
+    // const whenError = (error) => {
+    //     console.log("error", error)
+    // }
+    // axios.get(url).then(runWhenDone).catch(whenError)
   }
 
   render() {
 
-    const products = this.state.products.map((product)=>{
-        return (<div className="product">
+    const products = this.state.products.map((product, index)=>{
+        return (<div className="product" key={index}>
           <div className="product-image">
             <img src={product.image_url} />
           </div>
           <div className="product-info">
             <h4>{product.name}</h4>
+            <p>{product.price}</p>
             <p>{product.description}</p>
+            <button onClick={()=>{
+                this.showClick();
+            }}>Show</button>
           </div>
         </div>);
     });
@@ -46,10 +63,8 @@ class ProductList extends React.Component {
         <p>product list:</p>
         <p>
             <button onClick={()=>{
-                this.handleClick();
-            }}>
-                get list of products from db
-            </button>
+                this.indexClick();
+            }}>Index</button>
         </p>
         <div>
             {products}

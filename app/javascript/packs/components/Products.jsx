@@ -12,9 +12,8 @@ class Products extends React.Component{
 
         axios.get(url, payload)
         .then((response) => {
-            console.log(response)
             const data = response.data
-            console.log(data)
+            this.props.showProduct(data);
 
         }).catch((error)=>{
             console.log("there is an error: " + error);

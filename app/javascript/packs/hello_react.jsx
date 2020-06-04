@@ -7,6 +7,7 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import Search from './components/Search'
 import Products from './components/Products'
+import Productdisplay from './components/Productdisplay'
 
 class App extends React.Component{
   constructor(){
@@ -14,7 +15,7 @@ class App extends React.Component{
 
     this.state = {
         products: [],
-        showProduct: []
+        singleProduct: []
     }
 
     this.searchProduct = (products) => {
@@ -28,14 +29,13 @@ class App extends React.Component{
 
         this.setState({
             products: [...reset],
-            showProduct: data
+            singleProduct: data
         })
     }
   }
 
 
   render(){
-    console.log(this.state)
     return(
       <div className="container">
           <div className="row">
@@ -44,7 +44,8 @@ class App extends React.Component{
                 <Search searchProduct={this.searchProduct}/>
               </div>
               <div className="col-md-4">
-                <Products products={this.state.products} showProduct={this.state.showProduct}/>
+                <Products products={this.state.products} showProduct={this.showProduct}/>
+                <Productdisplay product={this.state.singleProduct}/>
               </div>
           </div>
       </div>

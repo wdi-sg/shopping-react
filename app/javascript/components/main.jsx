@@ -15,10 +15,15 @@ class Main extends React.Component {
 
     addCart(){
         // this.setState({cart:event.target.value})
-        var item = event.target.value;
-        this.state.cart.push(item);
+        var price = event.target.price
+        var item = {
+            id:event.target.id,
+            name: event.target.name,
+        }
+        console.log("at addcart", price)
+        console.log(item)
+        this.state.cart.push(item)
         this.setState({cart:this.state.cart})
-        console.log(event.target.value);
     }
 
     render(){

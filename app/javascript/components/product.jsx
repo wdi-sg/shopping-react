@@ -13,9 +13,6 @@ class Product extends React.Component {
 
     handleClick(){
 
-      console.log("hey wowwww")
-
-
       const url = '/products.json';
 
       const runWhenDone = (response) => {
@@ -38,15 +35,27 @@ class Product extends React.Component {
       axios.get(url).then(runWhenDone).catch(whenError)
     }
 
+    addToCartButton(event){
+        console.log(event.target.id);
+        console.log(event.target.name);
+        var holder = this.props.name
+        console.log("clicked add to cart button product clicked is: ", holder)
+    }
+
     render(){
 
         const products = this.state.products.map((product, index)=>{
             return (<div className="product">
-                <li key={index}>
+                <li key={index}
+                    id={product.id}
+                    name={product.name}
+                    description={product.description}
+                    price={product.price}
+                    >
                 <img src={product.url}/>
                 <p>Product Name: {product.name}</p>
                 <p>Product description: {product.description}</p>
-                <p>Product Price: ${product.price}</p> <button onClick={()=>{this.props.addCart()}}>add to cart</button>
+                <p>Product Price: ${product.price}</p> <button onClick={(event)=>{this.props.addCart(event)}} id={product.id} name={product.name} price={product.price}>add to cart</button>
                 </li>
             </div>);
         });

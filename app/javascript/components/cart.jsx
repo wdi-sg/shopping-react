@@ -3,12 +3,13 @@ import React from 'react';
 class Cart extends React.Component {
     render(){
         const cartItems = this.props.cart.map((cartItem)=>{
-            return (<div>xx{cartItem}xx</div>)
+            return (<div class="product">
+                Product: {cartItem.name}
+                </div>)
         })
         return (<div className="col">
-            <p>This is where cart is showing
+                This is where cart is showing
                 {cartItems}
-            </p>
         </div>);
     }
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 
-function Search(props) {
+function SearchList(props) {
 
     const [product, setProduct] = useState(null)
 
@@ -23,4 +23,4 @@ function Search(props) {
     )
 }
 
-export default Search;
+export default SearchList;

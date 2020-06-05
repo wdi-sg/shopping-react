@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
 
-const SearchList = (props) => {
+function SearchedItems(props) {
+
 
 
     return (
@@ -11,11 +12,10 @@ const SearchList = (props) => {
                 <p>{props.product.description}</p>
                 <button onClick={() => {
                     props.onChecked(props.product.id);}}>View Product</button>
-
                     <hr />
             </div>
 
     )
 }
 
-export default SearchList;
+export default SearchedItems;

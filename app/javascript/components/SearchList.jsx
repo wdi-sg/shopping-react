@@ -9,6 +9,7 @@ const SearchList = (props) => {
             <div>
                 <h3>{props.product.name}</h3>
                 <p>{props.product.description}</p>
+                <span>{props.product.id}</span>
                 <button onClick={() => {
                     props.onChecked(props.product.id);}}>View Product</button>
                 <button onClick={() => {

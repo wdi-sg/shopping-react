@@ -57,17 +57,22 @@ const App = () => {
         })
 
 
-        if(filteredProducts.length > 0) {
-            setSearchedProducts(filteredProducts);
-        }
-        setSearchStatus(!displaySearchStatus);
-
-        setProducts(searchedProducts);
+        // if(filteredProducts.length > 0) {
+        //     setSearchedProducts(filteredProducts);
+        // }
+        // setSearchStatus(!displaySearchStatus);
+        console.log('############');
+        console.log(filteredProducts)
+        console.log('############');
+        setProducts(filteredProducts);
     }
 
     const addToCartClickHandler = (id) => {
+        console.log(id);
+        console.log(cartItems);
         const index = products.findIndex(p => {
             return p.id === id;
+
         })
 
         setCartItems(prevItems => {
@@ -99,24 +104,24 @@ const App = () => {
 
     function statusToggle() {
         setViewStatus(!viewStatus);
-
     }
 
     function cartPageToggle() {
         setCartPage(false)
     }
-    function removeItemFromCart (id) {
-        let filtered = cartItems;
-        // cartItems.slice(0, id).concat(cartItems.slice(id + 1));
-        // setCartItems(filtered);
-        const index = filtered.indexOf(filtered[id])
-        if (index > -1) { filtered.splice(index, 1)}
 
-        setCartItems(filtered);
-        console.log(cartItems);
-        console.log(id);
-        console.log('TRYING TO REMOVE ITEM FROM CART');
-    }
+    function removeItemFromCart (id) {
+            console.log(id);
+        // setCartItems((prevItems) => {
+        //    return prevItems.filter((item, index) => {
+        //         return item.id !== id;
+        //     })
+        setCartItems(cartItems.filter((item, index) => {
+                return item.id !== id;
+       })
+    )}
+
+
 
        const displayAllProducts = products.map((product, index) =>
             <SearchList
@@ -156,9 +161,8 @@ const App = () => {
       <div>
 
           <h1>Shopping React App</h1>
-           {cartPage === true ? <Cart items={cartItems} onToggle={cartPageToggle} deleteClick={removeItemFromCart}/> : null}
-           {cartPage === true ? null : displayButtons}
-            {cartPage === true ? null: displayProducts}
+           {cartPage === true && <Cart items={cartItems} onToggle={cartPageToggle} onDelete={removeItemFromCart}/>}
+           {!cartPage === true && <> {displayButtons} {displayProducts}</>}
 
         </div>
         )

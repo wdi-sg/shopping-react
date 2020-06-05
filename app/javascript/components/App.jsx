@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SearchList from './SearchList';
 import Product from './Product';
 
 
 
-function App() {
+const App = () => {
 
         const [products, setProducts] = useState([]);
         const [showProducts, setShowProducts] = useState(false);
         const [viewStatus, setViewStatus] = useState(false);
         const [showProduct, setShowProduct] = useState({});
-        const [findProduct, setFindProduct] = useState("");
-        const [productFound, setProductFound] = useState(false);
-        const [noResult, setResult] = useState("");
-        const [someText, setText] = useState('some text');
 
-   function getProducts() {
 
+
+console.log('WHY IS THIS NO RUNNING?');
+
+    useEffect(() => {
+        console.log('IS MY MOUNT RUNNINNG?')
         const url = '/products.json';
 
         const runWhenDone = (res) => {
@@ -32,8 +32,8 @@ function App() {
         }
 
         axios.get(url).then(runWhenDone).catch(whenError);
+   }, [])
 
-    }
 
     function viewHandler(id) {
 
@@ -53,10 +53,9 @@ function App() {
     function searchHandler(event) {
         const itemSelection = event.target.value;
         setFindProduct(itemSelection);
-
     }
 
-    const displayStatus = productFound ? {someText} : 'Not found';
+
 
     function searchClick() {
         console.log(findProduct + ' PRODUCT SEARCH');
@@ -77,42 +76,40 @@ function App() {
         })
     }
 
-    const displaySearchList = viewStatus === true ?
+
+   const displayAllProducts = products.map((product, index) =>
+        <SearchList
+            id={index}
+            key={index}
+            product={product}
+            onChecked={viewHandler}
+            />
+)
+
+
+const displayProducts = viewStatus === true ?
             <Product
                     img={showProduct.image_url}
                     name={showProduct.name}
                     price={showProduct.price}
                     content={showProduct.description}
                     onToggle={statusToggle}
-                />
-                        :
-            <ul>
-            {   showProducts === true ?
-                    products.map((product, index) =>
-                    <SearchList
-                        id={index}
-                        key={index}
-                        product={product}
-                        onChecked={viewHandler}
-                    />
-                    ) : null
-                    }
-                </ul>
+                /> : displayAllProducts
+
 
     const displayButtons = viewStatus === true ?
                     null :
                     <div>
-                        <button onClick={getProducts}>Display Products List</button>
                         <h1 style={{textDecoration: 'underline'}}>Products List</h1>
-                        <input name="itemSearch" onChange={searchHandler}type="text" placeholder="Search for an item" value={findProduct} />
-                        <button onClick={searchClick}>Search</button>
+                        <input name="itemSearch" onChange={searchHandler}type="text" placeholder="Search for an item" />
+                        <button>Search</button>
                     </div>
 
     return (
       <div>
           <h1>Shopping React App</h1>
             {displayButtons}
-            {displaySearchList}
+            {displayProducts}
         </div>
         )
 }

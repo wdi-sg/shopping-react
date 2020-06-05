@@ -11,7 +11,8 @@ const SearchList = (props) => {
                 <p>{props.product.description}</p>
                 <button onClick={() => {
                     props.onChecked(props.product.id);}}>View Product</button>
-
+                <button onClick={() => {
+                    props.clickHandler(props.product.id);}}>Add to Cart</button>
                     <hr />
             </div>
 

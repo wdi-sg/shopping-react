@@ -18,6 +18,7 @@ const App = () => {
         const [displaySearchStatus, setSearchStatus] = useState(false);
         const [cartItems, setCartItems] = useState([]);
         const [cartStatus, setCartStatus] = useState(false);
+        const [cartPage, setCartPage] = useState(false)
 
 
 
@@ -69,8 +70,15 @@ const App = () => {
             return p.id === id;
         })
 
-        setCartItems(products[index])
-        setCartStatus(true);
+        setCartItems(prevItems => {
+            return [...prevItems, products[index]]
+        })
+
+
+            setCartStatus(true);
+            setCartPage(!cartPage);
+
+
         console.log('CARTTTTTTTT ITEMS @@@@@@@@@@@@@@')
         console.log(cartItems);
         console.log('CARTTTTTTTT ITEMS @@@@@@@@@@@@@@')
@@ -91,6 +99,11 @@ const App = () => {
 
     function statusToggle() {
         setViewStatus(!viewStatus);
+
+    }
+
+    function cartPageToggle() {
+        setCartPage(false)
     }
 
        const displayAllProducts = products.map((product, index) =>
@@ -99,7 +112,7 @@ const App = () => {
                 key={index}
                 product={product}
                 onChecked={viewHandler}
-
+                clickHandler={addToCartClickHandler}
                 />
     )
 
@@ -111,7 +124,7 @@ const App = () => {
                     price={showProduct.price}
                     content={showProduct.description}
                     onToggle={statusToggle}
-                    clickHandler={addToCartClickHandler}
+
                 /> : displayAllProducts
 
 
@@ -125,13 +138,15 @@ const App = () => {
                         <button onClick={searchButton}>Search</button>
                     </div>
 
+
+
     return (
       <div>
 
           <h1>Shopping React App</h1>
-            {cartStatus ? <Cart items={cartItems} /> : null }
-            {displayButtons}
-            {displayProducts}
+           {cartPage === true ? <Cart items={cartItems} onToggle={cartPageToggle} /> : null}
+           { cartPage === true ? null : displayButtons}
+            {cartPage === true ? null: displayProducts}
 
         </div>
         )

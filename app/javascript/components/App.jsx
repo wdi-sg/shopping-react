@@ -23,6 +23,7 @@ const App = () => {
 
 
 
+
     useEffect(() => {
 
         const url = '/products.json';
@@ -54,14 +55,13 @@ const App = () => {
             // console.log(productInputValue);
             return product.name.toLowerCase().includes(productInputValue.toLowerCase());
         })
-        console.log(filteredProducts);
+
 
         if(filteredProducts.length > 0) {
             setSearchedProducts(filteredProducts);
         }
         setSearchStatus(!displaySearchStatus);
-        // console.log(displaySearchStatus)
-        // console.log('STATUSSSS')
+
         setProducts(searchedProducts);
     }
 
@@ -79,9 +79,9 @@ const App = () => {
             setCartPage(!cartPage);
 
 
-        console.log('CARTTTTTTTT ITEMS @@@@@@@@@@@@@@')
-        console.log(cartItems);
-        console.log('CARTTTTTTTT ITEMS @@@@@@@@@@@@@@')
+        // console.log('CARTTTTTTTT ITEMS @@@@@@@@@@@@@@')
+        // console.log(cartItems);
+        // console.log('CARTTTTTTTT ITEMS @@@@@@@@@@@@@@')
     }
 
 
@@ -104,6 +104,18 @@ const App = () => {
 
     function cartPageToggle() {
         setCartPage(false)
+    }
+    function removeItemFromCart (id) {
+        let filtered = cartItems;
+        // cartItems.slice(0, id).concat(cartItems.slice(id + 1));
+        // setCartItems(filtered);
+        const index = filtered.indexOf(filtered[id])
+        if (index > -1) { filtered.splice(index, 1)}
+
+        setCartItems(filtered);
+        console.log(cartItems);
+        console.log(id);
+        console.log('TRYING TO REMOVE ITEM FROM CART');
     }
 
        const displayAllProducts = products.map((product, index) =>
@@ -144,8 +156,8 @@ const App = () => {
       <div>
 
           <h1>Shopping React App</h1>
-           {cartPage === true ? <Cart items={cartItems} onToggle={cartPageToggle} /> : null}
-           { cartPage === true ? null : displayButtons}
+           {cartPage === true ? <Cart items={cartItems} onToggle={cartPageToggle} deleteClick={removeItemFromCart}/> : null}
+           {cartPage === true ? null : displayButtons}
             {cartPage === true ? null: displayProducts}
 
         </div>

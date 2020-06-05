@@ -10,6 +10,7 @@ function ProductListing(props){
     <p>{props.product.description}</p>
     <p>{props.product.price}</p>
 
+    <button onClick={props.addToCart} className="btn btn-lg btn-dark">Add To Cart</button>
         </div>
     )
 }

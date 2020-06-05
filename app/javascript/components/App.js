@@ -3,13 +3,28 @@ import axios from 'axios';
 import SearchForm from './SearchForm'
 import Results from './Results'
 import ProductListing from './ProductListing'
-
+import Cart from './Cart'
 function App(){
 
     const [results, setResults] = useState([])
     const [searchInput, setSearchInput] = useState(null)
 
     const [selectedProduct, setSelectedProduct] = useState(null)
+    const [cart, updateCart] = useState({
+        items: [],
+        subtotal: function(){
+            return this.items.reduce((accumulator, currentVal)=>{
+                accumulator.price + currentVal.price
+            })
+        },
+        shipping: 7,
+        gst: function(){
+            return this.subtotal*0.17
+        },
+        total: function(){
+            return this.subtotal+this.shipping+this.gst
+        }
+    })
 
     let searchProducts = ()=>{
 
@@ -54,6 +69,17 @@ function App(){
         setSearchInput(e.target.value)
     }
 
+    let addToCartBtn = ()=> {
+        console.log(selectedProduct);
+        console.log(`clicked add to cart`)
+
+        updateCart(cart => {
+            cart.items.push(selectedProduct);
+            console.log(cart)
+            return cart;           
+        })
+    }
+
     return(
         <div>
             <div className="container-fluid">
@@ -72,14 +98,13 @@ function App(){
 
                 <div className="col">
 
-                {selectedProduct ? <ProductListing product={selectedProduct}/> : 'No item selected'}
+                {selectedProduct ? <ProductListing addToCart={addToCartBtn} product={selectedProduct}/> : 'No item selected'}
 
                 </div>
 
                 <div className="col">
 
-                <SearchForm inputTracker={searchInputTracker} searchFunction={searchProducts}/>
-
+                <Cart cart={cart} productResultClick={productResultClick}/>
                 </div>
 
 

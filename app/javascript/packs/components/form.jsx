@@ -1,127 +1,117 @@
-
-
 import React from 'react';
 import axios from 'axios';
 
 class Form extends React.Component {
-        constructor(){
-      super();
+    constructor() {
+        super();
 
 
 
-      // set the default value
-      this.state = {
-             products:[],
+        // set the default value
+        this.state = {
+            products: [],
             clicked: false,
-            productSearch:""
-      };
+            productSearch: ""
+        };
     }
 
     // our click method
-    changeHandler(event)
-        {
-            this.setState({productSearch:event.target.value});
-            //console.log(this.props)
+    changeHandler(event) {
+        this.setState({ productSearch: event.target.value });
+        //console.log(this.props)
 
-            this.props.callBackFromForm(event);
+        this.props.callBackFromForm(event);
 
-            //console.log("change", event.target.value);
-        }
-    getSearchPosts()
-        {
+        //console.log("change", event.target.value);
+    }
+    getSearchPosts() {
 
 
 
-          const url = '/products.json';
-          this.setState({clicked: !this.state.clicked});
+        const url = '/products.json';
+        this.setState({ clicked: !this.state.clicked });
 
-            axios.get(url, {params: {foo:"searchName", productName:this.state.productSearch}})
+        axios.get(url, { params: { foo: "searchName", productName: this.state.productSearch } })
             .then((response) => {
                 console.log("something")
-              const data = response.data
+                const data = response.data
 
-              this.setState({ products: data })
-               this.props.productArray(data)
-            }).catch((error)=>{
-              console.log(error);
+                this.setState({ products: data })
+                this.props.productArray(data)
+            }).catch((error) => {
+                console.log(error);
             })
-        }
+    }
 
-    getPosts()
-        {
+    getPosts() {
 
-          const url = '/products.json';
-          this.setState({clicked: !this.state.clicked});
-          if(this.state.clicked)
-          {
-          axios.get(url, {params: {foo:"all"}})
-            .then((response) => {
-                console.log("something")
-              const data = response.data
-              //console.log(typeof data)
-              this.setState({ products: data })
-              this.props.productArray(data)
-            }).catch((error)=>{
-              console.log(error);
-            })
+        const url = '/products.json';
+        this.setState({ clicked: !this.state.clicked });
+        if (this.state.clicked) {
+            axios.get(url, { params: { foo: "all" } })
+                .then((response) => {
+                    console.log("something")
+                    const data = response.data
+                    //console.log(typeof data)
+                    this.setState({ products: data })
+                    this.props.productArray(data)
+                }).catch((error) => {
+                    console.log(error);
+                })
 
             console.log(this.state.clicked)
-            }
-            else
-            {
-                console.log("Entry")
-                this.setState({ products: [] })
-            }
+        } else {
+            console.log("Entry")
+            this.setState({ products: [] })
         }
+    }
 
-    getOrderedByNamePosts()
-        {
+    getOrderedByNamePosts() {
 
-          const url = '/products.json';
-          this.setState({clicked: !this.state.clicked});
+        const url = '/products.json';
+        this.setState({ clicked: !this.state.clicked });
 
-          axios.get(url, {params: {foo:"name", productName:this.state.productSearch}})
+        axios.get(url, { params: { foo: "name", productName: this.state.productSearch } })
             .then((response) => {
                 //console.log("something")
-              const data = response.data
+                const data = response.data
 
-              this.setState({ products: data })
-              //console.log(data)
-              this.props.productArray(data)
+                this.setState({ products: data })
+                //console.log(data)
+                this.props.productArray(data)
 
-            }).catch((error)=>{
-              console.log(error);
+            }).catch((error) => {
+                console.log(error);
             })
 
 
-        }
+    }
 
-    getOrderedByPricePosts()
-        {
+    getOrderedByPricePosts() {
 
-          const url = '/products.json';
-          this.setState({clicked: !this.state.clicked});
+        const url = '/products.json';
+        this.setState({ clicked: !this.state.clicked });
 
-          axios.get(url, {params: {foo:"price", productName:this.state.productSearch}})
+        axios.get(url, { params: { foo: "price", productName: this.state.productSearch } })
             .then((response) => {
                 console.log("something")
-              const data = response.data
+                const data = response.data
 
-              this.setState({ products: data })
-              this.props.productArray(data)
+                this.setState({ products: data })
+                this.props.productArray(data)
 
-            }).catch((error)=>{
-              console.log(error);
+            }).catch((error) => {
+                console.log(error);
             })
 
 
-        }
+    }
 
-  render() {
+    render() {
 
 
-    return (
-    <div className = "row">
+        return (
+            <div className = "row">
       <div className = "col-12  border  ">
         <p>
 
@@ -155,8 +145,8 @@ class Form extends React.Component {
 
       </div>
     </div>
-    );
-  }
+        );
+    }
 }
 
 export default Form;

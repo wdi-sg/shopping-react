@@ -1,51 +1,48 @@
-
-
 import React from 'react';
 import axios from 'axios';
 
 class Cart extends React.Component {
-        constructor(){
-      super();
+    constructor() {
+        super();
 
 
 
-      // set the default value
-      this.state = {
-             //cartItem:[""],
-             //cartPrice:[],
-             products :[],
+        // set the default value
+        this.state = {
+            //cartItem:[""],
+            //cartPrice:[],
+            products: [],
             clicked: false,
-            productSearch:""
-      };
+            productSearch: ""
+        };
     }
 
     // our click method
 
 
-removeCartItem(event)
-{
-    console.log(event.target.id);
-    this.props.callBackFromDeleteCartItem(event.target.id);
-}
+    removeCartItem(event) {
+        console.log(event.target.id);
+        this.props.callBackFromDeleteCartItem(event.target.id);
+    }
 
 
 
 
 
 
-  render() {
+    render() {
         let john = []
 
-            console.log("I am in");
+        console.log("I am in");
 
 
 
 
         console.log(john)
-        const products = this.props.cartProductArray.map((product, index)=>{
-          console.log(product);
-          return (
-            <React.Fragment key={index}>
+        const products = this.props.cartProductArray.map((product, index) => {
+            console.log(product);
+            return (
+                <React.Fragment key={index}>
             <div className = "col-8 border">
             <p className = "sampletext">Item: {product}
             </p>
@@ -56,10 +53,10 @@ removeCartItem(event)
             <button id={index} ref="inputBox" onClick={(event)=>{this.removeCartItem(event)}}>Remove</button>
           </div>
           </React.Fragment>
-          );
+            );
         });
-    return (
-    <div className = "row">
+        return (
+            <div className = "row">
 
             {products}
         <div className = "col-8">
@@ -90,8 +87,8 @@ removeCartItem(event)
 
         </div>
     </div>
-    );
-  }
+        );
+    }
 }
 
 export default Cart;

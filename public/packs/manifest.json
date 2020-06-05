@@ -1,12 +1,12 @@
 {
   "application.js": "/packs/js/application-1d63d03af377eabfc330.js",
   "application.js.map": "/packs/js/application-1d63d03af377eabfc330.js.map",
-  "components/app.js": "/packs/js/components/app-545040c48ca5de69207f.js",
-  "components/app.js.map": "/packs/js/components/app-545040c48ca5de69207f.js.map",
-  "components/cart.js": "/packs/js/components/cart-e0679d8bc0b2d5927ada.js",
-  "components/cart.js.map": "/packs/js/components/cart-e0679d8bc0b2d5927ada.js.map",
-  "components/form.js": "/packs/js/components/form-708fa6adaaf05b62977a.js",
-  "components/form.js.map": "/packs/js/components/form-708fa6adaaf05b62977a.js.map",
+  "components/app.js": "/packs/js/components/app-9bf2c659bba3f27224a4.js",
+  "components/app.js.map": "/packs/js/components/app-9bf2c659bba3f27224a4.js.map",
+  "components/cart.js": "/packs/js/components/cart-9a0d20d7c5925906eef7.js",
+  "components/cart.js.map": "/packs/js/components/cart-9a0d20d7c5925906eef7.js.map",
+  "components/form.js": "/packs/js/components/form-0c69403b2a5046e07811.js",
+  "components/form.js.map": "/packs/js/components/form-0c69403b2a5046e07811.js.map",
   "components/product.js": "/packs/js/components/product-7407f8362b2cd7aab752.js",
   "components/product.js.map": "/packs/js/components/product-7407f8362b2cd7aab752.js.map",
   "entrypoints": {
@@ -20,26 +20,26 @@
     },
     "components/app": {
       "js": [
-        "/packs/js/components/app-545040c48ca5de69207f.js"
+        "/packs/js/components/app-9bf2c659bba3f27224a4.js"
       ],
       "js.map": [
-        "/packs/js/components/app-545040c48ca5de69207f.js.map"
+        "/packs/js/components/app-9bf2c659bba3f27224a4.js.map"
       ]
     },
     "components/cart": {
       "js": [
-        "/packs/js/components/cart-e0679d8bc0b2d5927ada.js"
+        "/packs/js/components/cart-9a0d20d7c5925906eef7.js"
       ],
       "js.map": [
-        "/packs/js/components/cart-e0679d8bc0b2d5927ada.js.map"
+        "/packs/js/components/cart-9a0d20d7c5925906eef7.js.map"
       ]
     },
     "components/form": {
       "js": [
-        "/packs/js/components/form-708fa6adaaf05b62977a.js"
+        "/packs/js/components/form-0c69403b2a5046e07811.js"
       ],
       "js.map": [
-        "/packs/js/components/form-708fa6adaaf05b62977a.js.map"
+        "/packs/js/components/form-0c69403b2a5046e07811.js.map"
       ]
     },
     "components/product": {
@@ -52,13 +52,13 @@
     },
     "hello_react": {
       "js": [
-        "/packs/js/hello_react-a3600e546da6470800b8.js"
+        "/packs/js/hello_react-52423e87494cd4d481cd.js"
       ],
       "js.map": [
-        "/packs/js/hello_react-a3600e546da6470800b8.js.map"
+        "/packs/js/hello_react-52423e87494cd4d481cd.js.map"
       ]
     }
   },
-  "hello_react.js": "/packs/js/hello_react-a3600e546da6470800b8.js",
-  "hello_react.js.map": "/packs/js/hello_react-a3600e546da6470800b8.js.map"
+  "hello_react.js": "/packs/js/hello_react-52423e87494cd4d481cd.js",
+  "hello_react.js.map": "/packs/js/hello_react-52423e87494cd4d481cd.js.map"
 }

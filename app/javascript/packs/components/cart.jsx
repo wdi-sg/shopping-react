@@ -47,7 +47,7 @@ removeCartItem(event)
           return (
             <React.Fragment key={index}>
             <div className = "col-8 border">
-            <p>Item: {product}
+            <p className = "sampletext">Item: {product}
             </p>
           </div>
         <div className = "col-4 border">

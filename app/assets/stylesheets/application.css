@@ -43,3 +43,34 @@ color:          yellow;
   width:640px;
   height:360px;
 }
+@keyframes example{
+	  0%  {color: red;}
+  25%  {color: yellow;}
+  50%  {color: blue;}
+  100% {color: green;}
+}
+
+.sampletext{
+		font-size: 20px;
+	  animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes run {
+    0% { left: 0;}
+    50%{ left : 100%;
+    	background-color: red;
+    	  transform: scaleX(-1);
+
+    }
+    100%{ left: -200px;}
+}
+
+.planefly{
+	width:5%;
+	position: relative;
+		  animation-name: run;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}

@@ -88,7 +88,7 @@ class Product extends React.Component {
                 alt="First slide"
                 />
             <p className="test">{product.id} {product.name}</p>
-            <p className="test">Price: {product.price}</p>
+            <p className="test">Price: ${product.price}</p>
             <button id={product.id} ref="inputBox" onClick={(event)=>{this.addCart(event)}}>Add</button>
 
             </Carousel.Item>
@@ -97,11 +97,28 @@ class Product extends React.Component {
 
           );
         });
+                const listProducts = john.map((product, index)=>{
+         //console.log(product);
+          return (
 
+
+            <div className="col-4">
+
+            <p className="test">{product.id} {product.name}</p>
+            <p className="test">Price: ${product.price}</p>
+            <button id={product.id} ref="inputBox" onClick={(event)=>{this.addCart(event)}}>Add</button>
+
+            </div>
+
+
+
+          );
+        });
 
 
     return (
-    <div className = "row">
+    <div>
+    <div className = "row border">
         <div className = "col-12 text-center">
             <Carousel>
                 {products}
@@ -113,6 +130,13 @@ class Product extends React.Component {
 
 
 
+    </div>
+    <div className = "row border">
+        <div className = "col-12">
+        <p>This is more to see ordered list</p>
+        </div>
+        {listProducts};
+    </div>
     </div>
     );
   }

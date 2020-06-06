@@ -4,7 +4,8 @@ class OnepageController < ApplicationController
   end
 
   def product
-    @cureent_page = "product"
+    @current_page = "product"
+    @product = Product.find(params[:id])
     render 'index'
   end
 end

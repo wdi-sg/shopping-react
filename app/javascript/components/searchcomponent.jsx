@@ -30,8 +30,11 @@ export default class Searchcomponent extends React.Component {
   render(){
 
     const products = this.state.products.map((filteredProduct, index)=>{
+      let dbIndex = index + 1;
+      let link = "/onepage/" + String(dbIndex);
       return (<div>
         <p>{filteredProduct.name}</p>
+        <a href={link}>Show</a>
       </div>);
     });
     return(

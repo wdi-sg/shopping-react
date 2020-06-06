@@ -1,5 +1,6 @@
 import React,{ Component }  from 'react';
 import axios from 'axios';
+import TextField from '@material-ui/core/TextField';
 
 class SearchInput extends React.Component {
 
@@ -16,14 +17,12 @@ class SearchInput extends React.Component {
 
   handleChange(event) {
     this.setState({value: event.target.value});
-    console.log(event.target.value)
     //this.props.searchInput(event.target.value)
   }
 
   changeHandler(event) {
-    console.log("change", event.target.value);
     let currentValue = event.target.value
-    this.props.searchInput(currentValue)
+    this.props.searchInput(event.target.value)
     this.setState({
       inputvalue: currentValue,
     })
@@ -52,15 +51,8 @@ class SearchInput extends React.Component {
     return (
       <div>
         <div>
-
-          <input id="inputBtn" value={this.state.temp} onChange={(event)=>{this.changeHandler(event);}}/>
+          <TextField id="standard-search" label="Search for products" type="search" value={this.state.temp} onChange={(event)=>{this.changeHandler(event);}}/>
         </div>
-          <label>
-            Product:
-            <select value={this.state.value} onChange={this.handleChange}>
-              {List}
-            </select>
-          </label>
       </div>
       );
   }

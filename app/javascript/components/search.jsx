@@ -1,28 +1,31 @@
 import React from 'react';
 import SearchInput from './search/searchinput';
 import SearchResult from './search/searchresult';
+import Divider from '@material-ui/core/Divider';
+
 
 class Search extends React.Component {
 
   liftInput(v){
-    this.refs.childInputvalue.putInputValue(v);
+    this.refs.putInputvalue.putInputValue(v);
   }
 
-  liftResult(v){
-    console.log(v)
+  liftClickResult(v){
+    this.props.liftClickResult(v)
   }
 
 
   render() {
     return (
       <div>
-        <h2>Search</h2>
+        <h2 className='border-b'>Search field</h2>
         <SearchInput
           searchInput={(v) => {this.liftInput(v)}}
         />
+        <br/>
         <SearchResult
-          ref='childInputvalue'
-          liftResult={(v) => {this.liftResult(v)}}
+          ref='putInputvalue'
+          liftClickResult={(v) => {this.liftClickResult(v)}}
         />
       </div>
     );

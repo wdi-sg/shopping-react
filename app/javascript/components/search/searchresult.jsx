@@ -1,7 +1,13 @@
 import React from 'react';
 import axios from 'axios';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import ListItem from '@material-ui/core/ListItem';
+import Divider from '@material-ui/core/Divider';
+
 
 class SearchResult extends React.Component {
+
   constructor() {
     super()
     this.state = {
@@ -21,61 +27,68 @@ class SearchResult extends React.Component {
       })
   }
 
-  clickHandler() {
-    this.props.liftResult(event.target.value)
+  clickHandler(event) {
+    console.log(event.currentTarget.getAttribute('value'))
+    this.props.liftClickResult(event.currentTarget.getAttribute('value'))
   }
 
   putInputValue(v) {
-    console.log(this.state.data)
     let matchtf = [];
-    if (v.length > 1) {
-      for(let i=0; i<this.state.data.length;i++) {
+
+    //loop to check matching names with include function
+    for(let i=0; i<this.state.data.length; i++) {
+      if (v.length > 1) {
         let str = this.state.data[i].name;
         let name = str.toLowerCase();
-        var n = name.includes(v);
+        var n = name.includes(v.toLowerCase());
         if (n == true) {
           matchtf.push('true')
         } else {
           matchtf.push('false')
         }
       }
-      this.setState ({
+    }
+
+    //all match will be true, non match be false
+    this.setState ({
         match: matchtf
       })
-    }
   }
 
   render() {
 
-    console.log(this.state.match)
     let display = [];
-
-    console.log(this.state.match[0])
-    console.log(this.state.match.length)
+    let counter = 0;
+    let resultsCount = '';
 
     for(let i=0; i<this.state.match.length; i++) {
       if(this.state.match[i] == 'true') {
         display.push(this.state.data[i])
+        counter ++;
       }
     }
-
-    const productdisplay = display.map((product) => {
+    if (counter > 0) {
+      resultsCount = counter+' results found.';
+    }
+    const productdisplay = display.map((product,index) => {
       return(
-        <div>
-          <button
-            value={product.id}
-            onClick={()=>{this.clickHandler()}}
-          >
-            {product.name}
-          </button>
-        </div>
+        <span>
+          <ListItem button
+              value={product.id}
+              onClick={(event)=>{this.clickHandler(event)}}
+            >
+              {index+1}. {product.name}
+          </ListItem>
+          <Divider/>
+        </span>
       )
     })
-
     return (
       <div>
-       <h2>Search Result</h2>
-          {productdisplay}
+        <h2>Search Result: </h2>
+        <div>{resultsCount}</div>
+        <div>{productdisplay}</div>
+
       </div>
       );
   }

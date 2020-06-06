@@ -7,6 +7,7 @@ class Price extends React.Component {
     return (
       <div>
         <h2> Price</h2>
+        {this.props.price}
       </div>
     );
   }

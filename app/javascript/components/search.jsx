@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios';
-
+import Product from './product';
+import Cart from './cart';
 
 class Search extends React.Component{
 
@@ -10,7 +11,8 @@ constructor(){
       this.state = {
         products:[],
         value:"",
-        product:{}
+        product:{},
+        cart:[]
     };
   }
 
@@ -39,18 +41,24 @@ handleInput=(event)=>{
         value: event.target.value
     });
 }
-/*showProducts(event){
+addCart=()=>{
+    let product = this.state.product;
+    const cart = [product, ...this.state.cart];
+    this.setState({cart: cart});
+}
+showProducts(event){
     let product = this.state.products[event.target.value];
          this.setState({ product: product })
 
 }
 <div>
                 <button onClick={(event)=>{ this.showProducts(event) }} value= {index}>name: {product.name}</button>
-              </div>*/
+              </div>
 
 
 
     render(){
+
       const products = this.state.products.map((product, index)=>{
           return (
             <div>
@@ -59,6 +67,10 @@ handleInput=(event)=>{
 
             </div>);
           });
+      let displayProduct = "";
+         if(Object.keys(this.state.product).length != 0){
+           displayProducts = <Product product={this.state.product} addCart={this.addCart}/>;
+         }
         return(
           <div>
             <h1>Search</h1>
@@ -70,6 +82,8 @@ handleInput=(event)=>{
                 <button onClick={()=>{ this.getProducts() }}>Search</button>
               </div>
               {products}
+              {displayProducts}
+              <Cart product={this.state.cart} />
           </div>
 
           );

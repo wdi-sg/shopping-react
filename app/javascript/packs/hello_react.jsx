@@ -5,9 +5,17 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-
+import Search from '../components/search'
+import Product from '../components/product'
+import Cart from '../components/cart'
 const Hello = props => (
-  <div>Hello {props.name}!</div>
+  <div>
+    Hello {props.name}!
+    <Search/>
+    <Product />
+    <Cart />
+
+  </div>
 )
 
 Hello.defaultProps = {

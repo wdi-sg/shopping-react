@@ -7,6 +7,21 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
+  def search
+    @products = Product.where('LOWER(name) LIKE ?', "%#{params[:search].downcase}%")
+    render json: {products: @products}
+  end
+
+  def calculate
+    quantity = params[:quantity]
+    render json: {
+      product: product,
+      product_price: product.product_price,
+      quantity: quantity,
+      value: product.calculate_value(quantity)
+    }
+  end
+
   # GET /products/1
   # GET /products/1.json
   def show
@@ -61,6 +76,8 @@ class ProductsController < ApplicationController
     end
   end
 
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
@@ -71,4 +88,10 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:name, :price, :image_url, :description)
     end
+
+    def product
+     @product ||= Product.find(params[:id])
+    end
+
+
 end

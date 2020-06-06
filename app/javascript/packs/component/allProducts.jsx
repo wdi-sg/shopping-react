@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 function AllProducts() {
@@ -12,7 +12,7 @@ function AllProducts() {
       .then((response) => {
         const data = response.data;
         console.log(data);
-        // setProducts(data);
+        setProducts(data);
       })
 
       .catch((error) => {

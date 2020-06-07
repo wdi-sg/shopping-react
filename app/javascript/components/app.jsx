@@ -64,9 +64,7 @@ export default class App extends React.Component{
                     <Products 
                         products={this.state.products} 
                         searchTerm={this.state.searchTerm}/>
-                    <div className='col-4'>
-                        <h2>Cart</h2>
-                    </div>
+                    
                 </div>
             </div>
         );

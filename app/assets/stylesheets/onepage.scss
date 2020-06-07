@@ -1,3 +1,24 @@
 // Place all the styles related to the onepage controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+ body {
+  background-color: lightgrey;
+  max-width: 1024px;
+  padding: 20px;
+  margin: 20px auto;
+ }
+
+.product {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  margin: 10px 0;
+}
+
+.product-info {
+  padding: 0 15px;
+  font-family: sans-serif;
+  font-size: 18px;
+}
+

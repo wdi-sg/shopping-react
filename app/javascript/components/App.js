@@ -14,15 +14,24 @@ function App(){
     const [cart, updateCart] = useState({
         items: [],
         subtotal: function(){
+          if (this.items.length < 1) {
+            return 0
+          }
             return this.items.reduce((accumulator, currentVal)=>{
-                accumulator.price + currentVal.price
+                return accumulator.price + currentVal.price
             })
         },
         shipping: 7,
         gst: function(){
+                    if (this.items.length < 1) {
+                      return 0;
+                    }
             return this.subtotal*0.17
         },
         total: function(){
+                    if (this.items.length < 1) {
+                      return 0;
+                    }
             return this.subtotal+this.shipping+this.gst
         }
     })
@@ -71,9 +80,14 @@ function App(){
 
     let addToCartBtn = ()=> {
         updateCart(currentCart => {
-          return {currentCart, items: [...currentCart.items, selectedProduct]}
+          return {...currentCart, items: [...currentCart.items, selectedProduct]}
         })
       }
+
+      useEffect(()=>{
+        console.log(`useeffect after cart update`)
+        console.log(cart)
+      }, [cart]);
 
     return(
         <div>

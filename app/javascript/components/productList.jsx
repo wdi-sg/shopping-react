@@ -27,20 +27,6 @@ class ProductList extends React.Component {
     axios.get(url).then(runWhenDone).catch(whenError)
   }
 
-  showClick(){
-    console.log("show clicked")
-    const url = '/products.json';
-    const runWhenDone = (response) => {
-      const data = response.data
-      this.setState({ products: data })
-    }
-
-    const whenError = (error) => {
-        console.log("error", error)
-    }
-    axios.get(url).then(runWhenDone).catch(whenError)
-  }
-
   render() {
 
     const products = this.state.products.map((product, index)=>{
@@ -52,9 +38,6 @@ class ProductList extends React.Component {
             <h4>{product.name}</h4>
             <p>{product.price}</p>
             <p>{product.description}</p>
-            <button onClick={()=>{
-                this.showClick();
-            }}>Show</button>
           </div>
         </div>);
     });
@@ -70,8 +53,6 @@ class ProductList extends React.Component {
         <div>
             {products}
         </div>
-
-
       </div>
     );
   }

@@ -21,10 +21,10 @@ class SearchInput extends React.Component {
   }
 
   changeHandler(event) {
-    let currentValue = event.target.value
-    this.props.searchInput(event.target.value)
+    let currentValue = event.target.value //2
+    this.props.searchInput(event.target.value) //passing value to parent component
     this.setState({
-      inputvalue: currentValue,
+      inputvalue: currentValue, //
     })
   }
 

@@ -4,9 +4,10 @@ class Total extends React.Component {
 
   render() {
     let display;
-    let totalprice = (this.props.totalprice*1.07).toFixed(2)
+    let totalprice = (parseFloat(this.props.totalprice)).toFixed(2)
+    console.log(typeof totalprice)
     if(this.props.totalprice) {
-      display = (<div>{totalprice}</div>)
+       display = (<div>{totalprice}</div>)
     }
 
     return (

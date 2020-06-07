@@ -23,7 +23,6 @@ class App extends React.Component {
 
     return (
       <div>
-
         <ThemeProvider className='' theme={theme}>
           <Container className=''>
             <Grid className='' container spacing={2}>

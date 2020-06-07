@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import ListItem from '@material-ui/core/ListItem';
 import Divider from '@material-ui/core/Divider';
@@ -85,9 +84,9 @@ class SearchResult extends React.Component {
     })
     return (
       <div>
-        <h2>Search Result: </h2>
-        <div>{resultsCount}</div>
-        <div>{productdisplay}</div>
+        <h2 className='border-b'style={{textAlign:'center'}}>Search result </h2>
+        <div style={{textAlign:'right', fontSize:'10px'}}>{resultsCount}</div>
+        <div style={{maxHeight:'420px', overflow:'scroll'}}>{productdisplay}</div>
 
       </div>
       );

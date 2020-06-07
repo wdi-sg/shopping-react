@@ -36,7 +36,7 @@ class Product extends React.Component {
     return (
       <div>
         <Card elevation={0}>
-          <h2 className='border-b'> Product</h2>
+          <h2 className='border-b' style={{textAlign:'center'}}> Product</h2>
 
           <Image imgurl={this.state.productlist.imgurl}/>
           <Divider/>

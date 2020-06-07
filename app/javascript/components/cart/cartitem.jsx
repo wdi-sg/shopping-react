@@ -30,10 +30,10 @@ class CartItem extends React.Component {
     cartlist = display.map((list,index)=> {
         return (
           <span>
-            <ListItem button>
+            <ListItem button style={{paddingLeft:'0px'}}>
               <Grid container>
-                  <Grid item xd={1}>
-                    {index}.
+                  <Grid item xs={1}>
+                    {index+1}.
                   </Grid>
                   <Grid item xs={3}>
                     <img style={{maxWidth:'50px'}}src={list.imgurl}></img>

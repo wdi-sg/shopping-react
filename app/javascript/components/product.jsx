@@ -47,7 +47,6 @@ class Product extends React.Component {
           <AddToCartButton
             id={this.state.productlist.id}
             liftclickid={(v) => {this.liftClickId(v)}}
-            style={{marginTop:'5px'}}
           />
         </Card>
       </div>

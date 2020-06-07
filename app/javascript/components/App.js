@@ -62,6 +62,10 @@ function App(){
         setSearchInput(e.target.value)
     }
 
+    let deleteButtonClick = (e) => {
+      
+    }
+
     let addToCartBtn = ()=> {
         updateCart(currentCart => {
           return {...currentCart, items: [...currentCart.items, selectedProduct]}

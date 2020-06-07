@@ -33,7 +33,7 @@ class ProductList extends React.Component {
       .filter(product => product.name.toLowerCase().includes(this.state.search))
       .map((product, index)=>{
         return (
-          <div className="product" key={index}>
+          <div className="product" key={product.id}>
             <div className="product-image">
               <img src={product.image_url} />
             </div>
@@ -42,15 +42,15 @@ class ProductList extends React.Component {
               <p>{product.price}</p>
               <p>{product.description}</p>
             </div>
-            <hr />
           </div>
         );
     });
 
     return (
-      <div className="product-list">
-        <input type='text' onChange={this.searchChanged} value={this.state.search || ""}/>
-        <p>product list:</p>
+      <div className="container">
+        <h3>SEARCH</h3>
+        <input type='text' className="search-bar" placeholder='Search' onChange={this.searchChanged} value={this.state.search || ""}/>
+        <h4>Search Results</h4>
         <div>
             {products}
         </div>

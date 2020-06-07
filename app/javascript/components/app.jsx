@@ -7,9 +7,14 @@ class App extends React.Component {
   render(){
       return (
         <div className="app">
-          <p>my app</p>
-          <div className="content">
+          <div className="app-content">
             <ProductList/>
+            <div className="container">
+              <h3>PRODUCT</h3>
+            </div>
+            <div className="container">
+              <h3>CART</h3>
+            </div>
           </div>
         </div>
       );

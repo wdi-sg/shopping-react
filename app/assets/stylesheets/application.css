@@ -14,18 +14,25 @@
  *= require_self
  */
 
- body {
+body {
   background-color: lightgrey;
-  max-width: 1024px;
+  font-family: sans-serif;
   padding: 20px;
   margin: 20px auto;
- }
+  min-width: 1920px;
+}
+
+.container {
+  width: 30%;
+  margin: 10px;
+}
 
 .product {
   display: flex;
-  flex-direction: row;
-  justify-content: left;
-  margin: 10px 0;
+  flex-direction: column;
+  align-items: left;
+  width: 90%;
+  margin: 10px auto;
 }
 
 .product-info {
@@ -34,7 +41,14 @@
   font-size: 18px;
 }
 
-/*.content {
+.app-content {
   display: flex;
   flex-direction: row;
-}*/
+  align-content: space-between;
+}
+
+.search-bar {
+  width: 80%;
+  font-size: 18px;
+  padding: 5px;
+}

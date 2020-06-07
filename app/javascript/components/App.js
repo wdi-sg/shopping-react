@@ -10,30 +10,14 @@ function App(){
     const [searchInput, setSearchInput] = useState(null)
 
     const [selectedProduct, setSelectedProduct] = useState(null)
-    const [cartItems, updateItems] = useState([])
+    const [cost, setCost] = useState({
+      subtotal: 0,
+      shipping: "7.00",
+      gst: 0,
+      total: 0
+    })
     const [cart, updateCart] = useState({
         items: [],
-        subtotal: function(){
-          if (this.items.length < 1) {
-            return 0
-          }
-            return this.items.reduce((accumulator, currentVal)=>{
-                return accumulator.price + currentVal.price
-            })
-        },
-        shipping: 7,
-        gst: function(){
-                    if (this.items.length < 1) {
-                      return 0;
-                    }
-            return this.subtotal*0.17
-        },
-        total: function(){
-                    if (this.items.length < 1) {
-                      return 0;
-                    }
-            return this.subtotal+this.shipping+this.gst
-        }
     })
 
     let searchProducts = ()=>{
@@ -84,10 +68,37 @@ function App(){
         })
       }
 
+      //What happens after cart is updated.
       useEffect(()=>{
-        console.log(`useeffect after cart update`)
-        console.log(cart)
+
+        //Only modify if there are 
+          if (cart.items.length===0) {
+            return setCost({
+              subtotal: 0,
+              gst: 0,
+              shipping: "7.00",
+              total: 0
+            })
+          }
+          let thisSubtotal = cart.items.reduce((acc, el) => acc + parseFloat(el.price), 0);
+          let thisGst = thisSubtotal * 0.17;
+          let thisTotal = (thisSubtotal + thisGst + parseFloat(cost.shipping)).toFixed(2);
+          setCost(currentCost => {
+            return {
+              ...currentCost,
+              subtotal: thisSubtotal.toFixed(2),
+              gst: thisGst.toFixed(2),
+              total: thisTotal,
+            };
+          })
       }, [cart]);
+
+
+      //What happens after cost gets updated.
+      useEffect(()=> {
+        console.log(`cost useeffect triggered`);
+        console.log(cost)
+      }, [cost])
 
     return(
         <div>
@@ -113,7 +124,7 @@ function App(){
 
                 <div className="col">
 
-                <Cart cart={cart} productResultClick={productResultClick}/>
+                <Cart cart={cart} cost={cost} productResultClick={productResultClick}/>
                 </div>
 
 

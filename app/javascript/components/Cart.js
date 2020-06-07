@@ -6,11 +6,16 @@ function Cart(props){
         return <SearchResultListing key={i} product={item} id={item.id} productResultClick={props.productResultClick}/>
     }) 
 
-    return(
-        <div>
-           {cartItems}
-        </div>
-    )
+
+    return (
+      <div>
+        {cartItems}
+        <p>Subtotal: {props.cost.subtotal}</p>
+        <p>Shipping: {props.cost.shipping}</p>
+        <p>GST: {props.cost.gst}</p>
+        <p>Total: {props.cost.total}</p>
+      </div>
+    );
 }
 
 export default Cart

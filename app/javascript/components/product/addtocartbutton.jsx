@@ -57,7 +57,7 @@ class AddToCartButton extends React.Component {
     }
 
     return (
-      <div>
+      <div style={{marginTop:'5px'}}>
         <Grid container>
           <Grid item xs={6}>
             {button}

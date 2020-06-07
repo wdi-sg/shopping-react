@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import SearchForm from './SearchForm'
 import Results from './Results'
@@ -10,6 +10,7 @@ function App(){
     const [searchInput, setSearchInput] = useState(null)
 
     const [selectedProduct, setSelectedProduct] = useState(null)
+    const [cartItems, updateItems] = useState([])
     const [cart, updateCart] = useState({
         items: [],
         subtotal: function(){
@@ -62,7 +63,6 @@ function App(){
         }).catch((error)=>{
           console.log(error);
         })
-        console.log(`the product id is ${e.target.id}`)
     }
 
     let searchInputTracker = (e) => {
@@ -70,15 +70,10 @@ function App(){
     }
 
     let addToCartBtn = ()=> {
-        console.log(selectedProduct);
-        console.log(`clicked add to cart`)
-
-        updateCart(cart => {
-            cart.items.push(selectedProduct);
-            console.log(cart)
-            return cart;           
+        updateCart(currentCart => {
+          return {currentCart, items: [...currentCart.items, selectedProduct]}
         })
-    }
+      }
 
     return(
         <div>

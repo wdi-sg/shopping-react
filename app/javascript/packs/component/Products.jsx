@@ -54,6 +54,11 @@ function Products() {
       };
     });
     console.log(`this is ${product.quantity}`);
+    console.log("==========click on item ===========");
+    console.log("==========click on item ===========");
+    console.log(product.selected_product);
+    console.log("==========click on item ===========");
+    console.log("==========click on item ===========");
   }
 
   function addToCart(event) {
@@ -70,9 +75,11 @@ function Products() {
         console.log(data);
 
         setProduct((prevVal) => {
+          const cartArr = product.cart;
+          cartArr.push(data.data);
           return {
             ...prevVal,
-            cart: [data.data],
+            cart: cartArr,
             // cart: [product.cart.push(data.data)],
             quantity: "",
             selected_product: null,
@@ -80,6 +87,9 @@ function Products() {
         });
         console.log(`this is now in cart ${product.cart}`);
         console.log(product);
+        // console.log(cartArr);
+        console.log(product.cart);
+        console.log(product.cart[0].value);
       })
 
       .catch((error) => {
@@ -94,7 +104,10 @@ function Products() {
     var newQuantity = event.target.value;
     const { name, value } = event.target;
     setProduct((prevVal) => {
-      return { ...prevVal, quantity: newQuantity };
+      return {
+        ...prevVal,
+        quantity: newQuantity,
+      };
     });
     console.log(`this is ${product.quantity}`);
   }

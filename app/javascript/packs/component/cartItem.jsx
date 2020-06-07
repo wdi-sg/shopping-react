@@ -10,7 +10,7 @@ function CartItem(props) {
             {/* {props.item.product.map((eachItem) => {
               return eachItem.name;
             })} */}
-            {props.data.name}
+            {props.item}
           </div>
         </div>
       </div>
@@ -22,7 +22,7 @@ function CartItem(props) {
             {/* {props.item.product.map((eachItem) => {
               return eachItem.price;
             })} */}
-            {props.data.price}
+            {props.pricePerItem}
           </div>
         </div>
       </div>
@@ -30,14 +30,14 @@ function CartItem(props) {
       <div className="row">
         <div className="col">
           <div className="header">Quantity purchase</div>
-          <div className="text">{props.item.quantity}</div>
+          <div className="text">{props.quantity}</div>
         </div>
       </div>
 
       <div className="row">
         <div className="col">
           <div className="header">Total:</div>
-          <div className="text">{props.item.value}</div>
+          <div className="text">{props.value}</div>
         </div>
       </div>
     </div>

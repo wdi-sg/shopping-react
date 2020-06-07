@@ -18,26 +18,27 @@ class ProductList extends React.Component {
     const runWhenDone = (response) => {
       const data = response.data
       this.setState({ products: data })
+      console.log(data)
     }
 
     const whenError = (error) => {
-        console.log("error", error)
+      console.log("error", error)
     }
     axios.get(url).then(runWhenDone).catch(whenError)
   }
 
   showClick(){
     console.log("show clicked")
-    // const url = '/products.json';
-    // const runWhenDone = (response) => {
-    //   const data = response.data
-    //   this.setState({ products: data })
-    // }
+    const url = '/products.json';
+    const runWhenDone = (response) => {
+      const data = response.data
+      this.setState({ products: data })
+    }
 
-    // const whenError = (error) => {
-    //     console.log("error", error)
-    // }
-    // axios.get(url).then(runWhenDone).catch(whenError)
+    const whenError = (error) => {
+        console.log("error", error)
+    }
+    axios.get(url).then(runWhenDone).catch(whenError)
   }
 
   render() {

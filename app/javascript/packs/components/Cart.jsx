@@ -72,6 +72,8 @@ export default class Cart extends React.Component {
               </th>
               <th scope="col">Quantity</th>
               <th scope="col">Price</th>
+              <th scope="col">&emsp;</th>
+
             </tr>
           </thead>
           <tbody>{cart}</tbody>

@@ -10,7 +10,7 @@ import Productcomponent from '../components/productcomponent'
 
 const Product = props => (
   <div>
-    <Productcomponent url={props.url}/>
+    <Productcomponent url={props.url} description={props.description} price={props.price}/>
   </div>
 )
 
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const node = document.getElementById('product_data')
   const data = JSON.parse(node.getAttribute('data'))
   ReactDOM.render(
-    <Product url={data.url}/>,
+    <Product url={data.url} description={data.description} price={data.price}/>,
     document.body.appendChild(document.createElement('div')),
   )
 })

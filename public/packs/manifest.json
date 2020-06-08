@@ -20,10 +20,10 @@
     },
     "product": {
       "js": [
-        "/packs/js/product-d5d435d6e0064c1e33e5.js"
+        "/packs/js/product-7bf82fc7d354442758c6.js"
       ],
       "js.map": [
-        "/packs/js/product-d5d435d6e0064c1e33e5.js.map"
+        "/packs/js/product-7bf82fc7d354442758c6.js.map"
       ]
     },
     "search": {
@@ -37,8 +37,8 @@
   },
   "hello_react.js": "/packs/js/hello_react-15ec1df8603576b7f41c.js",
   "hello_react.js.map": "/packs/js/hello_react-15ec1df8603576b7f41c.js.map",
-  "product.js": "/packs/js/product-d5d435d6e0064c1e33e5.js",
-  "product.js.map": "/packs/js/product-d5d435d6e0064c1e33e5.js.map",
+  "product.js": "/packs/js/product-7bf82fc7d354442758c6.js",
+  "product.js.map": "/packs/js/product-7bf82fc7d354442758c6.js.map",
   "search.js": "/packs/js/search-0710bd0458587407e61c.js",
   "search.js.map": "/packs/js/search-0710bd0458587407e61c.js.map"
 }

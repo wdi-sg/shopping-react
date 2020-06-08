@@ -1,0 +1,186 @@
+{
+  "App.css": "/packs/css/App-41948b6b.css",
+  "App.css.map": "/packs/css/App-41948b6b.css.map",
+  "App.js": "/packs/js/App-901c46482c3d58549df0.js",
+  "App.js.map": "/packs/js/App-901c46482c3d58549df0.js.map",
+  "Components/Cart/Cart.css": "/packs/css/Components/Cart/Cart-fc84444a.css",
+  "Components/Cart/Cart.css.map": "/packs/css/Components/Cart/Cart-fc84444a.css.map",
+  "Components/Cart/Cart.js": "/packs/js/Components/Cart/Cart-37d519ced3e63d2b791b.js",
+  "Components/Cart/Cart.js.map": "/packs/js/Components/Cart/Cart-37d519ced3e63d2b791b.js.map",
+  "Components/Cart/styles.css": "/packs/css/Components/Cart/styles-fc84444a.css",
+  "Components/Cart/styles.css.map": "/packs/css/Components/Cart/styles-fc84444a.css.map",
+  "Components/Cart/styles.js": "/packs/js/Components/Cart/styles-eeeb3b7ced5c01b87d54.js",
+  "Components/Cart/styles.js.map": "/packs/js/Components/Cart/styles-eeeb3b7ced5c01b87d54.js.map",
+  "Components/Product/Description.css": "/packs/css/Components/Product/Description-a912eab8.css",
+  "Components/Product/Description.css.map": "/packs/css/Components/Product/Description-a912eab8.css.map",
+  "Components/Product/Description.js": "/packs/js/Components/Product/Description-c4ca0b4bbfc0f1e6b68b.js",
+  "Components/Product/Description.js.map": "/packs/js/Components/Product/Description-c4ca0b4bbfc0f1e6b68b.js.map",
+  "Components/Product/Product.css": "/packs/css/Components/Product/Product-a912eab8.css",
+  "Components/Product/Product.css.map": "/packs/css/Components/Product/Product-a912eab8.css.map",
+  "Components/Product/Product.js": "/packs/js/Components/Product/Product-30712a1f89bd226f2a30.js",
+  "Components/Product/Product.js.map": "/packs/js/Components/Product/Product-30712a1f89bd226f2a30.js.map",
+  "Components/Product/styles.css": "/packs/css/Components/Product/styles-a912eab8.css",
+  "Components/Product/styles.css.map": "/packs/css/Components/Product/styles-a912eab8.css.map",
+  "Components/Product/styles.js": "/packs/js/Components/Product/styles-f3d0b6b81e7c807604ec.js",
+  "Components/Product/styles.js.map": "/packs/js/Components/Product/styles-f3d0b6b81e7c807604ec.js.map",
+  "Components/Search/Search.css": "/packs/css/Components/Search/Search-80305973.css",
+  "Components/Search/Search.css.map": "/packs/css/Components/Search/Search-80305973.css.map",
+  "Components/Search/Search.js": "/packs/js/Components/Search/Search-bd406fbe332630f714cd.js",
+  "Components/Search/Search.js.map": "/packs/js/Components/Search/Search-bd406fbe332630f714cd.js.map",
+  "Components/Search/SearchResult.js": "/packs/js/Components/Search/SearchResult-674b17e497e5d4292e4b.js",
+  "Components/Search/SearchResult.js.map": "/packs/js/Components/Search/SearchResult-674b17e497e5d4292e4b.js.map",
+  "Components/Search/styles.css": "/packs/css/Components/Search/styles-80305973.css",
+  "Components/Search/styles.css.map": "/packs/css/Components/Search/styles-80305973.css.map",
+  "Components/Search/styles.js": "/packs/js/Components/Search/styles-58fd1f04578bc1c29dad.js",
+  "Components/Search/styles.js.map": "/packs/js/Components/Search/styles-58fd1f04578bc1c29dad.js.map",
+  "application.js": "/packs/js/application-f90ee0a89ff71e30ebf3.js",
+  "application.js.map": "/packs/js/application-f90ee0a89ff71e30ebf3.js.map",
+  "entrypoints": {
+    "App": {
+      "css": [
+        "/packs/css/App-41948b6b.css"
+      ],
+      "js": [
+        "/packs/js/App-901c46482c3d58549df0.js"
+      ],
+      "css.map": [
+        "/packs/css/App-41948b6b.css.map"
+      ],
+      "js.map": [
+        "/packs/js/App-901c46482c3d58549df0.js.map"
+      ]
+    },
+    "application": {
+      "js": [
+        "/packs/js/application-f90ee0a89ff71e30ebf3.js"
+      ],
+      "js.map": [
+        "/packs/js/application-f90ee0a89ff71e30ebf3.js.map"
+      ]
+    },
+    "Components/Cart/Cart": {
+      "css": [
+        "/packs/css/Components/Cart/Cart-fc84444a.css"
+      ],
+      "js": [
+        "/packs/js/Components/Cart/Cart-37d519ced3e63d2b791b.js"
+      ],
+      "css.map": [
+        "/packs/css/Components/Cart/Cart-fc84444a.css.map"
+      ],
+      "js.map": [
+        "/packs/js/Components/Cart/Cart-37d519ced3e63d2b791b.js.map"
+      ]
+    },
+    "Components/Cart/styles": {
+      "css": [
+        "/packs/css/Components/Cart/styles-fc84444a.css"
+      ],
+      "js": [
+        "/packs/js/Components/Cart/styles-eeeb3b7ced5c01b87d54.js"
+      ],
+      "css.map": [
+        "/packs/css/Components/Cart/styles-fc84444a.css.map"
+      ],
+      "js.map": [
+        "/packs/js/Components/Cart/styles-eeeb3b7ced5c01b87d54.js.map"
+      ]
+    },
+    "Components/Product/Description": {
+      "css": [
+        "/packs/css/Components/Product/Description-a912eab8.css"
+      ],
+      "js": [
+        "/packs/js/Components/Product/Description-c4ca0b4bbfc0f1e6b68b.js"
+      ],
+      "css.map": [
+        "/packs/css/Components/Product/Description-a912eab8.css.map"
+      ],
+      "js.map": [
+        "/packs/js/Components/Product/Description-c4ca0b4bbfc0f1e6b68b.js.map"
+      ]
+    },
+    "Components/Product/Product": {
+      "css": [
+        "/packs/css/Components/Product/Product-a912eab8.css"
+      ],
+      "js": [
+        "/packs/js/Components/Product/Product-30712a1f89bd226f2a30.js"
+      ],
+      "css.map": [
+        "/packs/css/Components/Product/Product-a912eab8.css.map"
+      ],
+      "js.map": [
+        "/packs/js/Components/Product/Product-30712a1f89bd226f2a30.js.map"
+      ]
+    },
+    "Components/Product/styles": {
+      "css": [
+        "/packs/css/Components/Product/styles-a912eab8.css"
+      ],
+      "js": [
+        "/packs/js/Components/Product/styles-f3d0b6b81e7c807604ec.js"
+      ],
+      "css.map": [
+        "/packs/css/Components/Product/styles-a912eab8.css.map"
+      ],
+      "js.map": [
+        "/packs/js/Components/Product/styles-f3d0b6b81e7c807604ec.js.map"
+      ]
+    },
+    "Components/Search/Search": {
+      "css": [
+        "/packs/css/Components/Search/Search-80305973.css"
+      ],
+      "js": [
+        "/packs/js/Components/Search/Search-bd406fbe332630f714cd.js"
+      ],
+      "css.map": [
+        "/packs/css/Components/Search/Search-80305973.css.map"
+      ],
+      "js.map": [
+        "/packs/js/Components/Search/Search-bd406fbe332630f714cd.js.map"
+      ]
+    },
+    "Components/Search/SearchResult": {
+      "js": [
+        "/packs/js/Components/Search/SearchResult-674b17e497e5d4292e4b.js"
+      ],
+      "js.map": [
+        "/packs/js/Components/Search/SearchResult-674b17e497e5d4292e4b.js.map"
+      ]
+    },
+    "Components/Search/styles": {
+      "css": [
+        "/packs/css/Components/Search/styles-80305973.css"
+      ],
+      "js": [
+        "/packs/js/Components/Search/styles-58fd1f04578bc1c29dad.js"
+      ],
+      "css.map": [
+        "/packs/css/Components/Search/styles-80305973.css.map"
+      ],
+      "js.map": [
+        "/packs/js/Components/Search/styles-58fd1f04578bc1c29dad.js.map"
+      ]
+    },
+    "styles": {
+      "css": [
+        "/packs/css/styles-19889220.css"
+      ],
+      "js": [
+        "/packs/js/styles-78ff403181d61437e4f2.js"
+      ],
+      "css.map": [
+        "/packs/css/styles-19889220.css.map"
+      ],
+      "js.map": [
+        "/packs/js/styles-78ff403181d61437e4f2.js.map"
+      ]
+    }
+  },
+  "styles.css": "/packs/css/styles-19889220.css",
+  "styles.css.map": "/packs/css/styles-19889220.css.map",
+  "styles.js": "/packs/js/styles-78ff403181d61437e4f2.js",
+  "styles.js.map": "/packs/js/styles-78ff403181d61437e4f2.js.map"
+}

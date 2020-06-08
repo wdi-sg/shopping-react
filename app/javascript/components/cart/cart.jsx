@@ -29,7 +29,7 @@ export default class Cart extends Component {
                         <p>Shipping: $7 (flat rate)</p>
                         <h6 style={{borderTop:'1px solid gainsboro', 
                                 paddingTop:'10px'}}>
-                            Total: ${(this.props.subtotal * 1.17 + 7).toFixed(2)}
+                            Total: <strong>${(this.props.subtotal * 1.17 + 7).toFixed(2)}</strong>
                         </h6>
                     </div>
                 </div>

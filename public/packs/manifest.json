@@ -1,0 +1,64 @@
+{
+  "application.js": "/packs/js/application-f720b24022283010ae5a.js",
+  "application.js.map": "/packs/js/application-f720b24022283010ae5a.js.map",
+  "components/Productdisplay.js": "/packs/js/components/Productdisplay-4eecbdd107fcba54ca8b.js",
+  "components/Productdisplay.js.map": "/packs/js/components/Productdisplay-4eecbdd107fcba54ca8b.js.map",
+  "components/Products.js": "/packs/js/components/Products-f02a799355090c133bdc.js",
+  "components/Products.js.map": "/packs/js/components/Products-f02a799355090c133bdc.js.map",
+  "components/Search.js": "/packs/js/components/Search-adb0f1384b47a0f979ad.js",
+  "components/Search.js.map": "/packs/js/components/Search-adb0f1384b47a0f979ad.js.map",
+  "components/Searchform.js": "/packs/js/components/Searchform-3e29e00348d117e8a073.js",
+  "components/Searchform.js.map": "/packs/js/components/Searchform-3e29e00348d117e8a073.js.map",
+  "entrypoints": {
+    "application": {
+      "js": [
+        "/packs/js/application-f720b24022283010ae5a.js"
+      ],
+      "js.map": [
+        "/packs/js/application-f720b24022283010ae5a.js.map"
+      ]
+    },
+    "components/Productdisplay": {
+      "js": [
+        "/packs/js/components/Productdisplay-4eecbdd107fcba54ca8b.js"
+      ],
+      "js.map": [
+        "/packs/js/components/Productdisplay-4eecbdd107fcba54ca8b.js.map"
+      ]
+    },
+    "components/Products": {
+      "js": [
+        "/packs/js/components/Products-f02a799355090c133bdc.js"
+      ],
+      "js.map": [
+        "/packs/js/components/Products-f02a799355090c133bdc.js.map"
+      ]
+    },
+    "components/Search": {
+      "js": [
+        "/packs/js/components/Search-adb0f1384b47a0f979ad.js"
+      ],
+      "js.map": [
+        "/packs/js/components/Search-adb0f1384b47a0f979ad.js.map"
+      ]
+    },
+    "components/Searchform": {
+      "js": [
+        "/packs/js/components/Searchform-3e29e00348d117e8a073.js"
+      ],
+      "js.map": [
+        "/packs/js/components/Searchform-3e29e00348d117e8a073.js.map"
+      ]
+    },
+    "hello_react": {
+      "js": [
+        "/packs/js/hello_react-e2ef6910e280e330e845.js"
+      ],
+      "js.map": [
+        "/packs/js/hello_react-e2ef6910e280e330e845.js.map"
+      ]
+    }
+  },
+  "hello_react.js": "/packs/js/hello_react-e2ef6910e280e330e845.js",
+  "hello_react.js.map": "/packs/js/hello_react-e2ef6910e280e330e845.js.map"
+}

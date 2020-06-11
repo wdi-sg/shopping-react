@@ -5,9 +5,26 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import Product from './components/product'
+import Form from './components/form'
+import App from './components/app'
+
+let testValue = ""
+let datafile = []
+
 
 const Hello = props => (
-  <div>Hello {props.name}!</div>
+    <div >
+    <div className="row">
+        <div className = "col-12 text-center">
+        <h1>Shopping Cart</h1>
+        </div>
+    </div>
+    <App        />
+
+
+
+  </div>
 )
 
 Hello.defaultProps = {

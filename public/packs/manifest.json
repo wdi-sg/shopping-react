@@ -1,0 +1,64 @@
+{
+  "application.js": "/packs/js/application-cd9baa997ab2a6e5febb.js",
+  "application.js.map": "/packs/js/application-cd9baa997ab2a6e5febb.js.map",
+  "components/app.js": "/packs/js/components/app-45940372c46b94146089.js",
+  "components/app.js.map": "/packs/js/components/app-45940372c46b94146089.js.map",
+  "components/cart.js": "/packs/js/components/cart-b726b13b5013bab70613.js",
+  "components/cart.js.map": "/packs/js/components/cart-b726b13b5013bab70613.js.map",
+  "components/form.js": "/packs/js/components/form-2d10f4c541665d42cf72.js",
+  "components/form.js.map": "/packs/js/components/form-2d10f4c541665d42cf72.js.map",
+  "components/product.js": "/packs/js/components/product-8e9b7f9ff3c1ce4d8370.js",
+  "components/product.js.map": "/packs/js/components/product-8e9b7f9ff3c1ce4d8370.js.map",
+  "entrypoints": {
+    "application": {
+      "js": [
+        "/packs/js/application-cd9baa997ab2a6e5febb.js"
+      ],
+      "js.map": [
+        "/packs/js/application-cd9baa997ab2a6e5febb.js.map"
+      ]
+    },
+    "components/app": {
+      "js": [
+        "/packs/js/components/app-45940372c46b94146089.js"
+      ],
+      "js.map": [
+        "/packs/js/components/app-45940372c46b94146089.js.map"
+      ]
+    },
+    "components/cart": {
+      "js": [
+        "/packs/js/components/cart-b726b13b5013bab70613.js"
+      ],
+      "js.map": [
+        "/packs/js/components/cart-b726b13b5013bab70613.js.map"
+      ]
+    },
+    "components/form": {
+      "js": [
+        "/packs/js/components/form-2d10f4c541665d42cf72.js"
+      ],
+      "js.map": [
+        "/packs/js/components/form-2d10f4c541665d42cf72.js.map"
+      ]
+    },
+    "components/product": {
+      "js": [
+        "/packs/js/components/product-8e9b7f9ff3c1ce4d8370.js"
+      ],
+      "js.map": [
+        "/packs/js/components/product-8e9b7f9ff3c1ce4d8370.js.map"
+      ]
+    },
+    "hello_react": {
+      "js": [
+        "/packs/js/hello_react-d7ab97524ebf5e7be5e2.js"
+      ],
+      "js.map": [
+        "/packs/js/hello_react-d7ab97524ebf5e7be5e2.js.map"
+      ]
+    }
+  },
+  "hello_react.js": "/packs/js/hello_react-d7ab97524ebf5e7be5e2.js",
+  "hello_react.js.map": "/packs/js/hello_react-d7ab97524ebf5e7be5e2.js.map"
+}

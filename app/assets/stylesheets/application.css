@@ -13,3 +13,119 @@
  *= require_tree .
  *= require_self
  */
+.test {
+		font-size: 10px
+}
+
+.scrollBar {
+		background-color: lightblue;
+		width: 100%;
+		height: 197px;
+		overflow: scroll;
+}
+
+.carousel-caption h1 {
+		font-family: Garamond;
+		font-size: 3em;
+		color: red !important;
+}
+
+/* Description text */
+.carousel-caption p {
+		font-family: Garamond;
+		font-size: 2em;
+		color: blue !important;
+}
+
+/* Button text */
+
+@keyframes example {
+		0% {
+				color: red;
+		}
+
+		25% {
+				color: yellow;
+		}
+
+		50% {
+				color: blue;
+		}
+
+		100% {
+				color: green;
+		}
+}
+
+.sampletext {
+		font-size: 20px;
+		animation-name: example;
+		animation-duration: 4s;
+		animation-iteration-count: infinite;
+}
+
+@keyframes run {
+		0% {
+				left: 0;
+		}
+
+		50% {
+				left: 100%;
+				background-color: red;
+				transform: scaleX(-1);
+
+		}
+
+		100% {
+				left: -200px;
+		}
+}
+
+.planefly {
+		width: 5%;
+		position: relative;
+		animation-name: run;
+		animation-duration: 10s;
+		animation-iteration-count: infinite;
+}
+
+@keyframes fadeIn {
+		0% {
+				opacity: 0;
+		}
+
+		50% {
+				opacity: 1;
+		}
+
+		100% {
+				opacity: 1;
+		}
+
+
+}
+
+.planeappear {
+		width: 5%;
+		position: relative;
+		animation-name: fadeIn;
+		animation-duration: 10s;
+		animation-iteration-count: infinite;
+}
+
+
+
+.carousel-caption .btn {
+		font-family: Garamond;
+		font-size: 1em;
+		color: yellow;
+}
+
+.carousel-inner>.item>img {
+		width: 640px;
+		height: 360px;
+		animation-name: fadeIn;
+		animation-duration: 10s;
+		animation-iteration-count: infinite;
+
+}

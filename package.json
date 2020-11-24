@@ -15,5 +15,15 @@
   "version": "0.1.0",
   "devDependencies": {
     "webpack-dev-server": "^3.9.0"
-  }
+  },
+
+  "scripts": {
+   "predeploy": "npm run build",
+   "deploy": "gh-pages -d build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+	},
+	"homepage": "https://Nausheen-s.github.io/shopping_react"
 }
